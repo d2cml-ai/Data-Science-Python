@@ -1,1 +1,2 @@
-
+conda create -n bumeran python=3.11
+conda activate bumeran
