@@ -1,5 +1,5 @@
-Job Title,Description,District,Work Mode
-Analista Programador de Tecnologías de la información,"Publicado hace 5 días
+Job Title;Description;District;Work Mode
+Analista Programador de Tecnologías de la información;"Publicado hace 5 días
 El Agustino, Lima, Peru
 IQFARMA, Laboratorio farmacéutico nacional con más de 61 años al servicio de la salud, dedicado a la fabricación y comercialización de productos de marca de diferentes especialidades farmacéuticas y genéricos de calidad que se distribuyen con gran éxito en el mercado privado e institucional. Actualmente nos encontramos en la búsqueda de: Analista de Tecnologías de la información.
 Descripción del puesto
@@ -32,8 +32,8 @@ Optimizar constantemente todas las capas del software desde la base de datos has
 Cumplir y hacer cumplir los procedimientos de la empresa.
 Participar en reuniones con los diversos equipos involucrados para definir la solución de las iniciativas.
 Cumplir con los tiempos asignados en los desarrollos de requerimientos de usuario y reportar avances de las actividades realizadas.
-Velar por el correcto funcionamiento de los softwares desarrollados permanentemente..","El Agustino, Lima, Peru",Presencial
-Frontend Developer React,"Múltiples vacantes
+Velar por el correcto funcionamiento de los softwares desarrollados permanentemente..";El Agustino, Lima, Peru;Presencial
+Frontend Developer React;"Múltiples vacantes
 Actualizado hace 2 días
 Pueblo Libre, Lima, Peru
 Descripción del puesto
@@ -62,8 +62,8 @@ Full-time, Temporal
 Semi Sr
 2 vacantes disponibles
 Conocimientos y habilidades valorados
-React - Intermedio",Actualizado hace 2 días,Híbrido
-Analista Programador Power Builder Junior,"Múltiples vacantes
+React - Intermedio";Actualizado hace 2 días;Híbrido
+Analista Programador Power Builder Junior;"Múltiples vacantes
 Publicado hace 2 días
 Lima, Lima, Peru
 Descripción del puesto
@@ -78,8 +78,8 @@ Experiencia con Html, asp, javascript, jquery Java (Deseable).
 Funciones:
 Analizar, diseñar, desarrollar e implementar nuevas soluciones o proyectos informáticos mediante el uso de las tecnologías de información, dar mantenimiento y soporte a los sistemas del cliente servidor.
 Mantener la disponibilidad de los sistemas educativos y administrativos de la organización de manera proactiva.
-Administrar el óptimo funcionamiento de los sistemas y encontrar oportunidades de mejora.",Publicado hace 2 días,Remoto
-DESARROLLADOR FRONT IOS,"Múltiples vacantes
+Administrar el óptimo funcionamiento de los sistemas y encontrar oportunidades de mejora.";Publicado hace 2 días;Remoto
+DESARROLLADOR FRONT IOS;"Múltiples vacantes
 Actualizado hace 2 días
 Comas, Lima, Peru
 Descripción del puesto
@@ -125,8 +125,8 @@ Coordinar estrechamente con los equipos de diseño UX/UI, backend y QA para aseg
 Documentar adecuadamente código y arquitectura técnica.
 Proponer mejoras técnicas y funcionales que impulsen la innovación continua y la calidad del producto.
 Si cuentas con las habilidades y experiencia necesarias para esta posición, no dudes en postular. Estamos ansiosos por recibir tu aplicación y conocer más acerca de ti. 🔔 ¡Únete a nuestro equipo y sé parte del éxito de Summit SAC!
-(NOTA: Solo se va considerar los postulantes que cumplan específicamente con el perfil)",Actualizado hace 2 días,Híbrido
-Analista Programador de Sistemas - Híbrido,"Actualizado hace 2 días
+(NOTA: Solo se va considerar los postulantes que cumplan específicamente con el perfil)";Actualizado hace 2 días;Híbrido
+Analista Programador de Sistemas - Híbrido;"Actualizado hace 2 días
 Santa Anita, Lima, Peru
 Descripción del puesto
 Tecsup, instituto líder en educación tecnológica con 40 años en el mercado formando profesionales innovadores y éticos. Reconocido como una de las mejores instituciones educativas para trabajar. ¡Postula y únete a nuestra COMUNIDAD DE INNOVADORES!
@@ -153,8 +153,8 @@ Importante considerar:
 Modalidad de trabajo: Hibrido
 Horario de trabajo: Lunes a Viernes de 8:00 am a 6:00pm
 Lugar de Trabajo: Santa Anita
-""En Tecsup nos comprometemos con la igualdad de oportunidades. Todas las personas serán consideradas en el proceso de postulación"".","Santa Anita, Lima, Peru",Híbrido
-Desarrollador en Automatización,"Publicado hace 12 días
+""En Tecsup nos comprometemos con la igualdad de oportunidades. Todas las personas serán consideradas en el proceso de postulación"".";Santa Anita, Lima, Peru;Híbrido
+Desarrollador en Automatización;"Publicado hace 12 días
 Santiago de Surco, Lima, Peru
 Descripción del puesto
 Ven a Industrias San Miguel! ¡Somos un equipo unido por un mismo propósito! “Dar todo nuestro espíritu emprendedor para alimentar juntos un futuro próspero”. Intégrate como Desarrollador en Automatización en la sede Surco en Perú.
@@ -184,8 +184,8 @@ Presencial
 Programación
 Full-time, Indeterminado
 Junior
-1 vacante disponible","Santiago de Surco, Lima, Peru",Presencial
-Junior Fullstack developer,"Postulación rápida
+1 vacante disponible";Santiago de Surco, Lima, Peru;Presencial
+Junior Fullstack developer;"Postulación rápida
 Múltiples vacantes
 Publicado ayer
 Lima, Peru
@@ -206,8 +206,8 @@ Java Script - Básico
 Node.js - Básico
 PostgreSQL - Básico
 MongoDB - Básico
-React - Básico",Múltiples vacantes,Remoto
-Consultor SAP,"Publicado ayer
+React - Básico";Múltiples vacantes;Remoto
+Consultor SAP;"Publicado ayer
 San Isidro, Lima, Peru
 Descripción del puesto
 Somos una Empresa Transnacional especializada en Consultoría, tenemos más de 20 años de experiencia brindando soluciones especializadas pensadas de acuerdo a las necesidades de nuestros clientes. Contamos con una cartera de más de 1,500 clientes dentro de las operaciones de Grupo Siglo (Perú, Chile, Colombia, Ecuador, Panamá, Costa Rica y México). Somos líderes en brindar servicios de Consultoría contable, financiera y tributaria a importantes empresas de diferentes rubros a nivel nacional como internacional.
@@ -228,8 +228,8 @@ La posición debe dar soporte en el ERP SAP B1 a todas las empresas que manejamo
 Creación de usuarios, asignar permisos y validar licencias
 Acompañamiento a usuarios en cierres de períodos
 Implementación de nuevas empresas
-Capacitar a usuarios en el uso del sistema","San Isidro, Lima, Peru",Remoto
-Desarrollador DevOps,"Publicado hace 2 días
+Capacitar a usuarios en el uso del sistema";San Isidro, Lima, Peru;Remoto
+Desarrollador DevOps;"Publicado hace 2 días
 Lima, Lima, Peru
 Descripción del puesto
 CSTI Corp es una empresa peruana líder en la industria TI con más de 15 años en el mercado en países como Perú, Ecuador, Colombia, Costa Rica y Estados Unidos.
@@ -242,8 +242,8 @@ Actualmente, estamos en búsqueda de un Desarrollador DevOps Senior para sumarse
 ✅ Mínimo 2 años en despliegue de componentes en Kubernetes, microservicios y soluciones en servicios PaaS.
 ✅ 2-3 años resolviendo incidencias de complejidad intermedia en herramientas de DevSecOps.
 ✅Certificación DevOps Fundamentals (deseable).
-✅ Certificación Microsoft Azure Fundamentals AZ900 o equivalente (deseable).","Lima, Lima, Peru",Híbrido
-Desarrollador FullStack - Semi,"Publicado hace 2 días
+✅ Certificación Microsoft Azure Fundamentals AZ900 o equivalente (deseable).";Lima, Lima, Peru;Híbrido
+Desarrollador FullStack - Semi;"Publicado hace 2 días
 Lima, Lima, Peru
 Descripción del puesto
 CSTI Corp es una empresa peruana líder en la industria TI con más de 13 años en el mercado en países como Perú, Ecuador, Colombia, Costa Rica y Estados Unidos.
@@ -254,8 +254,8 @@ Minimo 3 años de experiencia como Fullstack
 Experiencia en microservicios con Java y Spring Boot
 Experiencia a nivel de frontend con React.js (indispensable) y typescript (deseable)
 Bases de datos relacionales (PostgreSQL, SQL Server).
-Experiencia trabajando con contenedores (Docker) y herramientas CI/CD","Lima, Lima, Peru",Híbrido
-Desarrollador FullStack - Semi,"Publicado hace 2 días
+Experiencia trabajando con contenedores (Docker) y herramientas CI/CD";Lima, Lima, Peru;Híbrido
+Desarrollador FullStack - Semi;"Publicado hace 2 días
 Lima, Lima, Peru
 Descripción del puesto
 CSTI Corp es una empresa peruana líder en la industria TI con más de 13 años en el mercado en países como Perú, Ecuador, Colombia, Costa Rica y Estados Unidos.
@@ -266,8 +266,8 @@ Minimo 3 años de experiencia como Fullstack
 Experiencia en microservicios con Java y Spring Boot
 Experiencia a nivel de frontend con React.js (indispensable) y typescript (deseable)
 Bases de datos relacionales (PostgreSQL, SQL Server).
-Experiencia trabajando con contenedores (Docker) y herramientas CI/CD","Lima, Lima, Peru",Híbrido
-Analista programador Java,"Múltiples vacantes
+Experiencia trabajando con contenedores (Docker) y herramientas CI/CD";Lima, Lima, Peru;Híbrido
+Analista programador Java;"Múltiples vacantes
 Publicado hace 2 días
 Lima, Lima, Peru
 Descripción del puesto
@@ -296,8 +296,8 @@ Híbrido
 Programación
 Full-time, Indeterminado
 Semi Sr
-3 vacantes disponibles",Publicado hace 2 días,Híbrido
-Desarrollador Fullstack (.NET/Angular) - Proyecto temporal,"Publicado hace 2 días
+3 vacantes disponibles";Publicado hace 2 días;Híbrido
+Desarrollador Fullstack (.NET/Angular) - Proyecto temporal;"Publicado hace 2 días
 Lima, Lima, Peru
 Descripción del puesto
 Somos una multinacional brasilera de soluciones digitales, con operación en diez países de América Latina. Apoyamos y evolucionamos los negocios de nuestros clientes a partir de nuestras cuatro líneas de negocios: Digital Business, Cloud Solutions, Digital Payments y Technology Platforms.
@@ -316,8 +316,8 @@ Levantar requerimientos funcionales y técnicos con el área usuaria.
 Documentar requerimientos y estimar esfuerzo de implementación.
 Desarrollar el software.
 Realizar las pruebas técnicas, funcionales y de seguridad.
-Elaborar documentación del software desarrollado: Documentación de diseño, técnico, funcional, manuales de usuario, etc.","Lima, Lima, Peru",Presencial
-PROGRAMADOR RPA,"Múltiples vacantes
+Elaborar documentación del software desarrollado: Documentación de diseño, técnico, funcional, manuales de usuario, etc.";Lima, Lima, Peru;Presencial
+PROGRAMADOR RPA;"Múltiples vacantes
 Publicado hace 2 días
 Lima, Lima, Peru
 Descripción del puesto
@@ -346,8 +346,8 @@ Híbrido
 Programación
 Full-time, Indeterminado
 Semi Sr
-2 vacantes disponibles",Publicado hace 2 días,Híbrido
-FullStack Senior,"Actualizado hace 2 días
+2 vacantes disponibles";Publicado hace 2 días;Híbrido
+FullStack Senior;"Actualizado hace 2 días
 Miraflores, Lima, Peru
 Descripción del puesto
 Métrica Andina es la primera filial latinoamericana del grupo de consultoría español Métrica Consulting. El grupo comenzó operaciones con el inicio del nuevo siglo y desde entonces ha participado en distintos proyectos en distintos países de Europa Occidental y Latino América. Con Métrica Andina, hemos comenzado a ofrecer nuestros servicios técnicos en el mercado Peruano y desde ahí queremos llegar a la región andina en los próximos años.
@@ -355,8 +355,8 @@ Por encargo de nuestro cliente nos encontramos en la búsqueda de FullStack Seni
 Requisitos:
 6 años en el cargo de FullStack.
 Experiencia Senior en C#, JS, CSS, ASP Netcore, React Js y Next js.
-Poder asistir hibrido en Miraflores.","Miraflores, Lima, Peru",Híbrido
-Analista Programador .NET,"Actualizado hace 2 días
+Poder asistir hibrido en Miraflores.";Miraflores, Lima, Peru;Híbrido
+Analista Programador .NET;"Actualizado hace 2 días
 Cercado De Lima, Lima, Peru
 Descripción del puesto
 More digital. More human. More Minsait.
@@ -375,8 +375,8 @@ Conocimientos básicos en Microservicios (Obligatorio)
 Conocimientos en Oracle 11g (Obligatorio)
 Conocimientos en SQL Server 2008 R2 en adelante (Obligatorio)
 Conocimientos en JIRA Software, BitBucket, Jenkins, OWASP ZAP, integración y despliegue continuo (Deseable).
-Participación en proyectos con marcos ágiles aplicando buenas prácticas en el desarrollo (Deseable).","Cercado De Lima, Lima, Peru",Remoto
-ANALISTA PROGRAMADOR,"Actualizado hace 2 días
+Participación en proyectos con marcos ágiles aplicando buenas prácticas en el desarrollo (Deseable).";Cercado De Lima, Lima, Peru;Remoto
+ANALISTA PROGRAMADOR;"Actualizado hace 2 días
 San Isidro, Lima, Peru
 Descripción del puesto
 ¡Estamos creciendo contigo!
@@ -416,8 +416,8 @@ Programación
 Full-time, Temporal
 Senior
 1 vacante disponible
-Apto personas con discapacidad","San Isidro, Lima, Peru",Presencial
-Analista Programador,"Publicado hace 3 días
+Apto personas con discapacidad";San Isidro, Lima, Peru;Presencial
+Analista Programador;"Publicado hace 3 días
 Surco, Lima, Peru
 Descripción del puesto
 Empresa en el sector inmobiliario, nos encontramos en la búsqueda de un ANALISTA PROGRAMADOR
@@ -443,8 +443,8 @@ Revisar y reforzar con buenas prácticas a el código realizado por el equipo t�
 Manejo y control de base de datos relacionales.
 Proponer herramientas que permitan la mejor gestión de las actividades del equipo.
 Competencias:
-- Proactivo - Responsable - Capacidad de organización y planificación. - Innovador/a y con iniciativa - Capacidad de trabajo en equipo.","Surco, Lima, Peru",Presencial
-Desarrollador .Net - Proyecto e-learning / Evaluaciones Psicológicas,"Actualizado hace 2 días
+- Proactivo - Responsable - Capacidad de organización y planificación. - Innovador/a y con iniciativa - Capacidad de trabajo en equipo.";Surco, Lima, Peru;Presencial
+Desarrollador .Net - Proyecto e-learning / Evaluaciones Psicológicas;"Actualizado hace 2 días
 Santiago de Surco, Lima, Peru
 Descripción del puesto
 ¡Te estamos buscando!
@@ -463,8 +463,8 @@ Experiencia mínima de 02 años como Analista Programador. Desarrollo .NET
 Experiencia en proyectos de Software e-learning / Evaluaciones Psicologicas
 Conocimientos específicos:
 Conocimiento en sistemas operativos: Windows cliente y servidor
-Dominio de las siguientes tecnologías: ü SQL, MYSQL – (store procedure, functions, triggers, Jobs) ü Java Script, Jquery, C#, ASP.Net MVC","Santiago de Surco, Lima, Peru",Presencial
-Desarrollador Fullstack,"Publicado hace 3 días
+Dominio de las siguientes tecnologías: ü SQL, MYSQL – (store procedure, functions, triggers, Jobs) ü Java Script, Jquery, C#, ASP.Net MVC";Santiago de Surco, Lima, Peru;Presencial
+Desarrollador Fullstack;"Publicado hace 3 días
 Lima, Lima, Peru
 Descripción del puesto
 🚀 ¡Conócenos y únete a Zenta! 😁✨
@@ -492,4 +492,4 @@ Deseable conocimiento en patrones de desarrollo
 💼 Modalidad:
 100% remoto
 Full-time Lunes a Viernes
-🎁 Sorpresas que tenemos para ti:","Lima, Lima, Peru",Remoto
+🎁 Sorpresas que tenemos para ti:";Lima, Lima, Peru;Remoto
