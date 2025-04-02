@@ -8,4 +8,3 @@ openpyxl==3.1
 pandas==2.2
 selenium==4.28
 tqdm==4.67
-requests
