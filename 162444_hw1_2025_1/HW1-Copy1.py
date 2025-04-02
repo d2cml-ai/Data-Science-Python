@@ -299,7 +299,7 @@ df.to_excel("ofertas_bumeran_muestra.xlsx", index=False, engine='openpyxl')
 print("📁 Excel guardado como 'ofertas_bumeran.xlsx'")
 
 
-# In[ ]:
+# In[ 
 
 
 
