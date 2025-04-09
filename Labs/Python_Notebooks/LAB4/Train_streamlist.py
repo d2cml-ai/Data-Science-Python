@@ -9,7 +9,7 @@
 # In[19]:
 
 
-get_ipython().system('pip install streamlit')
+#get_ipython().system('pip install streamlit')
 
 
 # In[20]:
