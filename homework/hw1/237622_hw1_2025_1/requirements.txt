@@ -1,3 +1,0 @@
-requirements
-pip install pandas==2.2.1
-pip install selenium==4.19.0
