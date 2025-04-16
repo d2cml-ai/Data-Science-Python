@@ -1,0 +1,10 @@
+contestId,index,name,type,rating,tags
+2044,A,Easy Problem,PROGRAMMING,800,"['brute force', 'math']"
+2044,B,Normal Problem,PROGRAMMING,800,"['implementation', 'strings']"
+2044,C,Hard Problem,PROGRAMMING,800,"['greedy', 'math']"
+2044,D,Harder Problem,PROGRAMMING,1100,"['constructive algorithms', 'greedy', 'math']"
+2044,E,Insane Problem,PROGRAMMING,1300,"['binary search', 'greedy', 'implementation', 'math', 'number theory']"
+2044,F,Easy Demon Problem,PROGRAMMING,1900,"['binary search', 'brute force', 'data structures', 'math', 'number theory']"
+2044,G1,Medium Demon Problem (easy version),PROGRAMMING,1700,"['dfs and similar', 'graph matchings', 'graphs', 'implementation', 'trees']"
+2044,G2,Medium Demon Problem (hard version),PROGRAMMING,1900,"['dfs and similar', 'dp', 'dsu', 'graphs', 'implementation', 'trees']"
+2044,H,Hard Demon Problem,PROGRAMMING,2100,"['constructive algorithms', 'data structures', 'dp', 'implementation', 'math']"

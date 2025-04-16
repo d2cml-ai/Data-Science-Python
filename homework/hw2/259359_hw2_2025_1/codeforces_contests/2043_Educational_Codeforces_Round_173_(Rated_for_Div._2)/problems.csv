@@ -1,0 +1,8 @@
+contestId,index,name,type,rating,tags
+2043,A,Coin Transformation,PROGRAMMING,800,"['brute force', 'math']"
+2043,B,Digits,PROGRAMMING,1100,"['math', 'number theory']"
+2043,C,Sums on Segments,PROGRAMMING,1600,"['binary search', 'brute force', 'data structures', 'dp', 'greedy', 'math']"
+2043,D,Problem about GCD,PROGRAMMING,1800,"['brute force', 'flows', 'math', 'number theory']"
+2043,E,Matrix Transformation,PROGRAMMING,2300,"['bitmasks', 'brute force', 'data structures', 'dfs and similar', 'graphs', 'greedy', 'implementation']"
+2043,F,Nim,PROGRAMMING,2700,"['bitmasks', 'brute force', 'combinatorics', 'dp', 'games', 'greedy', 'implementation', 'shortest paths']"
+2043,G,Problem with Queries,PROGRAMMING,3000,"['brute force', 'data structures', 'implementation']"
