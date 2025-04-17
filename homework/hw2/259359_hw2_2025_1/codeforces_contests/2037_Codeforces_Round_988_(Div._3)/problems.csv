@@ -1,8 +1,0 @@
-contestId,index,name,type,rating,tags
-2037,A,Twice,PROGRAMMING,800,['implementation']
-2037,B,Intercepted Inputs,PROGRAMMING,800,"['brute force', 'implementation']"
-2037,C,Superultra's Favorite Permutation,PROGRAMMING,1000,"['constructive algorithms', 'greedy', 'math', 'number theory']"
-2037,D,Sharky Surfing,PROGRAMMING,1300,"['data structures', 'greedy', 'two pointers']"
-2037,E,Kachina's Favorite Binary String,PROGRAMMING,1600,"['dp', 'greedy', 'interactive', 'two pointers']"
-2037,F,Ardent Flames,PROGRAMMING,2100,"['binary search', 'data structures', 'math', 'sortings', 'two pointers']"
-2037,G,Natlan Exploring,PROGRAMMING,2000,"['bitmasks', 'combinatorics', 'data structures', 'dp', 'math', 'number theory']"

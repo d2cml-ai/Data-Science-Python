@@ -1,8 +1,0 @@
-contestId,index,name,type,rating,tags
-2051,A,Preparing for the Olympiad,PROGRAMMING,800,['greedy']
-2051,B,Journey,PROGRAMMING,800,"['binary search', 'math']"
-2051,C,Preparing for the Exam,PROGRAMMING,1000,"['constructive algorithms', 'implementation']"
-2051,D,Counting Pairs,PROGRAMMING,1200,"['binary search', 'sortings', 'two pointers']"
-2051,E,Best Price,PROGRAMMING,1600,"['binary search', 'brute force', 'data structures', 'greedy', 'sortings']"
-2051,F,Joker,PROGRAMMING,2000,"['brute force', 'greedy', 'implementation', 'math']"
-2051,G,Snakes,PROGRAMMING,2100,"['bitmasks', 'dp', 'dsu', 'graphs']"

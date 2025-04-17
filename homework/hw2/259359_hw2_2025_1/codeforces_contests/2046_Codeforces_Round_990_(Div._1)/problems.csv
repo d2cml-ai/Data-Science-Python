@@ -1,9 +1,0 @@
-contestId,index,name,type,points,rating,tags
-2046,A,Swap Columns and Find a Path,PROGRAMMING,500.0,1200,"['greedy', 'sortings']"
-2046,B,Move Back at a Cost,PROGRAMMING,750.0,1600,"['binary search', 'data structures', 'greedy', 'sortings']"
-2046,C,Adventurers,PROGRAMMING,1500.0,2100,"['binary search', 'data structures', 'greedy', 'sortings', 'ternary search', 'two pointers']"
-2046,D,For the Emperor!,PROGRAMMING,2500.0,3100,"['flows', 'graphs']"
-2046,E1,Cheops and a Contest (Easy Version),PROGRAMMING,2000.0,2900,"['constructive algorithms', 'greedy']"
-2046,E2,Cheops and a Contest (Hard Version),PROGRAMMING,1500.0,3500,"['greedy', 'implementation']"
-2046,F1,Yandex Cuneiform (Easy Version),PROGRAMMING,2000.0,3300,"['constructive algorithms', 'data structures', 'greedy']"
-2046,F2,Yandex Cuneiform (Hard Version),PROGRAMMING,2500.0,3500,"['constructive algorithms', 'data structures', 'greedy', 'implementation']"

@@ -1,8 +1,0 @@
-contestId,index,name,type,rating,tags
-1996,A,Legs,PROGRAMMING,800,"['binary search', 'math', 'ternary search']"
-1996,B,Scale,PROGRAMMING,800,"['greedy', 'implementation']"
-1996,C,Sort,PROGRAMMING,1200,"['dp', 'greedy', 'sortings', 'strings']"
-1996,D,Fun,PROGRAMMING,1500,"['binary search', 'brute force', 'combinatorics', 'math', 'number theory']"
-1996,E,Decode,PROGRAMMING,1600,"['combinatorics', 'data structures', 'implementation', 'math']"
-1996,F,Bomb,PROGRAMMING,1900,"['binary search', 'greedy', 'math']"
-1996,G,Penacony,PROGRAMMING,2200,"['brute force', 'data structures', 'graphs', 'greedy', 'hashing']"

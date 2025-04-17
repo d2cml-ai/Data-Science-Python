@@ -1,9 +1,0 @@
-contestId,index,name,type,rating,tags
-2008,A,Sakurako's Exam,PROGRAMMING,800,"['brute force', 'constructive algorithms', 'greedy', 'math']"
-2008,B,Square or Not,PROGRAMMING,800,"['brute force', 'math', 'strings']"
-2008,C,Longest Good Array,PROGRAMMING,800,"['binary search', 'brute force', 'math']"
-2008,D,Sakurako's Hobby,PROGRAMMING,1100,"['dp', 'dsu', 'graphs', 'math']"
-2008,E,Alternating String,PROGRAMMING,1500,"['brute force', 'data structures', 'dp', 'greedy', 'implementation', 'strings']"
-2008,F,Sakurako's Box,PROGRAMMING,1400,"['combinatorics', 'math', 'number theory']"
-2008,G,Sakurako's Task,PROGRAMMING,1800,"['binary search', 'greedy', 'math', 'number theory']"
-2008,H,Sakurako's Test,PROGRAMMING,2100,"['binary search', 'brute force', 'greedy', 'math', 'number theory']"

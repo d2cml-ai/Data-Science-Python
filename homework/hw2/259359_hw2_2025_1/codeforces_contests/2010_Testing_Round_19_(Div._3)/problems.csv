@@ -1,5 +1,0 @@
-contestId,index,name,type,rating,tags
-2010,A,Alternating Sum of Numbers,PROGRAMMING,800,"['brute force', 'implementation', 'math']"
-2010,B,Three Brothers,PROGRAMMING,800,"['brute force', 'implementation', 'math']"
-2010,C1,Message Transmission Error (easy version),PROGRAMMING,1400,"['brute force', 'strings']"
-2010,C2,Message Transmission Error (hard version),PROGRAMMING,1700,"['hashing', 'string suffix structures', 'strings', 'two pointers']"

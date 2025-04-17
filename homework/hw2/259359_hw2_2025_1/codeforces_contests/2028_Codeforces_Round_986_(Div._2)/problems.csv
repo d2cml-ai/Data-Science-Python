@@ -1,7 +1,0 @@
-contestId,index,name,type,points,rating,tags
-2028,A,Alice's Adventures in ''Chess'',PROGRAMMING,500.0,900,"['brute force', 'implementation', 'math']"
-2028,B,Alice's Adventures in Permuting,PROGRAMMING,1000.0,1400,"['binary search', 'implementation', 'math']"
-2028,C,Alice's Adventures in Cutting Cake,PROGRAMMING,1500.0,1600,"['binary search', 'dp', 'greedy', 'two pointers']"
-2028,D,Alice's Adventures in Cards,PROGRAMMING,1750.0,2000,"['constructive algorithms', 'data structures', 'dp', 'graphs', 'greedy', 'implementation', 'ternary search']"
-2028,E,Alice's Adventures in the Rabbit Hole,PROGRAMMING,2000.0,2300,"['combinatorics', 'dfs and similar', 'dp', 'games', 'greedy', 'math', 'probabilities', 'trees']"
-2028,F,Alice's Adventures in Addition,PROGRAMMING,2500.0,2700,"['bitmasks', 'brute force', 'dp', 'implementation']"

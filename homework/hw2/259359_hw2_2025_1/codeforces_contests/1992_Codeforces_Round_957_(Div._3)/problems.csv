@@ -1,8 +1,0 @@
-contestId,index,name,type,rating,tags
-1992,A,Only Pluses,PROGRAMMING,800,"['brute force', 'constructive algorithms', 'greedy', 'math', 'sortings']"
-1992,B,Angry Monk,PROGRAMMING,800,"['greedy', 'math', 'sortings']"
-1992,C,Gorilla and Permutation,PROGRAMMING,900,"['constructive algorithms', 'math']"
-1992,D,Test of Love,PROGRAMMING,1200,"['dp', 'greedy', 'implementation']"
-1992,E,Novice's Mistake,PROGRAMMING,1700,"['brute force', 'constructive algorithms', 'implementation', 'math', 'strings']"
-1992,F,Valuable Cards,PROGRAMMING,1900,"['brute force', 'dp', 'greedy', 'number theory', 'two pointers']"
-1992,G,Ultra-Meow,PROGRAMMING,2000,"['combinatorics', 'dp', 'math']"

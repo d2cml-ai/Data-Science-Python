@@ -1,8 +1,0 @@
-contestId,index,name,type,points,rating,tags
-1983,A,Array Divisibility,PROGRAMMING,500.0,800,"['constructive algorithms', 'math']"
-1983,B,Corner Twist,PROGRAMMING,1000.0,1200,"['constructive algorithms', 'greedy', 'implementation', 'math']"
-1983,C,Have Your Cake and Eat It Too,PROGRAMMING,1250.0,1400,"['binary search', 'brute force', 'greedy', 'implementation']"
-1983,D,Swap Dilemma,PROGRAMMING,1750.0,1700,"['constructive algorithms', 'data structures', 'divide and conquer', 'greedy', 'math', 'sortings']"
-1983,E,I Love Balls,PROGRAMMING,2000.0,2300,"['combinatorics', 'math', 'probabilities']"
-1983,F,array-value,PROGRAMMING,2500.0,2500,"['binary search', 'bitmasks', 'data structures', 'greedy', 'two pointers']"
-1983,G,Your Loss,PROGRAMMING,3000.0,3000,"['bitmasks', 'brute force', 'dp', 'trees']"

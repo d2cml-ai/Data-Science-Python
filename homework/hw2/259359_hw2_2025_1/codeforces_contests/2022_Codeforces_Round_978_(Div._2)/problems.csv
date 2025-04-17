@@ -1,8 +1,0 @@
-contestId,index,name,type,points,rating,tags
-2022,A,Bus to Pénjamo,PROGRAMMING,750.0,800,"['constructive algorithms', 'greedy', 'implementation', 'math']"
-2022,B,Kar Salesman,PROGRAMMING,1000.0,1300,"['binary search', 'greedy', 'math']"
-2022,C,Gerrymandering,PROGRAMMING,1750.0,1800,"['dp', 'implementation']"
-2022,D1,Asesino (Easy Version),PROGRAMMING,1750.0,1900,"['binary search', 'brute force', 'constructive algorithms', 'implementation', 'interactive']"
-2022,D2,Asesino (Hard Version),PROGRAMMING,2000.0,2700,"['constructive algorithms', 'dp', 'interactive']"
-2022,E1,Billetes MX (Easy Version),PROGRAMMING,2250.0,2500,"['2-sat', 'binary search', 'combinatorics', 'constructive algorithms', 'dfs and similar', 'dsu', 'graphs']"
-2022,E2,Billetes MX (Hard Version),PROGRAMMING,1000.0,2600,"['binary search', 'combinatorics', 'data structures', 'dsu', 'graphs']"

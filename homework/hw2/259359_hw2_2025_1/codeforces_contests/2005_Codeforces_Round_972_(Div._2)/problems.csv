@@ -1,8 +1,0 @@
-contestId,index,name,type,points,rating,tags
-2005,A,Simple Palindrome,PROGRAMMING,750.0,900,"['combinatorics', 'constructive algorithms', 'greedy', 'math']"
-2005,B1,The Strict Teacher (Easy Version),PROGRAMMING,500.0,1000,"['greedy', 'math', 'sortings']"
-2005,B2,The Strict Teacher (Hard Version),PROGRAMMING,500.0,1200,"['binary search', 'greedy', 'math', 'sortings']"
-2005,C,Lazy Narek,PROGRAMMING,1500.0,1800,"['dp', 'implementation', 'strings']"
-2005,D,Alter the GCD,PROGRAMMING,2250.0,2400,"['binary search', 'brute force', 'data structures', 'divide and conquer', 'implementation', 'number theory']"
-2005,E1,Subtangle Game (Easy Version),PROGRAMMING,1500.0,2100,"['dp', 'games', 'greedy', 'implementation']"
-2005,E2,Subtangle Game (Hard Version),PROGRAMMING,2000.0,2500,"['data structures', 'dp', 'games', 'greedy', 'implementation']"

@@ -1,8 +1,0 @@
-contestId,index,name,type,rating,tags
-2033,A,Sakurako and Kosuke,PROGRAMMING,800,"['constructive algorithms', 'implementation', 'math']"
-2033,B,Sakurako and Water,PROGRAMMING,900,"['brute force', 'constructive algorithms', 'greedy']"
-2033,C,Sakurako's Field Trip,PROGRAMMING,1400,"['dp', 'greedy', 'two pointers']"
-2033,D,Kousuke's Assignment,PROGRAMMING,1300,"['data structures', 'dp', 'dsu', 'greedy', 'math']"
-2033,E,"Sakurako, Kosuke, and the Permutation",PROGRAMMING,1400,"['brute force', 'data structures', 'dfs and similar', 'dsu', 'graphs', 'greedy', 'math']"
-2033,F,Kosuke's Sloth,PROGRAMMING,1800,"['brute force', 'math', 'number theory']"
-2033,G,Sakurako and Chefir,PROGRAMMING,2200,"['data structures', 'dfs and similar', 'dp', 'greedy', 'trees']"

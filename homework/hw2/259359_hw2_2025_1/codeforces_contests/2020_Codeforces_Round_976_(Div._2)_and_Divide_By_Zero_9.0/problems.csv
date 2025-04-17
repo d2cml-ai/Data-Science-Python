@@ -1,7 +1,0 @@
-contestId,index,name,type,points,rating,tags
-2020,A,Find Minimum Operations,PROGRAMMING,500.0,800,"['bitmasks', 'brute force', 'greedy', 'math', 'number theory']"
-2020,B,Brightness Begins,PROGRAMMING,750.0,1200,"['binary search', 'math']"
-2020,C,Bitwise Balancing,PROGRAMMING,1250.0,1400,"['bitmasks', 'hashing', 'implementation', 'math', 'schedules', 'ternary search']"
-2020,D,Connect the Dots,PROGRAMMING,1500.0,1800,"['brute force', 'dp', 'dsu', 'graphs', 'math', 'trees']"
-2020,E,Expected Power,PROGRAMMING,2000.0,2000,"['bitmasks', 'dp', 'math', 'probabilities']"
-2020,F,Count Leaves,PROGRAMMING,2750.0,2900,"['dp', 'math', 'number theory']"

@@ -1,8 +1,0 @@
-contestId,index,name,type,points,rating,tags
-2013,A,Zhan's Blender,PROGRAMMING,500.0,800,"['constructive algorithms', 'math']"
-2013,B,Battle for Survive,PROGRAMMING,750.0,900,"['constructive algorithms', 'greedy', 'math']"
-2013,C,Password Cracking,PROGRAMMING,1250.0,1400,"['constructive algorithms', 'interactive', 'strings']"
-2013,D,Minimize the Difference,PROGRAMMING,2000.0,1900,"['binary search', 'greedy']"
-2013,E,Prefix GCD,PROGRAMMING,2500.0,2200,"['brute force', 'dp', 'greedy', 'math', 'number theory']"
-2013,F1,Game in Tree (Easy Version),PROGRAMMING,2000.0,2700,"['binary search', 'brute force', 'data structures', 'dp', 'games', 'greedy', 'implementation', 'trees']"
-2013,F2,Game in Tree (Hard Version),PROGRAMMING,2000.0,3500,"['binary search', 'data structures', 'trees']"

@@ -1,8 +1,0 @@
-contestId,index,name,type,points,rating,tags
-1990,A,Submission Bait,PROGRAMMING,500.0,900,"['brute force', 'games', 'greedy', 'sortings']"
-1990,B,Array Craft,PROGRAMMING,1000.0,1200,"['constructive algorithms', 'greedy']"
-1990,C,Mad MAD Sum,PROGRAMMING,1500.0,1500,"['brute force', 'greedy', 'math']"
-1990,D,Grid Puzzle,PROGRAMMING,1750.0,1800,"['bitmasks', 'brute force', 'dp', 'greedy', 'implementation']"
-1990,E1,Catch the Mole(Easy Version),PROGRAMMING,2000.0,2500,"['binary search', 'data structures', 'dfs and similar', 'interactive', 'trees']"
-1990,E2,Catch the Mole(Hard Version),PROGRAMMING,750.0,2600,"['binary search', 'data structures', 'dfs and similar', 'divide and conquer', 'interactive', 'trees']"
-1990,F,Polygonal Segments,PROGRAMMING,3000.0,2800,"['brute force', 'data structures', 'divide and conquer', 'dp', 'greedy', 'two pointers']"

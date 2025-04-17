@@ -1,8 +1,0 @@
-contestId,index,name,type,points,rating,tags
-1993,A,Question Marks,PROGRAMMING,500.0,800,"['greedy', 'implementation']"
-1993,B,Parity and Sum,PROGRAMMING,1000.0,1100,"['constructive algorithms', 'greedy']"
-1993,C,Light Switches,PROGRAMMING,1500.0,1400,"['implementation', 'math']"
-1993,D,Med-imize,PROGRAMMING,2000.0,2200,"['binary search', 'dp', 'greedy']"
-1993,E,Xor-Grid Problem,PROGRAMMING,2750.0,2700,"['bitmasks', 'constructive algorithms', 'dp', 'implementation']"
-1993,F1,Dyn-scripted Robot (Easy Version),PROGRAMMING,2500.0,2400,"['brute force', 'chinese remainder theorem', 'constructive algorithms', 'math', 'number theory']"
-1993,F2,Dyn-scripted Robot (Hard Version),PROGRAMMING,1000.0,2800,"['chinese remainder theorem', 'math', 'number theory']"

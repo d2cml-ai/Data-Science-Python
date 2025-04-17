@@ -1,7 +1,0 @@
-contestId,index,name,type,points,rating,tags
-2024,A,Profitable Interest Rate,PROGRAMMING,500.0,800,"['greedy', 'math']"
-2024,B,Buying Lemonade,PROGRAMMING,1000.0,1100,"['binary search', 'constructive algorithms', 'sortings']"
-2024,C,Concatenation of Arrays,PROGRAMMING,1250.0,1300,"['constructive algorithms', 'greedy', 'sortings']"
-2024,D,Skipping,PROGRAMMING,1750.0,1700,"['constructive algorithms', 'data structures', 'divide and conquer', 'dp', 'flows', 'graphs', 'greedy', 'implementation', 'shortest paths']"
-2024,E,C+K+S,PROGRAMMING,2250.0,2400,"['constructive algorithms', 'graphs', 'hashing', 'strings']"
-2024,F,Many Games,PROGRAMMING,3000.0,2900,"['dp', 'math']"

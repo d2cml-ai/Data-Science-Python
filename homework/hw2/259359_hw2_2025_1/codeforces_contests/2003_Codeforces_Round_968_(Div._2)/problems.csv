@@ -1,9 +1,0 @@
-contestId,index,name,type,points,rating,tags
-2003,A,Turtle and Good Strings,PROGRAMMING,500.0,800,"['greedy', 'strings']"
-2003,B,Turtle and Piggy Are Playing a Game 2,PROGRAMMING,750.0,800,"['games', 'greedy', 'sortings']"
-2003,C,Turtle and Good Pairs,PROGRAMMING,1000.0,1200,"['constructive algorithms', 'greedy', 'sortings', 'strings']"
-2003,D1,Turtle and a MEX Problem (Easy Version),PROGRAMMING,1000.0,1500,"['greedy', 'math']"
-2003,D2,Turtle and a MEX Problem (Hard Version),PROGRAMMING,1250.0,2100,"['dfs and similar', 'dp', 'graphs', 'greedy', 'implementation', 'math']"
-2003,E1,Turtle and Inversions (Easy Version),PROGRAMMING,1750.0,2600,"['brute force', 'divide and conquer', 'dp', 'greedy', 'math']"
-2003,E2,Turtle and Inversions (Hard Version),PROGRAMMING,1000.0,2700,"['brute force', 'data structures', 'divide and conquer', 'dp', 'greedy', 'math', 'two pointers']"
-2003,F,Turtle and Three Sequences,PROGRAMMING,2500.0,2800,"['brute force', 'data structures', 'dp', 'greedy', 'math', 'probabilities', 'two pointers']"

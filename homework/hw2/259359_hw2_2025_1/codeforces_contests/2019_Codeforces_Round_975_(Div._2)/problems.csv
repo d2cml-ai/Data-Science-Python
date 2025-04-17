@@ -1,7 +1,0 @@
-contestId,index,name,type,points,rating,tags
-2019,A,Max Plus Size,PROGRAMMING,500.0,800,"['brute force', 'dp', 'greedy']"
-2019,B,All Pairs Segments,PROGRAMMING,1000.0,1200,"['implementation', 'math']"
-2019,C,Cards Partition,PROGRAMMING,1750.0,1600,"['greedy', 'implementation', 'math']"
-2019,D,Speedbreaker,PROGRAMMING,2000.0,1900,"['binary search', 'constructive algorithms', 'data structures', 'greedy', 'math']"
-2019,E,Tree Pruning,PROGRAMMING,2000.0,1700,"['constructive algorithms', 'dfs and similar', 'dp', 'sortings', 'trees']"
-2019,F,Max Plus Min Plus Size,PROGRAMMING,3000.0,2200,"['data structures', 'dp', 'dsu', 'greedy', 'sortings']"

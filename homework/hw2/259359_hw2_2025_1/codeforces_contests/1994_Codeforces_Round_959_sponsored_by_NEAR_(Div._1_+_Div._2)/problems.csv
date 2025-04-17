@@ -1,9 +1,0 @@
-contestId,index,name,type,points,rating,tags
-1994,A,Diverse Game,PROGRAMMING,500.0,800,"['constructive algorithms', 'greedy', 'implementation']"
-1994,B,Fun Game,PROGRAMMING,1000.0,1100,"['bitmasks', 'constructive algorithms', 'greedy', 'math']"
-1994,C,Hungry Games,PROGRAMMING,1250.0,1600,"['binary search', 'dp', 'two pointers']"
-1994,D,Funny Game,PROGRAMMING,2000.0,1900,"['constructive algorithms', 'dsu', 'graphs', 'greedy', 'math', 'number theory', 'trees']"
-1994,E,Wooden Game,PROGRAMMING,2000.0,2000,"['bitmasks', 'greedy', 'math', 'trees']"
-1994,F,Stardew Valley,PROGRAMMING,2500.0,2500,"['constructive algorithms', 'dfs and similar', 'graphs', 'trees']"
-1994,G,Minecraft,PROGRAMMING,2750.0,2600,"['bitmasks', 'brute force', 'dp', 'graphs', 'math']"
-1994,H,Fortnite,PROGRAMMING,3750.0,3500,"['combinatorics', 'constructive algorithms', 'games', 'greedy', 'hashing', 'interactive', 'math', 'number theory', 'strings']"

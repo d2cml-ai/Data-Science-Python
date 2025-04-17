@@ -1,8 +1,0 @@
-contestId,index,name,type,rating,tags
-2050,A,Line Breaks,PROGRAMMING,800,['implementation']
-2050,B,Transfusion,PROGRAMMING,1100,"['brute force', 'greedy', 'math']"
-2050,C,Uninteresting Number,PROGRAMMING,1200,"['brute force', 'dp', 'math']"
-2050,D,Digital string maximization,PROGRAMMING,1300,"['brute force', 'greedy', 'math', 'strings']"
-2050,E,Three Strings,PROGRAMMING,1500,"['dp', 'implementation', 'strings']"
-2050,F,Maximum modulo equality,PROGRAMMING,1700,"['data structures', 'divide and conquer', 'math', 'number theory']"
-2050,G,Tree Destruction,PROGRAMMING,1900,"['dfs and similar', 'dp', 'trees']"

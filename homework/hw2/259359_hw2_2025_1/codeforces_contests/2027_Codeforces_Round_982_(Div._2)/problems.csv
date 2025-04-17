@@ -1,8 +1,0 @@
-contestId,index,name,type,points,rating,tags
-2027,A,Rectangle Arrangement,PROGRAMMING,500.0,800,"['geometry', 'implementation', 'math']"
-2027,B,Stalin Sort,PROGRAMMING,1000.0,1100,"['brute force', 'greedy']"
-2027,C,Add Zeros,PROGRAMMING,1250.0,1500,"['brute force', 'data structures', 'dfs and similar', 'dp', 'graphs', 'greedy']"
-2027,D1,The Endspeaker (Easy Version),PROGRAMMING,1250.0,1700,"['binary search', 'dp', 'graphs', 'greedy', 'implementation', 'two pointers']"
-2027,D2,The Endspeaker (Hard Version),PROGRAMMING,1000.0,2200,"['binary search', 'data structures', 'dp', 'greedy', 'implementation', 'two pointers']"
-2027,E1,Bit Game (Easy Version),PROGRAMMING,2000.0,2800,"['bitmasks', 'brute force', 'games', 'math']"
-2027,E2,Bit Game (Hard Version),PROGRAMMING,1000.0,3100,"['bitmasks', 'dp', 'math']"

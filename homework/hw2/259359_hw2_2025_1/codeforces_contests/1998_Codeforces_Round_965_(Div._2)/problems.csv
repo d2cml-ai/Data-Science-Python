@@ -1,7 +1,0 @@
-contestId,index,name,type,points,rating,tags
-1998,A,Find K Distinct Points with Fixed Center,PROGRAMMING,500.0,800,"['constructive algorithms', 'implementation', 'math']"
-1998,B,Minimize Equal Sum Subarrays,PROGRAMMING,750.0,1000,"['constructive algorithms', 'math', 'number theory']"
-1998,C,Perform Operations to Maximize Score,PROGRAMMING,1250.0,1900,"['binary search', 'brute force', 'constructive algorithms', 'greedy', 'implementation']"
-1998,D,Determine Winning Islands in Race,PROGRAMMING,1500.0,2100,"['data structures', 'dp', 'graphs', 'greedy', 'shortest paths']"
-1998,E1,Eliminating Balls With Merging (Easy Version),PROGRAMMING,1750.0,2200,"['binary search', 'brute force', 'data structures', 'divide and conquer', 'greedy']"
-1998,E2,Eliminating Balls With Merging (Hard Version),PROGRAMMING,1750.0,2500,"['binary search', 'brute force', 'data structures', 'divide and conquer', 'greedy', 'implementation']"

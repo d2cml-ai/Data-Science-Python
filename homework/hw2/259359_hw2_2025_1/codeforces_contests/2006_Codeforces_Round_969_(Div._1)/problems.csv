@@ -1,7 +1,0 @@
-contestId,index,name,type,points,rating,tags
-2006,A,Iris and Game on the Tree,PROGRAMMING,750.0,1700,"['constructive algorithms', 'dfs and similar', 'games', 'graphs', 'greedy', 'trees']"
-2006,B,Iris and the Tree,PROGRAMMING,1250.0,1800,"['brute force', 'data structures', 'dfs and similar', 'dsu', 'math', 'trees']"
-2006,C,Eri and Expanded Sets,PROGRAMMING,1500.0,2300,"['data structures', 'divide and conquer', 'math', 'number theory', 'two pointers']"
-2006,D,Iris and Adjacent Products,PROGRAMMING,2000.0,2600,"['data structures', 'greedy', 'implementation', 'math']"
-2006,E,Iris's Full Binary Tree,PROGRAMMING,2500.0,3100,"['brute force', 'data structures', 'dfs and similar', 'trees']"
-2006,F,Dora's Paint,PROGRAMMING,3000.0,3500,"['brute force', 'combinatorics', 'constructive algorithms', 'graphs', 'implementation']"

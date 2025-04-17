@@ -1,7 +1,0 @@
-contestId,index,name,type,rating,tags
-1997,A,Strong Password,PROGRAMMING,800,"['brute force', 'implementation', 'strings']"
-1997,B,Make Three Regions,PROGRAMMING,1100,"['constructive algorithms', 'two pointers']"
-1997,C,Even Positions,PROGRAMMING,1100,"['constructive algorithms', 'data structures', 'greedy']"
-1997,D,Maximize the Root,PROGRAMMING,1500,"['binary search', 'dfs and similar', 'dp', 'greedy', 'trees']"
-1997,E,Level Up,PROGRAMMING,2200,"['binary search', 'brute force', 'data structures', 'divide and conquer', 'implementation']"
-1997,F,Chips on a Line,PROGRAMMING,2700,"['brute force', 'combinatorics', 'dp', 'greedy', 'math']"

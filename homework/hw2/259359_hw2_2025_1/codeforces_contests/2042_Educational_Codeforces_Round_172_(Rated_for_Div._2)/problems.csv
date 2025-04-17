@@ -1,7 +1,0 @@
-contestId,index,name,type,rating,tags
-2042,A,Greedy Monocarp,PROGRAMMING,800,"['greedy', 'sortings']"
-2042,B,Game with Colored Marbles,PROGRAMMING,900,"['games', 'greedy']"
-2042,C,Competitive Fishing,PROGRAMMING,1800,['greedy']
-2042,D,Recommendations,PROGRAMMING,1900,"['data structures', 'implementation', 'sortings', 'two pointers']"
-2042,E,Vertex Pairs,PROGRAMMING,2900,"['binary search', 'brute force', 'data structures', 'dfs and similar', 'divide and conquer', 'greedy', 'implementation', 'trees']"
-2042,F,Two Subarrays,PROGRAMMING,2600,"['data structures', 'dp', 'implementation', 'matrices']"
