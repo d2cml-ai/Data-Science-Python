@@ -1,0 +1,7 @@
+contestId,index,name,type,points,rating,tags
+2023,A,Concatenation of Arrays,PROGRAMMING,500.0,1300,"['constructive algorithms', 'greedy', 'math', 'sortings']"
+2023,B,Skipping,PROGRAMMING,1000.0,1700,"['binary search', 'dp', 'graphs', 'shortest paths']"
+2023,C,C+K+S,PROGRAMMING,1500.0,2400,"['constructive algorithms', 'dfs and similar', 'graphs', 'greedy', 'hashing', 'implementation', 'strings']"
+2023,D,Many Games,PROGRAMMING,2250.0,2900,"['brute force', 'dp', 'greedy', 'math', 'probabilities']"
+2023,E,Tree of Life,PROGRAMMING,2750.0,3300,"['dp', 'greedy', 'trees']"
+2023,F,Hills and Pits,PROGRAMMING,3000.0,3500,"['data structures', 'greedy', 'math', 'matrices']"

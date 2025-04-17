@@ -1,0 +1,8 @@
+contestId,index,name,type,points,rating,tags
+1995,A,Diagonals,PROGRAMMING,500.0,800,"['brute force', 'greedy', 'implementation', 'math']"
+1995,B1,Bouquet (Easy Version),PROGRAMMING,1000.0,1100,"['binary search', 'brute force', 'greedy', 'sortings', 'two pointers']"
+1995,B2,Bouquet (Hard Version),PROGRAMMING,500.0,1700,"['binary search', 'data structures', 'greedy', 'math', 'sortings', 'two pointers']"
+1995,C,Squaring,PROGRAMMING,1750.0,1800,"['brute force', 'constructive algorithms', 'greedy', 'implementation', 'math', 'number theory']"
+1995,D,Cases,PROGRAMMING,2250.0,2300,"['bitmasks', 'brute force', 'dp', 'strings']"
+1995,E1,Let Me Teach You a Lesson (Easy Version),PROGRAMMING,2500.0,2700,"['2-sat', 'data structures', 'dp', 'matrices', 'two pointers']"
+1995,E2,Let Me Teach You a Lesson (Hard Version),PROGRAMMING,1500.0,2900,"['data structures', 'dp', 'matrices', 'two pointers']"

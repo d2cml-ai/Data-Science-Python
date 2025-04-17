@@ -1,0 +1,8 @@
+contestId,index,name,type,rating,tags
+2004,A,Closest Point,PROGRAMMING,800,"['implementation', 'math']"
+2004,B,Game with Doors,PROGRAMMING,1000,"['brute force', 'greedy']"
+2004,C,Splitting Items,PROGRAMMING,1100,"['games', 'greedy', 'sortings']"
+2004,D,Colored Portals,PROGRAMMING,1600,"['binary search', 'brute force', 'data structures', 'graphs', 'greedy', 'implementation', 'shortest paths']"
+2004,E,Not a Nim Problem,PROGRAMMING,2100,"['brute force', 'games', 'math', 'number theory']"
+2004,F,Make a Palindrome,PROGRAMMING,2600,"['binary search', 'brute force', 'data structures', 'greedy', 'math']"
+2004,G,Substring Compression,PROGRAMMING,3200,"['data structures', 'dp', 'matrices']"

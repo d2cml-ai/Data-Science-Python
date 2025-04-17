@@ -1,0 +1,9 @@
+contestId,index,name,type,points,rating,tags
+2030,A,A Gift From Orangutan,PROGRAMMING,250.0,800,"['constructive algorithms', 'greedy', 'math', 'sortings']"
+2030,B,Minimise Oneness,PROGRAMMING,500.0,800,"['combinatorics', 'constructive algorithms', 'games', 'math']"
+2030,C,A TRUE Battle,PROGRAMMING,1000.0,1100,"['brute force', 'games', 'greedy']"
+2030,D,QED's Favorite Permutation,PROGRAMMING,1500.0,1700,"['data structures', 'implementation', 'sortings']"
+2030,E,MEXimize the Score,PROGRAMMING,2000.0,2200,"['combinatorics', 'data structures', 'dp', 'greedy', 'implementation', 'math']"
+2030,F,Orangutan Approved Subarrays,PROGRAMMING,2500.0,2400,"['binary search', 'data structures', 'dp', 'greedy', 'implementation', 'two pointers']"
+2030,G1,The Destruction of the Universe (Easy Version),PROGRAMMING,3000.0,2900,"['combinatorics', 'greedy', 'math']"
+2030,G2,The Destruction of the Universe (Hard Version),PROGRAMMING,1500.0,3100,"['combinatorics', 'math']"

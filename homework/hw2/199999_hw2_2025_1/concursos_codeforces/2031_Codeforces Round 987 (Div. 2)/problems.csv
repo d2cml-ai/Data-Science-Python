@@ -1,0 +1,7 @@
+contestId,index,name,type,points,rating,tags
+2031,A,Penchick and Modern Monument,PROGRAMMING,500.0,800,"['constructive algorithms', 'dp', 'greedy', 'math']"
+2031,B,Penchick and Satay Sticks,PROGRAMMING,1000.0,900,"['brute force', 'greedy', 'sortings']"
+2031,C,Penchick and BBQ Buns,PROGRAMMING,1500.0,1300,"['constructive algorithms', 'math', 'number theory']"
+2031,D,Penchick and Desert Rabbit,PROGRAMMING,2000.0,1700,"['binary search', 'data structures', 'dfs and similar', 'dp', 'dsu', 'greedy', 'implementation', 'two pointers']"
+2031,E,Penchick and Chloe's Trees,PROGRAMMING,2500.0,2100,"['data structures', 'dfs and similar', 'dp', 'greedy', 'implementation', 'math', 'sortings', 'trees']"
+2031,F,Penchick and Even Medians,PROGRAMMING,3000.0,2800,"['binary search', 'constructive algorithms', 'interactive', 'probabilities']"

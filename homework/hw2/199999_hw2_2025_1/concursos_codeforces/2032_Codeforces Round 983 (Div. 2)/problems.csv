@@ -1,0 +1,7 @@
+contestId,index,name,type,points,rating,tags
+2032,A,Circuit,PROGRAMMING,500.0,800,"['greedy', 'implementation', 'math', 'number theory']"
+2032,B,Medians,PROGRAMMING,750.0,1100,"['constructive algorithms', 'greedy', 'implementation', 'math']"
+2032,C,Trinity,PROGRAMMING,1250.0,1400,"['binary search', 'math', 'sortings', 'two pointers']"
+2032,D,Genokraken,PROGRAMMING,1750.0,1800,"['constructive algorithms', 'data structures', 'graphs', 'greedy', 'implementation', 'interactive', 'trees', 'two pointers']"
+2032,E,Balanced,PROGRAMMING,2250.0,2400,"['constructive algorithms', 'data structures', 'greedy', 'implementation', 'math']"
+2032,F,Peanuts,PROGRAMMING,3000.0,2700,"['combinatorics', 'dp', 'games', 'math']"

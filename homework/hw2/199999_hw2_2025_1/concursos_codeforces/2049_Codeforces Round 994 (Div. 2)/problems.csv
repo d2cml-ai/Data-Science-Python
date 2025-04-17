@@ -1,0 +1,7 @@
+contestId,index,name,type,points,rating,tags
+2049,A,MEX Destruction,PROGRAMMING,500.0,800,"['greedy', 'implementation']"
+2049,B,pspspsps,PROGRAMMING,750.0,1300,"['brute force', 'constructive algorithms', 'graph matchings', 'implementation']"
+2049,C,MEX Cycle,PROGRAMMING,1000.0,1500,"['brute force', 'constructive algorithms', 'greedy', 'implementation']"
+2049,D,Shift + Esc,PROGRAMMING,1750.0,1900,"['brute force', 'dp']"
+2049,E,Broken Queries,PROGRAMMING,2250.0,2400,"['binary search', 'bitmasks', 'brute force', 'constructive algorithms', 'implementation', 'interactive']"
+2049,F,MEX OR Mania,PROGRAMMING,2750.0,2700,"['bitmasks', 'brute force', 'data structures', 'dsu', 'implementation']"

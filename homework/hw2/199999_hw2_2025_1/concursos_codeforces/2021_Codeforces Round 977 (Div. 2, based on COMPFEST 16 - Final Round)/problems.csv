@@ -1,0 +1,9 @@
+contestId,index,name,type,points,rating,tags
+2021,A,Meaning Mean,PROGRAMMING,500.0,800,"['data structures', 'greedy', 'math', 'sortings']"
+2021,B,Maximize Mex,PROGRAMMING,750.0,1200,"['brute force', 'greedy', 'math', 'number theory']"
+2021,C1,Adjust The Presentation (Easy Version),PROGRAMMING,750.0,1300,"['constructive algorithms', 'greedy']"
+2021,C2,Adjust The Presentation (Hard Version),PROGRAMMING,1000.0,1900,"['constructive algorithms', 'data structures', 'greedy', 'implementation', 'sortings']"
+2021,D,"Boss, Thirsty",PROGRAMMING,2500.0,2500,"['dp', 'greedy', 'implementation']"
+2021,E1,Digital Village (Easy Version),PROGRAMMING,1750.0,2300,"['brute force', 'data structures', 'dfs and similar', 'dp', 'dsu', 'fft', 'graphs', 'greedy', 'implementation', 'math', 'trees']"
+2021,E2,Digital Village (Hard Version),PROGRAMMING,750.0,2500,"['data structures', 'dp', 'dsu', 'graphs', 'math', 'trees']"
+2021,E3,Digital Village (Extreme Version),PROGRAMMING,1000.0,2800,"['data structures', 'dfs and similar', 'dp', 'dsu', 'graphs', 'greedy', 'math', 'trees']"

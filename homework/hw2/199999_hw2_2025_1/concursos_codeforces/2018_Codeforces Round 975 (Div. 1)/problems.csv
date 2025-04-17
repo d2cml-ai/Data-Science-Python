@@ -1,0 +1,10 @@
+contestId,index,name,type,points,rating,tags
+2018,A,Cards Partition,PROGRAMMING,500.0,1600,"['2-sat', 'brute force', 'greedy', 'implementation', 'math']"
+2018,B,Speedbreaker,PROGRAMMING,750.0,1900,"['binary search', 'data structures', 'dp', 'greedy', 'implementation', 'two pointers']"
+2018,C,Tree Pruning,PROGRAMMING,750.0,1700,"['brute force', 'dfs and similar', 'greedy', 'sortings', 'trees']"
+2018,D,Max Plus Min Plus Size,PROGRAMMING,1500.0,2200,"['data structures', 'dp', 'dsu', 'greedy', 'implementation', 'matrices', 'sortings']"
+2018,E1,Complex Segments (Easy Version),PROGRAMMING,2250.0,3300,"['binary search', 'data structures', 'divide and conquer', 'dsu', 'greedy', 'math', 'sortings']"
+2018,E2,Complex Segments (Hard Version),PROGRAMMING,750.0,3400,"['binary search', 'data structures', 'divide and conquer', 'dsu', 'greedy', 'math', 'sortings']"
+2018,F1,Speedbreaker Counting (Easy Version),PROGRAMMING,1500.0,2900,"['combinatorics', 'dp', 'greedy', 'math']"
+2018,F2,Speedbreaker Counting (Medium Version),PROGRAMMING,1500.0,3000,"['dp', 'greedy', 'math']"
+2018,F3,Speedbreaker Counting (Hard Version),PROGRAMMING,1500.0,3100,"['dp', 'greedy', 'math']"

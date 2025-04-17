@@ -1,0 +1,9 @@
+contestId,index,name,type,rating,tags
+1999,A,A+B Again?,PROGRAMMING,800,"['implementation', 'math']"
+1999,B,Card Game,PROGRAMMING,1000,"['brute force', 'constructive algorithms', 'implementation']"
+1999,C,Showering,PROGRAMMING,800,"['greedy', 'implementation']"
+1999,D,Slavic's Exam,PROGRAMMING,1100,"['greedy', 'implementation', 'strings']"
+1999,E,Triple Operations,PROGRAMMING,1300,"['dp', 'implementation', 'math']"
+1999,F,Expected Median,PROGRAMMING,1500,"['combinatorics', 'math']"
+1999,G1,Ruler (easy version),PROGRAMMING,1500,"['binary search', 'interactive']"
+1999,G2,Ruler (hard version),PROGRAMMING,1700,"['binary search', 'interactive', 'ternary search']"

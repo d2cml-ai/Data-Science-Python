@@ -1,0 +1,8 @@
+contestId,index,name,type,rating,tags
+2036,A,Quintomania,PROGRAMMING,800,['implementation']
+2036,B,Startup,PROGRAMMING,800,"['greedy', 'sortings']"
+2036,C,Anya and 1100,PROGRAMMING,1100,"['brute force', 'implementation']"
+2036,D,I Love 1543,PROGRAMMING,1300,"['brute force', 'implementation', 'matrices']"
+2036,E,Reverse the Rivers,PROGRAMMING,1600,"['binary search', 'constructive algorithms', 'data structures', 'greedy']"
+2036,F,XORificator 3000,PROGRAMMING,1900,"['bitmasks', 'dp', 'number theory', 'two pointers']"
+2036,G,Library of Magic,PROGRAMMING,2200,"['binary search', 'constructive algorithms', 'divide and conquer', 'interactive', 'math', 'number theory']"

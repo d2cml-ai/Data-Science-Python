@@ -1,0 +1,9 @@
+contestId,index,name,type,rating,tags
+2000,A,Primary Task,PROGRAMMING,800,"['implementation', 'math', 'strings']"
+2000,B,Seating in a Bus,PROGRAMMING,800,['two pointers']
+2000,C,Numeric String Template,PROGRAMMING,1000,"['data structures', 'strings']"
+2000,D,Right Left Wrong,PROGRAMMING,1200,"['greedy', 'implementation', 'two pointers']"
+2000,E,Photoshoot for Gorillas,PROGRAMMING,1400,"['combinatorics', 'data structures', 'greedy', 'math']"
+2000,F,Color Rows and Columns,PROGRAMMING,1900,"['dp', 'greedy', 'implementation', 'math']"
+2000,G,Call During the Journey,PROGRAMMING,2100,"['binary search', 'brute force', 'graphs', 'greedy', 'shortest paths']"
+2000,H,Ksyusha and the Loaded Set,PROGRAMMING,2200,"['binary search', 'brute force', 'data structures', 'implementation']"

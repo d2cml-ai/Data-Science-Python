@@ -1,0 +1,7 @@
+contestId,index,name,type,points,rating,tags
+1988,A,Split the Multiset,PROGRAMMING,500.0,900,"['brute force', 'greedy', 'implementation', 'math']"
+1988,B,Make Majority,PROGRAMMING,1000.0,900,"['greedy', 'implementation']"
+1988,C,Increasing Sequence with Fixed OR,PROGRAMMING,1000.0,1300,"['bitmasks', 'constructive algorithms', 'greedy']"
+1988,D,The Omnipotent Monster Killer,PROGRAMMING,2000.0,2000,"['brute force', 'dfs and similar', 'dp', 'trees']"
+1988,E,Range Minimum Sum,PROGRAMMING,2500.0,2300,"['binary search', 'brute force', 'data structures', 'divide and conquer', 'implementation']"
+1988,F,Heartbeat,PROGRAMMING,3500.0,3000,"['combinatorics', 'dp', 'fft', 'math']"
