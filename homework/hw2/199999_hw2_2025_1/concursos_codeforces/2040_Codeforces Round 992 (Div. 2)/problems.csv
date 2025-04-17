@@ -1,0 +1,7 @@
+contestId,index,name,type,points,rating,tags
+2040,A,Game of Division,PROGRAMMING,500.0,800,"['games', 'math']"
+2040,B,Paint a Strip,PROGRAMMING,1000.0,1000,"['constructive algorithms', 'greedy', 'math']"
+2040,C,Ordered Permutations,PROGRAMMING,1500.0,1600,"['bitmasks', 'combinatorics', 'constructive algorithms', 'greedy', 'math', 'two pointers']"
+2040,D,Non Prime Tree,PROGRAMMING,2000.0,1900,"['brute force', 'constructive algorithms', 'dfs and similar', 'greedy', 'number theory', 'trees', 'two pointers']"
+2040,E,Control of Randomness,PROGRAMMING,2250.0,2100,"['combinatorics', 'dfs and similar', 'dp', 'graphs', 'greedy', 'math', 'probabilities', 'trees']"
+2040,F,Number of Cubes,PROGRAMMING,2750.0,2700,"['combinatorics', 'dp', 'math', 'number theory']"

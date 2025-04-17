@@ -1,0 +1,9 @@
+contestId,index,name,type,rating,tags
+2014,A,Robin Helps,PROGRAMMING,800,"['greedy', 'implementation']"
+2014,B,Robin Hood and the Major Oak,PROGRAMMING,800,['math']
+2014,C,Robin Hood in Town,PROGRAMMING,1100,"['binary search', 'greedy', 'math']"
+2014,D,Robert Hood and Mrs Hood,PROGRAMMING,1400,"['brute force', 'data structures', 'greedy', 'sortings']"
+2014,E,Rendez-vous de Marian et Robin,PROGRAMMING,1800,"['dfs and similar', 'graphs', 'shortest paths']"
+2014,F,Sheriff's Defense,PROGRAMMING,2000,"['dfs and similar', 'dp', 'greedy', 'trees']"
+2014,G,Milky Days,PROGRAMMING,2200,"['brute force', 'data structures', 'greedy', 'implementation']"
+2014,H,Robin Hood Archery,PROGRAMMING,1900,"['data structures', 'divide and conquer', 'greedy', 'hashing']"

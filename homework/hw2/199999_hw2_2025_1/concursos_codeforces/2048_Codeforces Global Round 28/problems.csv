@@ -1,0 +1,11 @@
+contestId,index,name,type,points,rating,tags
+2048,A,Kevin and Combination Lock,PROGRAMMING,250.0,800,"['brute force', 'greedy', 'implementation', 'math', 'number theory']"
+2048,B,Kevin and Permutation,PROGRAMMING,500.0,900,"['constructive algorithms', 'greedy']"
+2048,C,Kevin and Binary Strings,PROGRAMMING,1000.0,1200,"['bitmasks', 'brute force', 'greedy', 'implementation', 'strings']"
+2048,D,Kevin and Competition Memories,PROGRAMMING,1250.0,1600,"['binary search', 'brute force', 'data structures', 'greedy', 'sortings', 'two pointers']"
+2048,E,Kevin and Bipartite Graph,PROGRAMMING,1750.0,2000,"['constructive algorithms', 'graphs', 'greedy']"
+2048,F,Kevin and Math Class,PROGRAMMING,2000.0,2500,"['brute force', 'data structures', 'divide and conquer', 'dp', 'implementation', 'math', 'trees']"
+2048,G,Kevin and Matrices,PROGRAMMING,2250.0,2800,"['brute force', 'combinatorics', 'dp', 'math']"
+2048,H,Kevin and Strange Operation,PROGRAMMING,2750.0,3100,"['data structures', 'dp']"
+2048,I1,Kevin and Puzzle (Easy Version),PROGRAMMING,3000.0,3500,['constructive algorithms']
+2048,I2,Kevin and Puzzle (Hard Version),PROGRAMMING,3000.0,3500,"['bitmasks', 'fft', 'math']"

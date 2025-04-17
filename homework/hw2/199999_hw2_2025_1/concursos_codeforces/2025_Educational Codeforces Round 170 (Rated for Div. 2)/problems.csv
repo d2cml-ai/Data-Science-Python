@@ -1,0 +1,8 @@
+contestId,index,name,type,rating,tags
+2025,A,Two Screens,PROGRAMMING,800,"['binary search', 'greedy', 'strings', 'two pointers']"
+2025,B,"Binomial Coefficients, Kind Of",PROGRAMMING,1100,"['combinatorics', 'dp', 'math']"
+2025,C,New Game,PROGRAMMING,1300,"['binary search', 'brute force', 'greedy', 'implementation', 'sortings', 'two pointers']"
+2025,D,Attribute Checks,PROGRAMMING,1800,"['brute force', 'data structures', 'dp', 'implementation', 'math', 'two pointers']"
+2025,E,Card Game,PROGRAMMING,2200,"['combinatorics', 'dp', 'fft', 'greedy', 'math']"
+2025,F,Choose Your Queries,PROGRAMMING,2700,"['constructive algorithms', 'dfs and similar', 'dp', 'graphs', 'greedy', 'trees']"
+2025,G,Variable Damage,PROGRAMMING,3000,"['data structures', 'flows']"

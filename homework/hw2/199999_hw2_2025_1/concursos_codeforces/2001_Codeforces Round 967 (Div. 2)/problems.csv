@@ -1,0 +1,7 @@
+contestId,index,name,type,points,rating,tags
+2001,A,Make All Equal,PROGRAMMING,500.0,800,"['greedy', 'implementation']"
+2001,B,Generate Permutation,PROGRAMMING,1000.0,800,['constructive algorithms']
+2001,C,Guess The Tree,PROGRAMMING,1500.0,1500,"['binary search', 'brute force', 'dfs and similar', 'divide and conquer', 'dsu', 'greedy', 'interactive', 'trees']"
+2001,D,Longest Max Min Subsequence,PROGRAMMING,2000.0,1900,"['brute force', 'constructive algorithms', 'data structures', 'greedy', 'implementation']"
+2001,E1,Deterministic Heap (Easy Version),PROGRAMMING,2000.0,2400,"['combinatorics', 'dp', 'math', 'trees']"
+2001,E2,Deterministic Heap (Hard Version),PROGRAMMING,2000.0,2900,"['combinatorics', 'dp', 'trees']"

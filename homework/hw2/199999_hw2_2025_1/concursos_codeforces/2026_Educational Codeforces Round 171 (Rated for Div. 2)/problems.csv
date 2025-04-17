@@ -1,0 +1,7 @@
+contestId,index,name,type,rating,tags
+2026,A,Perpendicular Segments,PROGRAMMING,900,"['constructive algorithms', 'geometry', 'greedy', 'math']"
+2026,B,Black Cells,PROGRAMMING,1300,"['binary search', 'brute force', 'constructive algorithms', 'greedy']"
+2026,C,Action Figures,PROGRAMMING,1500,"['binary search', 'brute force', 'constructive algorithms', 'data structures', 'greedy', 'implementation']"
+2026,D,Sums of Segments,PROGRAMMING,1900,"['binary search', 'data structures', 'dp', 'implementation', 'math']"
+2026,E,Best Subsequence,PROGRAMMING,2500,"['bitmasks', 'dfs and similar', 'flows', 'graph matchings', 'graphs']"
+2026,F,Bermart Ice Cream,PROGRAMMING,2700,"['data structures', 'dfs and similar', 'divide and conquer', 'dp', 'implementation', 'trees']"
