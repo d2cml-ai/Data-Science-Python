@@ -1,0 +1,10 @@
+ipykernel==6.29
+pandas==1.5.3
+numpy==1.21.6
+tqdm==4.66.1
+requests==2.31.0
+python-dateutil==2.8.2
+unicodedata2==15.1.0
+openpyxl==3.1.2
+matplotlib==3.5.3  
+seaborn==0.12.2   
