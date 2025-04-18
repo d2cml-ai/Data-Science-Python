@@ -1,0 +1,11 @@
+contestId,index,name,type,points,rating,tags
+2053,A,Tender Carpenter,PROGRAMMING,500.0,800,"['dp', 'geometry', 'greedy', 'math']"
+2053,B,Outstanding Impressionist,PROGRAMMING,1000.0,1200,"['binary search', 'brute force', 'data structures', 'greedy']"
+2053,C,Bewitching Stargazer,PROGRAMMING,1250.0,1500,"['bitmasks', 'divide and conquer', 'dp', 'math']"
+2053,D,Refined Product Optimality,PROGRAMMING,1750.0,1700,"['binary search', 'data structures', 'greedy', 'math', 'schedules', 'sortings']"
+2053,E,Resourceful Caterpillar Sequence,PROGRAMMING,2000.0,1900,"['dfs and similar', 'dp', 'games', 'graphs', 'greedy', 'trees']"
+2053,F,Earnest Matrix Complement,PROGRAMMING,2500.0,2600,"['brute force', 'data structures', 'dp', 'greedy', 'implementation', 'math']"
+2053,G,Naive String Splits,PROGRAMMING,4250.0,3400,"['binary search', 'brute force', 'greedy', 'hashing', 'math', 'number theory', 'strings']"
+2053,H,Delicate Anti-monotonous Operations,PROGRAMMING,4500.0,3500,"['constructive algorithms', 'implementation']"
+2053,I1,Affectionate Arrays (Easy Version),PROGRAMMING,3000.0,2800,"['data structures', 'dp', 'greedy']"
+2053,I2,Affectionate Arrays (Hard Version),PROGRAMMING,2000.0,3500,"['data structures', 'dp', 'graphs', 'greedy', 'math', 'shortest paths', 'two pointers']"
