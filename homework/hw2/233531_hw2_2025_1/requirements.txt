@@ -1,0 +1,8 @@
+requests
+pandas
+numpy
+matplotlib
+seaborn
+python-dateutil
+tqdm
+notebook
