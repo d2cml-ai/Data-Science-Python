@@ -1,0 +1,90 @@
+### Install Selenium
+# Librerías de Selenium y WebDriver Manager (como usamos en clase)
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from webdriver_manager.chrome import ChromeDriverManager
+import time  # para poner pausas si es necesario
+
+### Iniciar en el navegador (Chrome)
+# Creo el navegador Chrome y lo maximizo
+driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+driver.maximize_window()
+
+### Página principal para buscar trabajo
+# Entramos a la página principal
+driver.get("https://www.bumeran.com.pe")
+time.sleep(2)  # Esperamos 2 segundos para que cargue
+
+### Data Science en el buscador
+# Cargar la página y esperar 5 segundos para asegurar render completo
+driver.get("https://www.bumeran.com.pe")
+time.sleep(5)  # Esperamos para que la página cargue completamente
+
+#  Ver cuántos <input> hay en el DOM
+inputs = driver.find_elements(By.TAG_NAME, "input")
+print(f"Se encontraron {len(inputs)} campos de entrada (input)")
+for i, inp in enumerate(inputs):
+    print(f"{i}: placeholder = {inp.get_attribute('placeholder')}")
+
+### Buscar Data Science y Lima
+#Cargar página con filtros aplicados
+url = "https://www.bumeran.com.pe/en-lima/empleos-busqueda-data-science.html"
+driver.get(url)
+time.sleep(3)
+
+# Info general
+import time
+time.sleep(5)
+
+# Probar: imprimir todos los href
+anchors = driver.find_elements(By.TAG_NAME, "a")
+
+print("Total <a> encontrados:", len(anchors))
+for a in anchors:
+    href = a.get_attribute("href")
+    if href and "data-science" in href or "empleo" in href.lower():
+        print(href)
+
+#2nd stage
+
+import pandas as pd
+from selenium.webdriver.common.by import By
+import time
+
+def get_job_details(driver, link):
+    driver.get(link)
+    time.sleep(2)
+
+    def try_xpath(xpath):
+        try:
+            return driver.find_element(By.XPATH, xpath).text
+        except:
+            return "N/A"
+
+    distrito = try_xpath("//h2[contains(text(), 'Distrito')]/following-sibling::p")
+    modalidad = try_xpath("//h2[contains(text(), 'Modalidad de trabajo')]/following-sibling::p")
+    nivel = try_xpath("//h2[contains(text(), 'Nivel laboral')]/following-sibling::p")
+    discapacidad = try_xpath("//h2[contains(text(), 'Postulantes con discapacidad')]/following-sibling::p")
+
+    return {
+        "URL": link,
+        "Distrito": distrito,
+        "Modalidad de trabajo": modalidad,
+        "Nivel laboral": nivel,
+        "Discapacidad": discapacidad
+    }
+
+# Recorrer todos los enlaces
+data = []
+for i, link in enumerate(job_links):
+    print(f"[{i+1}/{len(job_links)}] Scraping: {link}")
+    details = get_job_details(driver, link)
+    data.append(details)
+
+# Guardar en CSV
+df = pd.DataFrame(data)
+df.to_csv("bumeran_data_science_jobs.csv", index=False)
+print("✅ Archivo guardado como: bumeran_data_science_jobs.csv")
