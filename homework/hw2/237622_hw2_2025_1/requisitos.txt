@@ -1,0 +1,1 @@
+pip install pandas==2.2.2 requests==2.31.0 seaborn==0.13.2 matplotlib==3.8.2 statsmodels==0.14.1

@@ -1,0 +1,12 @@
+contestId,index,name,type,points,rating,tags
+2039,A,Shohag Loves Mod,PROGRAMMING,500.0,800,"['constructive algorithms', 'number theory']"
+2039,B,Shohag Loves Strings,PROGRAMMING,1000.0,1000,"['constructive algorithms', 'greedy', 'implementation', 'strings']"
+2039,C1,Shohag Loves XOR (Easy Version),PROGRAMMING,1000.0,1200,"['bitmasks', 'brute force', 'math', 'number theory']"
+2039,C2,Shohag Loves XOR (Hard Version),PROGRAMMING,1500.0,1800,"['bitmasks', 'brute force', 'math', 'number theory']"
+2039,D,Shohag Loves GCD,PROGRAMMING,2000.0,1700,"['constructive algorithms', 'greedy', 'math', 'number theory']"
+2039,E,Shohag Loves Inversions,PROGRAMMING,2750.0,2200,"['combinatorics', 'dp', 'implementation', 'math']"
+2039,F1,Shohag Loves Counting (Easy Version),PROGRAMMING,2000.0,2800,"['combinatorics', 'dp', 'math', 'number theory']"
+2039,F2,Shohag Loves Counting (Hard Version),PROGRAMMING,2000.0,3200,"['dp', 'number theory']"
+2039,G,Shohag Loves Pebae,PROGRAMMING,4250.0,3500,"['math', 'number theory']"
+2039,H1,Cool Swap Walk (Easy Version),PROGRAMMING,2250.0,3500,"['constructive algorithms', 'implementation', 'sortings']"
+2039,H2,Cool Swap Walk (Hard Version),PROGRAMMING,2500.0,3500,"['constructive algorithms', 'constructive algorithms', 'constructive algorithms', 'implementation', 'sortings']"

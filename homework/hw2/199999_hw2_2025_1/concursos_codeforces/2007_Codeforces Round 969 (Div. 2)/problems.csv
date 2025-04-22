@@ -1,0 +1,7 @@
+contestId,index,name,type,points,rating,tags
+2007,A,Dora's Set,PROGRAMMING,500.0,800,"['greedy', 'math', 'number theory']"
+2007,B,Index and Maximum Value,PROGRAMMING,750.0,900,"['data structures', 'greedy']"
+2007,C,Dora and C++,PROGRAMMING,1000.0,1500,"['math', 'number theory']"
+2007,D,Iris and Game on the Tree,PROGRAMMING,1500.0,1700,"['games', 'graphs', 'greedy', 'trees']"
+2007,E,Iris and the Tree,PROGRAMMING,2250.0,1800,"['brute force', 'data structures', 'dfs and similar', 'math', 'trees']"
+2007,F,Eri and Expanded Sets,PROGRAMMING,2750.0,2300,"['binary search', 'data structures', 'number theory', 'two pointers']"

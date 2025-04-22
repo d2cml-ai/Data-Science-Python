@@ -1,0 +1,7 @@
+contestId,index,name,type,points,rating,tags
+2047,A,Alyona and a Square Jigsaw Puzzle,PROGRAMMING,500.0,800,"['implementation', 'math']"
+2047,B,Replace Character,PROGRAMMING,1000.0,900,"['brute force', 'combinatorics', 'greedy', 'strings']"
+2047,C,Swap Columns and Find a Path,PROGRAMMING,1500.0,1200,"['data structures', 'greedy', 'sortings']"
+2047,D,Move Back at a Cost,PROGRAMMING,2000.0,1600,"['binary search', 'data structures', 'greedy', 'sortings']"
+2047,E,Adventurers,PROGRAMMING,3000.0,2100,"['binary search', 'data structures', 'flows', 'greedy', 'implementation']"
+2047,F,For the Emperor!,PROGRAMMING,4000.0,3100,"['flows', 'graphs']"
