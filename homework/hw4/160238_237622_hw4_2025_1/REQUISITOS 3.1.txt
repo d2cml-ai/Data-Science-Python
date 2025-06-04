@@ -1,0 +1,10 @@
+REQUIEREMENT PARA 3.1
+
+conda install -c conda-forge \
+    geopandas \
+    fiona \
+    shapely \
+    rtree \
+    pyproj \
+    requests \
+    pandas

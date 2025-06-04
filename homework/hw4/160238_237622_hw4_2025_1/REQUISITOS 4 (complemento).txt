@@ -1,0 +1,12 @@
+conda install -c conda-forge \
+    python=3.9 \
+    pip \
+    pandas \
+    PyMuPDF \
+    openai
+
+pip install --upgrade PyMuPDF openai pandas
+
+ojo: 
+pdf_path = "IIGeo_24-47_002_Arevalo.pdf"
+texto_paper = extraer_texto_pdf(pdf_path)
