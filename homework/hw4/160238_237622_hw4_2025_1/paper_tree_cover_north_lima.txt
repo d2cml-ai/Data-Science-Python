@@ -1,0 +1,720 @@
+© Los autores. Este artículo es publicado por la Revista del Instituto de investigación de la Facultad de minas, metalurgia y ciencias 
+geográficas de la Universidad Nacional Mayor de San Marcos. Este es un artículo de acceso abierto, distribuido bajo los términos de la 
+licencia Creative Commons Atribución 4.0 Internacional (CC BY 4.0) [https://creativecommons.org/licenses/by/4.0/deed.es] que permite 
+el uso, distribución y reproducción en cualquier medio, siempre que la obra original sea debidamente citada de su fuente original. Para 
+mas información, por favor póngase en contacto con iigeo@unmsm.edu.pe
+Rev. Inst. investig. Fac. minas metal. cienc. geogr. vol 24 n° 47, 2021: 13 - 18	
+ISSN-L:1561-0888
+Cobertura arbórea y captura de dióxido de carbono en los 
+parques urbanos. Caso: Lima Norte
+Tree cover and carbone dioxide capture in urban parks case: Northern Lima
+Walter Aparicio Arévalo Gómez 1 , Francisco Alejandro Alcántara Boza 2
+Recibido: 14/10/2020 - Aprobado: 26/04/2021 – Publicado: 18/06/2021
+RESUMEN
+En la presente investigación se tuvo como objetivo determinar la relación existente entre la cobertura arbórea y la captura de dióxido de carbono en 
+los parques urbanos de Lima Norte. Para su desarrollo se diseñó una investigación con enfoque cuantitativo y tipo correlacional.
+La metodología utilizada consistió en trabajo de campo y trabajo remoto. Mediante el trabajo de campo se obtuvo información de la cobertura y 
+estructura arbórea de los parques y el trabajo remoto permitió determinar los volúmenes de CO2 capturado por los parques, este proceso se realizó 
+mediante el Software i-tree Canopy. La investigación fue realizada en Lima Norte, específicamente en los Distritos de Los Olivos, Comas, San Martín 
+de Porres e Independencia. Así mismo el análisis de correlación se realizó utilizando el coeficiente de Pearson.
+Los resultados obtenidos, 0.994 correlación de Pearson, evidencian una relación positiva muy buena entre la cobertura arbórea y la captura de 
+carbono de los parques del área de estudio, sin embargo, los valores obtenidos respecto al volumen de captura de dióxido de carbono (0.34 CO2/
+m2-año) son muy bajos en comparación con los resultados de investigaciones realizadas en otras ciudades.
+Palabras Claves: árbol, carbono; ciudad; parque; relación.
+ABSTRACT
+The objective of this research was to determine the relationship between tree cover and carbone dioxide capture in urban parks in Northern Lima.
+For its development, a research with a quantitative approach and correlational type was designed. 
+The methodology used consisted of field work and remote work. Through the field work, information was obtained about the coverage and tree 
+structure of the parks and the remote work allowed to determine the volumes of CO2 captured by the parks. This process was carried out through the 
+Software i- Tree Canopy. The research was carried out in northern Lima, specifically in the districts of Los Olivos, Comas, San Martín de Porres and 
+Independencia. The correlation analysis was carried out using the Pearson coefficient.
+The results obtained, 0.994 Pearson correlation, show a particularly good positive relationship between tree cover and carbon capture of the parks 
+in the study area, however the values obtained regarding the volume of carbone dioxide capture (0.34 CO2/m2-año) are very low compared to the 
+results of research conducted in other cities.
+Keywords: carbone; city; park; relationship; tree.
+1	 Egresado del Programa de doctorado. Ciencias Ambientales – Universidad Nacional Mayor de San Marcos, Facultad de Ingeniería Geológica, Minera, 
+Metalúrgica y Geográfica. Lima, Perú. E-mail: warevalog@unmsm.edu.pe - ORCID: https://orcid.org/0000-0002-5738-7942
+2	 Docente de la Universidad Nacional Mayor de San Marcos, Facultad de Ingeniería Geológica, Minera, Metalúrgica y Geográfica. Lima, Perú. 
+	
+E-mail: falcantarab@unmsm.edu.pe - ORCID: https://orcid.org/0000-0001-9127-4450
+https://dx.doi.org/10.15381/iigeo.v24i47.20638
+Cobertura arbórea y captura de dióxido de carbono en los parques urbanos. Caso: Lima Norte
+Rev. Inst. investig. Fac. minas metal. cienc. geogr. 24(47) 2021
+14 
+I.	
+INTRODUCCIÓN
+Uno de los objetivos del desarrollo sostenible es lograr la 
+sostenibilidad de las ciudades, dado que estas albergan a 
+más de la mitad de la población del planeta, el 54% según 
+Zucchetti & Freundt (2018). En ese proceso los parques 
+urbanos cumplen un rol importante, siempre y cuando 
+exista la cantidad suficiente y tengan la composición vegetal 
+adecuada. En el Perú las deficiencias de planificación 
+urbana han generado que la mayoría de las ciudades tengan 
+insuficientes áreas verdes e inadecuada composición 
+de su cobertura arbórea, lo cual limita su funcionalidad 
+ambiental. 
+La cobertura arbórea se refiere a los individuos de las 
+diversas especies de árboles que componen la vegetación 
+de un parque urbano y constituyen un porcentaje de la 
+distribución de uso.
+Una de las zonas de mayor crecimiento en las últimas 
+décadas fue Lima norte, el mismo que se realizó con 
+deficiencias de planificación ocasionado que no se destinen 
+cantidades adecuadas de áreas verdes, como es el caso de 
+los distritos de: Puente Piedra (1.3m2/hab.), Independencia 
+(1.2 m2/hab.), San Martín de Porres (2.2m2/hab.), Los 
+Olivos (5.1m2/hab.) Comas (3.9m2/hab.) (INEI, 2015).
+Lima norte es además la zona con peores indicadores 
+de calidad del aire en material particulado. En la estación 
+de Carabayllo se encontró 1.85mg/cm2/mes de partículas 
+sedimentables lo cual sobrepasa en 370% lo recomendado 
+por la OMS y en partículas PM10 se encontró 166.51ug/m3 
+el mismo que sobrepasa en 333% el Estándar de Calidad 
+Ambiental (ECA-aire) según la Dirección General de 
+Salud Ambiental  (MINSA-Ministerio de Salud de Perú, 
+2012).
+Los parques urbanos constituyen el mayor porcentaje 
+de área verdes. Según Quispe (2017) en Lima, los parques 
+urbanos representan el 51% de las áreas verdes, por lo 
+que es importante el estudio de la composición de estos 
+espacios con fines de mejorar los procesos de gestión.
+El propósito principal de esta investigación es 
+mostrar la importancia de los árboles en la sostenibilidad 
+ambiental de las ciudades, principalmente en la función de 
+regulación de la calidad del aire, para lograr el objetivo se 
+evaluó la relación que existe entre el grado de cobertura 
+arbórea y la captura de carbono de los parques urbanos en 
+los distritos de Los Olivos, San Martín de Porres, Comas 
+e Independencia. En esta publicación se presenta los 
+resultados de la investigación.
+II.	 METODOS 
+La investigación fue de carácter aplicado y consistió en 
+el uso de instrumentos de campo para la obtención de 
+información del porcentaje y composición de la cobertura 
+arbórea. Asimismo, se utilizó el Software i-tree Canopy 
+para la estimación del volumen de captura de carbono. 
+La población de estudio estuvo conformada por 
+los parques urbanos de los distritos de Los Olivos, San 
+Martín de Porres, Comas e Independencia. Para el estudio 
+se delimito un área que comprende aproximadamente el 
+10% de los parques e intersecta a los cuatro distritos de 
+estudio.
+El tamaño de muestra estuvo conformado por 
+32 parques establecidos de manera determinística, 
+considerando las diferencias en superficie y criterios de 
+manejo de la vegetación por cada uno de los distritos (Ver 
+Figura 1). 
+Para la recolección de datos se utilizó las siguientes 
+técnicas y procedimientos:
+Determinación de la cobertura arbórea: Se realizó 
+el inventario de los árboles mediante trabajo en campo, 
+utilizando un formato que consideró los siguientes 
+aspectos: nombre científico y común de la especie, altura 
+del árbol y cobertura de la copa. Asimismo, se levantó 
+información respecto a la distribución de uso espacial de 
+los parques urbanos, para el cual se consideró los siguientes 
+aspectos: área total del parque, área con cobertura arbórea, 
+área con pavimento (loza deportiva, veredas, etc.), área de 
+suelo desnudo. Estas áreas se determinaron con el uso de 
+GPS, wincha métrica y contrastada mediante la aplicación 
+Google Earth Pro.
+Evaluación de la captura de carbono: La determinación 
+de la captura de los árboles de los parques se realizó de 
+manera remota mediante el software “i-tree Canopy”, este 
+es una herramienta diseñada para estimar los beneficios de 
+árboles y otras clases de cobertura dentro de una ciudad, su 
+aplicación consistió en las siguientes etapas.
+1.	
+Delimitación del área de los parques mediante 
+Google Earth.
+2.	
+Configuración de los tipos de cobertura que se 
+desea evaluar. en nuestro caso se consideró los 
+siguientes tipos de cobertura: árbol, herbácea, 
+arbusto, pavimento y suelo desnudo.
+3.	
+Identificación y codificación de puntos en la 
+superficie del parque. Para mayor precisión de 
+los resultados, se consideró la cobertura arbórea 
+obtenida en campo al aplicar el software.
+4.	
+Definición de unidades y variables que se desea 
+evaluar, para esta investigación se consideró. 
+Unidades métricas, y los parámetros fueron 
+captura anual y acumulado de C y CO2.
+5.	
+Obtención del reporte de C y CO2 capturado por 
+los árboles de los parques.
+El procesamiento de la información se realizó 
+mediante el software Excel y para la determinación de 
+la correlación se utilizó el coeficiente de correlación de 
+Pearson mediante el programa SPSS. Como hipótesis se 
+planteó que la cobertura arbórea se relaciona de manera 
+significativa con la función de captura de carbono de los 
+parques de Lima Norte (Ver Figura 2). 
+Arévalo & Alcántara
+Rev. Inst. investig. Fac. minas metal. cienc. geogr. 24(47) 2021
+15
+272000
+272000
+273000
+273000
+274000
+274000
+275000
+275000
+276000
+276000
+277000
+277000
+8673000
+8673000
+8674000
+8674000
+8675000
+8675000
+8676000
+8676000
+8677000
+8677000
+8678000
+8678000
+8679000
+8679000
+®
+0
+620
+1,240
+310
+m
+SAN MARTÍN 
+DE PORRES
+LOS OLIVOS
+COMAS
+Lima
+Área de
+Estudio
+CO-5
+CO-3
+CO-6
+CO-2
+CO-4
+CO-7
+CO-1
+SM-3
+CO-8
+CO-9
+LO-5
+LO-6
+LO-9
+LO-3
+LO-4
+LO-7
+SM-9
+SM-4
+SM-6
+SM-5
+SM-8
+SM-7
+SM-2
+LO-8
+SM-1
+IN-2
+IN-4
+IN-1
+IN-5
+IN-3
+LO-2
+LO-1
+INDEPENDENCIA
+ESTE
+NORTE
+ESTE
+NORTE
+CO-1
+San Martín
+275215
+8678249
+LO-3
+Cristo rey
+274211
+8674854
+CO-2
+Mi pequeño mundo
+275155
+8678510
+LO-4
+Raimondi
+273958
+8674894
+CO-3
+Santa Luzmila
+275309
+8678879
+LO-5
+Laura Caller
+273727
+8675934
+CO-4
+Virgen del Carmen
+275196
+8678261
+LO-6
+Villa del Norte
+274569
+8675907
+CO-5
+Virgen de las Mercedes
+275051
+8678820
+LO-7
+Cesar vallejo
+273250
+8674983
+CO-6
+Santa Rosa
+275456
+8678737
+LO-8
+Los Jazmines de Naranjal
+273112
+8674624
+CO-7
+Belén
+275485
+8678296
+LO-9
+Solidaridad
+274795
+8674899
+CO-8
+Señor de los Milagros
+275890
+8678032
+SM-1
+Parque N°1
+273481
+8674357
+CO-9
+Las Vegas
+275868
+8677682
+SM-2
+Las Magnolias
+272868
+8674893
+IN-1
+Pachacútec
+276053
+8674596
+SM-3
+Santa Luisa
+274923
+8677906
+IN-2
+Imperio
+276044
+8674732
+SM-4
+Virgen del Rosario
+272421
+8675001
+IN-3
+Inti raymi
+276288
+8674319
+SM-5
+La Gruta
+272478
+8674817
+IN-4
+Los Incas
+276020
+8674740
+SM-6
+Usteriz y Rivero
+272882
+8674903
+IN-5
+Cultura Chavín
+276045
+8674394
+SM-7
+Los Jardines de Naranjal
+272140
+8674685
+LO-1
+Mariátegui
+274200
+8672852
+SM-8
+Manuel Scorza
+271938
+8674706
+LO-2
+Tulipanes
+274249
+8673018
+SM-9
+Esvida
+272505
+8675238
+CÓDIGO
+COORDENADAS
+CÓDIGO
+COORDENADAS
+NOMBRE
+NOMBRE
+ 
+LEYENDA 
+Parques caracterizados 
+Parques muestreados 
+Área de estudio 
+Figura 1. Plano del área de estudio – Parques considerados en la muestra.
+Cobertura arbórea y captura de dióxido de carbono en los parques urbanos. Caso: Lima Norte
+Rev. Inst. investig. Fac. minas metal. cienc. geogr. 24(47) 2021
+16 
+III.	 RESULTADOS
+3.1.	Captura de dióxido de carbono de los parques 
+en función al porcentaje de árboles 
+Los volúmenes de captura de CO2  en los parques depende 
+de la estructura de la vegetación, principalmente de la 
+presencia de árboles, por su parte la captura de CO2 por los 
+árboles depende de: especie, tamaño, edad, DAP (diámetro 
+a la altura del pecho), cobertura de la copa, estado de 
+conservación y manejo; la mayor parte de los parques 
+del área de estudio cuentan con muy bajos porcentajes 
+de árboles, en gran medida los parques están cubiertos 
+por herbáceas y pavimento, principalmente por lozas 
+deportivas, veredas y otras estructuras de concreto. Así 
+mismo la cobertura arbórea no cuenta con las especies. En 
+la siguiente tabla se muestran los valores correspondientes.
+De los valores encontrados en la Tabla 1, podemos 
+observar que los mayores volúmenes de captura de CO2 
+por año se da en el parque IN1 correspondiente al distrito 
+de Independencia con 0,774 kg CO2/m2- año seguido por el 
+parque IN4 del mismo distrito con 0,671 kg CO2/m2-año que 
+son los distritos que tienen mayores porcentajes de árboles en 
+su distribución con 70% y 62% respectivamente. Asimismo, 
+el menor volumen de CO2 capturado corresponde al parque 
+con código CO2 del distrito de Comas que es el que tiene 
+menor porcentaje de árboles (12%). De los resultados se 
+tiene que el promedio de captura de los parques evaluados 
+es de 0.34 CO2/m2-año. Así mismo el valor acumulado de 
+captura de dióxido de carbono en la muestra alcanza a 72.89 
+toneladas de CO2 por hectárea.
+De la aplicación del coeficiente de Pearson se obtuvo 
+una correlación de 0,994 como se observa en la Tabla 2, 
+lo cual indica que existe una correlación positiva muy 
+buena entre la cobertura arbórea y la captura de CO2 de los 
+parques en Lima Norte. Así mismo se puede observar que 
+el grado de significancia 0,01 que demuestra alto grado de 
+confiabilidad.
+Tabla 1. Porcentaje de cobertura arbórea y kilogramos de CO2 por año 
+capturado en parques de Lima Norte
+Parque
+Area del 
+Parque
+% Cobertura 
+Arbórea
+KgCO2/m2-año
+kg CO2 
+almacenado
+CO1
+4900
+54.00
+0.591
+72746.68
+CO2
+3100
+12.00
+0.136
+10623.00
+CO3
+30300
+14.00
+0.169
+128680.00
+CO4
+5800
+54.00
+0.570
+83057.78
+CO5
+4900
+28.00
+0.305
+37581.73
+CO6
+4000
+14.00
+0.163
+16328.96
+CO7
+8200
+17.00
+0.191
+39384.82
+CO8
+15000
+12.00
+0.147
+55432.47
+CO9
+11900
+36.00
+0.392
+116001.96
+IN1
+2500
+70.00
+0.774
+48587.95
+IN2
+4000
+20.00
+0.230
+23115.27
+IN3
+2000
+18.00
+0.198
+9941.84
+IN4
+1700
+62.00
+0.671
+28662.64
+IN5
+2850
+29.00
+0.320
+22903.30
+LO1
+2800
+50.00
+0.563
+39619.90
+LO2
+10100
+13.00
+0.140
+35500.61
+LO3
+10000
+39.00
+0.450
+112950.00
+LO4
+6000
+22.00
+0.311
+46792.42
+LO5
+10000
+41.00
+0.444
+111510.00
+LO6
+24000
+9.00
+0.173
+104200.00
+LO7
+15100
+28.00
+0.300
+113780.00
+LO8
+13700
+12.00
+0.161
+55229.62
+LO9
+5500
+28.00
+0.316
+43671.35
+SM1
+7000
+51.00
+0.557
+97850.00
+SM2
+16700
+18.00
+0.201
+126690.00
+SM3
+4000
+47.00
+0.530
+53225.40
+SM4
+6000
+27.00
+0.292
+43956.52
+SM5
+5000
+23.00
+0.291
+36482.97
+SM6
+2500
+20.00
+0.233
+14607.03
+SM7
+2400
+21.00
+0.239
+14421.90
+SM8
+3000
+50.00
+0.586
+44125.48
+SM9
+1200
+22.00
+0.221
+6646.14
+Total
+246150
+0.340
+1794306.74
+Figura 2. Delimitación del área e identificación de coberturas mediante el software i-tree Canopy. Fuente: Tomado de la aplicación del software.
+Arévalo & Alcántara
+Rev. Inst. investig. Fac. minas metal. cienc. geogr. 24(47) 2021
+17
+Tabla 2. Resultado del análisis de correlación
+% Arboles/parque
+kg CO2/m2- año
+% Arboles/parque
+Correlación de Pearson
+1
+0,994**
+Sig. (bilateral)
+,001
+N
+32
+32
+kg CO2/m2- año
+Correlación de Pearson
+0,994**
+1
+Sig. (bilateral)
+0,001
+N
+32
+32
+**. La correlación es significativa en el nivel 0,01 (bilateral).
+Figura 3. Diagrama de dispersión del % árboles y CO2/m2 en los parques de Lima Norte.
+3.2.	Diagrama de Dispersión 
+Así mismo se realizó el diagrama de dispersión y la 
+ecuación de la recta que representa a la relación existente 
+entre la cobertura vegetal y la captura de CO2/m2 por año 
+en los parques urbanos de los distritos de Lima Norte (Ver 
+Figura 3). 
+IV.	 DISCUSIÓN 
+El propósito de esta investigación, es mostrar la importancia 
+de la cobertura arbórea en una de las funciones ambientales 
+del parque urbano como es la regulación de la calidad 
+del aire mediante la captura de carbono, los resultados 
+obtenidos evidencian esa importancia mediante una alta 
+relación positiva entre la cobertura vegetal y la función 
+de captura de dióxido de carbono por parte de los parques 
+en Lima Norte; sin embargo, la insuficiente cobertura de 
+árboles, la inadecuada composición florística, el clima 
+desértico y el mal estado de la vegetación, determinan 
+valores muy bajos de captación de dióxido de carbono con 
+un valor promedio de 0.33 kg-CO2/m2 en comparación con 
+los valores encontrados por Domingez (2016), quien en los 
+parques de Tijuana México encontró un valor promedio de 
+3.5 kg-CO2/m2 para el año 2015. Respecto a los valores 
+acumulados o sumidero se estimó en 72.89 tn/ha. que 
+es superior a los 32 tn/ha de los parques de Latacunga 
+determinados por Reino Choto (2019).
+Los resultados de las estimaciones de CO2 difieren en 
+función de las metodologías aplicadas, las metodologías 
+utilizadas varían desde las mediciones directas basadas 
+en ecuaciones alométricas o las mediciones remotas 
+basadas en información satelital (Chaparro & Terrasdas, 
+Cobertura arbórea y captura de dióxido de carbono en los parques urbanos. Caso: Lima Norte
+Rev. Inst. investig. Fac. minas metal. cienc. geogr. 24(47) 2021
+18 
+2009) para esta investigación se decidió utilizar un trabajo 
+mixto utilizando el trabajo de campo para determinar la 
+cobertura arbórea y el software i-tree Canopy para estimar 
+los volúmenes de CO2. Por lo que se considera que los 
+resultados son confiables y pueden utilizarse para la toma 
+de decisiones como referencia para futuras investigaciones.
+V.	 CONCLUSIONES
+De la investigación se puede concluir que la vegetación 
+arbórea es importante e influye de manera significativa en 
+la función de regulación de los parques urbanos, esto se 
+evidencia en la relación la relación positiva muy buena de 
+0,994 entre la cobertura de árboles y la captura de carbono 
+de los parques en Lima Norte.
+Los volúmenes de captura acumulado 72.89 kg-CO2/
+m2 y la captura por año 0.34 kg-CO2/m2
+ obtenidos son bajos 
+en comparación con valores encontrados en otras ciudades.
+VI.	 RECOMENDACIÓN
+Para mejorar la funcionalidad de los parques en la 
+sostenibilidad de la ciudad se recomienda seleccionar 
+las especies más adecuadas, considerando dos aspectos: 
+primero la adaptabilidad a la escasez de agua en zonas 
+áridas y segundo la contribución ecosistémica. Es decir, 
+aquellas especies con menor requerimiento de agua, con 
+buena cobertura arbórea y mayor volumen de captura 
+de CO2.  Según los datos de Brescia De Fort (2010)  y 
+Domingez (2016) las siguientes especies cumplen mejor 
+estos criterios: Schinus molle 182.6 kg CO2/año, Schinus 
+terebinthifolius 74.4 kg CO2/año, Grevillea robusta con 
+229.0 kg CO2/año, Eucalyptus globulus 162.3 kg CO2/año 
+y Ficus benjamina 63.9 kg CO2/año. 
+VII.	REFERENCIAS
+Brescia De Fort, R. (2010). Paisajes verdes con poca agua. Jardines 
+para Lima y ciudades de regiones secas (Wust Ediciones 
+(ed.)). https://es.scribd.com/document/433514489/Paisajes-
+Verdes-Con-Poca-Agua-Jardines-Para-Lima-y-Ciudades-
+de-Regiones-Secas-Rosa-Brescia-de-Fort
+Chaparro, L., & Terrasdas, J. (2009). Ecological Services of Urban 
+Forest in Barcelona. In Shengtai Xuebao/ Acta Ecologica 
+Sinica (Vol. 29, Issue August). www.creaf.uab.cat
+Domingez, A. (2016). Estimaciones de captura de los parques y 
+emiciones de CO2 vehicular en Tijuana, B.C. [Colegio de 
+la Frontera Norte (COLEF)]. In Centro de Investigación 
+Científica y de Educación Superior de Ensenada (CICESE) 
+(Vol. 23, Issue 45). https://www.colef.mx/posgrado/wp-
+content/uploads/2016/12/TESIS-Domínguez-Madrid-Ana-
+Yurendy.pdf
+INEI. (2015). Perú Anuario de Estadísticas Ambientales. https://
+www.inei.gob.pe/media/MenuRecursivo/publicaciones_
+digitales/Est/Lib1342/libro.pdf
+MINSA-Ministerio de Salud de Perú. (2012). Estudio de 
+saturación Lima Metropolitana y Callao año 2011. In SINIA 
+- Sistema Nacional de Información Ambiental. https://
+sinia.minam.gob.pe/documentos/estudio-saturacion-lima-
+metropolitana-callao-ano-2011
+Quispe, E. (2017). Situación de las áreas verdes urbanas en 
+Lima Metropolitana. Universidad Nacional Agraria La 
+Molina, 1–62. http://repositorio.lamolina.edu.pe/handle/
+UNALM/2990
+Reino Choto, D. X. (2019). Estimación de los servicios 
+ecosistémicos de regulación (captura de carbono) en los 
+Parques de la Ciudad de Latacunga [Universidad Técnica 
+de Cotopaxi]. In Facultad de Ciencias Agropecuarias 
+y 
+Recursos 
+Naturales. 
+http://repositorio.utc.edu.ec/
+handle/27000/5944
+Zucchetti, A., & Freundt, D. (2018). Ciudades Del Perú - Primer 
+Reporte Nacional de Indicadores Urbanos 2018 - con un 
+enfoque de sostenibilidad y resiliencia. In Primer reporte 
+Nacional de Indicadores Urbanos. https://d2ouvy59p0dg6k.
+cloudfront.net/downloads/ciudades_sostenibles_1.pdf

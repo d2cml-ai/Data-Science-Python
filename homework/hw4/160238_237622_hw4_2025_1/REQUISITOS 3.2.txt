@@ -1,0 +1,15 @@
+conda install -c conda-forge \
+    python=3.9 \
+    pip \
+    requests \
+    boto3 \
+    pandas
+
+ojo:
+EARTHDATA_USER
+EARTHDATA_PASS
+
+setx EARTHDATA_USER "tu_usuario_lpdaac"
+setx EARTHDATA_PASS "tu_contraseña_lpdaac"
+setx CMR_TOKEN      "eyJ0eXA…<el_token_completo>…"
+

@@ -1,0 +1,7 @@
+python ≥ 3.9
+pypdf
+openai
+tiktoken
+chromadb
+langchain
+osmnx
