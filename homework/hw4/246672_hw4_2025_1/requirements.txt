@@ -1,0 +1,11 @@
+numpy
+pandas
+geopandas
+rasterio
+rioxarray
+osmnx
+shapely
+matplotlib
+requests
+beautifulsoup4
+glob2
