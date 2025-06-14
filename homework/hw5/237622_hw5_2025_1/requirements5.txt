@@ -1,0 +1,7 @@
+transformers==4.40.1
+datasets==2.19.0
+torch>=2.1.0
+pymupdf==1.23.21
+pandas==2.2.2
+matplotlib==3.8.4
+openpyxl==3.1.2
