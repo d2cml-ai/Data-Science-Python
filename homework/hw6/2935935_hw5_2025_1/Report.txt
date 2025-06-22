@@ -1,0 +1,24 @@
+Reporte Comparativo – Ejecución en CPU vs GPU
+¿Qué mejora proporcionó el uso de GPU?
+Fashion-MNIST: El entrenamiento en GPU fue más de 37 veces más rápido que en CPU (de 246.74s a 6.53s).
+
+BERT (comentarios tóxicos): El entrenamiento en GPU tomó 60.09s, casi la mitad del tiempo comparado con CPU (114.27s).
+
+¿Valió la pena usar GPU en estas tareas?
+Sí. En ambos casos, pero especialmente en modelos complejos como BERT, el uso de GPU representa una gran ventaja en velocidad. Incluso en datasets pequeños, como los usados en este trabajo, la diferencia es significativa.
+
+¿Qué desafíos se encontraron durante el desarrollo?
+El dataset jigsaw_toxicity_pred requería descarga manual desde Kaggle, lo que implicó registrarse, aceptar reglas y subir el archivo.
+
+Al entrenar con TensorFlow y BERT, surgieron errores por conflictos de dispositivos cruzados (modelo/optimizador en CPU y GPU). Se resolvió asegurando que todo el modelo se compile y entrene dentro del mismo with tf.device().
+
+Hubo problemas de consumo de RAM en Colab que se solucionaron limitando el tamaño del dataset a 64 ejemplos.
+
+¿En qué otros campos profesionales podrían aplicarse estos modelos?
+Moda y comercio electrónico: clasificación automática de imágenes de productos.
+
+Moderación de contenido en redes sociales o foros, detectando comentarios tóxicos o dañinos con BERT.
+
+Atención al cliente: clasificación de solicitudes o detección de urgencias en mensajes escritos.
+
+Legal y financiero: análisis de texto en documentos extensos.
