@@ -1,0 +1,16 @@
+Informe Breve: 
+¿Qué mejora proporcionó el uso de GPU? 
+El uso de la GPU redujo significativamente los tiempos de entrenamiento en ambos modelos. En la tarea básica (clasificación de Fashion-MNIST), la GPU fue aproximadamente 25% más rápida que la CPU. Sin embargo, la mayor mejora se observó en la tarea avanzada (clasificación de comentarios tóxicos con BERT), donde la GPU fue alrededor de 42 veces más rápida que la CPU. Esto demuestra que las GPU son especialmente útiles para modelos complejos y de gran tamaño.
+¿Valió la pena utilizar GPU para esta tarea? 
+Sí, definitivamente valió la pena, sobre todo para la tarea avanzada. En el modelo básico el GPU fue más rápido que el CPU en 5 segundos, mientras que en el modelo avanzado el CPU tomo un tiempo aproximado de 1 hora y 50 pero el GPU tomo 5 minutos aproximadamente. Para aplicaciones reales y de mayor volumen de procesamiento donde la eficiencia y el tiempo son factores clave, el uso de GPU resulta esencial.
+¿Qué desafíos se presentaron durante el desarrollo? 
+Los principales desafíos fueron:
+•	Conflictos de dependencias, especialmente entre las versiones de numpy y la librería datasets, lo que obligó a manejar cuidadosamente las instalaciones.
+•	La necesidad de descargar el dataset privado de kaggle donde me tenía que crear una cuenta y luego descargar el API  y manipularlo para acceder al dataset de la tarea avanzada.
+•	Configurar correctamente el entorno de ejecución para alternar entre CPU y GPU de forma consistente y sin errores.
+¿En qué otros campos profesionales se pueden aplicar estos modelos? 
+Estos modelos y técnicas tienen aplicación en diversos sectores, como:
+•	Salud: Clasificación de imágenes médicas o generación automática de informes clínicos.
+•	Finanzas: Análisis de sentimiento para predicción de mercados o detección de fraudes.
+•	Atención al cliente: Moderación automática de contenido o desarrollo de chatbots inteligentes.
+•	Ciberseguridad: Detección de comportamientos tóxicos o abusivos en plataformas digitales.
