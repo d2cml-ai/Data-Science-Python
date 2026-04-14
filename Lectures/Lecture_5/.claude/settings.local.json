@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.geogpsperu.com)",
+      "Bash(curl -sL \"https://drive.google.com/uc?export=download&id=1aDBjHDSChc7tPY_Fd60hPmiNbANikh16\" -o geoperu.zip -w \"HTTP %{http_code} SIZE %{size_download}\\\\n\")",
+      "Bash(file geoperu.zip)",
+      "Bash(curl -sL \"https://drive.google.com/uc?export=download&id=1oZf-kJVV-aPI0VgdDRcCpADGo-RCCqpd\" -o cenepred.zip -w \"cenepred HTTP %{http_code} SIZE %{size_download}\\\\n\")",
+      "Bash(curl -sL \"https://drive.google.com/uc?export=download&id=1azu8e_gojqwiO7hnlYDIV139MeIQ5Tcq\" -o ingemmet.zip -w \"ingemmet HTTP %{http_code} SIZE %{size_download}\\\\n\")",
+      "Bash(curl -sL \"https://drive.google.com/uc?export=download&id=1jc_hVuDacrodkeLRE6RcxypwjaKj_yop\" -o minam.zip -w \"minam HTTP %{http_code} SIZE %{size_download}\\\\n\")",
+      "Bash(curl -sL \"https://drive.google.com/uc?export=download&id=1-AmZy4h7ycFqCWDwQ2YRfs3odRWBYQWD\" -o vivienda.zip -w \"vivienda HTTP %{http_code} SIZE %{size_download}\\\\n\")",
+      "mcp__ide__executeCode",
+      "Bash(python -c ':*)",
+      "Bash(python hospitals_by_district.py)"
+    ]
+  }
+}
