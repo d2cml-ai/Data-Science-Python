@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python generate_raster_lab.py)",
+      "Bash(python -c ' *)",
+      "Bash(del generate_raster_lab.py)",
+      "Bash(dir RASTER_LAB.ipynb)",
+      "Bash(pip install *)",
+      "Bash(conda --version)",
+      "Bash(conda info *)",
+      "Bash(where conda *)",
+      "Bash(where python *)",
+      "Bash(where jupyter *)",
+      "Bash(pip list *)",
+      "Bash(python -c \"import sys; print\\(sys.path\\)\")"
+    ]
+  }
+}
