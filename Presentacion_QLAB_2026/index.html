@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>IA y Data Science en Acción · QLAB-PUCP</title>
+
+  <!-- reveal.js core + theme base -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/monokai.css">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg0:#070a1f;
+      --bg1:#0d1230;
+      --bg2:#141a42;
+      --ink:#eef1ff;
+      --muted:#9aa3c7;
+      --cyan:#22d3ee;
+      --teal:#2dd4bf;
+      --indigo:#7c3aed;
+      --violet:#a78bfa;
+      --coral:#fb7185;
+      --amber:#fbbf24;
+      --green:#34d399;
+      --card:rgba(255,255,255,0.04);
+      --card-bd:rgba(255,255,255,0.10);
+    }
+
+    html,body{height:100%;}
+    .reveal{
+      font-family:'Inter',system-ui,sans-serif;
+      font-size:30px;
+      color:var(--ink);
+      font-weight:300;
+    }
+    .reveal h1,.reveal h2,.reveal h3,.reveal h4{
+      font-family:'Space Grotesk',sans-serif;
+      font-weight:700;
+      letter-spacing:-0.02em;
+      text-transform:none;
+      line-height:1.1;
+      margin:0 0 .35em 0;
+    }
+    .reveal h1{font-size:2.5em;}
+    .reveal h2{font-size:1.65em;}
+    .reveal h3{font-size:1.15em;}
+    .reveal p{line-height:1.45;}
+    .reveal strong{color:#fff;font-weight:600;}
+    .reveal em{color:var(--violet);font-style:normal;font-weight:500;}
+    .reveal a{color:var(--cyan);text-decoration:none;}
+
+    /* animated background */
+    .reveal-viewport{
+      background:
+        radial-gradient(1100px 700px at 12% -8%, rgba(124,58,237,0.30), transparent 60%),
+        radial-gradient(1000px 700px at 100% 0%, rgba(34,211,238,0.18), transparent 55%),
+        radial-gradient(900px 800px at 50% 120%, rgba(251,113,133,0.16), transparent 60%),
+        linear-gradient(160deg, var(--bg0), var(--bg1) 55%, var(--bg2));
+      background-attachment:fixed;
+    }
+
+    .reveal .slides{ text-align:left; }
+    .reveal .slides section{ height:100%; }
+
+    /* utility text */
+    .eyebrow{
+      display:inline-block;
+      font-family:'JetBrains Mono',monospace;
+      font-size:.42em;
+      letter-spacing:.32em;
+      text-transform:uppercase;
+      color:var(--cyan);
+      padding:.4em .9em;
+      border:1px solid rgba(34,211,238,.35);
+      border-radius:999px;
+      background:rgba(34,211,238,.07);
+      margin-bottom:.9em;
+    }
+    .muted{color:var(--muted);}
+    .grad{
+      background:linear-gradient(100deg,var(--cyan),var(--violet) 55%,var(--coral));
+      -webkit-background-clip:text;background-clip:text;color:transparent;
+    }
+    .lead{font-size:.92em;color:var(--muted);font-weight:300;max-width:24ch;}
+    .small{font-size:.62em;}
+    .center{text-align:center;}
+
+    /* TITLE slide */
+    #title h1{font-size:2.65em;margin-bottom:.2em;}
+    .title-sub{font-size:.95em;color:var(--muted);max-width:30ch;line-height:1.5;}
+    .title-meta{
+      margin-top:1.4em;display:flex;gap:.7em;flex-wrap:wrap;align-items:center;
+      font-family:'JetBrains Mono',monospace;font-size:.5em;color:var(--muted);
+    }
+    .chip{
+      padding:.45em .8em;border-radius:10px;background:var(--card);
+      border:1px solid var(--card-bd);color:var(--ink);
+    }
+    .chip b{color:var(--cyan);font-weight:600;}
+
+    /* cards */
+    .grid{display:grid;gap:.7em;}
+    .g2{grid-template-columns:repeat(2,1fr);}
+    .g3{grid-template-columns:repeat(3,1fr);}
+    .g4{grid-template-columns:repeat(4,1fr);}
+    .card{
+      background:var(--card);
+      border:1px solid var(--card-bd);
+      border-radius:18px;
+      padding:.85em 1em;
+      backdrop-filter:blur(6px);
+      transition:transform .25s ease, border-color .25s ease, background .25s ease;
+    }
+    .card:hover{transform:translateY(-5px);border-color:rgba(34,211,238,.45);background:rgba(34,211,238,.06);}
+    .card .ico{font-size:1.5em;line-height:1;display:block;margin-bottom:.25em;}
+    .card h3{font-size:.86em;margin-bottom:.15em;}
+    .card p{font-size:.58em;color:var(--muted);line-height:1.4;margin:0;}
+
+    .accent-cyan{border-top:3px solid var(--cyan);}
+    .accent-violet{border-top:3px solid var(--violet);}
+    .accent-coral{border-top:3px solid var(--coral);}
+    .accent-amber{border-top:3px solid var(--amber);}
+    .accent-green{border-top:3px solid var(--green);}
+
+    /* stat */
+    .stat .num{
+      font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:2.1em;line-height:1;
+      background:linear-gradient(120deg,var(--cyan),var(--violet));
+      -webkit-background-clip:text;background-clip:text;color:transparent;
+    }
+    .stat .lbl{font-size:.56em;color:var(--muted);margin-top:.3em;}
+
+    /* two col layout */
+    .cols{display:grid;grid-template-columns:1fr 1fr;gap:1.1em;align-items:center;}
+    .cols.wide-r{grid-template-columns:.85fr 1.15fr;}
+    .cols.wide-l{grid-template-columns:1.15fr .85fr;}
+
+    .shot{
+      border-radius:16px;overflow:hidden;border:1px solid var(--card-bd);
+      box-shadow:0 25px 60px rgba(0,0,0,.55);background:#fff;
+    }
+    .shot img{display:block;width:100%;height:auto;}
+    .shot.dark{background:#0a0a1a;}
+    .cap{font-size:.5em;color:var(--muted);margin-top:.5em;font-family:'JetBrains Mono',monospace;}
+
+    /* list */
+    .reveal ul.clean{list-style:none;margin:0;padding:0;}
+    .reveal ul.clean li{
+      position:relative;padding:.32em 0 .32em 1.5em;font-size:.78em;color:var(--ink);line-height:1.4;
+    }
+    .reveal ul.clean li::before{
+      content:"";position:absolute;left:0;top:.62em;width:.6em;height:.6em;border-radius:3px;
+      background:linear-gradient(120deg,var(--cyan),var(--violet));
+    }
+    .reveal ul.clean li b{color:#fff;}
+
+    /* pipeline */
+    .pipe{display:flex;align-items:stretch;gap:.55em;flex-wrap:wrap;}
+    .pstep{
+      flex:1;min-width:130px;background:var(--card);border:1px solid var(--card-bd);
+      border-radius:14px;padding:.7em .6em;text-align:center;position:relative;
+    }
+    .pstep .pico{font-size:1.6em;display:block;margin-bottom:.15em;}
+    .pstep h4{font-size:.62em;margin:0 0 .2em;font-family:'Space Grotesk';}
+    .pstep p{font-size:.46em;color:var(--muted);margin:0;line-height:1.35;}
+    .parrow{display:flex;align-items:center;color:var(--cyan);font-size:1.1em;}
+
+    /* table */
+    .reveal table.cal{font-size:.5em;border-collapse:collapse;width:100%;}
+    .reveal table.cal td,.reveal table.cal th{
+      padding:.42em .6em;border:none;border-bottom:1px solid rgba(255,255,255,.07);text-align:left;
+    }
+    .reveal table.cal th{color:var(--cyan);font-family:'JetBrains Mono';text-transform:uppercase;font-size:.85em;letter-spacing:.1em;}
+    .reveal table.cal td:first-child{color:var(--violet);font-family:'JetBrains Mono';font-weight:600;width:2.5em;}
+    .reveal table.cal .tag{
+      font-size:.85em;padding:.1em .6em;border-radius:6px;font-family:'JetBrains Mono';
+    }
+    .t-fund{background:rgba(34,211,238,.14);color:var(--cyan);}
+    .t-ai{background:rgba(167,139,250,.16);color:var(--violet);}
+    .t-geo{background:rgba(52,211,153,.14);color:var(--green);}
+    .t-adv{background:rgba(251,191,36,.16);color:var(--amber);}
+    .t-eval{background:rgba(251,113,133,.16);color:var(--coral);}
+
+    /* section divider */
+    .divider{display:flex;flex-direction:column;justify-content:center;height:100%;}
+    .divider .kicker{font-family:'JetBrains Mono';font-size:.5em;letter-spacing:.3em;color:var(--cyan);text-transform:uppercase;}
+    .divider .bignum{
+      font-family:'Space Grotesk';font-weight:700;font-size:7em;line-height:.85;
+      background:linear-gradient(120deg,rgba(124,58,237,.55),rgba(34,211,238,.35));
+      -webkit-background-clip:text;background-clip:text;color:transparent;margin:0;
+    }
+    .divider h2{font-size:2.4em;margin:.1em 0 .25em;}
+
+    /* code block */
+    .reveal pre{
+      width:100%;box-shadow:0 18px 50px rgba(0,0,0,.5);border-radius:14px;font-size:.5em;
+      border:1px solid var(--card-bd);
+    }
+    .reveal pre code{padding:1.1em;border-radius:14px;max-height:none;}
+
+    /* badges row */
+    .stack{display:flex;gap:.45em;flex-wrap:wrap;margin-top:.5em;}
+    .badge{
+      font-family:'JetBrains Mono';font-size:.5em;padding:.35em .7em;border-radius:8px;
+      background:var(--card);border:1px solid var(--card-bd);color:var(--muted);
+    }
+    .badge b{color:var(--cyan);}
+
+    /* footer */
+    .footer{
+      position:fixed;bottom:14px;left:26px;z-index:30;
+      font-family:'JetBrains Mono';font-size:11px;letter-spacing:.18em;color:rgba(154,163,199,.55);
+      text-transform:uppercase;
+    }
+    .reveal .progress{color:var(--cyan);height:4px;}
+    .reveal .slide-number{background:transparent;color:var(--muted);font-family:'JetBrains Mono';}
+
+    /* helpers for spacing */
+    .mt{margin-top:.7em;}
+    .mt2{margin-top:1.2em;}
+    .quote{
+      font-size:.85em;color:var(--ink);border-left:3px solid var(--cyan);
+      padding-left:.8em;font-weight:300;line-height:1.45;
+    }
+    .pill-row{display:flex;gap:.5em;flex-wrap:wrap;margin-top:.6em;}
+    .pill{
+      font-size:.55em;padding:.4em .85em;border-radius:999px;background:var(--card);
+      border:1px solid var(--card-bd);color:var(--ink);
+    }
+    .pill b{color:var(--teal);}
+
+    /* ===== OCR animated scanner ===== */
+    .scanwrap{display:grid;grid-template-columns:1fr auto 1.1fr;gap:1em;align-items:center;}
+    .parrow-lg{color:var(--cyan);font-size:1.8em;text-align:center;}
+    .doc{
+      position:relative;overflow:hidden;border-radius:14px;
+      background:linear-gradient(180deg,#121739,#0b0f2c);
+      border:1px solid var(--card-bd);padding:1em .95em;
+      box-shadow:0 18px 50px rgba(0,0,0,.55);
+    }
+    .doc-h{font-family:'JetBrains Mono';font-size:.46em;color:var(--coral);margin-bottom:.7em;letter-spacing:.04em;}
+    .doc .ln{display:block;height:9px;border-radius:5px;background:rgba(255,255,255,.13);margin:.55em 0;}
+    .doc .ln.box{position:relative;}
+    .doc .ln.box::after{
+      content:"";position:absolute;inset:-4px -6px;border:1.5px solid var(--cyan);
+      border-radius:6px;opacity:0;box-shadow:0 0 12px rgba(34,211,238,.5);
+      animation:ocrbox 4.2s ease-in-out infinite;
+    }
+    .doc .scanline{
+      position:absolute;left:0;right:0;top:-50px;height:50px;pointer-events:none;
+      background:linear-gradient(180deg,transparent,rgba(34,211,238,.22),transparent);
+      border-bottom:2px solid var(--cyan);
+      box-shadow:0 0 30px 8px rgba(34,211,238,.32);
+      animation:ocrscan 4.2s cubic-bezier(.55,0,.45,1) infinite;
+    }
+    @keyframes ocrscan{0%{top:-50px}100%{top:100%}}
+    @keyframes ocrbox{0%,15%{opacity:0}26%,70%{opacity:1}85%,100%{opacity:0}}
+    .extract{
+      background:rgba(52,211,153,.06);border:1px solid rgba(52,211,153,.32);
+      border-radius:14px;padding:1em;font-family:'JetBrains Mono';
+      font-size:.5em;line-height:1.85;color:var(--green);
+    }
+    .extract .lbl-ok{color:var(--muted);display:block;margin-bottom:.6em;font-size:.92em;letter-spacing:.04em;}
+
+    /* ===== Whisper waveform ===== */
+    .wave{display:flex;align-items:center;justify-content:center;gap:5px;height:118px;}
+    .wave span{
+      width:7px;height:18%;border-radius:8px;
+      background:linear-gradient(180deg,var(--cyan),var(--violet));
+      animation:wv 1.2s ease-in-out infinite;
+    }
+    @keyframes wv{0%,100%{height:14%;opacity:.55}50%{height:100%;opacity:1}}
+    .wave span:nth-child(odd){animation-duration:1.05s}
+    .wave span:nth-child(even){animation-duration:1.45s}
+    .wave span:nth-child(3n){animation-delay:-.2s}
+    .wave span:nth-child(3n+1){animation-delay:-.55s}
+    .wave span:nth-child(3n+2){animation-delay:-.85s}
+    .wave span:nth-child(4n){animation-delay:-1.1s}
+    .wave span:nth-child(5n){animation-delay:-.35s}
+    .transcript{
+      background:#0c1030;border:1px solid var(--card-bd);border-radius:14px;
+      padding:.9em 1.1em;font-size:.6em;line-height:1.5;
+    }
+    .transcript .who{font-family:'JetBrains Mono';font-size:.72em;color:var(--cyan);display:block;margin-bottom:.5em;}
+    .transcript p{margin:.35em 0;}
+    .transcript .ts{font-family:'JetBrains Mono';color:var(--muted);font-size:.82em;}
+
+    /* ===== Divider emoji (fix: avoid gradient text-clip turning emoji into a blob) ===== */
+    .bigicon{
+      font-size:5.6em;line-height:.9;margin:0 0 .05em;
+      filter:drop-shadow(0 12px 34px rgba(124,58,237,.5));
+      animation:floaty 4.5s ease-in-out infinite;
+    }
+    @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+
+    /* ===== Modern animated terminal ===== */
+    .term{
+      background:#0a0d22;border:1px solid rgba(34,211,238,.18);border-radius:14px;
+      box-shadow:0 24px 60px rgba(0,0,0,.55);overflow:hidden;
+      font-family:'JetBrains Mono',monospace;
+    }
+    .term-bar{display:flex;align-items:center;gap:.45em;padding:.6em .9em;
+      background:rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.06);}
+    .term-bar i{width:.62em;height:.62em;border-radius:50%;display:inline-block;}
+    .term-bar .r{background:#ff5f57}.term-bar .y{background:#febc2e}.term-bar .g{background:#28c840}
+    .term-bar b{margin-left:.7em;font-size:.4em;color:var(--muted);letter-spacing:.12em;font-weight:400;}
+    .term-body{padding:1.05em 1.15em;font-size:.5em;line-height:1.7;}
+    .term-body .pr{color:var(--green);}
+    .term-body .cmd{color:#e7ecff;}
+    .term-body .accent{color:var(--cyan);}
+    .term-body .ok{color:var(--green);}
+    .term-body .out{display:block;color:var(--muted);opacity:0;}
+    .typed{
+      display:inline-block;white-space:nowrap;overflow:hidden;vertical-align:bottom;
+      width:0;color:#e7ecff;border-right:2px solid var(--cyan);
+      animation:caretblink .8s step-end infinite;
+    }
+    .term.run .typed{animation:typewrite 2.4s steps(45,end) forwards, caretblink .8s step-end infinite;}
+    @keyframes typewrite{from{width:0}to{width:45ch}}
+    @keyframes caretblink{50%{border-color:transparent}}
+    .term.run .out{animation:outin .5s ease forwards;}
+    .term.run .out.o1{animation-delay:2.5s}
+    .term.run .out.o2{animation-delay:3.0s}
+    .term.run .out.o3{animation-delay:3.5s}
+    .term.run .out.o4{animation-delay:4.0s}
+    @keyframes outin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+    /* ===== OCR real document scanner ===== */
+    .docreal{
+      position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--card-bd);
+      box-shadow:0 22px 60px rgba(0,0,0,.55);background:#fff;max-height:430px;
+    }
+    .docreal img{display:block;width:100%;height:auto;}
+    .docreal .tagbar{
+      position:absolute;top:0;left:0;right:0;z-index:3;
+      font-family:'JetBrains Mono';font-size:.4em;color:#fff;padding:.6em .85em;letter-spacing:.04em;
+      background:linear-gradient(180deg,rgba(7,10,31,.94),rgba(7,10,31,0));
+    }
+    .docreal .scanband{
+      position:absolute;left:0;right:0;top:-60px;height:60px;z-index:2;pointer-events:none;
+      background:linear-gradient(180deg,transparent,rgba(34,211,238,.30),transparent);
+      border-bottom:2px solid var(--cyan);box-shadow:0 0 32px 10px rgba(34,211,238,.42);
+      animation:ocrscan 4s cubic-bezier(.55,0,.45,1) infinite;animation-delay:-1.6s;
+    }
+    .docreal .vf{position:absolute;width:26px;height:26px;z-index:3;border:2px solid var(--cyan);opacity:.9;}
+    .docreal .vf.tl{top:38px;left:10px;border-right:0;border-bottom:0;}
+    .docreal .vf.tr{top:38px;right:10px;border-left:0;border-bottom:0;}
+    .docreal .vf.bl{bottom:10px;left:10px;border-right:0;border-top:0;}
+    .docreal .vf.br{bottom:10px;right:10px;border-left:0;border-top:0;}
+  </style>
+</head>
+<body>
+<div class="footer">QLAB · PUCP — IA &amp; Data Science 2026</div>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1 · TITLE -->
+    <section id="title" data-auto-animate>
+      <div style="height:100%;display:flex;flex-direction:column;justify-content:center;">
+        <span class="eyebrow">QLAB · Pontificia Universidad Católica del Perú</span>
+        <h1 data-id="t">Inteligencia Artificial y<br>Data Science <span class="grad">en Acción</span></h1>
+        <p class="title-sub">Herramientas prácticas para el análisis de datos en las ciencias sociales.</p>
+        <div class="title-meta">
+          <span class="chip">Curso · <b>Ciencia de Datos e IA para Ciencias Sociales</b></span>
+          <span class="chip">Sesión informativa · <b>30 min</b></span>
+        </div>
+        <p class="small muted" style="margin-top:1.6em;font-family:'JetBrains Mono';letter-spacing:.1em;line-height:1.7;">
+          Prof. Alexander Quispe &nbsp;·&nbsp; QLAB — PUCP<br>
+          <span style="font-size:.82em;opacity:.85;">Microsoft &nbsp;·&nbsp; GitHub &nbsp;·&nbsp; Caltech</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- 2 · AGENDA -->
+    <section data-auto-animate>
+      <h2 data-id="t">¿Qué veremos <span class="grad">hoy</span>?</h2>
+      <p class="muted small mt" style="margin-bottom:1em;">Un recorrido por lo que harás con tus propias manos durante el curso.</p>
+      <div class="grid g3">
+        <div class="card accent-cyan fragment fade-up">
+          <span class="ico">🗺️</span>
+          <h3>El curso</h3>
+          <p>De Python &amp; Git a LLMs y agentes. Dos grandes bloques: fundamentos e IA aplicada.</p>
+        </div>
+        <div class="card accent-violet fragment fade-up">
+          <span class="ico">🤖</span>
+          <h3>Agent Coding</h3>
+          <p><em>Desde el primer día</em>: programar <em>con</em> IA usando Claude Code y Codex.</p>
+        </div>
+        <div class="card accent-coral fragment fade-up">
+          <span class="ico">🧰</span>
+          <h3>3 herramientas</h3>
+          <p>Geoespacial, OCR con PaddleOCR y transcripción con Whishper — en acción.</p>
+        </div>
+      </div>
+      <p class="fragment fade-up mt2 quote">Objetivo: que un científico social pueda <strong>recolectar, digitalizar y analizar</strong> datos del mundo real, hoy imposibles de procesar a mano.</p>
+    </section>
+
+    <!-- 3 · EL DIPLOMADO -->
+    <section>
+      <div class="cols wide-r">
+        <div>
+          <span class="eyebrow">El curso</span>
+          <h2>Ciencia de Datos e IA<br>para <span class="grad">Ciencias Sociales</span></h2>
+          <p class="muted small mt">No es un curso de ingeniería: es traer el poder de la IA y los datos al trabajo de economistas, sociólogos, politólogos y gestores públicos.</p>
+          <div class="pill-row">
+            <span class="pill"><b>Para</b> investigadores</span>
+            <span class="pill"><b>Para</b> sector público</span>
+            <span class="pill"><b>Para</b> ONG &amp; think tanks</span>
+            <span class="pill"><b>Para</b> tesistas</span>
+          </div>
+        </div>
+        <div class="grid" style="gap:.6em;">
+          <div class="card fragment fade-left"><h3>📥 Recolectar</h3><p>Web scraping, APIs y datos abiertos del Estado peruano.</p></div>
+          <div class="card fragment fade-left"><h3>🧾 Digitalizar</h3><p>Convertir PDFs, documentos escaneados y audio en datos analizables.</p></div>
+          <div class="card fragment fade-left"><h3>📊 Analizar &amp; comunicar</h3><p>Mapas, dashboards y modelos de IA para responder preguntas reales.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 · POR QUÉ -->
+    <section>
+      <span class="eyebrow">Por qué importa</span>
+      <h2>De la teoría al <span class="grad">dato real</span></h2>
+      <div class="grid g4 mt">
+        <div class="card accent-cyan fragment zoom-in"><span class="ico">🐍</span><h3>Python</h3><p>El lenguaje estándar de la ciencia de datos, gratis y abierto.</p></div>
+        <div class="card accent-violet fragment zoom-in"><span class="ico">🧠</span><h3>IA accesible</h3><p>LLMs y agentes que ya no requieren un equipo de ingeniería.</p></div>
+        <div class="card accent-green fragment zoom-in"><span class="ico">🇵🇪</span><h3>Datos del Perú</h3><p>Casos con COVID, hospitales, clima, brecha digital y licitaciones.</p></div>
+        <div class="card accent-amber fragment zoom-in"><span class="ico">🔁</span><h3>Reproducible</h3><p>Git, notebooks y código que cualquiera puede revisar y reusar.</p></div>
+      </div>
+      <p class="fragment fade-up mt2 quote">La pregunta ya no es <em>"¿se puede?"</em> — es <strong>"¿qué pregunta quieres responder?"</strong></p>
+    </section>
+
+    <!-- 6 · DOS PARTES -->
+    <section>
+      <span class="eyebrow">Estructura</span>
+      <h2>Un curso, <span class="grad">dos grandes bloques</span></h2>
+      <div class="cols mt">
+        <div class="card accent-cyan fragment fade-right" style="padding:1em 1.15em;">
+          <h3 style="font-size:1.02em;">① Fundamentos &amp; datos</h3>
+          <p class="small muted" style="margin:.2em 0 .5em;">Obtener y analizar datos con Python.</p>
+          <ul class="clean" style="font-size:.86em;">
+            <li>GitHub &amp; Python</li>
+            <li>Web Scraping (Selenium + APIs)</li>
+            <li>Visualización &amp; Streamlit</li>
+            <li><b>Análisis geoespacial</b> 🗺️</li>
+          </ul>
+        </div>
+        <div class="card accent-violet fragment fade-left" style="padding:1em 1.15em;">
+          <h3 style="font-size:1.02em;">② IA aplicada</h3>
+          <p class="small muted" style="margin:.2em 0 .5em;">Poner la IA a trabajar sobre tus datos.</p>
+          <ul class="clean" style="font-size:.86em;">
+            <li>LLMs, Hugging Face &amp; Fine-tuning</li>
+            <li><b>OCR</b> para digitalizar documentos 🧾</li>
+            <li><b>Transcripción</b> con Whisper 🎙️</li>
+            <li>Cómputo paralelo en GPU (CUDA)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card fragment fade-up mt" style="border-top:none;border-left:3px solid var(--violet);display:flex;align-items:center;gap:.75em;">
+        <span style="font-size:1.9em;line-height:1;">🤖</span>
+        <p style="font-size:.66em;margin:0;color:var(--ink);line-height:1.45;">
+          <b>Y transversal a todo, desde la semana 1:</b> <em>Agent Coding</em> con <b>Claude Code &amp; Codex</b>.
+          Programar <em>con</em> IA es una herramienta base del curso — no un tema reservado para el final.
+        </p>
+      </div>
+    </section>
+
+    <!-- 8 · DIVIDER PARTE 2 -->
+    <section data-auto-animate>
+      <div class="divider">
+        <span class="kicker">Desde el primer día · herramienta base</span>
+        <p class="bigicon">🤖</p>
+        <h2>Agent Coding<br><span class="grad">programar con IA</span></h2>
+        <p class="lead" style="max-width:34ch;">Claude Code &amp; Codex: de escribir cada línea, a <strong>dirigir agentes</strong> que escriben, ejecutan y depuran por ti.</p>
+      </div>
+    </section>
+
+    <!-- 9 · QUÉ ES AGENT CODING -->
+    <section>
+      <span class="eyebrow">Cambio de paradigma</span>
+      <h2>¿Qué es el <span class="grad">"agent coding"</span>?</h2>
+      <div class="cols mt">
+        <div>
+          <ul class="clean">
+            <li><b>Antes:</b> tú escribes cada línea de código y buscas en Google cada error.</li>
+            <li><b>Ahora:</b> describes lo que quieres en lenguaje natural y un <em>agente</em> lo hace.</li>
+            <li>El agente <b>lee tus archivos, ejecuta comandos, corrige sus propios errores</b> y te muestra el resultado.</li>
+            <li>Tú pasas de <em>programador</em> a <strong>director de orquesta</strong>.</li>
+          </ul>
+        </div>
+        <div class="term">
+          <div class="term-bar"><i class="r"></i><i class="y"></i><i class="g"></i><b>claude — terminal</b></div>
+          <div class="term-body">
+            <div><span class="pr">$</span> <span class="cmd">claude</span></div>
+            <div style="margin-top:.45em;"><span class="pr">&gt;</span> <span class="typed">Crea un mapa de pobreza del INEI en Streamlit</span></div>
+            <div style="margin-top:.75em;">
+              <span class="out o1">● Leyendo <span class="accent">data/pobreza_inei.csv</span>…</span>
+              <span class="out o2">● Escribiendo <span class="accent">dashboard.py</span>…</span>
+              <span class="out o3">● Ejecutando: streamlit run dashboard.py</span>
+              <span class="out o4"><span class="ok">✔</span> Dashboard listo en <span class="accent">localhost:8501</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10 · CLAUDE CODE -->
+    <section>
+      <span class="eyebrow">Herramienta principal</span>
+      <h2><span class="grad">Claude Code</span> — el agente en tu terminal</h2>
+      <div class="grid g3 mt">
+        <div class="card accent-violet fragment fade-up"><span class="ico">⌨️</span><h3>Vive en tu terminal</h3><p>Trabaja sobre tus propios archivos y proyectos, sin salir de tu máquina.</p></div>
+        <div class="card accent-violet fragment fade-up"><span class="ico">🔌</span><h3>MCP</h3><p>Se conecta a fuentes de datos externas: BCRP, datos abiertos, bases de datos.</p></div>
+        <div class="card accent-violet fragment fade-up"><span class="ico">⚡</span><h3>Skills &amp; comandos</h3><p>Automatiza flujos repetidos con <em>slash commands</em> reutilizables.</p></div>
+        <div class="card accent-cyan fragment fade-up"><span class="ico">🧪</span><h3>Ejecuta &amp; verifica</h3><p>Corre el código, ve el error y lo arregla solo — en un mismo ciclo.</p></div>
+        <div class="card accent-cyan fragment fade-up"><span class="ico">📈</span><h3>De idea a entregable</h3><p>De una pregunta a un dashboard o informe en minutos.</p></div>
+        <div class="card accent-cyan fragment fade-up"><span class="ico">🔓</span><h3>Y no es el único</h3><p><b>Codex</b> y otros agentes comparten la misma filosofía: tú diriges, ellos ejecutan.</p></div>
+      </div>
+    </section>
+
+    <!-- 11 · EJEMPLO BCRP -->
+    <section>
+      <span class="eyebrow">Caso real del curso · LAB 11</span>
+      <h2>Dashboard macro del <span class="grad">BCRP</span>, hecho por un agente</h2>
+      <div class="cols wide-l mt">
+        <div>
+          <p class="muted small" style="margin-bottom:.5em;">Un proyecto Claude Code que conecta datos en vivo del <b>Banco Central de Reserva del Perú</b> a un dashboard — vía un servidor MCP y una <em>skill</em>.</p>
+          <ul class="clean" style="font-size:.74em;">
+            <li><b>MCP server</b> expone los datos del BCRP al agente</li>
+            <li>Una <b>skill</b> <code>/bcrp-dashboard</code> genera el tablero</li>
+            <li>Salida: <b>Streamlit</b> con series macro actualizadas</li>
+          </ul>
+          <div class="stack">
+            <span class="badge"><b>Claude Code</b></span>
+            <span class="badge">FastMCP</span>
+            <span class="badge">Streamlit</span>
+            <span class="badge">BCRP API</span>
+          </div>
+        </div>
+        <div class="card dark fragment fade-left" style="padding:0;">
+          <pre><code class="language-text" data-trim>/bcrp-dashboard
+
+● Conectando al MCP 'bcrp'… ✓
+● Descargando: PBI, inflación, tipo de cambio
+● Generando dashboard.py…
+● streamlit run dashboard.py
+
+✔ http://localhost:8501  (series en vivo)</code></pre>
+          <p class="cap" style="padding:0 1em 1em;">El mismo patrón sirve para datosabiertos.gob.pe, INEI, MINSA…</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 12 · DIVIDER 3 HERRAMIENTAS -->
+    <section data-auto-animate>
+      <div class="divider">
+        <span class="kicker">Manos a la obra</span>
+        <h2 style="font-size:2.8em;margin-top:.2em;">3 herramientas<br><span class="grad">en acción</span></h2>
+        <div class="pill-row mt" style="font-size:1.15em;">
+          <span class="pill">🗺️ <b>Geoespacial</b></span>
+          <span class="pill">🧾 <b>OCR · PaddleOCR</b></span>
+          <span class="pill">🎙️ <b>Whishper</b></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 13 · GEO INTRO -->
+    <section data-auto-animate>
+      <div class="divider">
+        <span class="kicker">Herramienta 1</span>
+        <p class="bigicon">🗺️</p>
+        <h2>Análisis <span class="grad">geoespacial</span></h2>
+        <p class="lead" style="max-width:36ch;">Cada problema social tiene un <strong>"dónde"</strong>. Pongámoslo en el mapa.</p>
+      </div>
+    </section>
+
+    <!-- 14 · GEO mapas -->
+    <section>
+      <div class="cols wide-r">
+        <div>
+          <span class="eyebrow">Semana 05</span>
+          <h2>Mapas estáticos<br>y <span class="grad">dinámicos</span></h2>
+          <ul class="clean mt" style="font-size:.72em;">
+            <li><b>GeoPandas</b> — datos espaciales como un DataFrame</li>
+            <li><b>Folium / Leaflet</b> — mapas interactivos en el navegador</li>
+            <li>Coropletas, heatmaps y clústeres</li>
+            <li>Unir encuestas con shapefiles oficiales</li>
+          </ul>
+          <div class="stack"><span class="badge"><b>GeoPandas</b></span><span class="badge">Folium</span><span class="badge">Matplotlib</span></div>
+        </div>
+        <div>
+          <div class="shot fragment zoom-in"><img src="assets/geo_covid_lima.png" alt="Heatmap COVID Lima"></div>
+          <p class="cap">Incidencia de COVID-19 por distrito · Lima Metropolitana</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 15 · GEO casos sociales -->
+    <section>
+      <span class="eyebrow">Casos con impacto social</span>
+      <h2>El mapa que <span class="grad">cuenta una historia</span></h2>
+      <div class="cols mt">
+        <div>
+          <div class="shot fragment fade-right"><img src="assets/geo_hospitals_lima.png" alt="Hospitales por distrito Lima"></div>
+          <p class="cap">Acceso a hospitales por distrito · ¿quién queda desatendido?</p>
+        </div>
+        <div>
+          <div class="shot dark fragment fade-left"><img src="assets/raster_cusco_brecha.png" alt="Brecha digital Cusco"></div>
+          <p class="cap">Brecha digital territorial · Cusco (luz nocturna NASA + cobertura móvil)</p>
+        </div>
+      </div>
+      <p class="fragment fade-up center small muted mt2">Datos abiertos + geoespacial = <strong>evidencia para política pública</strong>.</p>
+    </section>
+
+    <!-- 16 · GEO raster dashboard -->
+    <section>
+      <div class="cols wide-r">
+        <div>
+          <span class="eyebrow">Semana 06 · Datos Raster</span>
+          <h2>Del satélite al <span class="grad">dashboard</span></h2>
+          <p class="muted small mt">Imágenes satelitales (clima, luz nocturna, vegetación) convertidas en indicadores por distrito — y comunicadas en un tablero.</p>
+          <ul class="clean" style="font-size:.68em;">
+            <li><b>Rasterio</b> + <b>xarray</b> para procesar bandas</li>
+            <li>Estadísticas zonales por distrito/región</li>
+            <li>Correlación con variables económicas (PBI)</li>
+          </ul>
+        </div>
+        <div>
+          <div class="shot fragment zoom-in"><img src="assets/raster_dashboard.png" alt="Dashboard precipitación"></div>
+          <p class="cap">Dashboard de precipitación por distrito (LAB 7)</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 17 · OCR INTRO -->
+    <section data-auto-animate>
+      <div class="divider">
+        <span class="kicker">Herramienta 2</span>
+        <p class="bigicon">🧾</p>
+        <h2>OCR con <span class="grad">PaddleOCR</span></h2>
+        <p class="lead" style="max-width:38ch;">Millones de páginas de datos están atrapadas en <strong>PDFs escaneados</strong>. Las liberamos.</p>
+      </div>
+    </section>
+
+    <!-- 18 · OCR problema -->
+    <section>
+      <span class="eyebrow">El problema</span>
+      <h2>Datos que <span class="grad">existen pero no se pueden leer</span></h2>
+      <div class="grid g3 mt">
+        <div class="card accent-coral fragment fade-up"><span class="ico">📚</span><h3>Archivos históricos</h3><p>Censos, expedientes y actas escaneadas como imágenes.</p></div>
+        <div class="card accent-coral fragment fade-up"><span class="ico">📄</span><h3>Documentos del Estado</h3><p>Licitaciones, resoluciones y bases en PDF no estructurado.</p></div>
+        <div class="card accent-coral fragment fade-up"><span class="ico">🔍</span><h3>Sin buscar, sin analizar</h3><p>No puedes filtrar, contar ni medir lo que no es texto.</p></div>
+      </div>
+      <p class="fragment fade-up quote mt2"><strong>PaddleOCR</strong> reconoce el texto de cualquier imagen o PDF escaneado — gratis y en tu propia máquina.</p>
+    </section>
+
+    <!-- 19 · OCR scanner animado -->
+    <section>
+      <span class="eyebrow">El OCR en acción · documento real del Estado</span>
+      <h2>De PDF escaneado a <span class="grad">texto analizable</span></h2>
+      <div class="scanwrap mt2">
+        <div class="docreal">
+          <div class="tagbar">📄 DIRECTIVA-003-2020-OSCE-CD.pdf · escaneado</div>
+          <img src="assets/ocr_doc_peru.png" alt="Directiva del OSCE — documento oficial del Estado peruano">
+          <div class="scanband"></div>
+          <span class="vf tl"></span><span class="vf tr"></span><span class="vf bl"></span><span class="vf br"></span>
+        </div>
+        <div class="parrow-lg">⟶</div>
+        <div class="extract">
+          <span class="lbl-ok">✓ TEXTO RECONOCIDO · PaddleOCR</span>
+          <span class="fragment fade-up">DIRECTIVA N° 003-2020-OSCE/CD</span><br>
+          <span class="fragment fade-up">I. FINALIDAD — acceso y registro…</span><br>
+          <span class="fragment fade-up">IV. BASE LEGAL — Ley N° 30225…</span><br>
+          <span class="fragment fade-up">→ datos listos para analizar con IA<span style="color:var(--cyan)">▌</span></span>
+        </div>
+      </div>
+      <p class="center small muted mt2">Una línea de escaneo recorre el documento oficial y convierte cada bloque en texto — listo para analizar con IA.</p>
+    </section>
+
+    <!-- 20 · OCR pipeline + por qué -->
+    <section>
+      <span class="eyebrow">Cómo funciona · OCR local + IA</span>
+      <h2>De PDF a <span class="grad">informe legal</span>, automático</h2>
+      <div class="pipe mt">
+        <div class="pstep fragment fade-right"><span class="pico">📤</span><h4>Subes el PDF</h4><p>Bases del concurso público</p></div>
+        <div class="parrow fragment fade-right">→</div>
+        <div class="pstep fragment fade-right"><span class="pico">🔎</span><h4>OCR local</h4><p>PaddleOCR · GPU ≈ 40× más rápido</p></div>
+        <div class="parrow fragment fade-right">→</div>
+        <div class="pstep fragment fade-right"><span class="pico">🧠</span><h4>Análisis IA</h4><p>Claude revisa Cap. III &amp; IV</p></div>
+        <div class="parrow fragment fade-right">→</div>
+        <div class="pstep fragment fade-right"><span class="pico">📑</span><h4>Informe PDF</h4><p>LaTeX → PDF final</p></div>
+      </div>
+      <div class="grid g3 mt2">
+        <div class="card accent-green fragment fade-up"><h3>🔒 100% local</h3><p>Los documentos sensibles nunca salen de tu computadora.</p></div>
+        <div class="card accent-green fragment fade-up"><h3>💸 OCR gratis</h3><p>PaddleOCR es open source — sin costo por página.</p></div>
+        <div class="card accent-green fragment fade-up"><h3>⚖️ OCR + IA</h3><p>El OCR libera el texto; el LLM razona sobre él.</p></div>
+      </div>
+      <p class="center small muted mt2">Repo del curso: <a>github.com/abigailquispe/cyo-licitaciones</a></p>
+    </section>
+
+    <!-- 21 · WHISHPER INTRO -->
+    <section data-auto-animate>
+      <div class="divider">
+        <span class="kicker">Herramienta 3</span>
+        <p class="bigicon">🎙️</p>
+        <h2><span class="grad">Whishper</span></h2>
+        <p class="lead" style="max-width:40ch;">Convierte <strong>horas de audio</strong> — entrevistas, focus groups, sesiones — en texto analizable.</p>
+      </div>
+    </section>
+
+    <!-- 22 · WHISHPER hero animado -->
+    <section>
+      <span class="eyebrow">Transcripción self-hosted · faster-whisper</span>
+      <h2>Hablar → <span class="grad">datos</span></h2>
+      <div class="cols mt" style="align-items:stretch;">
+        <div class="card" style="display:flex;flex-direction:column;justify-content:center;">
+          <div class="wave">
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <div class="pill-row" style="justify-content:center;margin-top:.6em;">
+            <span class="pill">🎙️ audio/video</span>
+            <span class="parrow">→</span>
+            <span class="pill"><b>faster-whisper</b></span>
+            <span class="parrow">→</span>
+            <span class="pill">📝 SRT · TXT</span>
+          </div>
+        </div>
+        <div class="transcript">
+          <span class="who">▶ Entrevista_03.mp3 · es · 100+ idiomas</span>
+          <p class="fragment fade-up"><span class="ts">00:14 </span>"La principal barrera fue el acceso a internet…"</p>
+          <p class="fragment fade-up"><span class="ts">00:38 </span>"…en la comunidad casi nadie tenía datos móviles."</p>
+          <p class="fragment fade-up"><span class="ts">01:02 </span>"Eso recién cambió cuando llegó el colegio<span style="color:var(--cyan)">▌</span>"</p>
+        </div>
+      </div>
+      <div class="grid g4 mt2">
+        <div class="card accent-cyan fragment fade-up"><h3>🌎 100+ idiomas</h3><p>Transcribe y traduce — campo multilingüe (quechua, aymara).</p></div>
+        <div class="card accent-cyan fragment fade-up"><h3>✍️ Editor visual</h3><p>Línea de tiempo con resaltado en vivo para corregir.</p></div>
+        <div class="card accent-violet fragment fade-up"><h3>🎬 Audio &amp; video</h3><p>Sube archivo o pega URL. Exporta SRT, VTT, TXT, JSON.</p></div>
+        <div class="card accent-violet fragment fade-up"><h3>🏠 En tu máquina</h3><p>Local — sin enviar audios sensibles a la nube.</p></div>
+      </div>
+    </section>
+
+    <!-- 23 · WHISHPER ciencias sociales -->
+    <section>
+      <span class="eyebrow">Para la investigación cualitativa</span>
+      <h2>El cuello de botella, <span class="grad">resuelto</span></h2>
+      <div class="cols mt">
+        <div>
+          <ul class="clean" style="font-size:.76em;">
+            <li><b>Entrevistas a profundidad</b> transcritas en minutos, no semanas</li>
+            <li><b>Focus groups</b> y grupos de discusión listos para codificar</li>
+            <li><b>Trabajo de campo</b> en quechua, aymara u otros idiomas</li>
+            <li>Texto listo para <b>análisis cualitativo</b> o resumen con LLMs</li>
+          </ul>
+        </div>
+        <div class="card fragment fade-left" style="border-top:3px solid var(--teal);">
+          <h3 style="font-size:.95em;">🔗 Encaja con todo el curso</h3>
+          <p class="small muted" style="margin-top:.3em;line-height:1.5;">
+            Whisper transcribe → un <em>LLM</em> resume y clasifica → un <em>agente</em> arma el reporte.
+            Las tres herramientas de hoy son piezas de un mismo flujo de investigación.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 24 · QUÉ TE LLEVAS -->
+    <section>
+      <span class="eyebrow">En resumen</span>
+      <h2>¿Qué te <span class="grad">llevas</span> del curso?</h2>
+      <div class="grid g2 mt">
+        <div class="card accent-cyan fragment fade-up"><h3>🛠️ Un toolkit completo</h3><p>Python, scraping, geoespacial, OCR, transcripción y agentes de IA.</p></div>
+        <div class="card accent-violet fragment fade-up"><h3>🤝 Trabajar con IA</h3><p>Claude Code &amp; Codex como copilotos para tu investigación.</p></div>
+        <div class="card accent-green fragment fade-up"><h3>🇵🇪 Casos peruanos reales</h3><p>Datos de salud, clima, brecha digital y compras públicas.</p></div>
+        <div class="card accent-amber fragment fade-up"><h3>📂 Portafolio en GitHub</h3><p>Código reproducible que puedes mostrar y reusar en tu trabajo.</p></div>
+      </div>
+    </section>
+
+    <!-- 25 · CLOSING -->
+    <section data-auto-animate>
+      <div style="height:100%;display:flex;flex-direction:column;justify-content:center;">
+        <span class="eyebrow">Te esperamos</span>
+        <h1 style="font-size:2.3em;">Construyamos el<br><span class="grad">análisis del futuro</span>, hoy.</h1>
+        <p class="title-sub" style="max-width:34ch;">IA y Data Science al servicio de las ciencias sociales en el Perú.</p>
+        <div class="title-meta" style="margin-top:1.3em;">
+          <span class="chip">📍 <b>QLAB · PUCP</b></span>
+          <span class="chip">📅 Inicio <b>2026</b></span>
+          <span class="chip">💻 Materiales en <b>GitHub</b></span>
+        </div>
+        <p class="small muted" style="margin-top:1.6em;font-family:'JetBrains Mono';letter-spacing:.12em;">
+          ¡Gracias! &nbsp;·&nbsp; Preguntas →
+        </p>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    width: 1280,
+    height: 720,
+    margin: 0.055,
+    minScale: 0.2,
+    maxScale: 1.6,
+    hash: true,
+    slideNumber: 'c/t',
+    transition: 'slide',
+    transitionSpeed: 'default',
+    backgroundTransition: 'fade',
+    controls: true,
+    progress: true,
+    center: false,
+    plugins: [ RevealHighlight, RevealNotes ]
+  });
+
+  // Re-trigger the animated terminal every time its slide is shown
+  function runTerm(slide){
+    if(!slide) return;
+    var t = slide.querySelector('.term');
+    if(t){ t.classList.remove('run'); void t.offsetWidth; t.classList.add('run'); }
+  }
+  Reveal.on('ready', function(e){ runTerm(e.currentSlide); });
+  Reveal.on('slidechanged', function(e){
+    document.querySelectorAll('.term.run').forEach(function(x){ x.classList.remove('run'); });
+    runTerm(e.currentSlide);
+  });
+</script>
+</body>
+</html>
