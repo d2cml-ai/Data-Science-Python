@@ -1,0 +1,32 @@
+# Stack geoespacial de la Lecture 5 (probado: el notebook corre completo en Python 3.11)
+#
+# Cambios respecto de requirements.txt:
+#   - gdal      : ELIMINADO. El paquete de PyPI compila contra la libreria nativa de
+#                 GDAL y falla sin `gdal-config`. geopandas no lo necesita: usa fiona.
+#   - numpy<2   : AGREGADO. pandas 1.5.3 esta compilado contra numpy 1.x; con numpy 2.x
+#                 revienta con "numpy.dtype size changed / binary incompatibility".
+#   - fiona<1.10: ACOTADO. fiona 1.10 elimino `fiona.path`, que geopandas 0.14.3 usa.
+#   - folium    : AGREGADO. El notebook lo importa y no estaba listado.
+#   - chardet   : AGREGADO. Idem (celda de deteccion de encoding).
+
+# Core
+geopandas==0.14.3
+pandas>=1.3.0,<2.0.0
+numpy<2
+shapely>=2.0.0
+fiona>=1.8,<1.10
+pyproj>=3.3.0
+rtree>=1.0
+matplotlib>=3.5
+mapclassify>=2.5.0
+
+# Mapas interactivos y basemaps
+folium>=0.14
+contextily>=1.3.0
+
+# Deteccion de encoding
+chardet>=5.0
+
+# Jupyter
+jupyterlab>=3.0
+ipykernel>=6.0
