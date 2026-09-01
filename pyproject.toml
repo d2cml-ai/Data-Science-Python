@@ -17,6 +17,7 @@ dependencies = [
   "scipy>=1.13",
   "scikit-learn>=1.5",
   "statsmodels>=0.14",
+  "huggingface-hub>=1.29.0",
 ]
 
 # Extras por tema. Instalar solo el que toca: uv sync --group geo

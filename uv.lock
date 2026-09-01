@@ -1030,6 +1030,7 @@ name = "ds-python-up"
 version = "2026.2"
 source = { virtual = "." }
 dependencies = [
+    { name = "huggingface-hub" },
     { name = "ipykernel" },
     { name = "ipywidgets" },
     { name = "jupyterlab" },
@@ -1120,6 +1121,7 @@ scraping = [
 
 [package.metadata]
 requires-dist = [
+    { name = "huggingface-hub", specifier = ">=1.29.0" },
     { name = "ipykernel", specifier = ">=6.29" },
     { name = "ipywidgets", specifier = ">=8.1" },
     { name = "jupyterlab", specifier = ">=4" },
