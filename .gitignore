@@ -1,4 +1,34 @@
-.venv/
+# Entornos — nunca se versionan, se reconstruyen desde uv.lock
+.venv*/
+venv/
+env*/
 __pycache__/
+*.py[cod]
+
+# Secretos
+.env
+.env.*
+!.env.example
+
+# Datos pesados — viven en Hugging Face, los baja scripts/fetch_data.py
+data/
+_data/
+*.tif
+*.tif.ovr
+*.hdf
+*.shp
+*.dbf
+*.shx
+*.sav
+*.dta
+*.pkl
+*.pickle
+*.gpkg
+*.parquet
+
+# Artefactos generados
 .ipynb_checkpoints/
+chroma_storage/
+chroma_clinical/
+*.bak
 .DS_Store

@@ -1,0 +1,31 @@
+[project]
+name = "ds-python-up"
+version = "2026.2"
+description = "Ciencia de Datos con Python — Universidad del Pacifico, 2026-II"
+requires-python = "==3.12.*"
+
+# Base: lo que necesita cualquier sesion del curso
+dependencies = [
+  "pandas>=2.2,<3",
+  "numpy>=1.26,<3",
+  "matplotlib>=3.8",
+  "seaborn>=0.13",
+  "openpyxl>=3.1",
+  "jupyterlab>=4",
+  "ipykernel>=6.29",
+]
+
+# Extras por tema. Instalar solo el que toca: uv sync --group geo
+[dependency-groups]
+scraping = ["selenium>=4.20", "beautifulsoup4>=4.12", "lxml>=5", "html5lib>=1.1",
+            "webdriver-manager>=4", "requests>=2.32", "unidecode>=1.3", "tqdm>=4.67"]
+geo      = ["geopandas>=1.0", "folium>=0.17", "mapclassify>=2.6", "pyogrio>=0.9",
+            "contextily>=1.6", "shapely>=2.0", "pyproj>=3.6"]
+raster   = ["rasterio>=1.3", "rioxarray>=0.15", "xarray>=2024.6", "earthpy>=0.9"]
+llm      = ["anthropic>=0.40", "openai>=1.50", "chromadb>=0.5", "sentence-transformers>=3",
+            "python-dotenv>=1.0", "pypdf>=5"]
+hf       = ["transformers>=4.44", "datasets>=3", "torch>=2.4", "accelerate>=1", "evaluate>=0.4"]
+docai    = ["paddleocr>=2.8", "openai-whisper", "pdf2image>=1.17", "pillow>=10"]
+agents   = ["crewai>=0.80", "langchain>=0.3"]
+deploy   = ["streamlit>=1.38", "fastapi>=0.115", "uvicorn>=0.30"]
+dev      = ["nbstripout>=0.7", "ruff>=0.6"]
