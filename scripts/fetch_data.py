@@ -7,7 +7,7 @@ Uso:
 import sys
 from pathlib import Path
 
-REPO_ID = "d2cml-ai/ds-python-up"      # ajustar al subir el dataset
+REPO_ID = "d2cml/ds-python-up"      # ajustar al subir el dataset
 ROOT = Path(__file__).resolve().parent.parent
 
 
