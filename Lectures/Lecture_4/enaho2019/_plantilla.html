@@ -1,0 +1,766 @@
+<title>Horas y Salarios ENAHO 2019</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,400;1,400&display=swap">
+
+<style>
+:root{
+  color-scheme: light;
+  --plane:#dde2e8; --card:#fcfcfb; --card-2:#f3f4f2;
+  --ink:#0b0b0b; --ink-2:#52514e; --muted:#898781;
+  --grid:#e1e0d9; --axis:#c3c2b7; --rule:rgba(11,11,11,.10);
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a;
+  --s1-soft:rgba(42,120,214,.13); --s2-soft:rgba(235,104,52,.13);
+  --good:#006300; --crit:#d03b3b;
+  --shadow:0 1px 2px rgba(11,11,11,.05), 0 6px 20px -12px rgba(11,11,11,.20);
+}
+@media (prefers-color-scheme: dark){
+  :root:where(:not([data-theme="light"])){
+    color-scheme: dark;
+    --plane:#0b0c0e; --card:#1a1a19; --card-2:#222221;
+    --ink:#ffffff; --ink-2:#c3c2b7; --muted:#898781;
+    --grid:#2c2c2a; --axis:#383835; --rule:rgba(255,255,255,.11);
+    --s1:#3987e5; --s2:#d95926; --s3:#199e70;
+    --s1-soft:rgba(57,135,229,.18); --s2-soft:rgba(217,89,38,.18);
+    --good:#0ca30c; --crit:#e66767;
+    --shadow:0 1px 2px rgba(0,0,0,.5), 0 8px 26px -14px rgba(0,0,0,.8);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --plane:#0b0c0e; --card:#1a1a19; --card-2:#222221;
+  --ink:#ffffff; --ink-2:#c3c2b7; --muted:#898781;
+  --grid:#2c2c2a; --axis:#383835; --rule:rgba(255,255,255,.11);
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70;
+  --s1-soft:rgba(57,135,229,.18); --s2-soft:rgba(217,89,38,.18);
+  --good:#0ca30c; --crit:#e66767;
+  --shadow:0 1px 2px rgba(0,0,0,.5), 0 8px 26px -14px rgba(0,0,0,.8);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--plane); color:var(--ink);
+  font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:15px; line-height:1.55; -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1160px; margin:0 auto; padding:28px 20px 64px; display:flex; flex-direction:column; gap:20px}
+
+/* ---------- encabezado ---------- */
+header.top{
+  background:var(--card); border:1px solid var(--rule); border-radius:4px;
+  padding:26px 28px; box-shadow:var(--shadow);
+  display:flex; flex-wrap:wrap; gap:22px 40px; align-items:flex-end; justify-content:space-between;
+}
+header.top > div:first-child{flex:1 1 440px; min-width:0}
+header.top > .meta{flex:0 0 auto}
+@media (max-width:720px){ .meta{text-align:left} }
+.eyebrow{
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:11px; font-weight:500;
+  letter-spacing:.14em; text-transform:uppercase; color:var(--s1); margin:0 0 8px;
+}
+h1{font-size:clamp(26px,3.4vw,38px); line-height:1.1; letter-spacing:-.022em; font-weight:600; margin:0; text-wrap:balance}
+.lead{font-family:"IBM Plex Serif",Georgia,serif; font-size:16px; color:var(--ink-2); margin:12px 0 0; max-width:56ch}
+.meta{font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:11.5px; color:var(--muted); line-height:1.9; text-align:right}
+.meta b{color:var(--ink-2); font-weight:500}
+
+/* ---------- stat tiles ---------- */
+.tiles{display:grid; grid-template-columns:repeat(auto-fit,minmax(178px,1fr)); gap:12px}
+.tile{
+  background:var(--card); border:1px solid var(--rule); border-radius:4px;
+  padding:16px 18px 15px; box-shadow:var(--shadow);
+  display:flex; flex-direction:column; gap:3px;
+}
+.tile .k{
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:10.5px; font-weight:500;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--muted);
+}
+.tile .v{font-size:28px; font-weight:600; letter-spacing:-.025em; line-height:1.15; color:var(--ink);
+  display:flex; align-items:baseline; gap:6px; flex-wrap:wrap; font-variant-numeric:tabular-nums}
+.tile .v small{font-size:13.5px; font-weight:500; color:var(--ink-2); letter-spacing:0; line-height:1.25}
+.tile .n{font-size:12.5px; color:var(--ink-2)}
+
+/* ---------- tarjetas de gráfico ---------- */
+.card{
+  background:var(--card); border:1px solid var(--rule); border-radius:4px;
+  padding:20px 22px 18px; box-shadow:var(--shadow); min-width:0;
+}
+.card h2{font-size:16.5px; font-weight:600; letter-spacing:-.012em; margin:0}
+.card .sub{font-size:13px; color:var(--ink-2); margin:5px 0 0; max-width:62ch}
+.card-head{display:flex; flex-wrap:wrap; gap:10px 18px; align-items:baseline; justify-content:space-between; margin-bottom:14px}
+.grid-2{display:grid; grid-template-columns:1fr 1fr; gap:20px}
+.hero{display:grid; grid-template-columns:minmax(0,1.62fr) minmax(240px,1fr); gap:26px; align-items:start}
+@media (max-width:860px){ .grid-2,.hero{grid-template-columns:1fr} }
+
+.plot{width:100%; min-width:0}
+.plot svg{display:block; width:100%; height:auto; overflow:visible}
+
+/* ---------- controles ---------- */
+.seg{display:inline-flex; gap:2px; padding:2px; background:var(--card-2); border:1px solid var(--rule); border-radius:3px; flex-wrap:wrap}
+.seg button{
+  font:inherit; font-size:12.5px; font-weight:500; color:var(--ink-2);
+  background:transparent; border:0; border-radius:2px; padding:5px 11px; cursor:pointer;
+  transition:background .13s, color .13s;
+}
+.seg button:hover{background:var(--card); color:var(--ink)}
+.seg button[aria-pressed="true"]{background:var(--s1); color:#fff}
+.seg button:focus-visible{outline:2px solid var(--s1); outline-offset:2px}
+
+/* ---------- leyenda ---------- */
+.legend{display:flex; flex-wrap:wrap; gap:6px 16px; margin-top:12px; font-size:12.5px; color:var(--ink-2)}
+.legend span{display:inline-flex; align-items:center; gap:7px}
+.swatch{width:11px; height:11px; border-radius:2px; flex:none}
+.swatch.line{height:3px; width:16px; border-radius:2px}
+
+/* ---------- panel de lectura ---------- */
+.read{display:flex; flex-direction:column; gap:16px}
+.read .stat{border-left:3px solid var(--s1); padding-left:14px}
+.read .stat .big{font-size:26px; font-weight:600; letter-spacing:-.02em; line-height:1.2}
+.read .stat .lbl{font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted)}
+.read p{margin:0; font-size:13.5px; color:var(--ink-2)}
+.read p.serif{font-family:"IBM Plex Serif",Georgia,serif; font-size:14.5px; color:var(--ink)}
+.eq{
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:12.5px; color:var(--ink);
+  background:var(--card-2); border:1px solid var(--rule); border-radius:3px; padding:10px 12px;
+  overflow-x:auto; white-space:nowrap;
+}
+
+/* ---------- tablas ---------- */
+details.data{margin-top:14px; border-top:1px solid var(--rule); padding-top:10px}
+details.data summary{
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:11px; letter-spacing:.08em;
+  text-transform:uppercase; color:var(--muted); cursor:pointer; list-style:none; user-select:none;
+}
+details.data summary::-webkit-details-marker{display:none}
+details.data summary::before{content:"▸ "; display:inline-block; transition:transform .15s}
+details.data[open] summary::before{content:"▾ "}
+details.data summary:hover{color:var(--s1)}
+details.data summary:focus-visible{outline:2px solid var(--s1); outline-offset:3px}
+.tbl-scroll{overflow-x:auto; margin-top:10px}
+table{border-collapse:collapse; width:100%; font-size:12.5px; font-variant-numeric:tabular-nums}
+th,td{text-align:right; padding:7px 9px; border-bottom:1px solid var(--rule); white-space:nowrap}
+th:first-child,td:first-child{text-align:left; font-variant-numeric:normal}
+thead th{
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:10.5px; font-weight:500;
+  letter-spacing:.07em; text-transform:uppercase; color:var(--muted); border-bottom:1px solid var(--axis);
+}
+tbody tr:hover{background:var(--card-2)}
+td.num{font-family:"IBM Plex Mono",ui-monospace,monospace}
+.chip{display:inline-flex; align-items:center; gap:6px}
+.chip .swatch{width:9px; height:9px}
+
+/* ---------- tooltip ---------- */
+#tip{
+  position:fixed; z-index:60; pointer-events:none; opacity:0; transition:opacity .1s;
+  background:var(--card); color:var(--ink); border:1px solid var(--rule); border-radius:3px;
+  box-shadow:0 4px 18px -6px rgba(0,0,0,.35); padding:9px 11px; font-size:12.5px; line-height:1.5;
+  max-width:250px;
+}
+#tip .t{font-weight:600; margin-bottom:3px}
+#tip .r{display:flex; justify-content:space-between; gap:16px; color:var(--ink-2); font-variant-numeric:tabular-nums}
+#tip .r b{color:var(--ink); font-weight:500; font-family:"IBM Plex Mono",ui-monospace,monospace}
+
+/* ---------- nota final ---------- */
+footer.note{
+  background:var(--card); border:1px solid var(--rule); border-radius:4px;
+  padding:22px 26px; box-shadow:var(--shadow);
+}
+footer.note h2{font-size:15px; font-weight:600; margin:0 0 12px}
+footer.note ol{margin:0; padding-left:20px; display:flex; flex-direction:column; gap:8px}
+footer.note li{font-size:13.5px; color:var(--ink-2)}
+footer.note code{font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:12.5px; background:var(--card-2); padding:1px 5px; border-radius:2px; color:var(--ink)}
+.sr{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap}
+@media (prefers-reduced-motion:reduce){*{transition:none !important; animation:none !important}}
+</style>
+
+<div class="wrap">
+
+<header class="top">
+  <div>
+    <p class="eyebrow">ENAHO Panel · INEI · Perú</p>
+    <h1>¿Quién gana más por hora: quien trabaja más horas?</h1>
+    <p class="lead">En el Perú de 2019, entre jóvenes de 18 a 35 años, la respuesta es <em>no</em>. Quienes trabajan jornadas más largas ganan sistemáticamente <em>menos</em> por cada hora trabajada.</p>
+  </div>
+  <div class="meta" id="meta"></div>
+</header>
+
+<section class="tiles" id="tiles" aria-label="Indicadores principales"></section>
+
+<section class="card">
+  <div class="card-head">
+    <div>
+      <h2>Horas semanales y salario por hora</h2>
+      <p class="sub">Cada punto es un grupo de ocupados con jornadas parecidas (bins de percentil de horas). El eje vertical muestra el salario por hora <strong>mediano</strong> del grupo; la curva es el ajuste MCO estimado en logaritmos sobre los microdatos.</p>
+    </div>
+    <div class="seg" role="group" aria-label="Desagregación">
+      <button type="button" data-view="all" aria-pressed="true">Total</button>
+      <button type="button" data-view="sexo" aria-pressed="false">Por sexo</button>
+      <button type="button" data-view="form" aria-pressed="false">Por afiliación</button>
+    </div>
+  </div>
+  <div class="hero">
+    <div>
+      <div class="plot" id="p-hero"></div>
+      <div class="legend" id="lg-hero"></div>
+    </div>
+    <div class="read" id="read-hero"></div>
+  </div>
+  <details class="data"><summary>Ver datos</summary><div class="tbl-scroll" id="t-hero"></div></details>
+</section>
+
+<section class="grid-2">
+  <div class="card">
+    <div class="card-head"><div>
+      <h2>Cuántas horas se trabaja</h2>
+      <p class="sub">Distribución de la jornada semanal. La jornada legal máxima en el Perú es de 48 horas.</p>
+    </div></div>
+    <div class="plot" id="p-horas"></div>
+    <details class="data"><summary>Ver datos</summary><div class="tbl-scroll" id="t-horas"></div></details>
+  </div>
+  <div class="card">
+    <div class="card-head"><div>
+      <h2>Cuánto se gana por hora</h2>
+      <p class="sub">Distribución del salario por hora en soles. La última barra acumula a todos los que ganan S/ 40 o más por hora, para hacer visible el cuerpo de la distribución.</p>
+    </div></div>
+    <div class="plot" id="p-sal"></div>
+    <details class="data"><summary>Ver datos</summary><div class="tbl-scroll" id="t-sal"></div></details>
+  </div>
+</section>
+
+<section class="grid-2">
+  <div class="card">
+    <div class="card-head"><div>
+      <h2>Salario por tramo de jornada</h2>
+      <p class="sub">La cifra sobre cada barra es el salario por hora mediano del tramo; el bigote marca el rango intercuartílico (percentiles 25 a 75).</p>
+    </div></div>
+    <div class="plot" id="p-tramos"></div>
+    <details class="data"><summary>Ver datos</summary><div class="tbl-scroll" id="t-tramos"></div></details>
+  </div>
+  <div class="card">
+    <div class="card-head"><div>
+      <h2>Salario por nivel educativo</h2>
+      <p class="sub">La educación mueve el salario mucho más que la jornada: entre secundaria completa y posgrado hay una diferencia de más de tres veces.</p>
+    </div></div>
+    <div class="plot" id="p-educ"></div>
+    <details class="data"><summary>Ver datos</summary><div class="tbl-scroll" id="t-educ"></div></details>
+  </div>
+</section>
+
+<section class="card">
+  <div class="card-head"><div>
+    <h2>Brechas por grupo</h2>
+    <p class="sub">Salario por hora mediano y rango intercuartílico en cada grupo, con las horas medianas trabajadas al lado. La pendiente es el cambio porcentual del salario por hora asociado a una hora semanal adicional dentro del grupo.</p>
+  </div></div>
+  <div class="tbl-scroll" id="t-grupos"></div>
+</section>
+
+<section class="card">
+  <div class="card-head"><div>
+    <h2>Estadísticos descriptivos</h2>
+    <p class="sub">Muestra analítica de ocupados de 2019, ponderada por el factor de expansión anual <code>facpob07</code>.</p>
+  </div></div>
+  <div class="tbl-scroll" id="t-desc"></div>
+</section>
+
+<footer class="note">
+  <h2>Cómo leer estos números</h2>
+  <ol>
+    <li><strong>Fuente y muestra.</strong> Panel ENAHO del INEI, año 2019 (<code>enaho.dta</code>). La muestra analítica son los <span id="f-n"></span> ocupados con horas trabajadas y salario por hora positivos. El panel sigue a personas de <span id="f-edad"></span> años con al menos secundaria completa, de modo que <em>no</em> es representativo de toda la PEA peruana.</li>
+    <li><strong>Ponderación.</strong> Todos los estadísticos usan el factor de expansión <code>facpob07</code>. Los errores estándar de la regresión son robustos a heterocedasticidad (HC1) y los pesos se normalizan a media 1, porque son pesos de muestreo y no frecuencias.</li>
+    <li><strong>Medianas, no medias.</strong> El salario por hora tiene una cola derecha larga (media S/ <span id="f-mean"></span> frente a mediana S/ <span id="f-med"></span>). En los gráficos se usa la mediana; las medias están en las tablas.</li>
+    <li><strong>Correlación no es causalidad.</strong> La pendiente negativa <em>no</em> dice que trabajar más horas reduzca el salario. Es composición: quienes ganan poco por hora necesitan jornadas largas para llegar a un ingreso mensual, y esos empleos están concentrados en el sector informal. Al controlar por sexo, edad, educación, área y afiliación a pensiones la pendiente ni siquiera se atenúa (<span id="f-ctrl"></span>), lo que sugiere que la explicación está en características del puesto que estas variables no capturan.</li>
+    <li><strong>Reproducir.</strong> Todo sale de <code>analisis_horas_salario_2019.py</code>, que genera además las figuras PNG, <code>tabla_descriptivos_2019.csv</code> y el JSON que alimenta esta página.</li>
+  </ol>
+</footer>
+
+</div>
+
+<div id="tip" role="status" aria-live="polite"></div>
+
+<script>
+const D = /*__DATA__*/;
+</script>
+<script>
+/* ==========================================================================
+   Utilidades
+   ========================================================================== */
+const NS = "http://www.w3.org/2000/svg";
+const el = (n, a = {}) => { const e = document.createElementNS(NS, n); for (const k in a) e.setAttribute(k, a[k]); return e; };
+const cssv = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const fmt = (x, d = 1) => x.toLocaleString("es-PE", { minimumFractionDigits: d, maximumFractionDigits: d }).replace("-", "\u2212");
+const int = x => Math.round(x).toLocaleString("es-PE");
+const soles = (x, d = 2) => "S/ " + fmt(x, d);
+const pct = (b, d = 2) => (b >= 0 ? "+" : "−") + fmt(Math.abs(b * 100), d) + "%";
+
+/* --- tooltip compartido --- */
+const tip = document.getElementById("tip");
+function showTip(ev, title, rows) {
+  tip.innerHTML = `<div class="t">${title}</div>` +
+    rows.map(([k, v]) => `<div class="r"><span>${k}</span><b>${v}</b></div>`).join("");
+  tip.style.opacity = 1;
+  moveTip(ev);
+}
+function moveTip(ev) {
+  const r = tip.getBoundingClientRect();
+  let x = ev.clientX + 14, y = ev.clientY + 14;
+  if (x + r.width > innerWidth - 8) x = ev.clientX - r.width - 14;
+  if (y + r.height > innerHeight - 8) y = ev.clientY - r.height - 14;
+  tip.style.left = x + "px"; tip.style.top = y + "px";
+}
+const hideTip = () => { tip.style.opacity = 0; };
+function hoverable(node, title, rows) {
+  node.style.cursor = "crosshair";
+  node.addEventListener("pointerenter", e => showTip(e, title, rows));
+  node.addEventListener("pointermove", moveTip);
+  node.addEventListener("pointerleave", hideTip);
+}
+
+/* --- marco de gráfico: ejes, grilla, escalas --- */
+function frame(host, { h = 300, m = { t: 14, r: 16, b: 40, l: 52 }, xd, yd, xt, yt, xlab, ylab, xband = false }) {
+  const w = Math.max(280, host.clientWidth || 480);
+  const iw = w - m.l - m.r, ih = h - m.t - m.b;
+  const svg = el("svg", { viewBox: `0 0 ${w} ${h}`, width: w, height: h, role: "img" });
+  const g = el("g", { transform: `translate(${m.l},${m.t})` });
+  svg.appendChild(g);
+
+  const X = xband
+    ? (i => (i + 0.5) * iw / xd.length)
+    : (v => (v - xd[0]) / (xd[1] - xd[0]) * iw);
+  const Y = v => ih - (v - yd[0]) / (yd[1] - yd[0]) * ih;
+
+  const grid = cssv("--grid"), axis = cssv("--axis"), muted = cssv("--muted"), ink2 = cssv("--ink-2");
+
+  (yt || []).forEach(v => {
+    g.appendChild(el("line", { x1: 0, x2: iw, y1: Y(v), y2: Y(v), stroke: grid, "stroke-width": 1 }));
+    const t = el("text", { x: -9, y: Y(v) + 4, "text-anchor": "end", fill: muted, "font-size": 11,
+      "font-family": '"IBM Plex Mono",monospace' });
+    t.textContent = typeof v === "number" ? fmt(v, Number.isInteger(v) ? 0 : 1) : v;
+    g.appendChild(t);
+  });
+  g.appendChild(el("line", { x1: 0, x2: iw, y1: Y(yd[0]), y2: Y(yd[0]), stroke: axis, "stroke-width": 1 }));
+
+  (xt || []).forEach((v, i) => {
+    const px = xband ? X(v.i) : X(v.v ?? v);
+    const t = el("text", { x: px, y: ih + 20, "text-anchor": "middle", fill: muted, "font-size": 11,
+      "font-family": '"IBM Plex Mono",monospace' });
+    t.textContent = v.label ?? String(v);
+    g.appendChild(t);
+  });
+
+  if (xlab) { const t = el("text", { x: iw / 2, y: ih + 37, "text-anchor": "middle", fill: ink2, "font-size": 11.5 }); t.textContent = xlab; g.appendChild(t); }
+  if (ylab) { const t = el("text", { transform: `translate(${-m.l + 13},${ih / 2}) rotate(-90)`, "text-anchor": "middle", fill: ink2, "font-size": 11.5 }); t.textContent = ylab; g.appendChild(t); }
+
+  const cid = "clip" + Math.random().toString(36).slice(2, 9);
+  const defs = el("defs");
+  const cp = el("clipPath", { id: cid });
+  cp.appendChild(el("rect", { x: -2, y: -m.t, width: iw + 4, height: ih + m.t }));
+  defs.appendChild(cp); svg.appendChild(defs);
+  const clip = el("g", { "clip-path": `url(#${cid})` });
+  g.appendChild(clip);
+
+  host.replaceChildren(svg);
+  return { svg, g, clip, X, Y, iw, ih, w };
+}
+
+/* --- redibuja al cambiar el ancho o el tema --- */
+const charts = [];
+function chart(id, draw) {
+  const host = document.getElementById(id);
+  let last = -1;
+  const run = () => { const w = host.clientWidth; if (w > 0 && Math.abs(w - last) > 2) { last = w; draw(host); } };
+  charts.push(() => { last = -1; run(); });
+  new ResizeObserver(run).observe(host);
+  run();
+}
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => charts.forEach(f => f()));
+
+/* --- tablas --- */
+function table(host, cols, rows) {
+  const t = document.createElement("table");
+  t.innerHTML = "<thead><tr>" + cols.map(c => `<th>${c.h}</th>`).join("") + "</tr></thead><tbody>" +
+    rows.map(r => "<tr>" + cols.map(c => {
+      const v = c.f(r);
+      return `<td class="${c.num === false ? "" : "num"}">${v}</td>`;
+    }).join("") + "</tr>").join("") + "</tbody>";
+  host.replaceChildren(t);
+}
+
+/* ==========================================================================
+   Encabezado y tiles
+   ========================================================================== */
+const dh = D.descriptivos["Horas trabajadas / semana"];
+const ds = D.descriptivos["Salario por hora (S/)"];
+
+document.getElementById("meta").innerHTML = [
+  `<b>Año</b> ${D.anio}`,
+  `<b>Muestra</b> ${int(D.n)} ocupados`,
+  `<b>Expandida</b> ${fmt(D.poblacion / 1e6, 2)} M de personas`,
+  `<b>Edad</b> ${D.edad_min}–${D.edad_max} años`,
+].join("<br>");
+
+const tiles = [
+  { k: "Jornada mediana", v: fmt(dh.mediana, 0), u: "h / semana", n: `Media ${fmt(dh.media, 1)} h · p90 ${fmt(dh.p90, 0)} h` },
+  { k: "Salario mediano", v: fmt(ds.mediana, 2), u: "S/ por hora", n: `Media ${soles(ds.media)} · p90 ${soles(ds.p90)}` },
+  { k: "Correlación", v: fmt(D.corr["Pearson  horas vs salario"], 2), u: "Pearson", n: `Spearman ${fmt(D.corr["Spearman horas vs salario"], 2)}` },
+  { k: "Pendiente", v: pct(D.reg.b), u: "por hora extra", n: `t = ${fmt(D.reg.t, 1)} · R² = ${fmt(D.reg.r2, 3)}` },
+  { k: "Trabaja 48 h o más", v: fmt(shareOver(48), 0), u: "% de ocupados", n: `${fmt(shareOver(60), 0)} % supera las 60 h` },
+];
+function shareOver(h) {
+  const e = D.hist_horas.edges, p = D.hist_horas.pct;
+  return p.reduce((a, v, i) => a + (e[i] >= h ? v : 0), 0);
+}
+document.getElementById("tiles").innerHTML = tiles.map(t =>
+  `<div class="tile"><span class="k">${t.k}</span><span class="v">${t.v} <small>${t.u}</small></span><span class="n">${t.n}</span></div>`
+).join("");
+
+/* notas al pie */
+document.getElementById("f-n").textContent = int(D.n);
+document.getElementById("f-edad").textContent = `${D.edad_min} a ${D.edad_max}`;
+document.getElementById("f-mean").textContent = fmt(ds.media, 2);
+document.getElementById("f-med").textContent = fmt(ds.mediana, 2);
+document.getElementById("f-ctrl").textContent = `${pct(D.reg_ctrl.b)} por hora, t = ${fmt(D.reg_ctrl.t, 1)}`;
+
+/* ==========================================================================
+   1. Binscatter horas → salario
+   ========================================================================== */
+const VIEWS = {
+  all: { series: [{ key: "Total", data: D.binscatter, reg: D.reg, slot: 1 }] },
+  sexo: { series: [
+    { key: "Hombres", data: D.bs_sexo["hombre"], reg: D.reg_grupo["hombre"], slot: 1 },
+    { key: "Mujeres", data: D.bs_sexo["mujer"], reg: D.reg_grupo["mujer"], slot: 2 }] },
+  form: { series: [
+    { key: "Con seguro de pensiones", data: D.bs_form["Trabajor con seguro de pensiones"], reg: D.reg_grupo["Trabajor con seguro de pensiones"], slot: 1 },
+    { key: "Sin seguro de pensiones", data: D.bs_form["Trabajor sin seguro de pensiones"], reg: D.reg_grupo["Trabajor sin seguro de pensiones"], slot: 2 }] },
+};
+let view = "all";
+const slotColor = s => cssv("--s" + s);
+const GLOSA = {
+  sexo: "Las mujeres ganan menos por hora en casi toda la distribución de jornadas y además trabajan menos horas: la brecha no se cierra en las jornadas largas, se ensancha.",
+  form: "Entre quienes están afiliados a un sistema de pensiones el salario por hora es más alto en todos los tramos, pero la caída por hora adicional también es más pronunciada. En el empleo sin afiliación el salario por hora ya parte de un nivel bajo y tiene menos de dónde caer.",
+};
+
+function drawHero(host) {
+  const S = VIEWS[view].series;
+  const pts = S.flatMap(s => s.data);
+  const ymax = Math.ceil(Math.max(...pts.map(p => p.salario)) / 2) * 2;
+  const F = frame(host, {
+    h: 330, m: { t: 16, r: 18, b: 44, l: 54 },
+    xd: [0, 90], yd: [0, ymax],
+    xt: [0, 15, 30, 45, 60, 75, 90], yt: range0(ymax, ymax > 10 ? 2 : 1),
+    xlab: "Horas trabajadas por semana", ylab: "Salario por hora mediano (S/)",
+  });
+
+  /* referencia: jornada legal de 48 h */
+  F.g.appendChild(el("line", { x1: F.X(48), x2: F.X(48), y1: 0, y2: F.ih, stroke: cssv("--axis"),
+    "stroke-width": 1, "stroke-dasharray": "3 4" }));
+  const rl = el("text", { x: F.X(48) + 6, y: 12, fill: cssv("--muted"), "font-size": 10.5,
+    "font-family": '"IBM Plex Mono",monospace' });
+  rl.textContent = "48 h";
+  F.g.appendChild(rl);
+
+  S.forEach(s => {
+    const c = slotColor(s.slot);
+    /* curva ajustada */
+    const x0 = Math.min(...s.data.map(p => p.horas)), x1 = Math.max(...s.data.map(p => p.horas));
+    const d = [];
+    for (let x = x0; x <= x1 + 0.01; x += (x1 - x0) / 60)
+      d.push(`${d.length ? "L" : "M"}${F.X(x)},${F.Y(Math.exp(s.reg.a + s.reg.b * x))}`);
+    F.clip.appendChild(el("path", { d: d.join(" "), fill: "none", stroke: c, "stroke-width": 2,
+      "stroke-linecap": "round", opacity: .6 }));
+    /* puntos */
+    s.data.forEach(p => {
+      const ring = el("circle", { cx: F.X(p.horas), cy: F.Y(p.salario), r: 6.5, fill: cssv("--card") });
+      const dot = el("circle", { cx: F.X(p.horas), cy: F.Y(p.salario), r: 4.5, fill: c });
+      F.g.appendChild(ring); F.g.appendChild(dot);
+      const hit = el("circle", { cx: F.X(p.horas), cy: F.Y(p.salario), r: 13, fill: "transparent" });
+      hoverable(hit, `${s.key} · ${fmt(p.horas, 0)} h por semana`, [
+        ["Salario/hora mediano", soles(p.salario)],
+        ["Rango p25–p75", `${soles(p.p25)} – ${soles(p.p75)}`],
+        ["Observaciones", int(p.n)],
+      ]);
+      F.g.appendChild(hit);
+    });
+    /* etiqueta directa al final de la curva */
+    const ly = Math.exp(s.reg.a + s.reg.b * x1);
+    const lab = el("text", { x: F.X(x1) - 4, y: F.Y(ly) - 11, "text-anchor": "end", fill: c,
+      "font-size": 11.5, "font-weight": 600 });
+    lab.textContent = s.key;
+    F.g.appendChild(lab);
+  });
+
+  /* leyenda */
+  document.getElementById("lg-hero").innerHTML = S.map(s =>
+    `<span><i class="swatch" style="background:${slotColor(s.slot)}"></i>${s.key} · pendiente ${pct(s.reg.b)} por hora</span>`
+  ).join("") + `<span><i class="swatch line" style="background:${cssv("--axis")}"></i>Jornada legal (48 h)</span>`;
+
+  /* panel de lectura */
+  const main = S[0];
+  document.getElementById("read-hero").innerHTML = `
+    <div class="stat" style="border-color:${slotColor(main.slot)}">
+      <div class="lbl">Efecto estimado</div>
+      <div class="big">${pct(view === "all" ? D.reg.b : main.reg.b)}</div>
+      <p>en el salario por hora por cada hora semanal adicional${view === "all" ? "" : " · " + main.key}</p>
+    </div>
+    <div class="eq">log(salario) = ${fmt(main.reg.a, 3)} ${main.reg.b < 0 ? "−" : "+"} ${fmt(Math.abs(main.reg.b), 5)} · horas</div>
+    <p>Error estándar robusto ${fmt(main.reg.se, 5)} · t = ${fmt(main.reg.t, 1)} · R² = ${fmt(main.reg.r2, 3)} · n = ${int(main.reg.n)}</p>
+    ${view === "all" ? `<p class="serif">Un ocupado que pasa de 40 a 60 horas semanales gana, en la mediana, cerca de ${fmt(Math.abs((Math.exp(D.reg.b * 20) - 1) * 100), 0)}&nbsp;% menos por hora.</p>
+    <p>Con controles de sexo, edad, educación, área y afiliación a pensiones la pendiente pasa a ${pct(D.reg_ctrl.b)} (R² = ${fmt(D.reg_ctrl.r2, 3)}): la relación no se explica por esas características.</p>`
+    : `<p class="serif">${GLOSA[view]}</p>
+       <p>${S.map(s => `${s.key}: ${pct(s.reg.b)} por hora (n = ${int(s.reg.n)})`).join(" · ")}. Cada curva se estima solo con los ocupados de ese grupo, de modo que las diferencias de nivel entre grupos no afectan la pendiente.</p>`}
+  `;
+
+  /* tabla */
+  table(document.getElementById("t-hero"),
+    [{ h: "Grupo", f: r => `<span class="chip"><i class="swatch" style="background:${slotColor(r._c)}"></i>${r._k}</span>`, num: false },
+     { h: "Horas (media del bin)", f: r => fmt(r.horas, 1) },
+     { h: "Salario/hora mediano", f: r => fmt(r.salario, 2) },
+     { h: "Media", f: r => fmt(r.sal_media, 2) },
+     { h: "p25", f: r => fmt(r.p25, 2) },
+     { h: "p75", f: r => fmt(r.p75, 2) },
+     { h: "n", f: r => int(r.n) }],
+    S.flatMap(s => s.data.map(p => ({ ...p, _k: s.key, _c: s.slot }))));
+}
+function range0(max, step) { const a = []; for (let v = 0; v <= max + 1e-9; v += step) a.push(v); return a; }
+
+document.querySelectorAll('.seg button').forEach(b => b.addEventListener("click", () => {
+  view = b.dataset.view;
+  document.querySelectorAll('.seg button').forEach(o => o.setAttribute("aria-pressed", String(o === b)));
+  drawHero(document.getElementById("p-hero"));
+}));
+chart("p-hero", drawHero);
+
+/* ==========================================================================
+   2. Histogramas
+   ========================================================================== */
+function histogram(id, tid, src, { color, xlab, ylab, fmtX, ref, refLab, tipTitle, topOpen }) {
+  chart(id, host => {
+    const e = src.edges, p = src.pct;
+    const ymax = Math.ceil(Math.max(...p));
+    const F = frame(host, {
+      h: 250, m: { t: 14, r: 14, b: 44, l: 46 },
+      xd: [e[0], e[e.length - 1]], yd: [0, ymax],
+      xt: e.filter((_, i) => i % Math.ceil(e.length / 7) === 0).map(v => ({ v, label: fmtX(v) })),
+      yt: range0(ymax, ymax > 12 ? 4 : 2), xlab, ylab,
+    });
+    if (ref != null) {
+      F.g.appendChild(el("line", { x1: F.X(ref), x2: F.X(ref), y1: 0, y2: F.ih,
+        stroke: cssv("--axis"), "stroke-width": 1, "stroke-dasharray": "3 4" }));
+    }
+    const bw = F.X(e[1]) - F.X(e[0]);
+    p.forEach((v, i) => {
+      if (v <= 0) return;
+      const x = F.X(e[i]) + 1, w = Math.max(1, bw - 2), y = F.Y(v), h = F.ih - y;
+      const r = Math.min(4, w / 2, h);
+      const path = `M${x},${F.ih} L${x},${y + r} Q${x},${y} ${x + r},${y} L${x + w - r},${y} Q${x + w},${y} ${x + w},${y + r} L${x + w},${F.ih} Z`;
+      const bar = el("path", { d: path, fill: color });
+      F.g.appendChild(bar);
+      const last = topOpen && i === p.length - 1;
+      const rango = last ? `${fmtX(e[i])} o más` : `${fmtX(e[i])} – ${fmtX(e[i + 1])}`;
+      const hit = el("rect", { x, y: 0, width: w, height: F.ih, fill: "transparent" });
+      hoverable(hit, rango, [[tipTitle, fmt(v, 2) + " %"]]);
+      F.g.appendChild(hit);
+    });
+    if (ref != null) {
+      const right = F.X(ref) > F.iw * 0.7;
+      const t = el("text", { x: F.X(ref) + (right ? -6 : 6), y: 11,
+        "text-anchor": right ? "end" : "start", fill: cssv("--ink-2"), "font-size": 10.5,
+        "font-weight": 600, "font-family": '"IBM Plex Mono",monospace' });
+      t.textContent = refLab;
+      const pad = el("rect", { x: F.X(ref) + (right ? -6 - refLab.length * 6.6 : 3), y: 1,
+        width: refLab.length * 6.6 + 6, height: 14, fill: cssv("--card") });
+      F.g.appendChild(pad); F.g.appendChild(t);
+    }
+    table(document.getElementById(tid),
+      [{ h: "Intervalo", f: r => r.last ? `${fmtX(r.a)} o más` : `${fmtX(r.a)} – ${fmtX(r.b)}`, num: false },
+       { h: "% de ocupados", f: r => fmt(r.p, 2) }],
+      p.map((v, i) => ({ a: e[i], b: e[i + 1], p: v, last: topOpen && i === p.length - 1 }))
+       .filter(r => r.p > 0));
+  });
+}
+histogram("p-horas", "t-horas", D.hist_horas, {
+  color: cssv("--s1"), xlab: "Horas por semana", ylab: "% de ocupados",
+  fmtX: v => fmt(v, 0), ref: 48, refLab: "48 h", tipTitle: "Ocupados",
+});
+histogram("p-sal", "t-sal", D.hist_salario, {
+  color: cssv("--s3"), xlab: "Soles por hora", ylab: "% de ocupados",
+  fmtX: v => fmt(v, 0), ref: D.descriptivos["Salario por hora (S/)"].mediana,
+  refLab: "Mediana", tipTitle: "Ocupados", topOpen: true,
+});
+
+/* ==========================================================================
+   3. Salario por tramo de jornada
+   ========================================================================== */
+chart("p-tramos", host => {
+  const rows = D.tramos;
+  const ymax = Math.ceil(Math.max(...rows.map(r => r.p75)) / 4) * 4;
+  const F = frame(host, {
+    h: 285, m: { t: 18, r: 14, b: 52, l: 46 },
+    xd: rows, yd: [0, ymax], xband: true,
+    xt: rows.map((r, i) => ({ i, label: r.tramo })),
+    yt: range0(ymax, 4), xlab: "Horas trabajadas por semana", ylab: "Salario por hora (S/)",
+  });
+  const bw = Math.min(46, F.iw / rows.length - 10);
+  rows.forEach((r, i) => {
+    const cx = F.X(i), y = F.Y(r.mediana), h = F.ih - y, x = cx - bw / 2;
+    const rr = Math.min(4, h);
+    F.g.appendChild(el("path", {
+      d: `M${x},${F.ih} L${x},${y + rr} Q${x},${y} ${x + rr},${y} L${x + bw - rr},${y} Q${x + bw},${y} ${x + bw},${y + rr} L${x + bw},${F.ih} Z`,
+      fill: cssv("--s1"),
+    }));
+    /* rango intercuartílico */
+    F.g.appendChild(el("line", { x1: cx, x2: cx, y1: F.Y(r.p25), y2: F.Y(r.p75), stroke: cssv("--card"), "stroke-width": 5 }));
+    F.g.appendChild(el("line", { x1: cx, x2: cx, y1: F.Y(r.p25), y2: F.Y(r.p75), stroke: cssv("--ink-2"), "stroke-width": 1.5 }));
+    [r.p25, r.p75].forEach(v => F.g.appendChild(el("line", { x1: cx - 5, x2: cx + 5, y1: F.Y(v), y2: F.Y(v), stroke: cssv("--ink-2"), "stroke-width": 1.5 })));
+    /* etiqueta directa */
+    const lab = el("text", { x: cx, y: y + 15, "text-anchor": "middle", fill: "#fff",
+      "font-size": 11.5, "font-weight": 600, "font-family": '"IBM Plex Mono",monospace' });
+    lab.textContent = fmt(r.mediana, 2);
+    F.g.appendChild(lab);
+    const hit = el("rect", { x: cx - F.iw / rows.length / 2, y: 0, width: F.iw / rows.length, height: F.ih, fill: "transparent" });
+    hoverable(hit, `${r.tramo} horas por semana`, [
+      ["Salario/hora mediano", soles(r.mediana)],
+      ["Media", soles(r.media)],
+      ["Rango p25–p75", `${soles(r.p25)} – ${soles(r.p75)}`],
+      ["% de ocupados", fmt(r.share, 1) + " %"],
+      ["Observaciones", int(r.n)],
+    ]);
+    F.g.appendChild(hit);
+  });
+  table(document.getElementById("t-tramos"),
+    [{ h: "Tramo (h/semana)", f: r => r.tramo, num: false },
+     { h: "% de ocupados", f: r => fmt(r.share, 1) },
+     { h: "Mediana S//h", f: r => fmt(r.mediana, 2) },
+     { h: "Media S//h", f: r => fmt(r.media, 2) },
+     { h: "p25", f: r => fmt(r.p25, 2) },
+     { h: "p75", f: r => fmt(r.p75, 2) },
+     { h: "n", f: r => int(r.n) }], rows);
+});
+
+/* ==========================================================================
+   4. Salario por nivel educativo
+   ========================================================================== */
+const EDU_LAB = {
+  "secundaria completa": "Secundaria completa",
+  "sup. no univ. incompleta": "Superior no univ. incompleta",
+  "sup. univ. incompleta": "Universitaria incompleta",
+  "sup. no univ. completa": "Superior no univ. completa",
+  "sup. univ. completa": "Universitaria completa",
+  "post-grado universitario": "Posgrado",
+};
+chart("p-educ", host => {
+  const rows = [...D.cortes.educ].sort((a, b) => a.sal_med - b.sal_med);
+  const w = Math.max(280, host.clientWidth);
+  const m = { t: 8, r: 60, b: 34, l: Math.min(178, w * 0.42) };
+  const h = rows.length * 34 + m.t + m.b;
+  const xmax = Math.ceil(Math.max(...rows.map(r => r.sal_med)) / 5) * 5;
+  const iw = w - m.l - m.r, ih = h - m.t - m.b;
+  const svg = el("svg", { viewBox: `0 0 ${w} ${h}`, width: w, height: h });
+  const g = el("g", { transform: `translate(${m.l},${m.t})` });
+  svg.appendChild(g);
+  const X = v => v / xmax * iw;
+  const ticks = range0(xmax, 5);
+  ticks.forEach(v => {
+    g.appendChild(el("line", { x1: X(v), x2: X(v), y1: 0, y2: ih, stroke: cssv("--grid"), "stroke-width": 1 }));
+    const t = el("text", { x: X(v), y: ih + 18, "text-anchor": "middle", fill: cssv("--muted"),
+      "font-size": 11, "font-family": '"IBM Plex Mono",monospace' });
+    t.textContent = fmt(v, 0); g.appendChild(t);
+  });
+  g.appendChild(el("line", { x1: 0, x2: 0, y1: 0, y2: ih, stroke: cssv("--axis"), "stroke-width": 1 }));
+  const xl = el("text", { x: iw / 2, y: ih + 32, "text-anchor": "middle", fill: cssv("--ink-2"), "font-size": 11.5 });
+  xl.textContent = "Salario por hora mediano (S/)"; g.appendChild(xl);
+
+  rows.forEach((r, i) => {
+    const y = i * 34 + 7, bh = 20, bw = X(r.sal_med), rr = Math.min(4, bw);
+    g.appendChild(el("path", {
+      d: `M0,${y} L${bw - rr},${y} Q${bw},${y} ${bw},${y + rr} L${bw},${y + bh - rr} Q${bw},${y + bh} ${bw - rr},${y + bh} L0,${y + bh} Z`,
+      fill: cssv("--s1"),
+    }));
+    const lb = el("text", { x: -10, y: y + 14, "text-anchor": "end", fill: cssv("--ink"), "font-size": 12.5 });
+    lb.textContent = EDU_LAB[r.grupo] ?? r.grupo; g.appendChild(lb);
+    const vl = el("text", { x: bw + 8, y: y + 14, fill: cssv("--ink"), "font-size": 12,
+      "font-weight": 600, "font-family": '"IBM Plex Mono",monospace' });
+    vl.textContent = fmt(r.sal_med, 2); g.appendChild(vl);
+    const hit = el("rect", { x: 0, y: i * 34, width: iw + m.r, height: 34, fill: "transparent" });
+    hoverable(hit, EDU_LAB[r.grupo] ?? r.grupo, [
+      ["Salario/hora mediano", soles(r.sal_med)],
+      ["Rango p25–p75", `${soles(r.sal_p25)} – ${soles(r.sal_p75)}`],
+      ["Horas medianas", fmt(r.horas_med, 0) + " h"],
+      ["% de ocupados", fmt(r.share, 1) + " %"],
+      ["Observaciones", int(r.n)],
+    ]);
+    g.appendChild(hit);
+  });
+  host.replaceChildren(svg);
+  table(document.getElementById("t-educ"),
+    [{ h: "Nivel educativo", f: r => EDU_LAB[r.grupo] ?? r.grupo, num: false },
+     { h: "% de ocupados", f: r => fmt(r.share, 1) },
+     { h: "Horas medianas", f: r => fmt(r.horas_med, 0) },
+     { h: "Mediana S//h", f: r => fmt(r.sal_med, 2) },
+     { h: "Media S//h", f: r => fmt(r.sal_mean, 2) },
+     { h: "p25", f: r => fmt(r.sal_p25, 2) },
+     { h: "p75", f: r => fmt(r.sal_p75, 2) },
+     { h: "Pendiente", f: r => pct(D.reg.b * 0 + r.corr * 0 + 0) === "" ? "" : fmt(r.corr, 2) },
+     { h: "n", f: r => int(r.n) }],
+    [...D.cortes.educ]);
+});
+
+/* ==========================================================================
+   5. Brechas por grupo (tabla)
+   ========================================================================== */
+const GRUPO_LAB = {
+  "Trabajor con seguro de pensiones": "Afiliado a pensiones",
+  "Trabajor sin seguro de pensiones": "Sin afiliación a pensiones",
+  "hombre": "Hombres", "mujer": "Mujeres", "Urbana": "Urbana", "Rural": "Rural",
+};
+const DIM_LAB = { sexo: "Sexo", area: "Área de residencia", informal: "Afiliación a pensiones", educ: "Nivel educativo" };
+(function () {
+  const rows = [];
+  ["sexo", "area", "informal", "educ"].forEach(k => {
+    D.cortes[k].forEach((r, i) => rows.push({ ...r, dim: DIM_LAB[k],
+      lab: EDU_LAB[r.grupo] ?? GRUPO_LAB[r.grupo] ?? r.grupo,
+      _first: i === 0,
+      pend: D.reg_grupo[r.grupo] ? D.reg_grupo[r.grupo].b : null }));
+  });
+  table(document.getElementById("t-grupos"),
+    [{ h: "Dimensión", f: r => (r._first ? r.dim : ""), num: false },
+     { h: "Grupo", f: r => r.lab, num: false },
+     { h: "% de ocupados", f: r => fmt(r.share, 1) },
+     { h: "Horas medianas", f: r => fmt(r.horas_med, 0) },
+     { h: "Salario/hora mediano", f: r => fmt(r.sal_med, 2) },
+     { h: "p25", f: r => fmt(r.sal_p25, 2) },
+     { h: "p75", f: r => fmt(r.sal_p75, 2) },
+     { h: "Corr. horas–log(sal)", f: r => fmt(r.corr, 2) },
+     { h: "Pendiente por hora", f: r => r.pend == null ? "—" : pct(r.pend) },
+     { h: "n", f: r => int(r.n) }], rows);
+  document.querySelectorAll("#t-grupos tbody tr").forEach((tr, i) => {
+    if (rows[i]._first && i > 0) tr.style.borderTop = "1px solid var(--axis)";
+  });
+})();
+
+/* ==========================================================================
+   6. Estadísticos descriptivos
+   ========================================================================== */
+(function () {
+  const rows = Object.entries(D.descriptivos).map(([k, v]) => ({ v: k, ...v }));
+  const LAB = {
+    "Horas trabajadas / semana": "Horas trabajadas por semana",
+    "Salario por hora (S/)": "Salario por hora (S/)",
+    "Log salario por hora": "Log del salario por hora",
+    "Edad (anos)": "Edad (años)",
+    "Anos de educacion": "Años de educación",
+    "Experiencia (anos)": "Experiencia potencial (años)",
+    "Antiguedad en el empleo (anos)": "Antigüedad en el empleo (años)",
+  };
+  table(document.getElementById("t-desc"),
+    [{ h: "Variable", f: r => LAB[r.v] ?? r.v, num: false },
+     { h: "n", f: r => int(r.n) },
+     { h: "Media", f: r => fmt(r.media, 2) },
+     { h: "D. estándar", f: r => fmt(r.sd, 2) },
+     { h: "Mín", f: r => fmt(r.min, 2) },
+     { h: "p10", f: r => fmt(r.p10, 2) },
+     { h: "p25", f: r => fmt(r.p25, 2) },
+     { h: "Mediana", f: r => fmt(r.mediana, 2) },
+     { h: "p75", f: r => fmt(r.p75, 2) },
+     { h: "p90", f: r => fmt(r.p90, 2) },
+     { h: "Máx", f: r => fmt(r.max, 2) }], rows);
+})();
+</script>
