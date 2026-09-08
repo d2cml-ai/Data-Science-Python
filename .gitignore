@@ -13,6 +13,9 @@ __pycache__/
 # Datos pesados — viven en Hugging Face, los baja scripts/fetch_data.py
 data/
 _data/
+# Excepcion: dataset chico del lab de Folium, se versiona junto al notebook
+!sessions/06-geoespacial/lab/Data/
+!sessions/06-geoespacial/lab/Data/**
 *.tif
 *.tif.ovr
 *.hdf
