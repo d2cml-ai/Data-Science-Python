@@ -37,8 +37,16 @@ raster   = [
     "pykrige>=1.7",
     "rasterstats>=0.21.0",
 ]
-llm      = ["anthropic>=0.40", "openai>=1.50", "chromadb>=0.5", "sentence-transformers>=3",
-            "python-dotenv>=1.0", "pypdf>=5", "mcp>=1.0"]
+llm      = [
+    "anthropic>=0.40",
+    "openai>=1.50",
+    "chromadb>=0.5",
+    "sentence-transformers>=3",
+    "python-dotenv>=1.0",
+    "pypdf>=5",
+    "mcp>=1.0",
+    "tiktoken>=0.8",
+]
 hf       = ["transformers>=4.44", "datasets>=3", "torch>=2.4", "accelerate>=1", "evaluate>=0.4"]
 docai    = ["paddleocr>=2.8", "openai-whisper", "pdf2image>=1.17", "pillow>=10"]
 agents   = ["crewai>=0.80", "langchain>=0.3"]

@@ -1093,6 +1093,7 @@ llm = [
     { name = "pypdf" },
     { name = "python-dotenv" },
     { name = "sentence-transformers" },
+    { name = "tiktoken" },
 ]
 practices = [
     { name = "praw" },
@@ -1185,6 +1186,7 @@ llm = [
     { name = "pypdf", specifier = ">=5" },
     { name = "python-dotenv", specifier = ">=1.0" },
     { name = "sentence-transformers", specifier = ">=3" },
+    { name = "tiktoken", specifier = ">=0.8" },
 ]
 practices = [
     { name = "praw", specifier = ">=7.8" },
