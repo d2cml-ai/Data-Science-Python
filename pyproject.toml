@@ -24,9 +24,22 @@ dependencies = [
 [dependency-groups]
 scraping = ["selenium>=4.20", "beautifulsoup4>=4.12", "lxml>=5", "html5lib>=1.1",
             "webdriver-manager>=4", "requests>=2.32", "unidecode>=1.3", "tqdm>=4.67"]
-geo      = ["geopandas>=1.0", "folium>=0.17", "mapclassify>=2.6", "pyogrio>=0.9",
-            "contextily>=1.6", "shapely>=2.0", "pyproj>=3.6", "geopy>=2.4",
-            "rtree>=1.3", "fiona>=1.10", "chardet>=5.2", "plotly>=5.24"]
+geo      = [
+    "geopandas>=1.0",
+    "folium>=0.17",
+    "mapclassify>=2.6",
+    "pyogrio>=0.9",
+    "contextily>=1.6",
+    "shapely>=2.0",
+    "pyproj>=3.6",
+    "geopy>=2.4",
+    "rtree>=1.3",
+    "fiona>=1.10",
+    "chardet>=5.2",
+    "plotly>=5.24",
+    "pysal>=26.7",
+    "spectra>=0.1.0",
+]
 raster   = [
     "rasterio>=1.3",
     "rioxarray>=0.15",
@@ -36,6 +49,7 @@ raster   = [
     "geoplot>=0.5",
     "pykrige>=1.7",
     "rasterstats>=0.21.0",
+    "sklearn-xarray>=0.4.0",
 ]
 llm      = [
     "anthropic>=0.40",
@@ -46,10 +60,54 @@ llm      = [
     "pypdf>=5",
     "mcp>=1.0",
     "tiktoken>=0.8",
+    "langchain-text-splitters>=1.1.3",
+    "deep-translator>=1.11.4",
+    "google-genai>=2.29.0",
 ]
-hf       = ["transformers>=4.44", "datasets>=3", "torch>=2.4", "accelerate>=1", "evaluate>=0.4"]
-docai    = ["paddleocr>=2.8", "openai-whisper", "pdf2image>=1.17", "pillow>=10"]
-agents   = ["crewai>=0.80", "langchain>=0.3"]
-deploy   = ["streamlit>=1.38", "fastapi>=0.115", "uvicorn>=0.30"]
+hf       = [
+    "transformers>=4.44",
+    "datasets>=3",
+    "torch>=2.4",
+    "accelerate>=1",
+    "evaluate>=0.4",
+    "pymupdf>=1.24",
+    "tweepy>=4.17.0",
+    "soundfile>=0.14.0",
+    "torchvision>=0.28.0",
+    "tensorflow>=2.21.0",
+    "geoai-py>=0.43.1",
+]
+docai    = [
+    "paddleocr[doc-parser]>=3.7",
+    "openai-whisper",
+    "pdf2image>=1.17",
+    "pillow>=10",
+    "pymupdf>=1.24",
+    "faster-whisper>=1.2.1",
+    "sounddevice>=0.5.6",
+    "torchvision>=0.28.0",
+    "pyannote-audio>=4.0.7",
+    "tensorflow>=2.21.0",
+    "paddlepaddle>=3.2.1",
+]
+agents   = [
+    "crewai>=0.80",
+    "crewai-tools>=1.15.18",
+    "langchain>=0.3",
+    "langchain-openai>=1.7.0",
+    "panel>=1.9.4",
+    "wikipedia>=1.4.0",
+]
+deploy   = [
+    "streamlit>=1.38",
+    "fastapi>=0.115",
+    "uvicorn>=0.30",
+    "pyreadstat>=1.3.6",
+]
 practices= ["praw>=7.8", "yfinance>=0.2", "python-dotenv>=1.0"]
 dev      = ["nbstripout>=0.7", "ruff>=0.6"]
+
+[tool.uv]
+# PaddleX fija opencv-contrib-python==4.10.0.84. Las tres variantes de OpenCV escriben en
+# la misma carpeta cv2/, así que deben ir en la misma versión o el import queda corrupto.
+constraint-dependencies = ["opencv-python==4.10.0.84", "opencv-python-headless==4.10.0.84"]
