@@ -1,0 +1,15 @@
+# Secretos
+.env
+
+# Pesos del modelo: superan el límite de 100 MB de GitHub
+modelo/*.safetensors
+modelo/*.bin
+modelo/*.pt
+modelo/checkpoint-*/
+
+# Entrenamiento
+resultados/
+runs/
+
+.ipynb_checkpoints/
+__pycache__/

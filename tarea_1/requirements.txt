@@ -1,0 +1,13 @@
+pandas
+requests
+beautifulsoup4
+lxml
+python-dotenv
+anthropic
+scikit-learn
+transformers
+datasets
+accelerate
+torch
+streamlit
+jupyterlab
