@@ -89,6 +89,7 @@ docai    = [
     "pyannote-audio>=4.0.7",
     "tensorflow>=2.21.0",
     "paddlepaddle>=3.2.1",
+    "transformers>=5.10",
 ]
 agents   = [
     "crewai>=0.80",
