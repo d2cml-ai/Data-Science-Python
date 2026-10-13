@@ -1,3 +1,6 @@
+# El .gitignore de la raiz ignora data/; aqui el CSV es un entregable
+!data/
+
 # Secretos
 .env
 
