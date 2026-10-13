@@ -46,7 +46,7 @@ La clave de Anthropic va en un archivo `.env`: `ANTHROPIC_API_KEY=...`
 |---|---|
 | F1 macro, modelo ajustado | _por completar_ |
 | F1 macro, zero-shot | _por completar_ |
-| Acuerdo LLM-humano | _por completar_ / 20 |
+| Acuerdo LLM-humano | 20 / 20 |
 
 ## Modelo
 
