@@ -1,10 +1,7 @@
-# El .gitignore de la raiz ignora data/; aqui el CSV es un entregable
-!data/
-
 # Secretos
 .env
 
-# Pesos del modelo: superan el límite de 100 MB de GitHub
+# Pesos del modelo: superan el limite de 100 MB de GitHub
 modelo/*.safetensors
 modelo/*.bin
 modelo/*.pt

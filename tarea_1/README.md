@@ -1,17 +1,17 @@
-# Tarea 1: clasificador de titulares de La República
+# Tarea 1: clasificador de titulares (La República y El Comercio)
 
 **Pregunta:** ¿Pueden convertir titulares peruanos en un clasificador de noticias?
 
-Autor: Roddy Huarhua · Medio: La República · Entrega: 18 de octubre de 2026
+Autor: Roddy Huarhua · Opción C (comparada): 200 de La República + 200 de El Comercio · Entrega: 18 de octubre de 2026
 
 ## Qué hay aquí
 
 | Archivo | Para qué sirve |
 |---|---|
-| `01_recoleccion.ipynb` | Scraping de titulares y CSV con 7 columnas |
+| `01_recoleccion.ipynb` | Lectura de feeds RSS, limpieza y CSV con 7 columnas |
 | `02_clasificacion.ipynb` | Etiquetado con LLM, zero-shot y fine-tuning |
 | `app.py` | Dashboard en Streamlit |
-| `data/` | CSV de titulares |
+| `datos/` | `noticias.csv` y `etiquetas_llm.csv` |
 | `modelo/` | Modelo entrenado (sin los pesos, ver abajo) |
 
 ## Cómo correrlo
@@ -25,17 +25,20 @@ La clave de Anthropic va en un archivo `.env`: `ANTHROPIC_API_KEY=...`
 
 ## Datos
 
-- Medio: La República
+- Medios: La República y El Comercio (opción C, meta 200 + 200)
+- Fuente: feeds RSS oficiales, listados en el robots.txt de cada diario
+- Se corre `01_recoleccion.ipynb` una vez al día y se acumula por URL, porque cada feed cubre solo unos 2 días
 - Titulares recolectados: _por completar_
 - Categorías: política, economía, deportes, ciencia/tecnología
-- Descartados por no encajar: _por completar_
+- Descartados por no encajar (sociedad, espectáculos, mundo, etc.): ver sección 5 del notebook 01
+- `seccion_original` es el primer tramo de la URL; `etiqueta` sale del mapeo explícito de esa sección a las 4 categorías
 
 ### Ética del scraping
 
-- Se respetó `robots.txt`.
+- Se respetó `robots.txt` de ambos diarios (se consulta con `RobotFileParser` en el notebook).
+- Se usó RSS en lugar de scrapear HTML: La República prohíbe la paginación y ofrece `/rss/` como canal público.
 - User-Agent descriptivo con contacto.
 - Pausa de 1 a 2 segundos entre pedidos y un solo reintento.
-- _Documentar aquí si se usó RSS._
 
 ## Resultados (conjunto de prueba)
 
