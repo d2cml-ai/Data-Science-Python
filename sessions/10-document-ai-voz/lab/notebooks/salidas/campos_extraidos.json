@@ -1,0 +1,22 @@
+{
+  "entidad_convocante": {
+    "valor": null,
+    "metodo": "reglas",
+    "verificado": false
+  },
+  "numero_procedimiento": {
+    "valor": "licitacion publica de obras n° 05-2026-c-mpi",
+    "metodo": "reglas",
+    "verificado": true
+  },
+  "departamento": {
+    "valor": "moquegua",
+    "metodo": "reglas",
+    "verificado": true
+  },
+  "objeto_contratacion": {
+    "valor": null,
+    "metodo": "reglas",
+    "verificado": false
+  }
+}
