@@ -146,11 +146,20 @@ una nota judicial); el LLM lo hizo en 1. El criterio humano es más estricto.
 (390 notas). No se aplica el criterio estricto del humano al entrenamiento, para no
 vaciar el dataset ni desbalancear ciencia/tecnología. Queda como limitación en el README.
 
+### D12 · Corrida del 14 de octubre y re-entrenamiento
+
+**Resultado:** 562 titulares (La República 249, El Comercio 313); 546 utilizables.
+Re-entrenado con 436 / 110: F1 macro **0.921** (BETO ajustado) frente a **0.700** (zero-shot).
+
+**Limitación:** el seguimiento de enlaces (D9) trajo notas atemporales de La República
+con fechas de 2021 a 2026 (40 de 249 anteriores a julio de 2026). Se mantienen porque el
+enunciado no fija rango de fechas, y se reportan como limitación.
+
 ## Pendiente
 
 - [x] Etiquetar con el LLM las notas nuevas de La República (399 de 399; coincidencia con la sección 90.23 %, 9 `otra`)
 - [x] Decidir qué hacer con las 9 notas `otra` y con el ruido de la etiqueta por sección en economía (D11)
 - [x] Zero-shot, fine-tuning y evaluación en prueba (issue #3): F1 macro 0.609 vs 0.920 sobre 78 notas (13 oct)
-- [ ] Seguir acumulando notas por RSS en más de un día, hasta superar 200 + 200 **utilizables** (sin `otra`), y volver a entrenar
-- [ ] `app.py` funcionando y README con métricas
+- [x] Seguir acumulando notas por RSS en más de un día, hasta superar 200 + 200 **utilizables** (sin `otra`), y volver a entrenar (D12)
+- [x] `app.py` funcionando y README con métricas
 - [ ] Revocar la clave de API tras la entrega
