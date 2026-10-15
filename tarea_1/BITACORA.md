@@ -20,7 +20,7 @@ Issues propios: #1 (recolección), #2 (etiquetado con LLM), #3 (clasificador y d
 | D7 | 13 oct | Muestra humana de 20 **sin** etiqueta del LLM ni de la sección | Evitar que el juicio humano quede influido | #2 |
 | D8 | 13 oct | Entorno de trabajo fuera de OneDrive | OneDrive sincroniza miles de archivos de un entorno virtual y rompe enlaces físicos | #2 |
 | D9 | 13 oct | Seguir enlaces entre notas de La República (con tope por sección) | Tras la 2.ª corrida seguía en 85 de 200; el RSS no iba a alcanzar | #3 |
-| D10 | 13 oct | Revocar la clave de API **después** de entregar | Quedó visible en la sesión de trabajo; riesgo bajo y la clave vence el 12 nov | — |
+| D10 | 13-14 oct | No rotar ni revocar la clave de API | Quedó visible en la sesión de trabajo; solo la tiene el equipo y vence el 12 nov | — |
 
 ## Detalle
 
