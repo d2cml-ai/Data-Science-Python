@@ -1,0 +1,44 @@
+{
+  "add_cross_attention": false,
+  "architectures": [
+    "BertForSequenceClassification"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "bos_token_id": null,
+  "classifier_dropout": null,
+  "dtype": "float32",
+  "eos_token_id": null,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "politica",
+    "1": "economia",
+    "2": "deportes",
+    "3": "ciencia_tecnologia"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "is_decoder": false,
+  "label2id": {
+    "ciencia_tecnologia": 3,
+    "deportes": 2,
+    "economia": 1,
+    "politica": 0
+  },
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "output_past": true,
+  "pad_token_id": 1,
+  "position_embedding_type": "absolute",
+  "problem_type": "single_label_classification",
+  "tie_word_embeddings": true,
+  "transformers_version": "5.19.0",
+  "type_vocab_size": 2,
+  "use_cache": false,
+  "vocab_size": 31002
+}
