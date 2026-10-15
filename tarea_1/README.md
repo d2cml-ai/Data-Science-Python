@@ -70,3 +70,5 @@ Los pesos pesan más de 100 MB y no se suben a GitHub. Para regenerarlos, correr
 
 Se corre en local con `streamlit run app.py` (requiere el modelo en `modelo/`). Verificado el 14 de octubre:
 el servidor levanta y el modelo clasifica correctamente titulares de prueba de las cuatro categorías.
+
+![Dashboard](img/dashboard.png)

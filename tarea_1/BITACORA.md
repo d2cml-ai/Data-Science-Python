@@ -123,7 +123,8 @@ El entorno virtual vive en `C:\Users\huarh\venvs\tarea1`. En la carpeta sincroni
 
 Un paso de verificación imprimió la clave en el resultado de una herramienta. Se
 decidió **no rotarla de inmediato** (queda solo en la máquina local y en la sesión,
-y vence el 12 de noviembre) y **revocarla al entregar**. La clave nunca se escribe en
+y vence el 12 de noviembre). El 14 de octubre se decidió además **no revocarla**:
+solo la conoce el equipo. La clave nunca se escribe en
 un notebook y `.env` está en `.gitignore`.
 
 ### D11 · Segunda validación humana y etiqueta para entrenar
@@ -162,4 +163,4 @@ enunciado no fija rango de fechas, y se reportan como limitación.
 - [x] Zero-shot, fine-tuning y evaluación en prueba (issue #3): F1 macro 0.609 vs 0.920 sobre 78 notas (13 oct)
 - [x] Seguir acumulando notas por RSS en más de un día, hasta superar 200 + 200 **utilizables** (sin `otra`), y volver a entrenar (D12)
 - [x] `app.py` funcionando y README con métricas
-- [ ] Revocar la clave de API tras la entrega
+- [x] ~~Revocar la clave de API tras la entrega~~: el usuario decidió no revocarla (14 oct); la clave solo la tiene el equipo (D10)
