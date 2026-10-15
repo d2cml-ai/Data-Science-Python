@@ -1,1 +1,1 @@
-{"f1_macro_finetuning": 0.9215, "f1_macro_zero_shot": 0.6995, "n_entrenamiento": 436, "n_prueba": 110}
+{"f1_macro_finetuning": 0.9334, "f1_macro_zero_shot": 0.7067, "n_entrenamiento": 382, "n_validacion": 82, "n_prueba": 82}

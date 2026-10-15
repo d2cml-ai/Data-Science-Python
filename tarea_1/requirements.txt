@@ -12,3 +12,4 @@ torch
 streamlit
 jupyterlab
 matplotlib
+plotly
