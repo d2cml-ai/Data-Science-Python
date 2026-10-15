@@ -70,7 +70,7 @@ F1 por clase del modelo ajustado: deportes 1.00, economía 0.92, ciencia/tecnolo
 1. **Los dos medios cubren distinto.** Deportes es el 42 % de los titulares de El Comercio (132 de 313) frente al 20 % de La República (50 de 249); en cambio, política pesa 33 % en La República y 19 % en El Comercio.
 2. **Entrenar importa, sobre todo en economía.** El ajuste fino sube el F1 macro de 0.707 a 0.933. La mayor ganancia está en economía: el zero-shot solo recupera la mitad de las notas (recall 0.50); el modelo ajustado llega a 0.94.
 
-Un tercer dato útil: la sección del diario no es una etiqueta limpia. El LLM coincide con la sección en el 90 % de los casos, pero en economía de La República baja al 75 %: allí caen notas de pensiones, AFP y feriados que tratan de política.
+Un tercer dato útil (gráfico 2 del notebook 01): la sección del diario no es una etiqueta limpia. El LLM coincide con la sección en el 90 % de los casos, pero en economía de La República baja al 75 %: allí caen notas de pensiones, AFP y feriados que tratan de política.
 
 ## Limitaciones
 
