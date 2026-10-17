@@ -1,0 +1,355 @@
+\documentclass[aspectratio=169,11pt]{beamer}
+\usepackage{fontspec}
+\usepackage[spanish,es-noshorthands]{babel}
+\usepackage{booktabs}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning}
+
+\definecolor{azul}{HTML}{1F4E79}
+\definecolor{naranja}{HTML}{E76F51}
+\definecolor{gris}{HTML}{5C6670}
+\usetheme{default}
+\setbeamercolor{frametitle}{fg=azul}
+\setbeamercolor{title}{fg=azul}
+\setbeamercolor{structure}{fg=azul}
+\setbeamercolor{alerted text}{fg=naranja}
+\setbeamerfont{frametitle}{series=\bfseries,size=\Large}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{itemize items}{\color{naranja}\textbullet}
+\setbeamertemplate{footline}{\hfill\color{gris}\scriptsize\insertframenumber\hspace{1em}\vspace{0.6em}}
+
+\title{De la voz al texto con modelos abiertos}
+\subtitle{Transcripción automática para antropología, sociología y psicología}
+\author{Ciencia de Datos con Python}
+\institute{Universidad del Pacífico · Departamento de Economía}
+\date{Sesión 13}
+
+\newcommand{\cod}[1]{{\small\ttfamily #1}}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{¿Por qué importa en ciencias sociales?}
+  \begin{columns}[T]
+    \begin{column}{0.52\textwidth}
+      \begin{itemize}
+        \item Transcribir a mano toma \alert{4 a 8 horas por cada hora} de grabación.
+        \item Entrevistas en profundidad, grupos focales, historias de vida, testimonios, sesiones clínicas.
+        \item Un modelo hace el \alert{primer borrador} en minutos; la persona investigadora revisa.
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.44\textwidth}
+      \begin{block}{Por qué modelos abiertos y locales}
+        \begin{itemize}
+          \item La voz es un dato personal (Ley N.° 29733).
+          \item Si el audio no sale de tu máquina, el comité de ética no tiene que preguntar adónde fue.
+          \item Sin pago por minuto ni cuenta en la nube.
+        \end{itemize}
+      \end{block}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{El pipeline}
+  \centering
+  \begin{tikzpicture}[node distance=0.35cm and 0.35cm,
+      caja/.style={draw=azul, rounded corners=3pt, fill=azul!7, align=center, font=\small, minimum height=1.1cm, text width=2.15cm},
+      humano/.style={caja, draw=naranja, fill=naranja!10},
+      flecha/.style={-{Latex[length=2.2mm]}, thick, gris}]
+    \node[caja] (a) {Audio\\ \scriptsize mp3, ogg, m4a};
+    \node[caja, right=of a] (b) {16 kHz mono\\ \scriptsize \cod{cargar\_audio}};
+    \node[caja, right=of b] (c) {VAD\\ \scriptsize ¿dónde hay voz?};
+    \node[caja, right=of c] (d) {Espectrograma log-Mel};
+    \node[caja, right=of d] (e) {Modelo ASR\\ \scriptsize texto + tiempos};
+    \node[caja, below=1.1cm of e] (f) {Diarización\\ \scriptsize ¿quién habla?};
+    \node[humano, left=of f] (g) {Revisión humana};
+    \node[humano, left=of g] (h) {Seudonimizar};
+    \node[caja, left=of h] (i) {Exportar\\ \scriptsize CSV · SRT · TXT};
+    \node[caja, left=of i] (j) {Análisis\\ \scriptsize Atlas.ti, NVivo, pandas};
+    \draw[flecha] (a) -- (b); \draw[flecha] (b) -- (c); \draw[flecha] (c) -- (d); \draw[flecha] (d) -- (e);
+    \draw[flecha] (e) -- (f); \draw[flecha] (f) -- (g); \draw[flecha] (g) -- (h); \draw[flecha] (h) -- (i); \draw[flecha] (i) -- (j);
+  \end{tikzpicture}
+
+  \vspace{0.6cm}
+  \small El VAD (Silero, 2 MB) cumple tres funciones: corta audios largos, evita darle silencio al modelo
+  (ahí inventa) y da las unidades para separar hablantes. \textcolor{naranja}{Naranja}: pasos que no se automatizan.
+\end{frame}
+
+\begin{frame}{Tres familias de modelos}
+  \begin{tabular}{p{3.1cm}p{4.9cm}p{4.9cm}}
+    \toprule
+    \textbf{Familia} & \textbf{Cómo funciona} & \textbf{Consecuencia} \\
+    \midrule
+    Codificador-decodificador \newline \scriptsize Whisper, Qwen3-ASR, Voxtral &
+      Un codificador lee el espectrograma; un decodificador \emph{escribe} palabra por palabra, como un LLM. &
+      Puntúa bien y usa contexto, pero \alert{puede inventar}. \\[4pt]
+    Transductor (TDT) \newline \scriptsize Parakeet &
+      En cada instante decide si emite una palabra o avanza en el audio. &
+      Muy rápido; el texto queda anclado al sonido. \\[4pt]
+    CTC \newline \scriptsize MMS, Omnilingual &
+      Asigna una letra (o nada) a cada 20 ms de audio. &
+      Simple, sin puntuación; se adapta a \alert{lenguas nuevas} con pocos datos. \\
+    \bottomrule
+  \end{tabular}
+\end{frame}
+
+\begin{frame}{Modelos abiertos que vale la pena conocer (2026)}
+  \small
+  \resizebox{\textwidth}{!}{%
+  \begin{tabular}{llllp{4.3cm}}
+    \toprule
+    \textbf{Modelo} & \textbf{Autor} & \textbf{Licencia} & \textbf{Idiomas} & \textbf{Para qué} \\
+    \midrule
+    Whisper large-v3-turbo & OpenAI (EE. UU.) & MIT & 99 & el estándar; traduce al inglés \\
+    faster-whisper & SYSTRAN & MIT & 99 & Whisper en CPU (int8), cualquier laptop \\
+    Qwen3-ASR 0.6B / 1.7B & Alibaba (China) & Apache 2.0 & 30 + 22 dial. & preciso; acepta contexto \\
+    Parakeet TDT 0.6B v3 & NVIDIA (EE. UU.) & CC BY 4.0 & 25 europeos & el más rápido \\
+    Voxtral Mini 4B Realtime & Mistral (Francia) & Apache 2.0 & 13 & \alert{en vivo} (streaming) \\
+    MMS-1b-all & Meta (EE. UU.) & CC BY-NC 4.0 & 1\,162 & quechua, aimara, amazónicas \\
+    Omnilingual ASR & Meta (EE. UU.) & Apache 2.0 & 1\,600+ & sucesor de MMS (Linux) \\
+    \midrule
+    \multicolumn{5}{l}{\textbf{Más modelos chinos:} SenseVoice y Fun-ASR (Alibaba), FireRedASR2 (Xiaohongshu), GLM-ASR (Zhipu), Paraformer.} \\
+    \multicolumn{5}{l}{\quad Especializados en mandarín y dialectos; SenseVoice además etiqueta emociones y risas.} \\
+    \bottomrule
+  \end{tabular}}
+
+  \vspace{4pt}
+  \scriptsize Todos en Hugging Face y todos ejecutables con \cod{transformers}. Ranking: Open ASR Leaderboard (hf-audio).
+\end{frame}
+
+\begin{frame}{Medido en clase: Mac M5 Max, español peruano}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \textbf{30 s de entrevista (El Agustino)}\\[3pt]
+      \small
+      \begin{tabular}{lrr}
+        \toprule
+        Modelo & Segundos & Disp. \\
+        \midrule
+        Parakeet v3 & 0,48 & GPU \\
+        Whisper turbo & 1,43 & GPU \\
+        Qwen3-ASR 0.6B & 1,54 & GPU \\
+        faster-whisper & 5,15 & CPU \\
+        Voxtral (por lotes) & 14,0 & GPU \\
+        \bottomrule
+      \end{tabular}
+    \end{column}
+    \begin{column}{0.46\textwidth}
+      \textbf{Entrevista simulada de 106 s}\\
+      \scriptsize dos personas reales de OpenSLR 73, con verdad conocida\\[3pt]
+      \small
+      \begin{tabular}{lrr}
+        \toprule
+        Modelo & WER & Hablantes \\
+        \midrule
+        Parakeet v3 & 3,3 \% & 100 \% \\
+        faster-whisper & 3,9 \% & 100 \% \\
+        Qwen3-ASR 0.6B & 4,6 \% & 100 \% \\
+        Whisper turbo & 7,2 \% & 100 \% \\
+        \bottomrule
+      \end{tabular}
+    \end{column}
+  \end{columns}
+  \vspace{8pt}
+  \small \textbf{WER} = (sustituidas + borradas + insertadas) / palabras reales. 5 \% = una palabra mal cada veinte.
+\end{frame}
+
+\begin{frame}{Darle contexto al modelo}
+  Dos vendedoras dicen su nombre (3 segundos de audio, Qwen3-ASR):
+  \vspace{6pt}
+  \begin{block}{Sin contexto}
+    \ttfamily ¿Sabes? Sabes el básquet. Sabes a barrientos.
+  \end{block}
+  \begin{block}{Con \cod{contexto="Isabel Vásquez, Elsa Barrientos"}}
+    \ttfamily Isabel Vásquez Elsa Barrientos
+  \end{block}
+  \vspace{6pt}
+  \small Los nombres propios y la jerga son lo que más falla, y casi siempre los conocemos de antemano
+  (ficha de campo, consentimiento informado). Whisper y Qwen3-ASR aceptan esa lista.
+\end{frame}
+
+\begin{frame}{Alucinaciones: el modelo escucha lo que no hay}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \small
+      \begin{tabular}{ll}
+        \toprule
+        Audio sin voz & Whisper escribe \\
+        \midrule
+        10 s de silencio & «Gracias por ver el video.» \\
+        10 s de ruido suave & «¡Suscríbete al canal!» \\
+        silencio, sin idioma & «Thank you.» \\
+        \midrule
+        con VAD activado & \alert{(nada)} \\
+        \bottomrule
+      \end{tabular}
+    \end{column}
+    \begin{column}{0.46\textwidth}
+      \small
+      \begin{itemize}
+        \item Whisper aprendió de subtítulos de YouTube.
+        \item \emph{Careless Whisper} (Koenecke et al., FAccT 2024): frases inventadas en $\sim$1 \% de los audios; 38 \% de ellas dañinas.
+        \item Pasa en \alert{pausas largas}: personas mayores, terapia, testimonios difíciles.
+      \end{itemize}
+    \end{column}
+  \end{columns}
+  \vspace{8pt}
+  \centering \textbf{Regla:} VAD siempre activado y toda cita textual se verifica contra el audio.
+\end{frame}
+
+\begin{frame}{Lenguas originarias: quechua de Huaylas (Shansha, Áncash)}
+  \small
+  Entrevista sobre plantas medicinales, proyecto comunitario \emph{Qurakuna Rimaykuy} (Wikimedia Commons, CC BY-SA 4.0).
+  \vspace{4pt}
+  \begin{block}{Whisper (no conoce el quechua): inventa castellano}
+    \ttfamily\footnotesize ¿Y cómo se llama Houti? Houti, Marcilina Figueroa. ¿Y qué plantas de medicina? \ldots
+  \end{block}
+  \begin{block}{MMS con el adaptador \cod{qwh}}
+    \ttfamily\footnotesize \ldots{} imataq juticun que planta \ldots{} awrinsha sirbin inframasion \ldots
+  \end{block}
+  \vspace{2pt}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \footnotesize \textbf{Adaptadores MMS en el Perú:} \cod{quy} Ayacucho, \cod{quz} Cusco, \cod{qwh} Huaylas,
+      \cod{qxn}/\cod{qxo} Conchucos, \cod{qvw} Huaylla Wanca, \cod{ayr} aimara, \cod{shp} shipibo-konibo,
+      \cod{cni} asháninka, \cod{agr} awajún, \cod{mcb} matsigenka.
+    \end{column}
+    \begin{column}{0.46\textwidth}
+      \footnotesize \alert{Validar con hablantes de la variedad}: no hay transcripción de referencia, MMS aprendió de lecturas
+      bíblicas y no puntúa.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{¿Quién habla? Diarización en tres pasos}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{enumerate}
+        \item Cortar en tramos de voz (VAD o segmentos del ASR).
+        \item \textbf{Huella de voz} de cada tramo: 256 números (WeSpeaker).
+        \item Agrupar huellas parecidas (clustering con distancia coseno).
+      \end{enumerate}
+      \vspace{6pt}
+      \small Tramos de menos de 1 s («sí», «ajá») dan huellas poco fiables: se asignan al final.
+    \end{column}
+    \begin{column}{0.46\textwidth}
+      \textbf{Entrevista 2, El Agustino}\\[3pt]
+      \small
+      \begin{itemize}
+        \item 189 s, sin decirle cuántas personas hay.
+        \item Separó al entrevistador y a las dos vendedoras.
+        \item Salida: tiempo de habla, turnos y palabras por minuto de cada persona.
+      \end{itemize}
+      \vspace{4pt}
+      \footnotesize Para habla superpuesta: \cod{pyannote community-1} (CC BY 4.0, local; pide aceptar condiciones).
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Transcripción en vivo}
+  \small
+  \begin{tabular}{p{3cm}p{5.6cm}lp{3.2cm}}
+    \toprule
+    \textbf{Estrategia} & \textbf{Cómo} & \textbf{Retraso} & \textbf{Ejemplos} \\
+    \midrule
+    Esperar la pausa & el VAD detecta el fin de la frase y se transcribe & 1--3 s & faster-whisper + Silero \\
+    Ventana deslizante & re-transcribe el último tramo cada segundo & 1--2 s & whisper\_streaming, WhisperLiveKit \\
+    Modelo de streaming & entrenado para escribir con el audio a medias & 0,1--0,5 s & \alert{Voxtral Realtime}, Kyutai STT, Moonshine \\
+    \bottomrule
+  \end{tabular}
+
+  \vspace{10pt}
+  \textbf{Medido:} Voxtral en la GPU de la Mac escribe cada palabra unos 0,04 s después de recibir el audio
+  (más 0,48 s de espera por diseño). Necesita generar 12,5 tokens/s: sin GPU, usar «esperar la pausa».
+
+  \vspace{6pt}
+  \cod{uv run python sessions/13-audio-a-texto/app/en\_vivo.py}
+\end{frame}
+
+\begin{frame}{Aplicaciones en el Perú}
+  \begin{columns}[T]
+    \begin{column}{0.32\textwidth}
+      \textbf{Antropología}
+      \small
+      \begin{itemize}
+        \item Etnobotánica y saberes locales en quechua
+        \item Historia oral y memoria
+        \item Radio comunitaria
+        \item Archivos de testimonios (p. ej., CVR)
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \textbf{Sociología}
+      \small
+      \begin{itemize}
+        \item Grupos focales con turnos
+        \item Audiencias públicas, Congreso, consejos regionales
+        \item Mensajes presidenciales y debates
+        \item Entrevistas en la calle
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \textbf{Psicología}
+      \small
+      \begin{itemize}
+        \item Sesiones y entrevistas clínicas, \alert{solo en local}
+        \item Velocidad del habla, pausas, turnos
+        \item Tareas de fluidez verbal
+        \item Cautela: errores no aleatorios
+      \end{itemize}
+    \end{column}
+  \end{columns}
+  \vspace{8pt}
+  \small Exportar en \textbf{SRT}: Atlas.ti, MAXQDA, NVivo y ELAN lo sincronizan con el audio (clic en la cita, suena el fragmento).
+\end{frame}
+
+\begin{frame}{¿Qué modelo uso?}
+  \small
+  \begin{tabular}{p{6.2cm}p{6.6cm}}
+    \toprule
+    \textbf{Situación} & \textbf{Recomendación} \\
+    \midrule
+    Laptop sin GPU, castellano o inglés & faster-whisper turbo, int8, con VAD \\
+    Mac con chip M o GPU NVIDIA, mucho audio & Parakeet v3 o Qwen3-ASR \\
+    Nombres propios, siglas, jerga & Qwen3-ASR o Whisper con contexto \\
+    Quechua, aimara, lenguas amazónicas & MMS (u Omnilingual ASR); validar con hablantes \\
+    En vivo (clase, asamblea, audiencia) & Voxtral Realtime con GPU; si no, esperar la pausa \\
+    Traducir al inglés & Whisper con \cod{task="translate"} \\
+    Mandarín y dialectos chinos & Qwen3-ASR, FireRedASR2, SenseVoice \\
+    Audio muy sensible & cualquiera, \alert{siempre local} \\
+    \bottomrule
+  \end{tabular}
+\end{frame}
+
+\begin{frame}{Antes de usarlo en una investigación}
+  \begin{enumerate}
+    \item \textbf{Consentimiento informado}: decir que el audio se transcribe con software y dónde se procesa.
+    \item \textbf{Procesar en local} y guardar los audios cifrados: la voz identifica más que el texto.
+    \item \textbf{Seudonimizar} antes de compartir; el modelo escribe un nombre de varias formas (Vásquez, Vázquez).
+    \item \textbf{Revisar todo lo que se cita} contra el audio. Los errores se concentran en acentos regionales,
+          personas mayores, habla con dificultades y cambio de código quechua-castellano.
+    \item \textbf{Reportar} en la metodología el modelo, la versión y cuánto se revisó a mano.
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}{Referencias}
+  \footnotesize
+  \begin{itemize}
+    \item Radford et al. (2022). \emph{Robust Speech Recognition via Large-Scale Weak Supervision} (Whisper). arXiv:2212.04356.
+    \item Qwen Team (2026). \emph{Qwen3-ASR}. github.com/QwenLM/Qwen3-ASR.
+    \item NVIDIA (2025). \emph{Parakeet TDT 0.6B v3}. huggingface.co/nvidia/parakeet-tdt-0.6b-v3.
+    \item Mistral AI (2026). \emph{Voxtral Realtime}. arXiv:2602.11298.
+    \item Pratap et al. (2023). \emph{Scaling Speech Technology to 1,000+ Languages} (MMS). arXiv:2305.13516.
+    \item Omnilingual ASR Team (2025). \emph{Omnilingual ASR}. arXiv:2511.09690.
+    \item Koenecke, Choi, Mei, Schellmann y Sloane (2024). \emph{Careless Whisper: Speech-to-Text Hallucination Harms}. FAccT.
+    \item Datos: OpenSLR 73 (español peruano, CC BY-SA 4.0); FLEURS (CC BY 4.0); entrevistas de Wikimedia Commons (CC BY-SA 4.0):
+          El Agustino (Wikimedia Perú), Shansha (\emph{Qurakuna Rimaykuy}), Minnesota State University, Mankato.
+  \end{itemize}
+  \vspace{6pt}
+  \normalsize Código: \cod{sessions/13-audio-a-texto/} · tutorial: \cod{lecture/tutorial\_corto\_audio\_a\_texto.ipynb}
+\end{frame}
+
+\end{document}

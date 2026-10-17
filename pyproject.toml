@@ -107,8 +107,23 @@ deploy   = [
 ]
 practices= ["praw>=7.8", "yfinance>=0.2", "python-dotenv>=1.0"]
 dev      = ["nbstripout>=0.7", "ruff>=0.6"]
+audio = [
+    "accelerate>=1.10",
+    "faster-whisper>=1.2.1",
+    "gradio>=6.0",
+    "jiwer>=4.0",
+    "librosa>=0.11",
+    "mistral-common[audio]>=1.9",
+    "pyannote-audio>=4.0.7",
+    "sounddevice>=0.5.6",
+    "soundfile>=0.13",
+    "torch>=2.8",
+    "transformers>=5.16",
+]
 
 [tool.uv]
 # PaddleX fija opencv-contrib-python==4.10.0.84. Las tres variantes de OpenCV escriben en
 # la misma carpeta cv2/, así que deben ir en la misma versión o el import queda corrupto.
-constraint-dependencies = ["opencv-python==4.10.0.84", "opencv-python-headless==4.10.0.84"]
+# PyAV 19 quitó el argumento metadata_errors que usa faster_whisper.decode_audio (1.2.1):
+# con av 19, transcribir un archivo por su ruta falla con TypeError.
+constraint-dependencies = ["opencv-python==4.10.0.84", "opencv-python-headless==4.10.0.84", "av<19"]
