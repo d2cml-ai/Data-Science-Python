@@ -1,0 +1,35 @@
+22:02:38 | INFO    | doctor | === doctor.py, semaforo de GPU ===
+22:02:38 | INFO    | doctor | config.yaml pide ocr.device='gpu', ocr.nivel='medium'
+22:02:39 | INFO    | doctor | Linea base de VRAM antes de cargar el modelo: 4561 MiB
+22:02:41 | INFO    | doctor | Construyendo PaddleOCR con device='gpu' (el parametro de 3.x, nunca use_gpu)
+22:02:41 | INFO    | doctor | [1/6] OK    | Driver NVIDIA              | NVIDIA GeForce RTX 5060 Laptop GPU, driver 582.05
+22:02:41 | INFO    | doctor | [2/6] OK    | Wheel unico de Paddle      | solo paddlepaddle-gpu==3.3.0
+22:02:41 | INFO    | doctor | [3/6] OK    | Compilacion CUDA           | is_compiled_with_cuda() = True
+22:02:41 | INFO    | doctor | [4/6] OK    | Dispositivo activo         | get_device() = gpu:0
+22:02:41 | INFO    | doctor | [5/6] OK    | Verificacion de Paddle     | run_check() exitoso, 1 GPU detectada(s)
+22:02:41 | INFO    | doctor | [6/6] FALLA | Prueba real de inferencia  | PaddleOCR no se pudo construir: (External) CUDA error(209), no kernel image is available for execution on the device. 
+  [Hint: 'cudaErrorNoKernelImageForDevice'. This indicates that there is no kernel image available that is suitable for the device. This can occur when a user specifiescode generation options for a particular CUDA source file that do not include the corresponding device configuration.] (at ..\paddle\phi\core\platform\device\gpu\gpu_info.cc:134)
+
+22:02:41 | WARNING | doctor | Modo disponible: CPU. Se degrada, y se dice en voz alta.
+22:18:00 | INFO    | doctor | === doctor.py, semaforo de GPU ===
+22:18:00 | INFO    | doctor | config.yaml pide ocr.device='gpu', ocr.nivel='medium'
+22:18:24 | INFO    | doctor | Linea base de VRAM antes de cargar el modelo: 4369 MiB
+22:18:30 | INFO    | doctor | Construyendo PaddleOCR con device='gpu' (el parametro de 3.x, nunca use_gpu)
+22:18:37 | INFO    | doctor | === doctor.py, semaforo de GPU ===
+22:18:37 | INFO    | doctor | config.yaml pide ocr.device='gpu', ocr.nivel='medium'
+22:18:39 | INFO    | doctor | Linea base de VRAM antes de cargar el modelo: 4369 MiB
+22:18:41 | INFO    | doctor | Construyendo PaddleOCR con device='gpu' (el parametro de 3.x, nunca use_gpu)
+22:20:54 | INFO    | doctor | === doctor.py, semaforo de GPU ===
+22:20:54 | INFO    | doctor | config.yaml pide ocr.device='gpu', ocr.nivel='medium'
+22:20:57 | INFO    | doctor | Linea base de VRAM antes de cargar el modelo: 4393 MiB
+22:20:59 | INFO    | doctor | Construyendo PaddleOCR con device='gpu' (el parametro de 3.x, nunca use_gpu)
+22:21:03 | INFO    | doctor | Inferencia completada en 3.4 s. VRAM pico 4819 MiB, delta +426 MiB
+22:21:03 | INFO    | doctor | [1/6] OK    | Driver NVIDIA              | NVIDIA GeForce RTX 5060 Laptop GPU, driver 582.05
+22:21:03 | INFO    | doctor | [2/6] OK    | Wheel unico de Paddle      | solo paddlepaddle-gpu==3.4.0
+22:21:03 | INFO    | doctor | [3/6] OK    | Compilacion CUDA           | is_compiled_with_cuda() = True
+22:21:03 | INFO    | doctor | [4/6] OK    | Dispositivo activo         | get_device() = gpu:0
+22:21:03 | INFO    | doctor | [5/6] OK    | Verificacion de Paddle     | run_check() exitoso, 1 GPU detectada(s)
+22:21:03 | INFO    | doctor | [6/6] OK    | Prueba real de inferencia  | VRAM subio +426 MiB sobre la linea base: el modelo esta en GPU (3.4 s)
+22:21:03 | INFO    | doctor | Modo disponible: GPU
+00:48:41 | INFO    | doctor | Linea base de VRAM antes de cargar el modelo: 17592181857975 MiB
+00:48:43 | INFO    | doctor | Construyendo PaddleOCR con device='gpu' (el parametro de 3.x, nunca use_gpu)
