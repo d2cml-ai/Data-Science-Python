@@ -29,12 +29,12 @@ h1 { font: 700 clamp(40px, 7vw, 72px)/0.95 var(--f-display); margin: 0; text-wra
 h1 em { font-style: normal; color: var(--ember) }
 h2 { font: 600 28px/1.1 var(--f-display); margin: 0 0 12px; text-wrap: balance }
 .lede { font-size: 18px; color: var(--muted); margin: 0; max-width: 65ch }
-.kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line) }
+.kpis { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line) }
 .kpi { background: var(--surface); padding: 16px 18px; display: grid; gap: 4px; align-content: start }
 .kpi b { font: 600 40px/1 var(--f-display); font-variant-numeric: tabular-nums }
 .kpi span { color: var(--muted); font-size: 14px; line-height: 1.35 }
-.kpi.fire b { color: var(--ember) } .kpi.roof b { color: var(--roof) }
-@media (max-width: 760px) { .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)) } }
+.kpi.fire b, .kpi.pob b { color: var(--ember) } .kpi.roof b { color: var(--roof) }
+@media (max-width: 960px) { .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)) } .kpi.pob { grid-column: 1 / -1 } }
 
 .escena-bloque { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 0; border: 1px solid var(--line); background: var(--surface) }
 @media (max-width: 900px) { .escena-bloque { grid-template-columns: minmax(0, 1fr) } }
@@ -100,6 +100,7 @@ code { font: 14px var(--f-data) }
     <div class="kpi roof"><b>163</b><span>edificaciones dentro de la huella quemada</span></div>
     <div class="kpi roof"><b>6 169</b><span>edificaciones a 1 km o menos del borde quemado</span></div>
     <div class="kpi"><b>57 277</b><span>edificaciones a 5 km o menos (confianza ≥ 0,70)</span></div>
+    <div class="kpi pob"><b>58 282</b><span>personas viven a 5 km o menos de los focos (WorldPop 2020)</span></div>
   </section>
 
   <section aria-label="Vista 3D">
@@ -137,7 +138,7 @@ code { font: 14px var(--f-data) }
   <section aria-label="Siete incendios">
     <h2>Los siete incendios</h2>
     <div class="tabla-wrap"><table>
-      <thead><tr><th>Distrito</th><th>ha quemadas</th><th>Nubes</th><th>Dentro</th><th>≤ 500 m</th><th>≤ 1 km</th><th>≤ 5 km</th></tr></thead>
+      <thead><tr><th>Distrito</th><th>ha quemadas</th><th>Nubes</th><th>Dentro</th><th>≤ 500 m</th><th>≤ 1 km</th><th>≤ 5 km</th><th>Población ≤ 5 km</th></tr></thead>
       <tbody id="tabla"></tbody>
     </table></div>
   </section>
@@ -146,7 +147,7 @@ code { font: 14px var(--f-data) }
     <h2>Tres hallazgos</h2>
     <div class="hallazgos">
       <div class="hallazgo"><b>38×</b><p>Hay 38 veces más edificaciones en la franja de 1 km alrededor del fuego (6 169) que dentro del área quemada (163). El fuego quema pastizal entre caseríos: el riesgo está en el borde, no en el centro.</p></div>
-      <div class="hallazgo"><b>75 %</b><p>Sicuani concentra el 75 % de las edificaciones a ≤ 1 km (4 653). 2 700 techos están a ≤ 500 m del borde quemado: el incendio llegó a la periferia de la ciudad.</p></div>
+      <div class="hallazgo"><b>75 %</b><p>Sicuani concentra el 75 % de las edificaciones a ≤ 1 km (4 653) y el 77 % de la población a ≤ 5 km (44 869 personas). 2 700 techos están a ≤ 500 m del borde quemado: el incendio llegó a la periferia de la ciudad.</p></div>
       <div class="hallazgo"><b>82</b><p>Alto Pichigua (Espinar) tiene pocas casas, pero 82 quedaron dentro del área quemada y 8 con severidad moderada alta. Estancias altoandinas dispersas, invisibles en un conteo de población de 1 km.</p></div>
     </div>
   </section>
@@ -157,6 +158,7 @@ code { font: 14px var(--f-data) }
       <p><b>Huella y severidad:</b> dNBR de Sentinel‑2 L2A (imágenes pre y post entre el 25 set y el 15 oct de 2026), del monitor de incendios del curso. Validé que mis hectáreas coinciden con las del monitor (diferencia &lt; 0,1 %).</p>
       <p><b>Edificaciones:</b> Google Open Buildings v3, tile S2 <code>917</code>, filtradas con confianza ≥ 0,70.</p>
       <p><b>Distancias:</b> en metros (UTM 18S y 19S), desde el centroide de cada edificación al borde de la huella. Severidad leída del raster en cada techo con <code>rasterio.sample</code>; densidad por anillo con <code>zonal_stats</code>.</p>
+      <p><b>Población:</b> WorldPop 2020 (1 km), personas a ≤ 5 km de los focos VIIRS, calculada en el monitor del curso. Mide desde los focos, no desde el borde dNBR.</p>
       <p><b>Relieve 3D:</b> AWS Terrain Tiles; imagen Sentinel‑2 color natural.</p>
     </div>
     <div>
@@ -165,7 +167,8 @@ code { font: 14px var(--f-data) }
         <li>Un foco de calor no es un incendio, y el dNBR no es el área oficial de SERFOR ni de INDECI.</li>
         <li>Las nubes esconden el fuego: hasta 16 % de la zona sin dato limpio. Las hectáreas son un piso.</li>
         <li>Open Buildings usa imágenes de 2023 o antes. Mide exposición, no daño.</li>
-        <li>Una edificación no es una vivienda: puede ser corral, depósito o local comunal.</li>
+        <li>Una edificación no es una vivienda: puede ser corral, depósito o local comunal. En Alto Pichigua hay 0,5 personas por edificación.</li>
+        <li>WorldPop es de 2020 y reparte la población en píxeles de 1 km: no ve caseríos pequeños.</li>
         <li>Distancia en línea recta, sin viento, pendiente ni quebradas.</li>
       </ul>
     </div>
@@ -176,13 +179,13 @@ code { font: 14px var(--f-data) }
 
 <script>
 const RES = [
-  { evento: "E38662", distrito: "Sicuani", dep: "Canchis, Cusco", ha: 3458, nubes: 0, dentro: 55, m500: 2700, km1: 4653, km5: 45512, pre: "25 set", post: "15 oct" },
-  { evento: "E37866", distrito: "Coyllurqui", dep: "Cotabambas, Apurímac", ha: 1647, nubes: 16, dentro: 14, m500: 576, km1: 652, km5: 3949 },
-  { evento: "E20624", distrito: "Toro", dep: "La Unión, Arequipa", ha: 1004, nubes: 0, dentro: 1, m500: 77, km1: 311, km5: 604 },
-  { evento: "E39747", distrito: "Alto Pichigua", dep: "Espinar, Cusco", ha: 2511, nubes: 0, dentro: 82, m500: 176, km1: 246, km5: 1344, pre: "30 set", post: "15 oct" },
-  { evento: "E41197", distrito: "San Pedro de Cachora", dep: "Abancay, Apurímac", ha: 1451, nubes: 0, dentro: 8, m500: 49, km1: 120, km5: 3676 },
-  { evento: "E45243", distrito: "Huanoquite", dep: "Paruro, Cusco", ha: 379, nubes: 7, dentro: 1, m500: 74, km1: 113, km5: 510 },
-  { evento: "E41216", distrito: "Curahuasi", dep: "Abancay, Apurímac", ha: 2847, nubes: 14, dentro: 2, m500: 28, km1: 74, km5: 1682, pre: "5 oct", post: "15 oct" },
+  { evento: "E38662", distrito: "Sicuani", dep: "Canchis, Cusco", ha: 3458, nubes: 0, dentro: 55, m500: 2700, km1: 4653, km5: 45512, pob: 44869, pre: "25 set", post: "15 oct" },
+  { evento: "E37866", distrito: "Coyllurqui", dep: "Cotabambas, Apurímac", ha: 1647, nubes: 16, dentro: 14, m500: 576, km1: 652, km5: 3949, pob: 3143 },
+  { evento: "E20624", distrito: "Toro", dep: "La Unión, Arequipa", ha: 1004, nubes: 0, dentro: 1, m500: 77, km1: 311, km5: 604, pob: 500 },
+  { evento: "E39747", distrito: "Alto Pichigua", dep: "Espinar, Cusco", ha: 2511, nubes: 0, dentro: 82, m500: 176, km1: 246, km5: 1344, pob: 657, pre: "30 set", post: "15 oct" },
+  { evento: "E41197", distrito: "San Pedro de Cachora", dep: "Abancay, Apurímac", ha: 1451, nubes: 0, dentro: 8, m500: 49, km1: 120, km5: 3676, pob: 4466 },
+  { evento: "E45243", distrito: "Huanoquite", dep: "Paruro, Cusco", ha: 379, nubes: 7, dentro: 1, m500: 74, km1: 113, km5: 510, pob: 1533 },
+  { evento: "E41216", distrito: "Curahuasi", dep: "Abancay, Apurímac", ha: 2847, nubes: 14, dentro: 2, m500: 28, km1: 74, km5: 1682, pob: 3114, pre: "5 oct", post: "15 oct" },
 ];
 const NOTAS = {
   E38662: "La ciudad de Sicuani queda al este del área quemada. La mayoría de techos expuestos están en la periferia, a menos de 500 m del borde.",
@@ -197,7 +200,7 @@ for (const r of RES) {
   const tr = document.createElement("tr");
   tr.innerHTML = `<td>${r.distrito}<span class="dep">${r.dep}</span></td><td class="num">${fmt.format(r.ha)}</td><td class="num">${r.nubes} %</td>
     <td class="num">${fmt.format(r.dentro)}</td><td class="num">${fmt.format(r.m500)}</td>
-    <td class="num">${fmt.format(r.km1)}<span class="mini" style="width:${Math.max(2, 70 * r.km1 / maxKm1)}px"></span></td><td class="num">${fmt.format(r.km5)}</td>`;
+    <td class="num">${fmt.format(r.km1)}<span class="mini" style="width:${Math.max(2, 70 * r.km1 / maxKm1)}px"></span></td><td class="num">${fmt.format(r.km5)}</td><td class="num">${fmt.format(r.pob)}</td>`;
   tbody.appendChild(tr);
 }
 
@@ -313,7 +316,8 @@ function ficha(ev) {
   const filas = [["Dentro", r.dentro], ["≤ 500 m", r.m500], ["≤ 1 km", r.km1], ["≤ 5 km", r.km5]];
   $("f-anillos").innerHTML = filas.map(([et, v]) =>
     `<div class="anillo"><span>${et}</span><span class="barra"><i style="width:${Math.max(1, 100 * Math.sqrt(v / r.km5))}%"></i></span><b>${fmt.format(v)}</b></div>`).join("")
-    + `<span class="clave">edificaciones · barra en escala raíz cuadrada</span>`;
+    + `<span class="clave">edificaciones · barra en escala raíz cuadrada</span>`
+    + `<div class="anillo"><span>Población</span><span></span><b>${fmt.format(r.pob)}</b></div><span class="clave">personas a ≤ 5 km de los focos · WorldPop 2020</span>`;
   $("f-nota").textContent = NOTAS[ev];
 }
 
