@@ -29,6 +29,8 @@ Las versiones exactas están fijadas en `uv.lock`. No hace falta activar nada:
 | 10 | Document AI y voz | `docai` |
 | 11 | Agentes | `agents` |
 | 12 | Despliegue y evaluación | `deploy` |
+| 13 | De la voz al texto con modelos abiertos | `audio` |
+| 15 | Del texto a tu voz: reels con modelos abiertos | entorno propio (ver su README) |
 
 ## Datos
 

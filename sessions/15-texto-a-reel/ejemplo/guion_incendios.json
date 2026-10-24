@@ -1,0 +1,61 @@
+{
+  "titulo": "Perú en llamas 2026",
+  "escenas": [
+    {
+      "frase": "Al corte del diecisiete de octubre de dos mil veintiséis, los datos satelitales muestran una realidad crítica en nuestro territorio.",
+      "cifra": "17 oct 2026",
+      "etiqueta": "Fecha de corte de datos",
+      "cifra_en_texto": true,
+      "wer": 0.0
+    },
+    {
+      "frase": "Octubre es el más intenso desde dos mil doce, con doce mil novecientos ochenta y cuatro focos detectados por satélite.",
+      "cifra": "12,984",
+      "etiqueta": "Focos S-NPP en octubre",
+      "cifra_en_texto": true,
+      "wer": 0.0
+    },
+    {
+      "frase": "Esta cifra representa un aumento del ciento veintiséis por ciento sobre el promedio histórico de los últimos catorce años.",
+      "cifra": "+126 %",
+      "etiqueta": "Crecimiento vs promedio 2012-2025",
+      "cifra_en_texto": true,
+      "wer": 0.0
+    },
+    {
+      "frase": "Cincuenta y seis incendios activos superan las cien hectáreas; el de Río Tambo arde a ocho punto siete kilómetros de la Reserva Comunal Asháninka.",
+      "cifra": "56",
+      "etiqueta": "Incendios activos > 100 ha",
+      "cifra_en_texto": true,
+      "revisado_a_mano": "El modelo decía que los incendios estaban 'afectando' la Reserva Comunal Asháninka; el texto dice que Río Tambo está a 8.7 km.",
+      "wer": 0.041666666666666664
+    },
+    {
+      "frase": "Veintiocho áreas naturales protegidas registran focos de calor, amenazando ecosistemas únicos de la selva y la sierra.",
+      "cifra": "28",
+      "etiqueta": "ANP con focos en 7 días",
+      "cifra_en_texto": true,
+      "wer": 0.0
+    },
+    {
+      "frase": "Construí este tablero con datos abiertos para entender la crisis; te invito a explorar el análisis completo en mi perfil.",
+      "cifra": "",
+      "etiqueta": "Mira el tablero: enlace en mi perfil",
+      "cifra_en_texto": true,
+      "wer": 0.0
+    }
+  ],
+  "hashtags": [
+    "#IncendiosPeru",
+    "#DataScience",
+    "#CrisisClimatica",
+    "#Amazonia",
+    "#DatosAbiertos"
+  ],
+  "posts": {
+    "linkedin": "La temporada de incendios 2026 en Perú está marcando récords históricos. \n\nConstruí un tablero interactivo con datos satelitales reales (VIIRS, Sentinel-2) para visualizar la magnitud de la crisis. \n\nOctubre supera en un 126% el promedio histórico. La voz de este video fue generada con IA a partir de mi voz.",
+    "x": "Octubre 2026: 12,984 focos de calor en Perú. +126% vs promedio histórico. \n\nCreé un tablero con datos satelitales reales para analizar la crisis. \n\nEnlace al tablero en mi bio. \n\n(Voz generada con IA a partir de mi voz)",
+    "facebook": "El fuego avanza en el Perú. Este año, octubre es el más intenso desde 2012. \n\nDesarrollé una herramienta con datos abiertos para monitorear la situación en tiempo real. \n\nComparte este video. \n\n(Voz generada con IA a partir de mi voz)"
+  },
+  "cifras_dudosas_en_posts": []
+}
