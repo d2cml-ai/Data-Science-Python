@@ -19,6 +19,7 @@ narrado con tu voz clonada y listo para Facebook, X o LinkedIn. Todos los modelo
 
 | Archivo | Qué hace |
 |---|---|
+| `texto_a_reel.ipynb` | La clase paso a paso: guion, revisión, voz, WER, subtítulos, video y la comparación con VoxCPM2 |
 | `guion.py` | Paso 1: arma el prompt, llama al modelo (o lee la respuesta de un chat) y verifica las cifras |
 | `reel.py` | Pasos 3 a 5: voz clonada, subtítulos, control de calidad y video |
 | `hacer_reel.py` | Corre los pasos 3 a 5 desde la terminal |
@@ -37,6 +38,9 @@ uv venv .venv
 uv pip install --python .venv/bin/python qwen-tts faster-whisper pillow imageio-ffmpeg soundfile jiwer num2words pypdf
 uv pip install --python .venv/bin/python voxcpm      # opcional, para la voz de locutor
 ```
+
+Para el notebook, sumen `pandas matplotlib librosa jupyterlab` y ábranlo con `.venv/bin/jupyter lab texto_a_reel.ipynb`.
+Su voz va en esta carpeta como `mi_voz.opus` (o `.m4a`, `.wav`); git la ignora.
 
 En Windows la ruta es `.venv\Scripts\python`. La primera corrida baja unos 4 GB de modelos (2.3 GB la voz y 1.5 GB Whisper;
 VoxCPM2 suma otros 4 GB). `ffmpeg` viene dentro de `imageio-ffmpeg` y las fuentes Oswald y Public Sans se bajan solas.
