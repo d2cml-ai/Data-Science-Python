@@ -1,0 +1,9 @@
+[project]
+name = "mcp-bcrp"
+version = "0.1.0"
+description = "Servidor MCP con las series oficiales del BCRP"
+requires-python = ">=3.11"
+dependencies = ["fastmcp>=4,<5", "httpx", "pandas"]
+
+[dependency-groups]
+dev = ["pytest"]

@@ -1,0 +1,9 @@
+id,pregunta,verdad,tolerancia,serie,periodo
+ipc_set26,"¿Cuál fue la inflación interanual (variación del IPC en 12 meses) de Lima Metropolitana en setiembre de 2026, en %?",4.5487,0.05,PN01273PM,2026-09
+ipc_dic25,"¿Cuál fue la inflación interanual (variación del IPC en 12 meses) de Lima Metropolitana en diciembre de 2025, en %?",1.5088,0.05,PN01273PM,2025-12
+ipc_mar25,"¿Cuál fue la variación mensual del IPC de Lima Metropolitana en marzo de 2025, en %?",0.8102,0.02,PN01271PM,2025-03
+referencia_set26,"¿Cuál era la tasa de referencia de la política monetaria del BCRP en setiembre de 2026, en %?",4.25,0.01,PD04722MM,2026-09
+tc_15oct26,"¿Cuál fue el tipo de cambio interbancario venta del 15 de octubre de 2026 según el BCRP, en soles por dólar?",3.4282,0.002,PD04638PD,2026-10-15
+rin_ago26,"¿A cuánto ascendían las reservas internacionales netas del BCRP a fines de agosto de 2026, en millones de US$?",96517.9,100,PN00027MM,2026-08
+cobre_ago26,"¿Cuál fue el precio promedio del cobre en agosto de 2026 según el BCRP, en centavos de US$ por libra?",689.70,3.5,PN38784BM,2026-08
+pbi_2025,"¿Cuánto creció el PBI real del Perú en 2025 según el BCRP, en %?",3.4306,0.05,PM04923AA,2025
