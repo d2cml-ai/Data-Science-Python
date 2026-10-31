@@ -1,0 +1,442 @@
+<title>¿A quién alcanza el fuego?</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Source+Sans+3:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<script src="https://unpkg.com/deck.gl@9.0.38/dist.min.js"></script>
+<style>
+/* Layout: informe de campo en una columna; la escena 3D a todo el ancho con su ficha al lado */
+:root {
+  --bg: #eef0ea; --surface: #f8f9f5; --ink: #1d2a33; --muted: #5b6770; --line: #cfd5cc;
+  --ember: #d9480f; --ember-soft: #fbe3d3; --roof: #0891b2; --roof-near: #2563eb; --roof-far: #7b8794;
+  --scene: #1c2630;
+  --f-display: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --f-body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  --f-data: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #151c21; --surface: #1d262d; --ink: #e6ebe6; --muted: #9aa7ae; --line: #2f3b43;
+  --ember: #ff7a3d; --ember-soft: #3a2418; --roof: #22d3ee; --roof-near: #60a5fa; --roof-far: #8b98a3; --scene: #0f161b; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #151c21; --surface: #1d262d; --ink: #e6ebe6; --muted: #9aa7ae; --line: #2f3b43;
+  --ember: #ff7a3d; --ember-soft: #3a2418; --roof: #22d3ee; --roof-near: #60a5fa; --roof-far: #8b98a3; --scene: #0f161b; color-scheme: dark }
+* { box-sizing: border-box }
+body { background: var(--bg); color: var(--ink); font: 16px/1.5 var(--f-body); }
+.wrap { max-width: 1180px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 28px 56px; display: grid; gap: 40px }
+header { display: grid; gap: 10px; max-width: 760px }
+.eyebrow { font: 500 12px/1.4 var(--f-data); letter-spacing: .06em; text-transform: uppercase; color: var(--muted) }
+h1 { font: 700 clamp(40px, 7vw, 72px)/0.95 var(--f-display); margin: 0; text-wrap: balance; letter-spacing: -.01em }
+h1 em { font-style: normal; color: var(--ember) }
+h2 { font: 600 28px/1.1 var(--f-display); margin: 0 0 12px; text-wrap: balance }
+.lede { font-size: 18px; color: var(--muted); margin: 0; max-width: 65ch }
+.kpis { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line) }
+.kpi { background: var(--surface); padding: 16px 18px; display: grid; gap: 4px; align-content: start }
+.kpi b { font: 600 40px/1 var(--f-display); font-variant-numeric: tabular-nums }
+.kpi span { color: var(--muted); font-size: 14px; line-height: 1.35 }
+.kpi.fire b, .kpi.pob b { color: var(--ember) } .kpi.roof b { color: var(--roof) }
+@media (max-width: 960px) { .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)) } .kpi.pob { grid-column: 1 / -1 } }
+
+.escena-bloque { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 0; border: 1px solid var(--line); background: var(--surface) }
+@media (max-width: 900px) { .escena-bloque { grid-template-columns: minmax(0, 1fr) } }
+.escena-wrap { position: relative; min-width: 0 }
+#escena { position: relative; height: min(70vh, 620px); min-height: 420px; background: var(--scene); overflow: hidden }
+.tabs { display: flex; flex-wrap: wrap; gap: 6px; padding: 10px; border-bottom: 1px solid var(--line) }
+.tabs button, .toggles label { font: 600 14px/1 var(--f-body); border: 1px solid var(--line); background: var(--bg); color: var(--ink); padding: 9px 12px; cursor: pointer; border-radius: 2px }
+.tabs button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink) }
+.tabs button:focus-visible, .toggles input:focus-visible + span { outline: 2px solid var(--ember); outline-offset: 2px }
+.overlay { position: absolute; left: 10px; bottom: 10px; display: grid; gap: 6px; background: rgba(15,22,27,.78); color: #e8eef0; padding: 10px 12px; font-size: 13px; max-width: calc(100% - 20px); pointer-events: none }
+.overlay .row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap }
+.sw { width: 12px; height: 12px; display: inline-block; border: 1px solid rgba(255,255,255,.6) }
+.carga { position: absolute; inset: 0; display: grid; place-items: center; color: #cbd5d8; font: 500 14px var(--f-data) }
+.ayuda { position: absolute; right: 10px; top: 10px; background: rgba(15,22,27,.7); color: #dfe7ea; font: 12px var(--f-data); padding: 6px 8px; pointer-events: none }
+.ficha { padding: 18px; display: grid; gap: 14px; align-content: start; border-left: 1px solid var(--line); min-width: 0 }
+@media (max-width: 900px) { .ficha { border-left: 0; border-top: 1px solid var(--line) } }
+.ficha h3 { font: 600 30px/1 var(--f-display); margin: 0 }
+.ficha .sub { color: var(--muted); font-size: 14px }
+.anillos { display: grid; gap: 8px }
+.anillo { display: grid; grid-template-columns: 92px minmax(0, 1fr) 64px; gap: 8px; align-items: center; font-size: 14px }
+.anillo .barra { height: 10px; background: var(--line); position: relative }
+.anillo .barra i { position: absolute; inset: 0 auto 0 0; background: var(--roof) }
+.anillo b { font: 500 14px var(--f-data); text-align: right; font-variant-numeric: tabular-nums }
+.nota { font-size: 14px; color: var(--muted); margin: 0 }
+.toggles { display: flex; flex-wrap: wrap; gap: 6px }
+.toggles label { display: inline-flex; gap: 6px; align-items: center; font-weight: 400 }
+.toggles input { accent-color: var(--ember) }
+.clave { font: 500 13px var(--f-data); color: var(--muted) }
+
+.tabla-wrap { overflow-x: auto; border: 1px solid var(--line); background: var(--surface) }
+table { border-collapse: collapse; width: 100%; min-width: 680px; font-size: 15px }
+th, td { padding: 10px 12px; text-align: right; border-bottom: 1px solid var(--line); font-variant-numeric: tabular-nums }
+th { font: 500 12px var(--f-data); text-transform: uppercase; letter-spacing: .05em; color: var(--muted); background: var(--bg) }
+th:first-child, td:first-child { text-align: left }
+td.num { font-family: var(--f-data); font-size: 14px }
+td .dep { display: block; color: var(--muted); font-size: 13px }
+.mini { display: inline-block; height: 8px; background: var(--roof); vertical-align: middle; margin-left: 6px }
+tr:last-child td { border-bottom: 0 }
+
+.hallazgos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px }
+@media (max-width: 860px) { .hallazgos { grid-template-columns: minmax(0, 1fr) } }
+.hallazgo { display: grid; gap: 8px; align-content: start; border-top: 3px solid var(--ember); padding-top: 12px; min-width: 0 }
+.hallazgo b { font: 700 46px/1 var(--f-display); font-variant-numeric: tabular-nums }
+.hallazgo p { margin: 0 }
+.dos { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px }
+@media (max-width: 860px) { .dos { grid-template-columns: minmax(0, 1fr) } }
+.dos ul { margin: 0; padding-left: 18px; display: grid; gap: 6px }
+.dos p { margin: 0 0 8px; max-width: 65ch }
+.seg { display: inline-flex; flex-wrap: wrap; border: 1px solid var(--ink); }
+.seg button { font: 600 15px/1 var(--f-body); padding: 10px 14px; border: 0; border-right: 1px solid var(--ink); background: var(--surface); color: var(--ink); cursor: pointer }
+.seg button:last-child { border-right: 0 }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--bg) }
+.seg button:focus-visible, .tiempo button:focus-visible { outline: 2px solid var(--ember); outline-offset: 2px }
+.radio-bloque { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; align-items: start }
+@media (max-width: 860px) { .radio-bloque { grid-template-columns: minmax(0, 1fr) } }
+.radio-bloque p { margin: 0; max-width: 60ch }
+.cifra { font: 700 64px/1 var(--f-display); font-variant-numeric: tabular-nums; color: var(--roof) }
+.comp { display: grid; gap: 10px }
+.comp .fila { display: grid; grid-template-columns: 190px minmax(0, 1fr) 90px; gap: 10px; align-items: center; font-size: 14px }
+@media (max-width: 520px) { .comp .fila { grid-template-columns: minmax(0, 1fr) 80px } .comp .fila .barra { grid-column: 1 / -1; grid-row: 2 } }
+.comp .barra { height: 14px; background: var(--line); position: relative }
+.comp .barra i { position: absolute; inset: 0 auto 0 0 }
+.comp b { font: 500 14px var(--f-data); text-align: right; font-variant-numeric: tabular-nums }
+th.sel, td.sel { background: var(--ember-soft) }
+.tiempo { display: flex; align-items: center; gap: 10px; padding: 10px; border-top: 1px solid var(--line); flex-wrap: wrap }
+.tiempo button { font: 600 14px/1 var(--f-body); border: 1px solid var(--ink); background: var(--ink); color: var(--bg); padding: 9px 14px; cursor: pointer; border-radius: 2px }
+.tiempo input[type=range] { flex: 1 1 160px; min-width: 0; accent-color: var(--ember) }
+.tiempo span { font: 500 13px var(--f-data); color: var(--muted); min-width: 0 }
+footer { font-size: 14px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 16px }
+a { color: var(--roof-near) }
+code { font: 14px var(--f-data) }
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Reto D · ¿A quién afecta? · Ciencia de Datos con Python · 21 oct 2026</div>
+    <h1>¿A quién alcanza <em>el fuego</em>?</h1>
+    <p class="lede">Siete incendios del sur andino, la huella quemada que ve Sentinel‑2 y cada techo que detecta Google Open Buildings. Pregunta de relaciones comunitarias: ¿cuántas edificaciones quedaron dentro o al lado del área quemada?</p>
+  </header>
+
+  <section class="kpis" aria-label="Resumen">
+    <div class="kpi fire"><b>13 297</b><span>ha quemadas en 7 incendios de Apurímac, Cusco y Arequipa (dNBR)</span></div>
+    <div class="kpi roof"><b>163</b><span>edificaciones dentro de la huella quemada</span></div>
+    <div class="kpi roof"><b>6 169</b><span>edificaciones a 1 km o menos del borde quemado</span></div>
+    <div class="kpi"><b>57 277</b><span>edificaciones a 5 km o menos (confianza ≥ 0,70)</span></div>
+    <div class="kpi pob"><b>58 282</b><span>personas viven a 5 km o menos de los focos (WorldPop 2020)</span></div>
+  </section>
+
+  <section aria-label="Vista 3D">
+    <h2>El fuego y los techos, en 3D</h2>
+    <div class="escena-bloque">
+      <div class="escena-wrap">
+        <div class="tabs" role="group" aria-label="Elegir incendio">
+          <button type="button" id="t-E38662" data-ev="E38662" aria-pressed="true">Sicuani</button>
+          <button type="button" id="t-E39747" data-ev="E39747" aria-pressed="false">Alto Pichigua</button>
+          <button type="button" id="t-E41216" data-ev="E41216" aria-pressed="false">Curahuasi</button>
+        </div>
+        <div id="escena">
+          <div class="carga" id="carga">Cargando terreno…</div>
+          <div class="ayuda">arrastra para mover · clic derecho o dos dedos para girar</div>
+          <div class="overlay" aria-hidden="true">
+            <div class="row"><span class="sw" style="background:#facc15"></span>baja <span class="sw" style="background:#f97316"></span>mod. baja <span class="sw" style="background:#dc2626"></span>mod. alta <span class="sw" style="background:#7f1d1d"></span>alta</div>
+            <div class="row"><span class="sw" style="background:#22d3ee"></span>techo dentro del área quemada <span class="sw" style="background:#3b82f6"></span><span id="leg-radio">a ≤ 1 km</span> <span class="sw" style="background:#94a3b8"></span>más lejos</div>
+          </div>
+        </div>
+        <div class="tiempo">
+          <button type="button" id="play">▶ Reproducir el fuego</button>
+          <input type="range" id="dia" min="0" max="0" value="0" aria-label="Día del incendio">
+          <span id="etq-dia">Día 1</span>
+        </div>
+      </div>
+      <aside class="ficha" aria-live="polite">
+        <div><h3 id="f-nombre">Sicuani</h3><div class="sub" id="f-sub"></div></div>
+        <div class="clave" id="f-sentinel"></div>
+        <div class="anillos" id="f-anillos"></div>
+        <p class="nota" id="f-nota"></p>
+        <div class="toggles">
+          <label><input type="checkbox" id="c-sev" checked><span>Severidad dNBR</span></label>
+          <label><input type="checkbox" id="c-edif" checked><span>Edificaciones</span></label>
+          <label><input type="checkbox" id="c-focos"><span>Focos VIIRS</span></label>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section aria-label="El radio cambia la respuesta">
+    <h2>El radio cambia la respuesta</h2>
+    <div class="radio-bloque">
+      <div style="display:grid; gap:14px; min-width:0">
+        <p>No hay una distancia correcta: depende del viento, la pendiente y la vegetación. Elige un radio desde el borde quemado y mira cómo cambia la cifra. También cambia el 3D y la columna resaltada de la tabla.</p>
+        <div class="seg" role="group" aria-label="Radio">
+          <button type="button" data-r="dentro" aria-pressed="false">Dentro</button>
+          <button type="button" data-r="m500" aria-pressed="false">500 m</button>
+          <button type="button" data-r="km1" aria-pressed="true">1 km</button>
+          <button type="button" data-r="km2" aria-pressed="false">2 km</button>
+          <button type="button" data-r="km5" aria-pressed="false">5 km</button>
+        </div>
+        <div><div class="cifra" id="r-cifra">6 169</div><div class="clave" id="r-texto">edificaciones a ≤ 1 km del borde quemado, en los 7 incendios</div></div>
+      </div>
+      <div class="comp">
+        <div class="clave">Dos formas de estimar personas</div>
+        <div class="fila"><span>Edificaciones × 3,5 personas</span><span class="barra"><i id="b-edif" style="background:var(--roof)"></i></span><b id="v-edif"></b></div>
+        <div class="fila"><span>WorldPop 2020, a ≤ 5 km de los focos</span><span class="barra"><i id="b-wp" style="background:var(--ember)"></i></span><b>58 282</b></div>
+        <p class="nota" id="r-nota"></p>
+      </div>
+    </div>
+  </section>
+
+  <section aria-label="Siete incendios">
+    <h2>Los siete incendios</h2>
+    <div class="tabla-wrap"><table>
+      <thead><tr><th>Distrito</th><th>ha quemadas</th><th>Nubes</th><th>Dentro</th><th>≤ 500 m</th><th>≤ 1 km</th><th>≤ 2 km</th><th>≤ 5 km</th><th>Población ≤ 5 km</th></tr></thead>
+      <tbody id="tabla"></tbody>
+    </table></div>
+  </section>
+
+  <section aria-label="Hallazgos">
+    <h2>Tres hallazgos</h2>
+    <div class="hallazgos">
+      <div class="hallazgo"><b>38×</b><p>Hay 38 veces más edificaciones en la franja de 1 km alrededor del fuego (6 169) que dentro del área quemada (163). El fuego quema pastizal entre caseríos: el riesgo está en el borde, no en el centro.</p></div>
+      <div class="hallazgo"><b>75 %</b><p>Sicuani concentra el 75 % de las edificaciones a ≤ 1 km (4 653) y el 77 % de la población a ≤ 5 km (44 869 personas). 2 700 techos están a ≤ 500 m del borde quemado: el incendio llegó a la periferia de la ciudad.</p></div>
+      <div class="hallazgo"><b>82</b><p>Alto Pichigua (Espinar) tiene pocas casas, pero 82 quedaron dentro del área quemada y 8 con severidad moderada alta. Estancias altoandinas dispersas, invisibles en un conteo de población de 1 km.</p></div>
+    </div>
+  </section>
+
+  <section class="dos" aria-label="Método y limitaciones">
+    <div>
+      <h2>Datos y método</h2>
+      <p><b>Huella y severidad:</b> dNBR de Sentinel‑2 L2A (imágenes pre y post entre el 25 set y el 15 oct de 2026), del monitor de incendios del curso. Validé que mis hectáreas coinciden con las del monitor (diferencia &lt; 0,1 %).</p>
+      <p><b>Edificaciones:</b> Google Open Buildings v3, tile S2 <code>917</code>, filtradas con confianza ≥ 0,70.</p>
+      <p><b>Distancias:</b> en metros (UTM 18S y 19S), desde el centroide de cada edificación al borde de la huella. Severidad leída del raster en cada techo con <code>rasterio.sample</code>; densidad por anillo con <code>zonal_stats</code>.</p>
+      <p><b>Población:</b> WorldPop 2020 (1 km), personas a ≤ 5 km de los focos VIIRS, calculada en el monitor del curso. Mide desde los focos, no desde el borde dNBR.</p>
+      <p><b>Relieve 3D:</b> AWS Terrain Tiles; imagen Sentinel‑2 color natural.</p>
+    </div>
+    <div>
+      <h2>Limitaciones</h2>
+      <ul>
+        <li>Un foco de calor no es un incendio, y el dNBR no es el área oficial de SERFOR ni de INDECI.</li>
+        <li>Las nubes esconden el fuego: hasta 16 % de la zona sin dato limpio. Las hectáreas son un piso.</li>
+        <li>Open Buildings usa imágenes de 2023 o antes. Mide exposición, no daño.</li>
+        <li>Una edificación no es una vivienda: puede ser corral, depósito o local comunal. En Alto Pichigua hay 0,5 personas por edificación.</li>
+        <li>WorldPop es de 2020 y reparte la población en píxeles de 1 km: no ve caseríos pequeños.</li>
+        <li>Distancia en línea recta, sin viento, pendiente ni quebradas.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>Roddy Huarhua · Diplomado PUCP, Ciencia de Datos con Python · Notebook y datos en la carpeta <code>tarea_incendios</code> del repositorio del curso. Herramienta académica: no reemplaza los reportes del COEN, INDECI, SERFOR ni SERNANP.</footer>
+</div>
+
+<script>
+const RES = [
+  { evento: "E38662", distrito: "Sicuani", dep: "Canchis, Cusco", ha: 3458, nubes: 0, dentro: 55, m500: 2700, km1: 4653, km2: 13719, km5: 45512, pob: 44869, pre: "25 set", post: "15 oct" },
+  { evento: "E37866", distrito: "Coyllurqui", dep: "Cotabambas, Apurímac", ha: 1647, nubes: 16, dentro: 14, m500: 576, km1: 652, km2: 1121, km5: 3949, pob: 3143 },
+  { evento: "E20624", distrito: "Toro", dep: "La Unión, Arequipa", ha: 1004, nubes: 0, dentro: 1, m500: 77, km1: 311, km2: 385, km5: 604, pob: 500 },
+  { evento: "E39747", distrito: "Alto Pichigua", dep: "Espinar, Cusco", ha: 2511, nubes: 0, dentro: 82, m500: 176, km1: 246, km2: 547, km5: 1344, pob: 657, pre: "30 set", post: "15 oct" },
+  { evento: "E41197", distrito: "San Pedro de Cachora", dep: "Abancay, Apurímac", ha: 1451, nubes: 0, dentro: 8, m500: 49, km1: 120, km2: 411, km5: 3676, pob: 4466 },
+  { evento: "E45243", distrito: "Huanoquite", dep: "Paruro, Cusco", ha: 379, nubes: 7, dentro: 1, m500: 74, km1: 113, km2: 244, km5: 510, pob: 1533 },
+  { evento: "E41216", distrito: "Curahuasi", dep: "Abancay, Apurímac", ha: 2847, nubes: 14, dentro: 2, m500: 28, km1: 74, km2: 226, km5: 1682, pob: 3114, pre: "5 oct", post: "15 oct" },
+];
+const NOTAS = {
+  E38662: "La ciudad de Sicuani queda al este del área quemada. La mayoría de techos expuestos están en la periferia, a menos de 500 m del borde.",
+  E39747: "Puna a más de 4 000 m. Pocas edificaciones, pero muchas dentro de la huella y con severidad moderada alta: estancias y corrales.",
+  E41216: "El incendio activo más grande del grupo quemó sobre todo laderas sin techos. Solo 2 edificaciones dentro; 14 % de la zona sin dato por nubes.",
+};
+const fmt = new Intl.NumberFormat("es-PE");
+
+const tbody = document.getElementById("tabla");
+const maxKm1 = Math.max(...RES.map(r => r.km1));
+for (const r of RES) {
+  const tr = document.createElement("tr");
+  tr.innerHTML = `<td>${r.distrito}<span class="dep">${r.dep}</span></td><td class="num">${fmt.format(r.ha)}</td><td class="num">${r.nubes} %</td>
+    <td class="num">${fmt.format(r.dentro)}</td><td class="num">${fmt.format(r.m500)}</td>
+    <td class="num">${fmt.format(r.km1)}<span class="mini" style="width:${Math.max(2, 70 * r.km1 / maxKm1)}px"></span></td><td class="num">${fmt.format(r.km2)}</td><td class="num">${fmt.format(r.km5)}</td><td class="num">${fmt.format(r.pob)}</td>`;
+  tbody.appendChild(tr);
+}
+
+const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const E = { cache: {} };
+const cargarImagen = src => new Promise((ok, mal) => { const i = new Image(); i.onload = () => ok(i); i.onerror = mal; i.src = src; });
+
+function decodificarDEM(img) {
+  const c = document.createElement("canvas"); c.width = img.width; c.height = img.height;
+  const ctx = c.getContext("2d", { willReadFrequently: true }); ctx.drawImage(img, 0, 0);
+  const px = ctx.getImageData(0, 0, c.width, c.height).data, n = c.width * c.height, z = new Float32Array(n);
+  for (let i = 0; i < n; i++) z[i] = px[i * 4] * 256 + px[i * 4 + 1] + px[i * 4 + 2] / 256 - 32768;  // Terrarium
+  return { w: c.width, h: c.height, z };
+}
+function elevacion(dem, b, lon, lat) {
+  const { w, h, z } = dem, [o, s, e, n] = b;
+  const x = Math.min(w - 1.001, Math.max(0, (lon - o) / (e - o) * w - 0.5));
+  const y = Math.min(h - 1.001, Math.max(0, (n - lat) / (n - s) * h - 0.5));
+  const x0 = Math.floor(x), y0 = Math.floor(y), fx = x - x0, fy = y - y0, v = (i, j) => z[j * w + i];
+  return (v(x0, y0) * (1 - fx) + v(x0 + 1, y0) * fx) * (1 - fy) + (v(x0, y0 + 1) * (1 - fx) + v(x0 + 1, y0 + 1) * fx) * fy;
+}
+function malla(dem, b, exag) {
+  const { w, h, z } = dem, [o, s, e, n] = b, lon0 = (o + e) / 2, lat0 = (s + n) / 2;
+  const mg = 40030000 / 360, mx = mg * Math.cos(lat0 * Math.PI / 180), my = mg;
+  const pos = new Float32Array(w * h * 3), uv = new Float32Array(w * h * 2), nor = new Float32Array(w * h * 3);
+  const dx = (e - o) / w * mx, dy = (n - s) / h * my;
+  for (let j = 0; j < h; j++) for (let i = 0; i < w; i++) {
+    const k = j * w + i, lon = o + (i + 0.5) / w * (e - o), lat = n - (j + 0.5) / h * (n - s);
+    pos[k * 3] = (lon - lon0) * mx; pos[k * 3 + 1] = (lat - lat0) * my; pos[k * 3 + 2] = z[k] * exag;
+    uv[k * 2] = (i + 0.5) / w; uv[k * 2 + 1] = (j + 0.5) / h;
+    const gx = (z[j * w + Math.min(w - 1, i + 1)] - z[j * w + Math.max(0, i - 1)]) * exag / (2 * dx);
+    const gy = (z[Math.max(0, j - 1) * w + i] - z[Math.min(h - 1, j + 1) * w + i]) * exag / (2 * dy);
+    const len = Math.hypot(gx, gy, 1);
+    nor[k * 3] = -gx / len; nor[k * 3 + 1] = -gy / len; nor[k * 3 + 2] = 1 / len;
+  }
+  const idx = new Uint32Array((w - 1) * (h - 1) * 6); let p = 0;
+  for (let j = 0; j < h - 1; j++) for (let i = 0; i < w - 1; i++) {
+    const a = j * w + i, b2 = a + 1, c = a + w, d = c + 1;
+    idx[p++] = a; idx[p++] = c; idx[p++] = b2; idx[p++] = b2; idx[p++] = c; idx[p++] = d;
+  }
+  return { centro: [lon0, lat0], mesh: { attributes: { POSITION: { value: pos, size: 3 }, NORMAL: { value: nor, size: 3 }, TEXCOORD_0: { value: uv, size: 2 } }, indices: { value: idx, size: 1 }, mode: 4 } };
+}
+
+async function cargar(ev) {
+  if (E.cache[ev]) return E.cache[ev];
+  const [datos, dem, nat, dnbr] = await Promise.all([
+    fetch(`data/${ev}.json`).then(r => r.json()),
+    cargarImagen(`img/${ev}_dem.png`), cargarImagen(`img/${ev}_natural.jpg`), cargarImagen(`img/${ev}_dnbr.png`)]);
+  const d = decodificarDEM(dem), rango = datos.dem_rango[1] - datos.dem_rango[0];
+  const exag = rango < 600 ? 2 : 1.3;
+  const m = malla(d, datos.bounds, exag);
+  const z = (lon, lat) => elevacion(d, datos.bounds, lon, lat) * exag;
+  const edif = datos.edif.map(([lon, lat, area, dist, sev]) => ({ p: [lon, lat, z(lon, lat)], area, dist, sev }));
+  const focos = datos.focos.map(([lon, lat, elev, dia]) => ({ p: [lon, lat, z(lon, lat) + 40], elev, dia }));
+  const geo = datos.perimetro, polis = geo.type === "Polygon" ? [geo.coordinates] : geo.coordinates;
+  const borde = polis.flatMap(pl => pl.map(an => an.map(([lon, lat]) => [lon, lat, z(lon, lat) + 20])));
+  return (E.cache[ev] = { datos, nat, dnbr, m, exag, edif, focos, borde });
+}
+
+function textura(c, conSev) {
+  const cv = document.createElement("canvas"); cv.width = c.nat.width; cv.height = c.nat.height;
+  const ctx = cv.getContext("2d"); ctx.drawImage(c.nat, 0, 0);
+  if (conSev) { ctx.globalAlpha = 0.85; ctx.drawImage(c.dnbr, 0, 0, cv.width, cv.height); }
+  return cv;
+}
+
+const deckgl = new deck.Deck({
+  parent: document.getElementById("escena"),
+  initialViewState: { longitude: -71.3, latitude: -14.27, zoom: 11, pitch: 55, bearing: -20, maxPitch: 80 },
+  controller: { touchRotate: true }, views: new deck.MapView({ repeat: false }), layers: [],
+  effects: [new deck.LightingEffect({
+    ambient: new deck.AmbientLight({ color: [255, 255, 255], intensity: 1.0 }),
+    sol: new deck.DirectionalLight({ color: [255, 250, 240], intensity: 1.3, direction: [-1, -2, -2.5] }) })],
+  getTooltip: ({ object, layer }) => {
+    if (!object || !layer) return null;
+    if (layer.id === "edif") {
+      const s = ["sin quemar", "baja", "moderada baja", "moderada alta", "alta"][object.sev];
+      return { html: `<b>Edificación</b><br>${fmt.format(object.area)} m² de techo<br>${object.dist === 0 ? "dentro del área quemada" : "a " + fmt.format(object.dist) + " m del borde"}<br>severidad bajo el techo: ${s}` };
+    }
+    if (layer.id === "focos") return { html: `<b>Foco VIIRS</b> · día ${object.dia + 1}<br>${fmt.format(object.elev)} m s. n. m.` };
+    return null;
+  },
+});
+
+let actual = null, tex = null, texV = 0, dia = 0, radio = "km1", reloj = null;
+const RADIO_M = { dentro: 0, m500: 500, km1: 1000, km2: 2000, km5: 5000 };
+const RADIO_TXT = { dentro: "dentro del área quemada", m500: "a ≤ 500 m del borde quemado", km1: "a ≤ 1 km del borde quemado", km2: "a ≤ 2 km del borde quemado", km5: "a ≤ 5 km del borde quemado" };
+const $ = id => document.getElementById(id);
+
+function pintar() {
+  const c = E.cache[actual]; if (!c) return;
+  const capas = [
+    new deck.SimpleMeshLayer({ id: "terreno", data: [{}], mesh: c.m.mesh, texture: tex,
+      getPosition: () => [...c.m.centro, 0], getColor: [255, 255, 255], sizeScale: 1,
+      material: { ambient: 0.7, diffuse: 0.45, shininess: 0, specularColor: [0, 0, 0] }, updateTriggers: { texture: texV } }),
+    new deck.PathLayer({ id: "borde-halo", data: c.borde, getPath: a => a, widthUnits: "pixels", getWidth: 4, getColor: [20, 12, 8, 150] }),
+    new deck.PathLayer({ id: "borde", data: c.borde, getPath: a => a, widthUnits: "pixels", getWidth: 1.6, getColor: [255, 255, 255, 230] }),
+  ];
+  if ($("c-edif").checked) capas.push(new deck.ColumnLayer({
+    id: "edif", data: c.edif, pickable: true, diskResolution: 6, radius: 14, extruded: true,
+    getPosition: d => d.p, getElevation: d => (d.dist === 0 ? 70 : 28) + Math.min(60, Math.sqrt(d.area) * 2),
+    getFillColor: d => d.dist === 0 ? [34, 211, 238, 255] : d.dist <= RADIO_M[radio] ? [59, 130, 246, 240] : [148, 163, 184, 150],
+    updateTriggers: { getFillColor: radio }, material: { ambient: 0.6, diffuse: 0.6 } }));
+  if ($("c-focos").checked) capas.push(new deck.ScatterplotLayer({
+    id: "focos", data: c.focos.filter(f => f.dia <= dia), pickable: true, billboard: true, radiusUnits: "pixels",
+    getRadius: f => f.dia === dia ? 6 : 3.5, getPosition: d => d.p,
+    getFillColor: f => f.dia === dia ? [255, 72, 0, 255] : [255, 170, 90, 200], stroked: true, lineWidthUnits: "pixels", getLineWidth: 1, getLineColor: [255, 255, 255, 220],
+    updateTriggers: { getRadius: dia, getFillColor: dia } }));
+  deckgl.setProps({ layers: capas });
+}
+
+function ficha(ev) {
+  const r = RES.find(x => x.evento === ev);
+  $("f-nombre").textContent = r.distrito;
+  $("f-sub").textContent = `${r.dep} · ${fmt.format(r.ha)} ha quemadas`;
+  $("f-sentinel").textContent = `Sentinel‑2: antes ${r.pre}, después ${r.post} 2026 · nubes ${r.nubes} %`;
+  const filas = [["Dentro", r.dentro], ["≤ 500 m", r.m500], ["≤ 1 km", r.km1], ["≤ 5 km", r.km5]];
+  $("f-anillos").innerHTML = filas.map(([et, v]) =>
+    `<div class="anillo"><span>${et}</span><span class="barra"><i style="width:${Math.max(1, 100 * Math.sqrt(v / r.km5))}%"></i></span><b>${fmt.format(v)}</b></div>`).join("")
+    + `<span class="clave">edificaciones · barra en escala raíz cuadrada</span>`
+    + `<div class="anillo"><span>Población</span><span></span><b>${fmt.format(r.pob)}</b></div><span class="clave">personas a ≤ 5 km de los focos · WorldPop 2020</span>`;
+  $("f-nota").textContent = NOTAS[ev];
+}
+
+async function elegir(ev) {
+  actual = ev;
+  document.querySelectorAll(".tabs button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.ev === ev)));
+  ficha(ev);
+  $("carga").hidden = false;
+  try {
+    const c = await cargar(ev); if (actual !== ev) return;
+    tex = textura(c, $("c-sev").checked); texV++;
+    const [o, s, e, n] = c.datos.bounds, caja = $("escena");
+    const vp = new deck.WebMercatorViewport({ width: caja.clientWidth, height: caja.clientHeight }).fitBounds([[o, s], [e, n]], { padding: 10 });
+    const elevMedia = (c.datos.dem_rango[0] + c.datos.dem_rango[1]) / 2 * c.exag;
+    deckgl.setProps({ initialViewState: { longitude: vp.longitude, latitude: vp.latitude - (n - s) * 0.12, zoom: vp.zoom + 0.35,
+      pitch: 58, bearing: -18, maxPitch: 80, position: [0, 0, elevMedia],
+      transitionDuration: reduceMotion ? 0 : 900, transitionInterpolator: new deck.FlyToInterpolator() } });
+    pararReloj(); dia = c.datos.fechas.length - 1;
+    $("dia").max = dia; $("dia").value = dia; etiquetaDia();
+    pintar();
+    $("carga").hidden = true;
+  } catch (err) {
+    $("carga").textContent = "No se pudo cargar el terreno. Recarga la página.";
+  }
+}
+
+document.querySelectorAll(".tabs button").forEach(b => b.addEventListener("click", () => elegir(b.dataset.ev)));
+$("c-sev").addEventListener("change", () => { const c = E.cache[actual]; if (c) { tex = textura(c, $("c-sev").checked); texV++; pintar(); } });
+$("c-edif").addEventListener("change", pintar);
+$("c-focos").addEventListener("change", pintar);
+function etiquetaDia() {
+  const c = E.cache[actual]; if (!c) return;
+  const f = c.datos.fechas[dia].split("-");
+  $("etq-dia").textContent = `Día ${dia + 1} de ${c.datos.fechas.length} · ${+f[2]}/${+f[1]} · ${fmt.format(c.datos.focos_dia[dia])} focos ese día`;
+}
+function pararReloj() { clearTimeout(reloj); reloj = null; $("play").textContent = "▶ Reproducir el fuego"; }
+$("dia").addEventListener("input", () => { pararReloj(); dia = +$("dia").value; $("c-focos").checked = true; etiquetaDia(); pintar(); });
+$("play").addEventListener("click", () => {
+  const c = E.cache[actual]; if (!c) return;
+  if (reloj) { pararReloj(); return; }
+  $("c-focos").checked = true; $("play").textContent = "■ Detener";
+  if (dia >= c.datos.fechas.length - 1) dia = -1;
+  const paso = () => {
+    dia++; $("dia").value = dia; etiquetaDia(); pintar();
+    if (dia >= c.datos.fechas.length - 1) { pararReloj(); return; }
+    reloj = setTimeout(paso, reduceMotion ? 1200 : 800);
+  };
+  paso();
+});
+
+function elegirRadio(k) {
+  radio = k;
+  document.querySelectorAll(".seg button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.r === k)));
+  const total = RES.reduce((a, x) => a + x[k], 0), est = total * 3.5, wp = 58282, max = Math.max(est, wp);
+  $("r-cifra").textContent = fmt.format(total);
+  $("r-texto").textContent = `edificaciones ${RADIO_TXT[k]}, en los 7 incendios`;
+  $("v-edif").textContent = fmt.format(Math.round(est));
+  $("b-edif").style.width = `${100 * est / max}%`; $("b-wp").style.width = `${100 * wp / max}%`;
+  $("r-nota").textContent = k === "km5"
+    ? "A 5 km, multiplicar techos por 3,5 da 200 470 personas, más del triple de WorldPop. Muchas edificaciones son corrales, depósitos o casas de uso temporal, y WorldPop mide desde los focos, no desde el borde. La diferencia muestra la incertidumbre."
+    : "WorldPop solo existe a 5 km de los focos; compara con el radio de 5 km. Con radios menores, la estimación por techos sirve para dimensionar a cuántas familias habría que visitar.";
+  $("leg-radio").textContent = k === "dentro" ? "dentro" : RADIO_TXT[k].replace(" del borde quemado", "");
+  document.querySelectorAll("table tr").forEach(tr => [...tr.children].forEach((td, i) => td.classList.toggle("sel", i === COL_RADIO[k])));
+  pintar();
+}
+const COL_RADIO = { dentro: 3, m500: 4, km1: 5, km2: 6, km5: 7 };
+document.querySelectorAll(".seg button").forEach(b => b.addEventListener("click", () => elegirRadio(b.dataset.r)));
+elegirRadio("km1");
+elegir("E38662");
+</script>
