@@ -31,6 +31,7 @@ Las versiones exactas están fijadas en `uv.lock`. No hace falta activar nada:
 | 12 | Despliegue y evaluación | `deploy` |
 | 13 | De la voz al texto con modelos abiertos | `audio` |
 | 15 | Del texto a tu voz: reels con modelos abiertos | entorno propio (ver su README) |
+| 16 | Skills de Claude Code: limpiar, graficar y mapear la ENAHO | entorno propio (ver su README) |
 
 ## Datos
 
