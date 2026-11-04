@@ -48,7 +48,7 @@ def test_end_to_end_fixture_dry_run(tmp_path, capsys):
     assert "RESULT: OK" in (tmp_path / "validation.txt").read_text(encoding="utf-8")
     assert main(["figures", "--run", str(run_dir), "--out", str(tmp_path / "figuras")]) == 0
     figs = out_json(capsys)["figures"]
-    assert len(figs) == 1 + 2 * len(summary["districts"]) and all(Path(f).exists() for f in figs)
+    assert len(figs) == 1 + 3 * len(summary["districts"]) and all(Path(f).exists() for f in figs)
 
 
 def frontmatter(path: Path) -> dict:

@@ -1,6 +1,6 @@
 {
   "run_id": "20261103-0900-synthetic-fixture",
-  "generated_at": "2026-11-03T23:48:19",
+  "generated_at": "2026-11-04T00:24:38",
   "synthetic": true,
   "source_mode": "csv",
   "horizons": [
@@ -78,7 +78,7 @@
           "value": 0.035,
           "source_url": "https://example.invalid/synthetic/params",
           "as_of": "2026-11-03",
-          "note": "SYNTHETIC"
+          "note": "city-wide value; no district series found"
         },
         "rent_growth": {
           "origin": "fallback",
@@ -611,7 +611,7 @@
           "value": 0.035,
           "source_url": "https://example.invalid/synthetic/params",
           "as_of": "2026-11-03",
-          "note": "SYNTHETIC"
+          "note": "city-wide value; no district series found"
         },
         "rent_growth": {
           "origin": "fallback",
@@ -1144,7 +1144,7 @@
           "value": 0.035,
           "source_url": "https://example.invalid/synthetic/params",
           "as_of": "2026-11-03",
-          "note": "SYNTHETIC"
+          "note": "city-wide value; no district series found"
         },
         "rent_growth": {
           "origin": "fallback",

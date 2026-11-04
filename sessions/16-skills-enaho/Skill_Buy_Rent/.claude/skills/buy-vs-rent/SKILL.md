@@ -52,6 +52,9 @@ Run `HL summary --run <run_dir>` and tell the user:
 - What was found per district (sale and rent counts, realistic price and rent). Say clearly if `source_mode` is
   `csv` or `mixed` (data came from a user file, not a live search).
 - The headline verdict per horizon (5, 10, 15, 20, 30 years) per district: buy / rent / depends.
+- **Why**, in one or two sentences per district, from the "How the recommendation was made" section of
+  `analysis_report.md`: who ends up with more after 20 years and by how much, and the nearest flip point
+  (e.g. "buying would win if the mortgage rate fell below 6.4%"). Point to `figures/<district>_explained_20y.png`.
 - The most important warnings (unknown parameters, low-confidence districts).
 - Where `analysis_report.md`, `outputs/validation.txt` and `figures/` are, and the dashboard command from the
   summary (`HL dashboard --run <run_dir>`).

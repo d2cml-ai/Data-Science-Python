@@ -27,7 +27,7 @@ answers to the five questions.
 | 2a. Listings | `market-data` agent | Urbania, Adondevivir, Properati, MercadoLibre, Babilonia, Nestoria and Trovit blocked automated access (HTTP 401/403); all 266 listings come from InfoCasas, each with its URL. Used units with no construction year were skipped because the 10-year filter could not be checked |
 | 2b. Investments | `opportunity-cost` agent | Deposit rates by bank, S&P 500 total return (Yahoo Finance) and the BCRP Lima stock-exchange series, in parallel with 2a |
 | 3. Analysis | `financial-analysis` agent | 3 districts × 5 horizons × 5 mortgage rates × 3 investment options = 225 scenarios |
-| 4. Dashboard | `streamlit-builder` agent | App check passed (it starts, and each slider changes the result); 7 figures exported |
+| 4. Dashboard | `streamlit-builder` agent | App check passed (it starts, and each slider changes the result); 10 figures exported |
 
 ## What was found
 
@@ -68,9 +68,38 @@ At the market mortgage rate and against the safest option (the fixed-term deposi
 | Jesús María | S/ 66,367 | S/ 123,680 |
 | Magdalena del Mar | S/ 105,363 | S/ 227,375 |
 
-Why: prices in these districts grew 1.25% a year (below 4.55% inflation), the mortgage costs 7.67%, and rent is only
-about 5–6% of the price per year. Buying only wins in Jesús María when the mortgage rate falls to about 5.7% and the
-alternative is the deposit. Change any of these in the dashboard to see where the answer flips.
+### How the recommendation was made
+
+Both households start with the same cash and spend the same amount every month; only where the money ends up
+differs. Pueblo Libre, after 20 years, at the market mortgage rate and against the fixed-term deposit:
+
+| Step | Buyer | Renter |
+|---|---|---|
+| Day 1 | Pays S/ 119,112 (down payment + buying costs) | Invests the same S/ 119,112 |
+| Each month (year 1), S/ 3,629 | S/ 2,428 interest, S/ 750 loan principal, S/ 207 tax and insurance, S/ 245 fee | S/ 2,200 rent, S/ 245 fee, **invests S/ 1,184** |
+| After 20 years | Home S/ 636,277 − selling costs S/ 19,088 − loan S/ 0 = **S/ 617,189** | S/ 119,112 + S/ 292,810 saved + S/ 486,263 returns = **S/ 898,186** |
+
+Three quarters of the buyer's mortgage payment is interest, while the renter puts a third of the same monthly amount into
+savings that compound at 5.75%. The home only grows 1.25% a year. Three comparisons decide it, and all three point
+to renting in every district:
+
+- **Rent vs borrowing:** one year of rent is 5.3–6.1% of the price; the mortgage costs 7.67%.
+- **Home vs investment:** homes grew 1.25% a year; the safest investment pays 5.75%.
+- **Home vs inflation:** 1.25% growth against 4.55% inflation means the home loses value in real terms.
+
+What would flip it after 20 years (one input at a time, everything else as above):
+
+| District | Mortgage rate below | Home price growth above | Rent above | Price below |
+|---|---:|---:|---:|---:|
+| Pueblo Libre | 4.73% | 3.17% / year | S/ 2,818 | S/ 387,415 |
+| Jesús María | 6.39% | 2.19% / year | S/ 2,772 | S/ 440,244 |
+| Magdalena del Mar | 5.46% | 2.77% / year | S/ 3,000 | S/ 440,244 |
+
+Jesús María is the closest call. The full steps for each district are in `analysis_report.md` ("How the
+recommendation was made"), in `figures/<district>_explained_20y.png`, and in section 2 of the dashboard, where every
+number updates as you move the controls.
+
+![How the recommendation was made: Pueblo Libre](figures/pueblo_libre_explained_20y.png)
 
 Before relying on it:
 
@@ -102,7 +131,8 @@ Example/
 └── figures/
     ├── verdicts.png
     ├── <district>_wealth.png        buyer vs renter wealth over 30 years
-    └── <district>_heatmap_20y.png   buy minus rent after 20 years
+    ├── <district>_heatmap_20y.png   buy minus rent after 20 years
+    └── <district>_explained_20y.png how the recommendation was made (monthly money, final wealth, flip points)
 ```
 
 ![Verdicts](figures/verdicts.png)
@@ -119,9 +149,11 @@ python run_dashboard.py
 Your browser opens http://localhost:8501. Stop the server with **Ctrl+C** in the terminal. The dashboard works
 offline from the files in `outputs/`; no install step is needed (it uses the engine in `../Skill_Buy_Rent`).
 
-In the sidebar, pick a district and move the mortgage rate, down payment, investment option and return, purchase
-price, negotiation discount, loan term, and price and rent growth; the verdict cards, heat map and wealth chart
-update at once.
+The page opens with the verdict, followed by **"How the recommendation was made"**: six steps with the actual
+numbers (the listings behind the price, where the same monthly money goes, what each household owns at the end,
+the three comparisons that decide it, the scenario vote behind "rent", and the values that would flip it). In the
+sidebar, pick a district and move the mortgage rate, down payment, investment option and return, purchase price,
+negotiation discount, loan term, and price and rent growth; every step updates at once.
 
 ### Calling the launcher directly
 

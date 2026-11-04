@@ -102,6 +102,17 @@ def test_loan_term_and_real_toggle_change_output(app):
     assert not app.exception
 
 
+def test_explanation_section_is_shown_and_follows_the_horizon(app):
+    md = " ".join(m.value for m in app.markdown)
+    for step in ("Step 1", "Step 2", "Step 3", "Step 4", "Step 5", "Step 6"):
+        assert step in md, step
+    assert "after 20 years" in md
+    assert "spend the same" in md or "same money" in md.lower()
+    app.select_slider(key="horizon").set_value(10).run()
+    assert not app.exception
+    assert "after 10 years" in " ".join(m.value for m in app.markdown)
+
+
 def test_district_switch_and_horizon(app):
     app.selectbox(key="district").set_value(DISTRICTS[-1]["district"]).run()
     assert not app.exception

@@ -260,6 +260,55 @@ def verdict_text(name: str, market_rate: float, break_evens: list[dict], verdict
     return text
 
 
+def explanation_lines(run: RunData, summary: dict, horizon: int = 20) -> list[str]:
+    """'How the recommendation was made' section: the same six steps as the dashboard, per district,
+    at the market mortgage rate and the lowest-risk investment option."""
+    from . import explain
+
+    defaults = load_defaults()
+    horizon = horizon if horizon in summary["horizons"] else summary["horizons"][-1]
+    base_opt = summary["options"][0]
+    out = ["", f"## How the recommendation was made ({horizon} years)", "",
+           f"Both households start with the same cash and spend the same amount every month. The buyer puts it into "
+           f"a home with a mortgage at {summary['market_mortgage_rate']:.2%}; the renter pays rent and invests the rest "
+           f"in {base_opt['name']} at {base_opt['return_base']:.2%}. After {horizon} years we compare what each owns.", ""]
+    for d in summary["districts"]:
+        if not d["verdicts"]:
+            continue
+        s = build_scenario(run, d["district"], defaults)
+        split = explain.first_year_monthly(s)
+        bd = explain.wealth_breakdown(s, horizon)
+        flips = explain.flip_points(s, horizon, ["mortgage_rate", "opportunity_return", "price_growth",
+                                                  "monthly_rent", "price"])
+        verdict = next(v for v in d["verdicts"] if v["horizon"] == horizon)
+        winner = "Buying" if bd["delta"] > 0 else "Renting"
+        b, r = split["buyer"], split["renter"]
+        out += [
+            f"### {d['district']}", "",
+            f"1. **Homes.** Price S/ {s.price:,.0f} (median of the sale listings); rent S/ {s.monthly_rent:,.0f}/month "
+            f"(median of the rent listings). One year of rent = {12 * s.monthly_rent / s.price:.1%} of the price.",
+            f"2. **Same money.** Day 1: S/ {bd['upfront']:,.0f} (down payment + buying costs). Each month in year 1 "
+            f"both spend S/ {split['total']:,.0f}: the buyer S/ {b['Mortgage interest']:,.0f} interest, "
+            f"S/ {b['Mortgage principal (becomes equity)']:,.0f} principal, "
+            f"S/ {b['Property tax and insurance']:,.0f} tax and insurance, S/ {b['Building fee']:,.0f} fee; the renter "
+            f"S/ {r['Rent']:,.0f} rent, S/ {r['Building fee']:,.0f} fee and invests "
+            f"S/ {r['Invested each month (difference)']:,.0f}.",
+            f"3. **After {horizon} years.** Buyer: home S/ {bd['buyer'][0][1]:,.0f} − selling costs "
+            f"S/ {-bd['buyer'][1][1]:,.0f} − loan left S/ {-bd['buyer'][2][1]:,.0f} = **S/ {bd['w_buy']:,.0f}**. "
+            f"Renter: day-1 cash S/ {bd['renter'][0][1]:,.0f} + monthly differences S/ {bd['renter'][1][1]:,.0f} "
+            f"+ returns S/ {bd['renter'][2][1]:,.0f} = **S/ {bd['w_rent']:,.0f}**. "
+            f"**{winner} wins by S/ {abs(bd['delta']):,.0f}.**",
+            "4. **Why.** " + "; ".join(
+                f"{x['left'][0].lower()} {x['left'][1]:.2%} vs {x['right'][0].lower()} {x['right'][1]:.2%} "
+                f"(points to {'buying' if x['favours'] == 'buy' else 'renting'})" for x in explain.drivers(s)) + ".",
+            f"5. **Scenario vote.** Buying wins in {verdict['share_buy_wins']:.0%} of the "
+            f"{len(summary['mortgage_rate_grid'])} mortgage rates × {len(summary['options'])} options → "
+            f"**{verdict['label']}**.",
+            "6. **What would change it** (one input at a time): " + "; ".join(
+                f.sentence().rstrip(".") for f in flips) + ".", ""]
+    return out
+
+
 def write_report(path: Path, run: RunData, summary: dict) -> None:
     lines = [f"# Buy vs rent analysis: {run.run_id}", ""]
     if summary["synthetic"]:
@@ -289,6 +338,7 @@ def write_report(path: Path, run: RunData, summary: dict) -> None:
         flag = " (low confidence)" if d["low_confidence"] else ""
         lines.append(f"| {d['district']}{flag} | S/ {d['price_used']:,.0f} | S/ {d['rent_used']:,.0f} | {cells} |")
     lines += ["", "## Verdicts", ""] + [f"- {d['verdict_text']}" for d in summary["districts"]]
+    lines += explanation_lines(run, summary)
 
     analysed = [d for d in summary["districts"] if d.get("parameters")]
     if analysed:

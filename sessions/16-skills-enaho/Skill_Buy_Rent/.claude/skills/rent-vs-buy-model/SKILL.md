@@ -27,7 +27,7 @@ HL validate --run <run_dir> --stage analysis
 | --- | --- |
 | `analysis_results.csv` | One row per district × horizon (5, 10, 15, 20, 30) × mortgage rate (market −2..+2 pp) × option (3) |
 | `analysis_summary.json` | Verdicts per district and horizon, break-even years, sensitivity, warnings |
-| `analysis_report.md` | One-page method, results, caveats and disclaimer |
+| `analysis_report.md` | Method, results, verdicts, **how the recommendation was made** (the six steps of `housing_lima/explain.py` per district at 20 years), parameters, caveats and disclaimer |
 
 ## Rules
 

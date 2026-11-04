@@ -23,6 +23,38 @@ For each district, the buyer pays the realistic price (median of in-range listin
 - Jesús María: at the market mortgage rate (7.67%), renting wins for all 30 years against the fixed-term deposit; renting wins for all 30 years against the S&P 500; renting wins for all 30 years against the S&P/BVL Peru General. Share of grid scenarios where buying wins: 0% at 5y, 7% at 10y, 7% at 15y, 7% at 20y, 7% at 30y.
 - Magdalena del Mar: at the market mortgage rate (7.67%), renting wins for all 30 years against the fixed-term deposit; renting wins for all 30 years against the S&P 500; renting wins for all 30 years against the S&P/BVL Peru General. Share of grid scenarios where buying wins: 0% at 5y, 0% at 10y, 0% at 15y, 0% at 20y, 0% at 30y.
 
+## How the recommendation was made (20 years)
+
+Both households start with the same cash and spend the same amount every month. The buyer puts it into a home with a mortgage at 7.67%; the renter pays rent and invests the rest in Fixed-term deposit in soles at 5.75%. After 20 years we compare what each owns.
+
+### Pueblo Libre
+
+1. **Homes.** Price S/ 496,302 (median of the sale listings); rent S/ 2,200/month (median of the rent listings). One year of rent = 5.3% of the price.
+2. **Same money.** Day 1: S/ 119,112 (down payment + buying costs). Each month in year 1 both spend S/ 3,629: the buyer S/ 2,428 interest, S/ 750 principal, S/ 207 tax and insurance, S/ 245 fee; the renter S/ 2,200 rent, S/ 245 fee and invests S/ 1,184.
+3. **After 20 years.** Buyer: home S/ 636,277 − selling costs S/ 19,088 − loan left S/ 0 = **S/ 617,189**. Renter: day-1 cash S/ 119,112 + monthly differences S/ 292,810 + returns S/ 486,263 = **S/ 898,186**. **Renting wins by S/ 280,997.**
+4. **Why.** rent per year, as % of the price 5.32% vs mortgage rate 7.67% (points to renting); home price growth per year 1.25% vs investment return per year 5.75% (points to renting); home price growth per year 1.25% vs inflation 4.55% (points to renting).
+5. **Scenario vote.** Buying wins in 0% of the 5 mortgage rates × 3 options → **rent**.
+6. **What would change it** (one input at a time): Mortgage rate: buying wins below 4.73% (now 7.67%); Investment return: buying wins below 3.06% (now 5.75%); Home price growth per year: buying wins above 3.17% (now 1.25%); Monthly rent (S/): buying wins above S/ 2,818 (now S/ 2,200); Purchase price (S/): buying wins below S/ 387,415 (now S/ 496,302).
+
+### Jesús María
+
+1. **Homes.** Price S/ 488,170 (median of the sale listings); rent S/ 2,500/month (median of the rent listings). One year of rent = 6.1% of the price.
+2. **Same money.** Day 1: S/ 117,161 (down payment + buying costs). Each month in year 1 both spend S/ 3,579: the buyer S/ 2,388 interest, S/ 738 principal, S/ 203 tax and insurance, S/ 250 fee; the renter S/ 2,500 rent, S/ 250 fee and invests S/ 829.
+3. **After 20 years.** Buyer: home S/ 625,852 − selling costs S/ 18,776 − loan left S/ 0 = **S/ 607,077**. Renter: day-1 cash S/ 117,161 + monthly differences S/ 204,303 + returns S/ 409,293 = **S/ 730,757**. **Renting wins by S/ 123,680.**
+4. **Why.** rent per year, as % of the price 6.15% vs mortgage rate 7.67% (points to renting); home price growth per year 1.25% vs investment return per year 5.75% (points to renting); home price growth per year 1.25% vs inflation 4.55% (points to renting).
+5. **Scenario vote.** Buying wins in 7% of the 5 mortgage rates × 3 options → **rent**.
+6. **What would change it** (one input at a time): Mortgage rate: buying wins below 6.39% (now 7.67%); Investment return: buying wins below 4.50% (now 5.75%); Home price growth per year: buying wins above 2.19% (now 1.25%); Monthly rent (S/): buying wins above S/ 2,772 (now S/ 2,500); Purchase price (S/): buying wins below S/ 440,244 (now S/ 488,170).
+
+### Magdalena del Mar
+
+1. **Homes.** Price S/ 528,352 (median of the sale listings); rent S/ 2,500/month (median of the rent listings). One year of rent = 5.7% of the price.
+2. **Same money.** Day 1: S/ 126,804 (down payment + buying costs). Each month in year 1 both spend S/ 3,838: the buyer S/ 2,584 interest, S/ 798 principal, S/ 220 tax and insurance, S/ 235 fee; the renter S/ 2,500 rent, S/ 235 fee and invests S/ 1,103.
+3. **After 20 years.** Buyer: home S/ 677,367 − selling costs S/ 20,321 − loan left S/ 0 = **S/ 657,046**. Renter: day-1 cash S/ 126,804 + monthly differences S/ 272,380 + returns S/ 485,237 = **S/ 884,421**. **Renting wins by S/ 227,375.**
+4. **Why.** rent per year, as % of the price 5.68% vs mortgage rate 7.67% (points to renting); home price growth per year 1.25% vs investment return per year 5.75% (points to renting); home price growth per year 1.25% vs inflation 4.55% (points to renting).
+5. **Scenario vote.** Buying wins in 0% of the 5 mortgage rates × 3 options → **rent**.
+6. **What would change it** (one input at a time): Mortgage rate: buying wins below 5.46% (now 7.67%); Investment return: buying wins below 3.67% (now 5.75%); Home price growth per year: buying wins above 2.77% (now 1.25%); Monthly rent (S/): buying wins above S/ 3,000 (now S/ 2,500); Purchase price (S/): buying wins below S/ 440,244 (now S/ 528,352).
+
+
 ## Parameters used
 
 | Parameter | Pueblo Libre | Jesús María | Magdalena del Mar | Origin |

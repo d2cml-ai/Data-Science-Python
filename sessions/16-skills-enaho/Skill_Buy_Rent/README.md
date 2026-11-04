@@ -30,6 +30,9 @@ A complete real run lives in [`../Example`](../Example).
   dashboard all import it.
 - **Nothing invented.** Every listing and every researched number keeps its URL and date. A value without a
   source is `null`, replaced by a named assumption and shown as a warning ("needs your input").
+- **Every verdict is explained.** The dashboard, the report and a figure walk through the same six steps: the
+  listings behind the price, the same money spent by both households, what each owns at the end, the three
+  comparisons that decide it, the scenario vote, and how far each input must move to flip the answer.
 - **Everything is validated.** Each handoff file is checked against a JSON schema before the next step. A failure
   stops the pipeline.
 
@@ -59,13 +62,13 @@ Skill_Buy_Rent/
 ├── .claude/
 │   ├── skills/
 │   │   ├── buy-vs-rent/            SKILL.md, reference.md, scripts/hl.py (launcher)
-│   │   │   └── scripts/housing_lima/   the engine: model, analysis, listings, intake, schemas/, config/, app/
+│   │   │   └── scripts/housing_lima/   the engine: model, explain, analysis, listings, intake, schemas/, config/, app/
 │   │   ├── peru-listings-search/   SKILL.md, reference.md, listings_template.csv, scripts/
 │   │   ├── peru-safe-investments/  SKILL.md, reference.md, scripts/index_returns.py
 │   │   ├── rent-vs-buy-model/      SKILL.md, reference.md
 │   │   └── streamlit-dashboard/    SKILL.md, reference.md
 │   └── agents/                     market-data.md, opportunity-cost.md, financial-analysis.md, streamlit-builder.md
-├── tests/                          94 tests: model, listings, intake, schemas, analysis, CLI, dashboard
+├── tests/                          104 tests: model, explanation, listings, intake, schemas, analysis, CLI, dashboard
 ├── evaluation.md                   requests to run with and without skills
 ├── install.py                      copies the skills and agents to ~/.claude
 ├── pyproject.toml
@@ -92,6 +95,7 @@ Every run writes into the folder you work from:
 | `figures/verdicts.png` | Share of scenarios where buying wins, by district and horizon |
 | `figures/<district>_wealth.png` | Buyer vs renter wealth over 30 years |
 | `figures/<district>_heatmap_20y.png` | Buy minus rent after 20 years, mortgage rate × investment option |
+| `figures/<district>_explained_20y.png` | How the recommendation was made: monthly money, what each owns after 20 years, flip points |
 | `data/listings.csv` | Optional: listings you paste by hand if the portals block automated search |
 
 ## Install
@@ -151,7 +155,7 @@ PowerShell does not expand `~` for Python, so use `$HOME` there.
 | `HL check-app --run D` | Tests the dashboard on a run |
 | `HL fixture-run` | Complete run on synthetic data |
 
-Tests: `python -m pytest -q` from this folder (94 tests, no network).
+Tests: `python -m pytest -q` from this folder (104 tests, no network).
 
 ## Assumptions
 
@@ -203,9 +207,13 @@ In the sidebar you can change the mortgage rate, the down payment, the opportuni
 rate, low / base / high), the purchase price (bounded by your range; by default the median of the listings found),
 the negotiation discount, the loan term, price and rent growth, and real vs nominal terms. The page shows:
 
-1. **Verdict by district**: who wins at 5, 10, 15, 20 and 30 years, and by how much in soles.
-2. **Heat map**: buy minus rent across mortgage rates and investment returns.
-3. **Wealth over time**: buyer vs renter, with the break-even year.
-4. **Price check**: histogram of the listings and a table with links to each listing.
-5. **Assumptions and sources**: every parameter with origin, source and date, plus all warnings.
-6. **Downloads**: the current scenario as CSV.
+1. **The recommendation**: who wins at 5, 10, 15, 20 and 30 years, and by how much in soles.
+2. **How the recommendation was made**, in six steps for the chosen district and number of years:
+   the listings behind the price and rent; the same money spent by both households each month (where it goes);
+   what each one owns at the end (home minus selling costs and loan vs investments); the three comparisons that
+   decide it; the scenario vote behind "buy / rent / depends"; and how far each input must move to flip it.
+3. **Wealth year by year**: buyer vs renter, with the break-even year.
+4. **Explore**: buy minus rent across mortgage rates and investment returns.
+5. **Price check**: histogram of the listings and a table with links to each listing.
+6. **Assumptions and sources**: every parameter with origin, source and date, the method, and all warnings.
+7. **Downloads**: the current scenario as CSV.

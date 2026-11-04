@@ -15,5 +15,7 @@ Use the `HL` launcher given in the skill. If its path is not expanded, it is
    missing option, a null value), fix the app following the streamlit-dashboard skill. Never edit the run's data
    files to make a check pass.
 4. `HL figures --run <run_dir>` to write the PNGs in `figures/` next to the `outputs/` folder that holds the run.
-5. Return only: the check result, the figure paths, the command `HL dashboard --run <run_dir>` with the real
+5. Open one `figures/<district>_explained_20y.png` and check that labels do not overlap and the buyer and renter
+   totals match `analysis_report.md`.
+6. Return only: the check result, the figure paths, the command `HL dashboard --run <run_dir>` with the real
    launcher path, and any warning the user should see.
