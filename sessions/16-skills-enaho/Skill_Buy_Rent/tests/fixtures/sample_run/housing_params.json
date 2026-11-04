@@ -1,0 +1,92 @@
+{
+  "as_of": "2026-11-03",
+  "synthetic": true,
+  "mortgage": {
+    "average_tea": {
+      "value": 0.085,
+      "source_url": "https://example.invalid/synthetic/params",
+      "as_of": "2026-11-03",
+      "note": "SYNTHETIC"
+    },
+    "by_bank": [
+      {
+        "bank": "Synthetic Bank A",
+        "tea": 0.079,
+        "source_url": "https://example.invalid/synthetic/bank-a",
+        "as_of": "2026-11-03"
+      },
+      {
+        "bank": "Synthetic Bank B",
+        "tea": 0.086,
+        "source_url": "https://example.invalid/synthetic/bank-b",
+        "as_of": "2026-11-03"
+      },
+      {
+        "bank": "Synthetic Bank C",
+        "tea": 0.092,
+        "source_url": "https://example.invalid/synthetic/bank-c",
+        "as_of": "2026-11-03"
+      }
+    ]
+  },
+  "price_growth": {
+    "value": 0.035,
+    "source_url": "https://example.invalid/synthetic/params",
+    "as_of": "2026-11-03",
+    "note": "SYNTHETIC"
+  },
+  "rent_growth": {
+    "value": null,
+    "source_url": null,
+    "as_of": null,
+    "note": "unknown in fixture"
+  },
+  "price_index_ppm2_by_district": {
+    "Jesús María": {
+      "value": 5150.0,
+      "source_url": "https://example.invalid/synthetic/params",
+      "as_of": "2026-11-03",
+      "note": "SYNTHETIC"
+    }
+  },
+  "inflation": {
+    "value": 0.025,
+    "source_url": "https://example.invalid/synthetic/params",
+    "as_of": "2026-11-03",
+    "note": "SYNTHETIC"
+  },
+  "buy_cost_pct": {
+    "value": 0.04,
+    "source_url": "https://example.invalid/synthetic/params",
+    "as_of": "2026-11-03",
+    "note": "SYNTHETIC"
+  },
+  "sell_cost_pct": {
+    "value": 0.03,
+    "source_url": "https://example.invalid/synthetic/params",
+    "as_of": "2026-11-03",
+    "note": "SYNTHETIC"
+  },
+  "property_tax_pct": {
+    "value": 0.002,
+    "source_url": "https://example.invalid/synthetic/params",
+    "as_of": "2026-11-03",
+    "note": "SYNTHETIC"
+  },
+  "insurance_pct": {
+    "value": null,
+    "source_url": null,
+    "as_of": null,
+    "note": "unknown in fixture"
+  },
+  "fx_usd_pen": {
+    "value": 3.75,
+    "source_url": "https://example.invalid/synthetic/params",
+    "as_of": "2026-11-03",
+    "note": "SYNTHETIC"
+  },
+  "unknowns": [
+    "rent_growth",
+    "insurance_pct"
+  ]
+}

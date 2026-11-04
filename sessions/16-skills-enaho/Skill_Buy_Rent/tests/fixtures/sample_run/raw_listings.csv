@@ -1,0 +1,139 @@
+operation,district,address_hint,price_original,currency_original,area_m2,bedrooms,bathrooms,parking,age_years,is_new,maintenance_fee_pen,source_portal,source_url,listing_date,notes
+sale,Jesús María,zona 1,449000.0,PEN,80.0,3,2,1,20,False,220.0,portal-main,https://example.invalid/synthetic/sale/JM-000,2026-10-20,SYNTHETIC
+sale,Jesús María,zona 2,341000.0,PEN,61.0,2,2,0,12,False,327.0,portal-main,https://example.invalid/synthetic/sale/JM-001,2026-10-20,SYNTHETIC
+sale,Jesús María,zona 3,320000.0,PEN,62.0,3,2,0,8,False,230.0,portal-main,https://example.invalid/synthetic/sale/JM-002,2026-10-20,SYNTHETIC
+sale,Jesús María,zona 4,386000.0,PEN,75.0,2,1,1,14,False,279.0,portal-main,https://example.invalid/synthetic/sale/JM-003,2026-10-20,SYNTHETIC
+sale,Jesús María,zona 1,391000.0,PEN,71.0,3,2,1,8,False,358.0,portal-main,https://example.invalid/synthetic/sale/JM-004,2026-10-20,SYNTHETIC
+sale,Jesús María,zona 2,339000.0,PEN,70.0,2,2,1,2,False,187.0,portal-main,https://example.invalid/synthetic/sale/JM-005,2026-10-20,SYNTHETIC
+sale,Jesús María,zona 3,360000.0,PEN,69.0,2,2,0,20,False,345.0,portal-main,https://example.invalid/synthetic/sale/JM-006,2026-10-20,SYNTHETIC
+sale,Jesús María,zona 4,407000.0,PEN,78.0,3,1,0,9,False,224.0,portal-main,https://example.invalid/synthetic/sale/JM-007,2026-10-20,SYNTHETIC
+sale,Jesús María,zona 1,395000.0,PEN,81.0,2,2,1,22,False,216.0,portal-main,https://example.invalid/synthetic/sale/JM-008,2026-10-20,SYNTHETIC
+sale,Jesús María,zona 2,351000.0,PEN,75.0,2,2,1,16,False,207.0,portal-main,https://example.invalid/synthetic/sale/JM-009,2026-10-20,SYNTHETIC
+sale,Jesús María,zona 3,397000.0,PEN,71.0,2,1,1,23,False,332.0,portal-main,https://example.invalid/synthetic/sale/JM-010,2026-10-20,SYNTHETIC
+sale,Jesús María,zona 4,409000.0,PEN,75.0,3,1,0,6,False,277.0,portal-main,https://example.invalid/synthetic/sale/JM-011,2026-10-20,SYNTHETIC
+sale,Jesús María,zona 1,419000.0,PEN,75.0,3,2,0,16,False,287.0,portal-main,https://example.invalid/synthetic/sale/JM-012,2026-10-20,SYNTHETIC
+sale,Jesús María,zona 2,315000.0,PEN,62.0,2,2,0,5,False,207.0,portal-main,https://example.invalid/synthetic/sale/JM-013,2026-10-20,SYNTHETIC
+sale,Jesús María,zona 3,345000.0,PEN,68.0,3,2,1,9,False,286.0,portal-main,https://example.invalid/synthetic/sale/JM-014,2026-10-20,SYNTHETIC
+sale,Jesús María,zona 4,369000.0,PEN,69.0,3,2,1,23,False,207.0,portal-main,https://example.invalid/synthetic/sale/JM-015,2026-10-20,SYNTHETIC
+sale,Jesús María,zona 1,355000.0,PEN,72.0,2,1,0,20,False,197.0,portal-main,https://example.invalid/synthetic/sale/JM-016,2026-10-20,SYNTHETIC
+sale,Jesús María,zona 2,333000.0,PEN,68.0,3,1,1,0,False,234.0,portal-main,https://example.invalid/synthetic/sale/JM-017,2026-10-20,SYNTHETIC
+sale,Jesús María,zona 3,376000.0,PEN,70.0,3,2,0,21,False,332.0,portal-main,https://example.invalid/synthetic/sale/JM-018,2026-10-20,SYNTHETIC
+sale,Jesús María,zona 4,393000.0,PEN,70.0,3,2,1,7,False,206.0,portal-main,https://example.invalid/synthetic/sale/JM-019,2026-10-20,SYNTHETIC
+sale,Jesús María,zona 1,406000.0,PEN,72.0,2,1,1,1,False,212.0,portal-main,https://example.invalid/synthetic/sale/JM-020,2026-10-20,SYNTHETIC
+sale,Jesús María,zona 2,364000.0,PEN,68.0,3,2,1,1,False,247.0,portal-main,https://example.invalid/synthetic/sale/JM-021,2026-10-20,SYNTHETIC
+rent,Jesús María,zona 1,2170.0,PEN,79.0,2,2,0,24,False,337.0,portal-main,https://example.invalid/synthetic/rent/JM-000,2026-10-20,SYNTHETIC
+rent,Jesús María,zona 2,2080.0,PEN,71.0,2,1,0,11,False,315.0,portal-main,https://example.invalid/synthetic/rent/JM-001,2026-10-20,SYNTHETIC
+rent,Jesús María,zona 3,1720.0,PEN,61.0,2,2,0,22,False,202.0,portal-main,https://example.invalid/synthetic/rent/JM-002,2026-10-20,SYNTHETIC
+rent,Jesús María,zona 4,2030.0,PEN,68.0,3,2,0,1,False,274.0,portal-main,https://example.invalid/synthetic/rent/JM-003,2026-10-20,SYNTHETIC
+rent,Jesús María,zona 1,1910.0,PEN,68.0,3,1,1,6,False,303.0,portal-main,https://example.invalid/synthetic/rent/JM-004,2026-10-20,SYNTHETIC
+rent,Jesús María,zona 2,2240.0,PEN,77.0,2,2,1,19,False,343.0,portal-main,https://example.invalid/synthetic/rent/JM-005,2026-10-20,SYNTHETIC
+rent,Jesús María,zona 3,2490.0,PEN,79.0,2,1,0,14,False,315.0,portal-main,https://example.invalid/synthetic/rent/JM-006,2026-10-20,SYNTHETIC
+rent,Jesús María,zona 4,1990.0,PEN,74.0,3,2,0,21,False,326.0,portal-main,https://example.invalid/synthetic/rent/JM-007,2026-10-20,SYNTHETIC
+rent,Jesús María,zona 1,2350.0,PEN,79.0,2,1,1,23,False,272.0,portal-main,https://example.invalid/synthetic/rent/JM-008,2026-10-20,SYNTHETIC
+rent,Jesús María,zona 2,1670.0,PEN,61.0,3,1,0,22,False,245.0,portal-main,https://example.invalid/synthetic/rent/JM-009,2026-10-20,SYNTHETIC
+rent,Jesús María,zona 3,1740.0,PEN,62.0,2,1,1,21,False,283.0,portal-main,https://example.invalid/synthetic/rent/JM-010,2026-10-20,SYNTHETIC
+rent,Jesús María,zona 4,2190.0,PEN,79.0,2,1,1,5,False,260.0,portal-main,https://example.invalid/synthetic/rent/JM-011,2026-10-20,SYNTHETIC
+rent,Jesús María,zona 1,1860.0,PEN,64.0,3,2,1,22,False,341.0,portal-main,https://example.invalid/synthetic/rent/JM-012,2026-10-20,SYNTHETIC
+rent,Jesús María,zona 2,2210.0,PEN,75.0,3,2,0,23,False,338.0,portal-main,https://example.invalid/synthetic/rent/JM-013,2026-10-20,SYNTHETIC
+rent,Jesús María,zona 3,2110.0,PEN,67.0,2,1,0,6,False,257.0,portal-main,https://example.invalid/synthetic/rent/JM-014,2026-10-20,SYNTHETIC
+rent,Jesús María,zona 4,1990.0,PEN,63.0,3,2,0,19,False,325.0,portal-main,https://example.invalid/synthetic/rent/JM-015,2026-10-20,SYNTHETIC
+rent,Jesús María,zona 1,2210.0,PEN,73.0,3,1,1,23,False,354.0,portal-main,https://example.invalid/synthetic/rent/JM-016,2026-10-20,SYNTHETIC
+rent,Jesús María,zona 2,1850.0,PEN,65.0,2,2,0,4,False,189.0,portal-main,https://example.invalid/synthetic/rent/JM-017,2026-10-20,SYNTHETIC
+rent,Jesús María,zona 3,2170.0,PEN,69.0,2,2,1,14,False,200.0,portal-main,https://example.invalid/synthetic/rent/JM-018,2026-10-20,SYNTHETIC
+rent,Jesús María,zona 4,2140.0,PEN,74.0,3,1,1,11,False,298.0,portal-main,https://example.invalid/synthetic/rent/JM-019,2026-10-20,SYNTHETIC
+sale,Jesús María,zona 1,451244.99999999994,PEN,80.0,3,2,1,20,False,220.0,portal-other,https://example.invalid/synthetic/sale/JM-dup,2026-10-20,SYNTHETIC: cross-portal duplicate
+rent,Jesús María,zona 1,8680.0,PEN,79.0,2,2,0,24,False,337.0,portal-main,https://example.invalid/synthetic/rent/JM-outlier,2026-10-20,SYNTHETIC: rent outlier
+sale,Jesús María,zona 1,97100.0,USD,70.0,3,2,1,20,False,220.0,portal-main,https://example.invalid/synthetic/sale/JM-usd,2026-10-20,SYNTHETIC: priced in USD
+sale,Jesús María,zona 1,449000.0,PEN,80.0,3,2,1,20,False,220.0,portal-main,,2026-10-20,"SYNTHETIC: no URL, must be dropped"
+sale,Pueblo Libre,zona 1,371000.0,PEN,68.0,2,2,0,5,False,293.0,portal-main,https://example.invalid/synthetic/sale/PL-000,2026-10-20,SYNTHETIC
+sale,Pueblo Libre,zona 2,323000.0,PEN,69.0,3,2,0,16,False,254.0,portal-main,https://example.invalid/synthetic/sale/PL-001,2026-10-20,SYNTHETIC
+sale,Pueblo Libre,zona 3,319000.0,PEN,60.0,3,2,1,21,False,200.0,portal-main,https://example.invalid/synthetic/sale/PL-002,2026-10-20,SYNTHETIC
+sale,Pueblo Libre,zona 4,424000.0,PEN,80.0,3,2,1,22,False,274.0,portal-main,https://example.invalid/synthetic/sale/PL-003,2026-10-20,SYNTHETIC
+sale,Pueblo Libre,zona 1,350000.0,PEN,77.0,3,1,0,10,False,183.0,portal-main,https://example.invalid/synthetic/sale/PL-004,2026-10-20,SYNTHETIC
+sale,Pueblo Libre,zona 2,309000.0,PEN,65.0,2,2,0,24,False,282.0,portal-main,https://example.invalid/synthetic/sale/PL-005,2026-10-20,SYNTHETIC
+sale,Pueblo Libre,zona 3,331000.0,PEN,65.0,2,1,0,2,False,302.0,portal-main,https://example.invalid/synthetic/sale/PL-006,2026-10-20,SYNTHETIC
+sale,Pueblo Libre,zona 4,293000.0,PEN,61.0,2,2,1,21,False,276.0,portal-main,https://example.invalid/synthetic/sale/PL-007,2026-10-20,SYNTHETIC
+sale,Pueblo Libre,zona 1,382000.0,PEN,74.0,3,1,1,5,False,214.0,portal-main,https://example.invalid/synthetic/sale/PL-008,2026-10-20,SYNTHETIC
+sale,Pueblo Libre,zona 2,345000.0,PEN,76.0,3,1,1,11,False,352.0,portal-main,https://example.invalid/synthetic/sale/PL-009,2026-10-20,SYNTHETIC
+sale,Pueblo Libre,zona 3,360000.0,PEN,79.0,3,2,0,21,False,237.0,portal-main,https://example.invalid/synthetic/sale/PL-010,2026-10-20,SYNTHETIC
+sale,Pueblo Libre,zona 4,323000.0,PEN,63.0,2,1,1,7,False,236.0,portal-main,https://example.invalid/synthetic/sale/PL-011,2026-10-20,SYNTHETIC
+sale,Pueblo Libre,zona 1,392000.0,PEN,74.0,3,1,0,20,False,318.0,portal-main,https://example.invalid/synthetic/sale/PL-012,2026-10-20,SYNTHETIC
+sale,Pueblo Libre,zona 2,357000.0,PEN,76.0,3,2,1,9,False,294.0,portal-main,https://example.invalid/synthetic/sale/PL-013,2026-10-20,SYNTHETIC
+sale,Pueblo Libre,zona 3,299000.0,PEN,65.0,3,1,1,1,False,293.0,portal-main,https://example.invalid/synthetic/sale/PL-014,2026-10-20,SYNTHETIC
+sale,Pueblo Libre,zona 4,424000.0,PEN,80.0,3,1,0,2,False,309.0,portal-main,https://example.invalid/synthetic/sale/PL-015,2026-10-20,SYNTHETIC
+sale,Pueblo Libre,zona 1,356000.0,PEN,66.0,3,1,0,8,False,184.0,portal-main,https://example.invalid/synthetic/sale/PL-016,2026-10-20,SYNTHETIC
+sale,Pueblo Libre,zona 2,330000.0,PEN,70.0,3,1,1,15,False,350.0,portal-main,https://example.invalid/synthetic/sale/PL-017,2026-10-20,SYNTHETIC
+sale,Pueblo Libre,zona 3,375000.0,PEN,79.0,2,2,0,24,False,298.0,portal-main,https://example.invalid/synthetic/sale/PL-018,2026-10-20,SYNTHETIC
+sale,Pueblo Libre,zona 4,356000.0,PEN,73.0,2,2,0,4,False,299.0,portal-main,https://example.invalid/synthetic/sale/PL-019,2026-10-20,SYNTHETIC
+sale,Pueblo Libre,zona 1,361000.0,PEN,74.0,3,1,0,16,False,277.0,portal-main,https://example.invalid/synthetic/sale/PL-020,2026-10-20,SYNTHETIC
+sale,Pueblo Libre,zona 2,313000.0,PEN,66.0,2,1,0,21,False,262.0,portal-main,https://example.invalid/synthetic/sale/PL-021,2026-10-20,SYNTHETIC
+rent,Pueblo Libre,zona 1,2050.0,PEN,71.0,2,2,1,21,False,233.0,portal-main,https://example.invalid/synthetic/rent/PL-000,2026-10-20,SYNTHETIC
+rent,Pueblo Libre,zona 2,1820.0,PEN,63.0,2,2,0,12,False,203.0,portal-main,https://example.invalid/synthetic/rent/PL-001,2026-10-20,SYNTHETIC
+rent,Pueblo Libre,zona 3,1910.0,PEN,76.0,2,2,1,18,False,228.0,portal-main,https://example.invalid/synthetic/rent/PL-002,2026-10-20,SYNTHETIC
+rent,Pueblo Libre,zona 4,2230.0,PEN,76.0,2,1,1,21,False,213.0,portal-main,https://example.invalid/synthetic/rent/PL-003,2026-10-20,SYNTHETIC
+rent,Pueblo Libre,zona 1,1780.0,PEN,60.0,2,2,0,7,False,307.0,portal-main,https://example.invalid/synthetic/rent/PL-004,2026-10-20,SYNTHETIC
+rent,Pueblo Libre,zona 2,1980.0,PEN,69.0,2,1,1,13,False,328.0,portal-main,https://example.invalid/synthetic/rent/PL-005,2026-10-20,SYNTHETIC
+rent,Pueblo Libre,zona 3,2060.0,PEN,77.0,3,2,0,5,False,273.0,portal-main,https://example.invalid/synthetic/rent/PL-006,2026-10-20,SYNTHETIC
+rent,Pueblo Libre,zona 4,2010.0,PEN,78.0,3,1,0,18,False,276.0,portal-main,https://example.invalid/synthetic/rent/PL-007,2026-10-20,SYNTHETIC
+rent,Pueblo Libre,zona 1,1900.0,PEN,64.0,3,2,0,22,False,213.0,portal-main,https://example.invalid/synthetic/rent/PL-008,2026-10-20,SYNTHETIC
+rent,Pueblo Libre,zona 2,1730.0,PEN,61.0,3,1,1,10,False,359.0,portal-main,https://example.invalid/synthetic/rent/PL-009,2026-10-20,SYNTHETIC
+rent,Pueblo Libre,zona 3,2120.0,PEN,72.0,3,1,1,15,False,251.0,portal-main,https://example.invalid/synthetic/rent/PL-010,2026-10-20,SYNTHETIC
+rent,Pueblo Libre,zona 4,1700.0,PEN,66.0,3,2,1,14,False,316.0,portal-main,https://example.invalid/synthetic/rent/PL-011,2026-10-20,SYNTHETIC
+rent,Pueblo Libre,zona 1,1790.0,PEN,66.0,3,1,0,8,False,255.0,portal-main,https://example.invalid/synthetic/rent/PL-012,2026-10-20,SYNTHETIC
+rent,Pueblo Libre,zona 2,2030.0,PEN,69.0,2,1,1,2,False,249.0,portal-main,https://example.invalid/synthetic/rent/PL-013,2026-10-20,SYNTHETIC
+rent,Pueblo Libre,zona 3,2270.0,PEN,79.0,3,2,0,0,False,329.0,portal-main,https://example.invalid/synthetic/rent/PL-014,2026-10-20,SYNTHETIC
+rent,Pueblo Libre,zona 4,1750.0,PEN,65.0,3,2,0,0,False,316.0,portal-main,https://example.invalid/synthetic/rent/PL-015,2026-10-20,SYNTHETIC
+rent,Pueblo Libre,zona 1,1990.0,PEN,78.0,3,1,1,22,False,328.0,portal-main,https://example.invalid/synthetic/rent/PL-016,2026-10-20,SYNTHETIC
+rent,Pueblo Libre,zona 2,1700.0,PEN,67.0,3,1,0,16,False,357.0,portal-main,https://example.invalid/synthetic/rent/PL-017,2026-10-20,SYNTHETIC
+rent,Pueblo Libre,zona 3,1590.0,PEN,62.0,2,2,1,23,False,260.0,portal-main,https://example.invalid/synthetic/rent/PL-018,2026-10-20,SYNTHETIC
+rent,Pueblo Libre,zona 4,2010.0,PEN,78.0,3,1,1,18,False,219.0,portal-main,https://example.invalid/synthetic/rent/PL-019,2026-10-20,SYNTHETIC
+sale,Pueblo Libre,zona 1,372854.99999999994,PEN,68.0,2,2,0,5,False,293.0,portal-other,https://example.invalid/synthetic/sale/PL-dup,2026-10-20,SYNTHETIC: cross-portal duplicate
+rent,Pueblo Libre,zona 1,8200.0,PEN,71.0,2,2,1,21,False,233.0,portal-main,https://example.invalid/synthetic/rent/PL-outlier,2026-10-20,SYNTHETIC: rent outlier
+sale,Pueblo Libre,zona 1,93300.0,USD,70.0,2,2,0,5,False,293.0,portal-main,https://example.invalid/synthetic/sale/PL-usd,2026-10-20,SYNTHETIC: priced in USD
+sale,Pueblo Libre,zona 1,371000.0,PEN,68.0,2,2,0,5,False,293.0,portal-main,,2026-10-20,"SYNTHETIC: no URL, must be dropped"
+sale,San Miguel,zona 1,335000.0,PEN,78.0,3,1,0,3,False,185.0,portal-main,https://example.invalid/synthetic/sale/SM-000,2026-10-20,SYNTHETIC
+sale,San Miguel,zona 2,280000.0,PEN,62.0,2,1,1,6,False,261.0,portal-main,https://example.invalid/synthetic/sale/SM-001,2026-10-20,SYNTHETIC
+sale,San Miguel,zona 3,393000.0,PEN,76.0,2,1,1,6,False,344.0,portal-main,https://example.invalid/synthetic/sale/SM-002,2026-10-20,SYNTHETIC
+sale,San Miguel,zona 4,340000.0,PEN,74.0,2,2,0,12,False,202.0,portal-main,https://example.invalid/synthetic/sale/SM-003,2026-10-20,SYNTHETIC
+sale,San Miguel,zona 1,325000.0,PEN,69.0,2,2,0,4,False,211.0,portal-main,https://example.invalid/synthetic/sale/SM-004,2026-10-20,SYNTHETIC
+sale,San Miguel,zona 2,337000.0,PEN,72.0,3,2,0,4,False,300.0,portal-main,https://example.invalid/synthetic/sale/SM-005,2026-10-20,SYNTHETIC
+sale,San Miguel,zona 3,369000.0,PEN,78.0,2,2,0,20,False,272.0,portal-main,https://example.invalid/synthetic/sale/SM-006,2026-10-20,SYNTHETIC
+sale,San Miguel,zona 4,355000.0,PEN,75.0,3,2,0,23,False,322.0,portal-main,https://example.invalid/synthetic/sale/SM-007,2026-10-20,SYNTHETIC
+sale,San Miguel,zona 1,282000.0,PEN,64.0,3,1,0,8,False,200.0,portal-main,https://example.invalid/synthetic/sale/SM-008,2026-10-20,SYNTHETIC
+sale,San Miguel,zona 2,363000.0,PEN,71.0,3,1,0,16,False,354.0,portal-main,https://example.invalid/synthetic/sale/SM-009,2026-10-20,SYNTHETIC
+sale,San Miguel,zona 3,367000.0,PEN,78.0,2,1,0,13,False,344.0,portal-main,https://example.invalid/synthetic/sale/SM-010,2026-10-20,SYNTHETIC
+sale,San Miguel,zona 4,349000.0,PEN,77.0,2,1,1,24,False,191.0,portal-main,https://example.invalid/synthetic/sale/SM-011,2026-10-20,SYNTHETIC
+sale,San Miguel,zona 1,331000.0,PEN,71.0,2,2,1,2,False,316.0,portal-main,https://example.invalid/synthetic/sale/SM-012,2026-10-20,SYNTHETIC
+sale,San Miguel,zona 2,381000.0,PEN,77.0,3,2,1,7,False,332.0,portal-main,https://example.invalid/synthetic/sale/SM-013,2026-10-20,SYNTHETIC
+sale,San Miguel,zona 3,369000.0,PEN,75.0,3,1,0,8,False,210.0,portal-main,https://example.invalid/synthetic/sale/SM-014,2026-10-20,SYNTHETIC
+sale,San Miguel,zona 4,268000.0,PEN,61.0,3,1,1,20,False,287.0,portal-main,https://example.invalid/synthetic/sale/SM-015,2026-10-20,SYNTHETIC
+sale,San Miguel,zona 1,414000.0,PEN,81.0,2,2,0,7,False,272.0,portal-main,https://example.invalid/synthetic/sale/SM-016,2026-10-20,SYNTHETIC
+sale,San Miguel,zona 2,339000.0,PEN,66.0,2,1,1,10,False,324.0,portal-main,https://example.invalid/synthetic/sale/SM-017,2026-10-20,SYNTHETIC
+sale,San Miguel,zona 3,309000.0,PEN,62.0,2,1,1,20,False,295.0,portal-main,https://example.invalid/synthetic/sale/SM-018,2026-10-20,SYNTHETIC
+sale,San Miguel,zona 4,362000.0,PEN,78.0,3,1,0,0,False,304.0,portal-main,https://example.invalid/synthetic/sale/SM-019,2026-10-20,SYNTHETIC
+sale,San Miguel,zona 1,295000.0,PEN,65.0,3,1,1,10,False,217.0,portal-main,https://example.invalid/synthetic/sale/SM-020,2026-10-20,SYNTHETIC
+sale,San Miguel,zona 2,297000.0,PEN,60.0,3,1,0,18,False,311.0,portal-main,https://example.invalid/synthetic/sale/SM-021,2026-10-20,SYNTHETIC
+rent,San Miguel,zona 1,2130.0,PEN,75.0,2,2,0,11,False,253.0,portal-main,https://example.invalid/synthetic/rent/SM-000,2026-10-20,SYNTHETIC
+rent,San Miguel,zona 2,1590.0,PEN,61.0,3,2,1,23,False,195.0,portal-main,https://example.invalid/synthetic/rent/SM-001,2026-10-20,SYNTHETIC
+rent,San Miguel,zona 3,2080.0,PEN,79.0,3,1,1,15,False,187.0,portal-main,https://example.invalid/synthetic/rent/SM-002,2026-10-20,SYNTHETIC
+rent,San Miguel,zona 4,2080.0,PEN,78.0,2,1,1,19,False,193.0,portal-main,https://example.invalid/synthetic/rent/SM-003,2026-10-20,SYNTHETIC
+rent,San Miguel,zona 1,1840.0,PEN,75.0,3,1,0,7,False,338.0,portal-main,https://example.invalid/synthetic/rent/SM-004,2026-10-20,SYNTHETIC
+rent,San Miguel,zona 2,1800.0,PEN,70.0,2,2,1,23,False,307.0,portal-main,https://example.invalid/synthetic/rent/SM-005,2026-10-20,SYNTHETIC
+rent,San Miguel,zona 3,1710.0,PEN,62.0,3,1,0,20,False,291.0,portal-main,https://example.invalid/synthetic/rent/SM-006,2026-10-20,SYNTHETIC
+rent,San Miguel,zona 4,1620.0,PEN,60.0,3,2,1,10,False,253.0,portal-main,https://example.invalid/synthetic/rent/SM-007,2026-10-20,SYNTHETIC
+rent,San Miguel,zona 1,1580.0,PEN,62.0,3,1,1,23,False,248.0,portal-main,https://example.invalid/synthetic/rent/SM-008,2026-10-20,SYNTHETIC
+rent,San Miguel,zona 2,1860.0,PEN,68.0,2,2,1,1,False,240.0,portal-main,https://example.invalid/synthetic/rent/SM-009,2026-10-20,SYNTHETIC
+rent,San Miguel,zona 3,1600.0,PEN,63.0,3,1,1,2,False,321.0,portal-main,https://example.invalid/synthetic/rent/SM-010,2026-10-20,SYNTHETIC
+rent,San Miguel,zona 4,2140.0,PEN,79.0,2,2,0,17,False,250.0,portal-main,https://example.invalid/synthetic/rent/SM-011,2026-10-20,SYNTHETIC
+rent,San Miguel,zona 1,2030.0,PEN,77.0,3,1,1,20,False,299.0,portal-main,https://example.invalid/synthetic/rent/SM-012,2026-10-20,SYNTHETIC
+rent,San Miguel,zona 2,1980.0,PEN,75.0,3,1,0,2,False,213.0,portal-main,https://example.invalid/synthetic/rent/SM-013,2026-10-20,SYNTHETIC
+rent,San Miguel,zona 3,1640.0,PEN,66.0,2,1,0,14,False,359.0,portal-main,https://example.invalid/synthetic/rent/SM-014,2026-10-20,SYNTHETIC
+rent,San Miguel,zona 4,1800.0,PEN,70.0,2,2,0,6,False,284.0,portal-main,https://example.invalid/synthetic/rent/SM-015,2026-10-20,SYNTHETIC
+rent,San Miguel,zona 1,2100.0,PEN,75.0,3,2,0,8,False,228.0,portal-main,https://example.invalid/synthetic/rent/SM-016,2026-10-20,SYNTHETIC
+rent,San Miguel,zona 2,1710.0,PEN,66.0,3,2,1,3,False,193.0,portal-main,https://example.invalid/synthetic/rent/SM-017,2026-10-20,SYNTHETIC
+rent,San Miguel,zona 3,1600.0,PEN,64.0,3,2,0,1,False,215.0,portal-main,https://example.invalid/synthetic/rent/SM-018,2026-10-20,SYNTHETIC
+rent,San Miguel,zona 4,2190.0,PEN,79.0,2,1,1,3,False,265.0,portal-main,https://example.invalid/synthetic/rent/SM-019,2026-10-20,SYNTHETIC
+sale,San Miguel,zona 1,336674.99999999994,PEN,78.0,3,1,0,3,False,185.0,portal-other,https://example.invalid/synthetic/sale/SM-dup,2026-10-20,SYNTHETIC: cross-portal duplicate
+rent,San Miguel,zona 1,8520.0,PEN,75.0,2,2,0,11,False,253.0,portal-main,https://example.invalid/synthetic/rent/SM-outlier,2026-10-20,SYNTHETIC: rent outlier
+sale,San Miguel,zona 1,87700.0,USD,70.0,3,1,0,3,False,185.0,portal-main,https://example.invalid/synthetic/sale/SM-usd,2026-10-20,SYNTHETIC: priced in USD
+sale,San Miguel,zona 1,335000.0,PEN,78.0,3,1,0,3,False,185.0,portal-main,,2026-10-20,"SYNTHETIC: no URL, must be dropped"

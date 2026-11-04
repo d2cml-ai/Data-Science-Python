@@ -1,0 +1,107 @@
+{
+  "run_id": "20261103-0900-synthetic-fixture",
+  "synthetic": true,
+  "source_mode": "csv",
+  "collected_at": "2026-11-03",
+  "fx_used": {
+    "usd_pen": 3.75,
+    "as_of": "2026-11-03",
+    "source_url": "https://example.invalid/synthetic/fx",
+    "note": "SYNTHETIC"
+  },
+  "negotiation_discount": 0.0,
+  "dropped_without_url": 3,
+  "districts": [
+    {
+      "district": "Jesús María",
+      "source_mode": "csv",
+      "low_confidence": false,
+      "sale": {
+        "n": 18,
+        "n_found": 24,
+        "price_p25": 342000.0,
+        "price_median": 362000.0,
+        "price_p75": 383500.0,
+        "price_per_m2_median": 5181.54,
+        "area_median": 70.0,
+        "realistic_price": 362000.0,
+        "maintenance_fee_median": 232.0
+      },
+      "rent": {
+        "n": 20,
+        "n_found": 21,
+        "rent_p25": 1897.5,
+        "rent_median": 2095.0,
+        "rent_p75": 2195.0,
+        "rent_per_m2_median": 29.08,
+        "realistic_rent": 2095.0,
+        "maintenance_fee_median": 300.5
+      },
+      "index_check": {
+        "index_ppm2": 5150.0,
+        "sample_ppm2": 5181.54,
+        "difference": 0.0061,
+        "flag": false,
+        "source_url": "https://example.invalid/synthetic/params",
+        "as_of": "2026-11-03"
+      },
+      "warnings": []
+    },
+    {
+      "district": "Pueblo Libre",
+      "source_mode": "csv",
+      "low_confidence": false,
+      "sale": {
+        "n": 21,
+        "n_found": 24,
+        "price_p25": 323000.0,
+        "price_median": 349875.0,
+        "price_p75": 360000.0,
+        "price_per_m2_median": 4803.28,
+        "area_median": 70.0,
+        "realistic_price": 349875.0,
+        "maintenance_fee_median": 282.0
+      },
+      "rent": {
+        "n": 20,
+        "n_found": 21,
+        "rent_p25": 1772.5,
+        "rent_median": 1945.0,
+        "rent_p75": 2035.0,
+        "rent_per_m2_median": 27.74,
+        "realistic_rent": 1945.0,
+        "maintenance_fee_median": 266.5
+      },
+      "index_check": null,
+      "warnings": []
+    },
+    {
+      "district": "San Miguel",
+      "source_mode": "csv",
+      "low_confidence": false,
+      "sale": {
+        "n": 22,
+        "n_found": 24,
+        "price_p25": 313000.0,
+        "price_median": 338000.0,
+        "price_p75": 362750.0,
+        "price_per_m2_median": 4701.67,
+        "area_median": 71.5,
+        "realistic_price": 338000.0,
+        "maintenance_fee_median": 291.0
+      },
+      "rent": {
+        "n": 19,
+        "n_found": 21,
+        "rent_p25": 1675.0,
+        "rent_median": 1840.0,
+        "rent_p75": 2080.0,
+        "rent_per_m2_median": 26.33,
+        "realistic_rent": 1840.0,
+        "maintenance_fee_median": 250.0
+      },
+      "index_check": null,
+      "warnings": []
+    }
+  ]
+}
