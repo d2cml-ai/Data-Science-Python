@@ -1,5 +1,7 @@
 """Streamlit AppTest smoke tests on the SYNTHETIC fixture run, with network access blocked."""
 
+import json
+import os
 import socket
 from pathlib import Path
 
@@ -8,6 +10,11 @@ from streamlit.testing.v1 import AppTest
 
 APP = Path(__file__).resolve().parents[1] / "app" / "app.py"
 FIXTURE = Path(__file__).resolve().parent / "fixtures" / "sample_run"
+# Set HOUSING_LIMA_RUN to test a real run folder instead of the synthetic fixture.
+RUN = Path(os.environ.get("HOUSING_LIMA_RUN") or FIXTURE)
+INPUTS = json.loads((RUN / "inputs.json").read_text(encoding="utf-8"))
+MARKET = json.loads((RUN / "market_summary.json").read_text(encoding="utf-8"))
+DISTRICTS = [d for d in MARKET["districts"] if d["sale"]["realistic_price"] and d["rent"]["realistic_rent"]]
 
 
 @pytest.fixture(autouse=True)
@@ -20,7 +27,7 @@ def no_network(monkeypatch):
 
 @pytest.fixture
 def app(monkeypatch, tmp_path):
-    monkeypatch.setenv("HOUSING_LIMA_RUN", str(FIXTURE))
+    monkeypatch.setenv("HOUSING_LIMA_RUN", str(RUN))
     monkeypatch.setenv("HOUSING_LIMA_RUNS", str(tmp_path / "no_runs"))
     at = AppTest.from_file(str(APP), default_timeout=60)
     at.run()
@@ -33,31 +40,33 @@ def metrics(at):
 
 
 def test_app_starts_with_listing_based_defaults(app):
-    import json
-    market = json.loads((FIXTURE / "market_summary.json").read_text(encoding="utf-8"))
-    first = market["districts"][0]
+    first = DISTRICTS[0]
     price = app.slider(key=f"price_{first['district']}")
-    assert price.value == pytest.approx(first["sale"]["realistic_price"])
-    assert len(app.metric) == 3 * 5  # three districts x five horizons
-    assert any("SINTÉTICOS" in w.value for w in app.warning)
+    expected = min(max(first["sale"]["realistic_price"], INPUTS["price_min_pen"]), INPUTS["price_max_pen"])
+    assert price.value == pytest.approx(expected)
+    assert len(app.metric) == len(DISTRICTS) * 5  # districts x five horizons
+    if INPUTS.get("synthetic"):
+        assert any("SINTÉTICOS" in w.value for w in app.warning)
     assert any("Uso educativo" in i.value for i in app.info)
 
 
-@pytest.mark.parametrize("key,value", [
-    ("mortgage_rate", 10.5),
-    ("down_payment", 35),
+@pytest.mark.parametrize("key,step", [
+    ("mortgage_rate", 1.0),
+    ("down_payment", 10),
     ("discount", 5.0),
 ])
-def test_slider_controls_change_output(app, key, value):
+def test_slider_controls_change_output(app, key, step):
     before = metrics(app)
-    app.slider(key=key).set_value(value).run()
+    slider = app.slider(key=key)
+    value = slider.value + step if slider.value + step <= slider.max else slider.value - step
+    slider.set_value(value).run()
     assert not app.exception
     assert metrics(app) != before
 
 
 def test_price_and_growth_controls_change_output(app):
     district = app.selectbox(key="district").value
-    for key, value in ((f"price_{district}", 260000.0), (f"price_growth_{district}", 0.0),
+    for key, value in ((f"price_{district}", float(INPUTS["price_min_pen"])), (f"price_growth_{district}", 0.0),
                        (f"rent_growth_{district}", 6.0)):
         before = metrics(app)
         app.slider(key=key).set_value(value).run()
@@ -66,11 +75,17 @@ def test_price_and_growth_controls_change_output(app):
 
 
 def test_opportunity_option_and_level_change_output(app):
+    opp = json.loads((RUN / "opportunity_costs.json").read_text(encoding="utf-8"))
+    ids = [o["id"] for o in sorted(opp["options"], key=lambda o: o["risk_rank"])]
     before = metrics(app)
-    app.radio(key="option").set_value("sp500").run()
-    after_option = metrics(app)
-    assert after_option != before
-    app.radio(key="level_sp500").set_value("high").run()
+    other = ids[-1]
+    if other != ids[0]:
+        app.radio(key="option").set_value(other).run()
+        after_option = metrics(app)
+        assert after_option != before
+    else:
+        after_option = before
+    app.radio(key=f"level_{other}").set_value("high").run()
     assert metrics(app) != after_option
     app.radio(key="option").set_value("custom").run()
     custom = metrics(app)
@@ -89,7 +104,7 @@ def test_loan_term_and_real_toggle_change_output(app):
 
 
 def test_district_switch_and_horizon(app):
-    app.selectbox(key="district").set_value("San Miguel").run()
+    app.selectbox(key="district").set_value(DISTRICTS[-1]["district"]).run()
     assert not app.exception
     app.select_slider(key="horizon").set_value(30).run()
     assert not app.exception
