@@ -1,0 +1,164 @@
+{
+  "as_of": "2026-11-03",
+  "synthetic": false,
+  "disclaimer": "Educational information, not personalized investment advice.",
+  "fx_change_assumption": 0.0,
+  "inflation_used": 0.0455,
+  "inflation_source": {
+    "value": 0.0455,
+    "description": "BCRP, Lima Metropolitana CPI, 12-month % change, Sep.2026 = 4.5487% (series PN01273PM). housing_params.json was not present in the run folder when this file was written, so the latest BCRP 12-month figure was used; align with housing_params.json if it differs.",
+    "source_url": "https://estadisticas.bcrp.gob.pe/estadisticas/series/api/PN01273PM/json/2025-1/2026-12",
+    "as_of": "2026-09"
+  },
+  "usd_pen_context": {
+    "series": "BCRP PN01210PM, bank exchange rate, monthly average (S/ per US$)",
+    "source_url": "https://estadisticas.bcrp.gob.pe/estadisticas/series/api/PN01210PM/json/2006-1/2026-12",
+    "points": {
+      "2006-09": 3.248,
+      "2016-09": 3.382,
+      "2021-09": 4.107,
+      "2025-09": 3.503,
+      "2026-09": 3.379
+    },
+    "annualized_change_10y_2016_09_to_2026_09": -0.0001,
+    "annualized_change_20y_2006_09_to_2026_09": 0.002,
+    "note": "Over 10 and 20 years USD/PEN moved close to 0% per year, but with large swings in between (3.25 to 4.11). fx_change_assumption = 0.0 is editable in the dashboard."
+  },
+  "options": [
+    {
+      "id": "deposit",
+      "name": "Fixed-term deposit in soles",
+      "currency": "PEN",
+      "original_currency": "PEN",
+      "return_low": 0.05325,
+      "return_base": 0.0575,
+      "return_high": 0.0623,
+      "return_real_base": 0.0115,
+      "volatility": 0.0,
+      "worst_1y": 0.05,
+      "risk_rank": 1,
+      "basis": "Published TEA/TREA for soles fixed-term deposits, individuals, min. S/500. low = average of the top two 360-day rates on bank pages (Alfin Banco 5.65% TREA, Efectibank 5.00% TEA/TREA) = 5.325%. base = average of the best rate per term found on bank pages: 360 d 5.65% (Alfin), 720 d 5.85% (Alfin), 1080 d 5.75% (Efectibank TREA) = 5.75%. high = best rate found: Caja Piura 6.23% average rate for soles deposits over 360 days (SBS, June 2026, reported by Andina 2026-11-02). Cross-check SBS averages >360 d: Banco Efectiva 5.92%, Caja Incasur 5.91%, Caja Los Andes 5.90%, Caja Paita 5.76%, Financiera Confianza 5.68%. No published 1440- or 1800-day rates were found. volatility = 0 within the term; worst_1y = lowest rate in the top group (5.00%).",
+      "explanation": "A deposit at a bank, caja or financiera that pays a fixed rate in soles for a fixed term of one to three years. The main risk is reinvestment: the rate is fixed only for the term and may be lower later, early withdrawal loses part of the interest, and deposit insurance covers only up to S/ 123,000 per person per institution.",
+      "source_urls": [
+        "https://www.alfinbanco.pe/ahorros/depositoaplazofijo",
+        "https://www.efectibank.pe/ahorros/deposito-a-plazo/",
+        "https://andina.pe/agencia/noticia-guerra-bancos-2026-conoce-las-mejores-tasas-para-tus-depositos-a-plazos-1075245.aspx",
+        "https://elperuano.pe/noticia/304049-tus-ahorros-tienen-una-nueva-cobertura-el-fondo-de-seguro-de-depositos-fija-el-limite-en-s123000",
+        "https://elperuano.pe/noticia/306896-presentan-proyecto-de-ley-para-que-cuentas-de-ahorros-sigan-exoneradas-de-impuestos-hasta-cuando"
+      ],
+      "as_of": "2026-11-03",
+      "conditions": {
+        "minimum_amount_pen": 500,
+        "alfin_validity": "Campaign rate valid 2026-11-03 to 2026-11-17 or until S/ 20,000,000 is raised; new deposits",
+        "efectibank_rate_sheet": "Tarifario DPF Digital 03.08.2026; individuals only, soles; early-cancellation penalty reduces the agreed rate",
+        "deposit_insurance": "Fondo de Seguro de Depositos max. coverage S/ 123,000 per person per institution, Sep-Nov 2026 (Circular F-618-2026)"
+      },
+      "tax_and_fees": {
+        "income_tax_on_interest": "Exempt for individuals (Ley del Impuesto a la Renta art. 19 inc. i) until 2026-12-31 (D. Leg. 1549). Extension to 2029 proposed in Congress, not confirmed as approved; if not extended, interest would be taxable from 2027-01-01 at a rate not sourced here.",
+        "tax_rate_from_2027": null,
+        "itf": 0.00005,
+        "maintenance_fee": "None per Efectibank page",
+        "sources": [
+          "https://elperuano.pe/noticia/306896-presentan-proyecto-de-ley-para-que-cuentas-de-ahorros-sigan-exoneradas-de-impuestos-hasta-cuando",
+          "https://www.efectibank.pe/ahorros/deposito-a-plazo/"
+        ]
+      },
+      "caveats": [
+        "A deposit rate observed today is not a 20- or 30-year guarantee: after each term the money must be reinvested at an unknown future rate.",
+        "Rates are campaign rates that change every few weeks; the Alfin rate is valid only to 2026-11-17.",
+        "The high value (6.23%) is an SBS average rate for one caja, not a quoted offer.",
+        "Coverage limited to 1-3 year terms; no 4-5 year published rates found.",
+        "Deposit insurance covers only up to S/ 123,000 per institution; the down payment may exceed it and need splitting across institutions.",
+        "Tax exemption on interest expires 2026-12-31 unless extended."
+      ]
+    },
+    {
+      "id": "sp500",
+      "name": "S&P 500 (total return, in soles)",
+      "currency": "PEN",
+      "original_currency": "USD",
+      "return_low": 0.0741,
+      "return_base": 0.1039,
+      "return_high": 0.1386,
+      "return_real_base": 0.0558,
+      "return_usd_low": 0.0741,
+      "return_usd_base": 0.1039,
+      "return_usd_high": 0.1386,
+      "annualized_usd": {"5y": 0.1219, "10y": 0.1501, "20y": 0.1087, "30y": 0.0993},
+      "volatility": 0.1586,
+      "worst_1y": -0.4332,
+      "worst_calendar_year": -0.37,
+      "risk_rank": 2,
+      "basis": "Monthly closes of the S&P 500 Total Return index (^SP500TR, dividends reinvested) 1988-01 to 2026-11-03 from Yahoo Finance, processed with index_returns.py: low/base/high = 25th percentile / median / 75th percentile of rolling 10-year annualized returns in USD. volatility and worst_1y = std and minimum of rolling 12-month returns (worst 12 months -43.3%; worst calendar year 2008 -37.0%). r_pen = (1 + r_usd) x (1 + 0.0) - 1 with fx_change_assumption = 0.0.",
+      "explanation": "A low-cost fund that holds the 500 largest US listed companies, with dividends reinvested. Its main risks are equity falls (it lost about 43% in the worst 12 months since 1988) and the USD/PEN exchange rate, which changes the return in soles.",
+      "source_urls": [
+        "https://query1.finance.yahoo.com/v8/finance/chart/%5ESP500TR?period1=0&period2=9999999999&interval=1mo",
+        "https://www.spglobal.com/spdji/en/indices/equity/sp-500/",
+        "https://estadisticas.bcrp.gob.pe/estadisticas/series/api/PN01210PM/json/2006-1/2026-12",
+        "https://www.ey.com/es_pe/newsroom/2024/03/aspectos-clave-ingresos-extranjero"
+      ],
+      "as_of": "2026-11-03",
+      "tax_and_fees": {
+        "income_tax": "Per EY Peru (2024-03), Peru-domiciled individuals are taxed on worldwide income; net foreign-source income is added to labour income and taxed at the progressive scale (8%-30%). Exact treatment of a US-listed ETF and credit for US withholding not confirmed with SUNAT.",
+        "us_dividend_withholding": null,
+        "fund_expense_ratio": null,
+        "broker_and_fx_fees": null,
+        "sources": ["https://www.ey.com/es_pe/newsroom/2024/03/aspectos-clave-ingresos-extranjero"]
+      },
+      "caveats": [
+        "Returns are gross of taxes and fees; real investor returns will be lower.",
+        "Return in soles assumes 0% USD/PEN change per year; over 2016-2026 the sol was roughly flat but swung between 3.25 and 4.11.",
+        "Past returns do not predict future returns; the 10-year rolling band starts in 1998.",
+        "Index data from a secondary aggregator (Yahoo Finance), not the S&P DJI factsheet."
+      ]
+    },
+    {
+      "id": "bvl",
+      "name": "S&P/BVL Peru General index",
+      "currency": "PEN",
+      "original_currency": "PEN",
+      "return_low": 0.0206,
+      "return_base": 0.0774,
+      "return_high": 0.2261,
+      "return_real_base": 0.0305,
+      "annualized_pen": {"5y": 0.2676, "10y": 0.1461, "20y": 0.0915},
+      "volatility": 0.4362,
+      "worst_1y": -0.6748,
+      "worst_calendar_year": -0.598,
+      "risk_rank": 3,
+      "basis": "BCRP series PN01142MM, Indice General BVL (base 31/12/91 = 100, source BVL/Cavali), monthly 1999-01 to 2026-09, in soles, processed with index_returns.py: low/base/high = 25th percentile / median / 75th percentile of rolling 10-year annualized returns. volatility and worst_1y = std and minimum of rolling 12-month returns (worst 12 months -67.5%; worst calendar year 2008 -59.8%). Annualized 5y 26.8%, 10y 14.6%, 20y 9.1%.",
+      "explanation": "An index of the main shares listed on the Lima Stock Exchange, measured in soles. Its main risk is concentration in mining and finance and dependence on metal prices, with much larger swings and less liquidity than the S&P 500.",
+      "source_urls": [
+        "https://estadisticas.bcrp.gob.pe/estadisticas/series/api/PN01142MM/json/1999-1/2026-12",
+        "https://estadisticas.bcrp.gob.pe/estadisticas/series/mensuales/resultados/PN01142MM/html",
+        "https://www.cuatrecasas.com/es/latam/fiscalidad/art/ganancias-capital-enajenacion-valores-negociados-bvl",
+        "https://finantres.com/impuestos-sobre-trading-e-inversiones-en-peru/"
+      ],
+      "as_of": "2026-09-30",
+      "tax_and_fees": {
+        "capital_gains_tax": 0.05,
+        "capital_gains_note": "From 2024 the Ley 30341 exemption lapsed; gains on Peruvian securities sold through the BVL taxed at 5% for individuals (Cuatrecasas, 2023-12-21). Whether any new exemption applies in 2026 not confirmed.",
+        "dividend_tax": 0.05,
+        "dividend_note": "5% withholding on dividends of Peruvian companies to domiciled individuals (Finantres guide, secondary source).",
+        "broker_and_custody_fees": null,
+        "fund_expense_ratio": null,
+        "sources": [
+          "https://www.cuatrecasas.com/es/latam/fiscalidad/art/ganancias-capital-enajenacion-valores-negociados-bvl",
+          "https://finantres.com/impuestos-sobre-trading-e-inversiones-en-peru/"
+        ]
+      },
+      "caveats": [
+        "The BCRP series is the general price index; it likely excludes reinvested dividends, so the total return is understated.",
+        "Volatility (43.6%) is inflated by 2006 (+168%) and 2008-2009 (-60%, +101%); since 2010 monthly volatility is lower, but risk rank 3 is confirmed by the data.",
+        "The 5-year return (26.8%) is driven by the 2025-2026 metals rally and should not be extrapolated.",
+        "Investing in the index usually requires an ETF or fund with fees not sourced here."
+      ]
+    }
+  ],
+  "unknowns": [
+    "tax_and_fees: deposit (income tax rate on interest from 2027-01-01 if the exemption is not extended)",
+    "tax_and_fees: sp500 (US dividend withholding and foreign tax credit, fund expense ratio, broker and FX fees; SUNAT treatment of a US ETF not confirmed)",
+    "tax_and_fees: bvl (broker, Cavali and fund fees; whether any 2026 capital-gains exemption applies)",
+    "deposit rates for 1440 and 1800 day terms (none published found)"
+  ]
+}

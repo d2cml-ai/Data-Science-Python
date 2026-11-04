@@ -1,0 +1,120 @@
+{
+  "run_id": "20261103-2350-pueblo-libre-jesus-maria-magdalena",
+  "synthetic": false,
+  "source_mode": "live",
+  "collected_at": "2026-11-04",
+  "fx_used": {
+    "usd_pen": 3.466,
+    "as_of": "2026-11-02",
+    "source_url": "https://estadisticas.bcrp.gob.pe/estadisticas/series/api/PD04639PD-PD04640PD/json/2026-10-20/2026-11-03"
+  },
+  "negotiation_discount": 0.0,
+  "dropped_without_url": 0,
+  "districts": [
+    {
+      "district": "Pueblo Libre",
+      "source_mode": "live",
+      "low_confidence": false,
+      "sale": {
+        "n": 30,
+        "n_found": 30,
+        "price_p25": 467245.25,
+        "price_median": 496301.5,
+        "price_p75": 509494.63,
+        "price_per_m2_median": 6626.5,
+        "area_median": 73.0,
+        "realistic_price": 496301.5,
+        "maintenance_fee_median": 220.0
+      },
+      "rent": {
+        "n": 25,
+        "n_found": 44,
+        "rent_p25": 2000.0,
+        "rent_median": 2200.0,
+        "rent_p75": 2400.0,
+        "rent_per_m2_median": 28.57,
+        "realistic_rent": 2200.0,
+        "maintenance_fee_median": 245.0
+      },
+      "index_check": {
+        "index_ppm2": 6498.75,
+        "sample_ppm2": 6626.5,
+        "difference": 0.0197,
+        "flag": false,
+        "source_url": "https://estadisticas.bcrp.gob.pe/estadisticas/series/api/PD17467PQ/json/2026-1/2026-1",
+        "as_of": "2026-07-31"
+      },
+      "warnings": []
+    },
+    {
+      "district": "Jesús María",
+      "source_mode": "live",
+      "low_confidence": false,
+      "sale": {
+        "n": 30,
+        "n_found": 30,
+        "price_p25": 466700.0,
+        "price_median": 488170.0,
+        "price_p75": 514703.5,
+        "price_per_m2_median": 7342.75,
+        "area_median": 67.0,
+        "realistic_price": 488170.0,
+        "maintenance_fee_median": null
+      },
+      "rent": {
+        "n": 36,
+        "n_found": 68,
+        "rent_p25": 2400.0,
+        "rent_median": 2500.0,
+        "rent_p75": 3012.5,
+        "rent_per_m2_median": 42.07,
+        "realistic_rent": 2500.0,
+        "maintenance_fee_median": 250.0
+      },
+      "index_check": {
+        "index_ppm2": 7288.84,
+        "sample_ppm2": 7342.75,
+        "difference": 0.0074,
+        "flag": false,
+        "source_url": "https://estadisticas.bcrp.gob.pe/estadisticas/series/api/PD17464PQ/json/2026-1/2026-1",
+        "as_of": "2026-07-31"
+      },
+      "warnings": []
+    },
+    {
+      "district": "Magdalena del Mar",
+      "source_mode": "live",
+      "low_confidence": false,
+      "sale": {
+        "n": 16,
+        "n_found": 19,
+        "price_p25": 517985.25,
+        "price_median": 528352.0,
+        "price_p75": 535280.0,
+        "price_per_m2_median": 6804.56,
+        "area_median": 77.5,
+        "realistic_price": 528352.0,
+        "maintenance_fee_median": null
+      },
+      "rent": {
+        "n": 21,
+        "n_found": 75,
+        "rent_p25": 2300.0,
+        "rent_median": 2500.0,
+        "rent_p75": 2772.0,
+        "rent_per_m2_median": 32.05,
+        "realistic_rent": 2500.0,
+        "maintenance_fee_median": 235.0
+      },
+      "index_check": {
+        "index_ppm2": 6884.52,
+        "sample_ppm2": 6804.56,
+        "difference": -0.0116,
+        "flag": false,
+        "source_url": "https://estadisticas.bcrp.gob.pe/estadisticas/series/api/PD17466PQ/json/2026-1/2026-1",
+        "as_of": "2026-07-31"
+      },
+      "warnings": []
+    }
+  ]
+}

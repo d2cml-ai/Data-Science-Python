@@ -1,0 +1,1653 @@
+{
+  "run_id": "20261103-2350-pueblo-libre-jesus-maria-magdalena",
+  "generated_at": "2026-11-04T00:04:48",
+  "synthetic": false,
+  "source_mode": "live",
+  "horizons": [
+    5,
+    10,
+    15,
+    20,
+    30
+  ],
+  "mortgage_rate_grid": [
+    0.0567,
+    0.0667,
+    0.0767,
+    0.0867,
+    0.0967
+  ],
+  "market_mortgage_rate": 0.0767,
+  "options": [
+    {
+      "id": "deposit",
+      "name": "Fixed-term deposit in soles",
+      "return_base": 0.0575,
+      "risk_rank": 1
+    },
+    {
+      "id": "sp500",
+      "name": "S&P 500 (total return, in soles)",
+      "return_base": 0.1039,
+      "risk_rank": 2
+    },
+    {
+      "id": "bvl",
+      "name": "S&P/BVL Peru General index",
+      "return_base": 0.0774,
+      "risk_rank": 3
+    }
+  ],
+  "parameters": {
+    "loan_term_years": 20,
+    "down_payment_pct": 20.0,
+    "verdict_thresholds": {
+      "buy": 0.8,
+      "rent": 0.2
+    },
+    "renter_pays_maintenance": true,
+    "negotiation_discount": 0.0
+  },
+  "districts": [
+    {
+      "district": "Pueblo Libre",
+      "low_confidence": false,
+      "price_used": 496301.5,
+      "rent_used": 2200.0,
+      "parameters": {
+        "inflation": 0.0455,
+        "price_growth": 0.0125,
+        "rent_growth": 0.0039,
+        "buy_cost_pct": 0.04,
+        "sell_cost_pct": 0.03,
+        "property_tax_pct": 0.002,
+        "insurance_pct": 0.003,
+        "maintenance_fee_monthly": 245.0,
+        "mortgage_rate": 0.0767
+      },
+      "parameter_sources": {
+        "inflation": {
+          "origin": "researched",
+          "value": 0.0455,
+          "source_url": "https://estadisticas.bcrp.gob.pe/estadisticas/series/api/PN01273PM/json/2026-9/2026-9",
+          "as_of": "2026-09",
+          "note": "BCRP PN01273PM, CPI Lima Metropolitana 12-month change, Sep-2026 = 4.5487% (latest published)."
+        },
+        "price_growth": {
+          "origin": "researched",
+          "value": 0.0125,
+          "source_url": "https://estadisticas.bcrp.gob.pe/estadisticas/series/api/PD38030PQ/json/2021-1/2026-1",
+          "as_of": "2026-07-31",
+          "note": "city-wide value; no district series found"
+        },
+        "rent_growth": {
+          "origin": "researched",
+          "value": 0.0039,
+          "source_url": "https://estadisticas.bcrp.gob.pe/estadisticas/series/api/PN01305PM/json/2025-10/2026-9",
+          "as_of": "2026-10-08",
+          "note": "city-wide value; no district series found"
+        },
+        "buy_cost_pct": {
+          "origin": "fallback",
+          "note": "assumption from defaults.yaml = 0.04"
+        },
+        "sell_cost_pct": {
+          "origin": "fallback",
+          "note": "assumption from defaults.yaml = 0.03"
+        },
+        "property_tax_pct": {
+          "origin": "fallback",
+          "note": "assumption from defaults.yaml = 0.002"
+        },
+        "insurance_pct": {
+          "origin": "fallback",
+          "note": "assumption from defaults.yaml = 0.003"
+        },
+        "maintenance_fee_monthly": {
+          "origin": "researched",
+          "note": "median of listings",
+          "source_url": "listings.csv",
+          "as_of": "2026-11-04"
+        },
+        "mortgage_rate": {
+          "origin": "researched",
+          "value": 0.0767,
+          "source_url": "https://www.sbs.gob.pe/app/pp/EstadisticasSAEEPortal/Paginas/TIActivaTipoCreditoEmpresa.aspx?tip=B",
+          "as_of": "2026-11-03",
+          "note": "SBS 'Tasa de interés promedio del sistema bancario', moneda nacional, Préstamos hipotecarios para vivienda, operations of the last 30 business days to 03/11/2026, column Promedio."
+        }
+      },
+      "verdicts": [
+        {
+          "horizon": 5,
+          "share_buy_wins": 0.0,
+          "label": "rent",
+          "delta_market_rate_by_option": {
+            "deposit": -71808.92,
+            "sp500": -119282.24,
+            "bvl": -91255.58
+          }
+        },
+        {
+          "horizon": 10,
+          "share_buy_wins": 0.0,
+          "label": "rent",
+          "delta_market_rate_by_option": {
+            "deposit": -123145.38,
+            "sp500": -286652.14,
+            "bvl": -186411.82
+          }
+        },
+        {
+          "horizon": 15,
+          "share_buy_wins": 0.0,
+          "label": "rent",
+          "delta_market_rate_by_option": {
+            "deposit": -191851.83,
+            "sp500": -596455.3,
+            "bvl": -339492.58
+          }
+        },
+        {
+          "horizon": 20,
+          "share_buy_wins": 0.0,
+          "label": "rent",
+          "delta_market_rate_by_option": {
+            "deposit": -280997.49,
+            "sp500": -1148753.79,
+            "bvl": -578840.66
+          }
+        },
+        {
+          "horizon": 30,
+          "share_buy_wins": 0.0,
+          "label": "rent",
+          "delta_market_rate_by_option": {
+            "deposit": -582087.71,
+            "sp500": -3676478.41,
+            "bvl": -1499967.96
+          }
+        }
+      ],
+      "break_even": [
+        {
+          "option_id": "deposit",
+          "mortgage_rate": 0.0767,
+          "break_even_year": null,
+          "reverts": false
+        },
+        {
+          "option_id": "sp500",
+          "mortgage_rate": 0.0767,
+          "break_even_year": null,
+          "reverts": false
+        },
+        {
+          "option_id": "bvl",
+          "mortgage_rate": 0.0767,
+          "break_even_year": null,
+          "reverts": false
+        }
+      ],
+      "sensitivity": [
+        {
+          "option_id": "deposit",
+          "parameter": "price_growth",
+          "value": -0.0075,
+          "horizon": 10,
+          "delta": -221733.62
+        },
+        {
+          "option_id": "deposit",
+          "parameter": "price_growth",
+          "value": -0.0075,
+          "horizon": 20,
+          "delta": -484064.82
+        },
+        {
+          "option_id": "deposit",
+          "parameter": "price_growth",
+          "value": 0.0125,
+          "horizon": 10,
+          "delta": -123145.38
+        },
+        {
+          "option_id": "deposit",
+          "parameter": "price_growth",
+          "value": 0.0125,
+          "horizon": 20,
+          "delta": -280997.49
+        },
+        {
+          "option_id": "deposit",
+          "parameter": "price_growth",
+          "value": 0.0325,
+          "horizon": 10,
+          "delta": -5380.59
+        },
+        {
+          "option_id": "deposit",
+          "parameter": "price_growth",
+          "value": 0.0325,
+          "horizon": 20,
+          "delta": 14493.81
+        },
+        {
+          "option_id": "deposit",
+          "parameter": "rent_growth",
+          "value": -0.0161,
+          "horizon": 10,
+          "delta": -150813.48
+        },
+        {
+          "option_id": "deposit",
+          "parameter": "rent_growth",
+          "value": -0.0161,
+          "horizon": 20,
+          "delta": -420854.81
+        },
+        {
+          "option_id": "deposit",
+          "parameter": "rent_growth",
+          "value": 0.0039,
+          "horizon": 10,
+          "delta": -123145.38
+        },
+        {
+          "option_id": "deposit",
+          "parameter": "rent_growth",
+          "value": 0.0039,
+          "horizon": 20,
+          "delta": -280997.49
+        },
+        {
+          "option_id": "deposit",
+          "parameter": "rent_growth",
+          "value": 0.0239,
+          "horizon": 10,
+          "delta": -92536.18
+        },
+        {
+          "option_id": "deposit",
+          "parameter": "rent_growth",
+          "value": 0.0239,
+          "horizon": 20,
+          "delta": -107415.92
+        },
+        {
+          "option_id": "deposit",
+          "parameter": "negotiation_discount",
+          "value": 0.0,
+          "horizon": 10,
+          "delta": -123145.38
+        },
+        {
+          "option_id": "deposit",
+          "parameter": "negotiation_discount",
+          "value": 0.0,
+          "horizon": 20,
+          "delta": -280997.49
+        },
+        {
+          "option_id": "deposit",
+          "parameter": "negotiation_discount",
+          "value": 0.05,
+          "horizon": 10,
+          "delta": -99062.94
+        },
+        {
+          "option_id": "deposit",
+          "parameter": "negotiation_discount",
+          "value": 0.05,
+          "horizon": 20,
+          "delta": -216958.84
+        },
+        {
+          "option_id": "deposit",
+          "parameter": "negotiation_discount",
+          "value": 0.1,
+          "horizon": 10,
+          "delta": -74980.5
+        },
+        {
+          "option_id": "deposit",
+          "parameter": "negotiation_discount",
+          "value": 0.1,
+          "horizon": 20,
+          "delta": -152920.18
+        },
+        {
+          "option_id": "sp500",
+          "parameter": "price_growth",
+          "value": -0.0075,
+          "horizon": 10,
+          "delta": -385240.38
+        },
+        {
+          "option_id": "sp500",
+          "parameter": "price_growth",
+          "value": -0.0075,
+          "horizon": 20,
+          "delta": -1351821.12
+        },
+        {
+          "option_id": "sp500",
+          "parameter": "price_growth",
+          "value": 0.0125,
+          "horizon": 10,
+          "delta": -286652.14
+        },
+        {
+          "option_id": "sp500",
+          "parameter": "price_growth",
+          "value": 0.0125,
+          "horizon": 20,
+          "delta": -1148753.79
+        },
+        {
+          "option_id": "sp500",
+          "parameter": "price_growth",
+          "value": 0.0325,
+          "horizon": 10,
+          "delta": -168887.35
+        },
+        {
+          "option_id": "sp500",
+          "parameter": "price_growth",
+          "value": 0.0325,
+          "horizon": 20,
+          "delta": -853262.49
+        },
+        {
+          "option_id": "sp500",
+          "parameter": "rent_growth",
+          "value": -0.0161,
+          "horizon": 10,
+          "delta": -318889.06
+        },
+        {
+          "option_id": "sp500",
+          "parameter": "rent_growth",
+          "value": -0.0161,
+          "horizon": 20,
+          "delta": -1349069.49
+        },
+        {
+          "option_id": "sp500",
+          "parameter": "rent_growth",
+          "value": 0.0039,
+          "horizon": 10,
+          "delta": -286652.14
+        },
+        {
+          "option_id": "sp500",
+          "parameter": "rent_growth",
+          "value": 0.0039,
+          "horizon": 20,
+          "delta": -1148753.79
+        },
+        {
+          "option_id": "sp500",
+          "parameter": "rent_growth",
+          "value": 0.0239,
+          "horizon": 10,
+          "delta": -251149.49
+        },
+        {
+          "option_id": "sp500",
+          "parameter": "rent_growth",
+          "value": 0.0239,
+          "horizon": 20,
+          "delta": -905168.75
+        },
+        {
+          "option_id": "sp500",
+          "parameter": "negotiation_discount",
+          "value": 0.0,
+          "horizon": 10,
+          "delta": -286652.14
+        },
+        {
+          "option_id": "sp500",
+          "parameter": "negotiation_discount",
+          "value": 0.0,
+          "horizon": 20,
+          "delta": -1148753.79
+        },
+        {
+          "option_id": "sp500",
+          "parameter": "negotiation_discount",
+          "value": 0.05,
+          "horizon": 10,
+          "delta": -249555.51
+        },
+        {
+          "option_id": "sp500",
+          "parameter": "negotiation_discount",
+          "value": 0.05,
+          "horizon": 20,
+          "delta": -1006477.44
+        },
+        {
+          "option_id": "sp500",
+          "parameter": "negotiation_discount",
+          "value": 0.1,
+          "horizon": 10,
+          "delta": -212458.89
+        },
+        {
+          "option_id": "sp500",
+          "parameter": "negotiation_discount",
+          "value": 0.1,
+          "horizon": 20,
+          "delta": -864201.1
+        },
+        {
+          "option_id": "bvl",
+          "parameter": "price_growth",
+          "value": -0.0075,
+          "horizon": 10,
+          "delta": -285000.06
+        },
+        {
+          "option_id": "bvl",
+          "parameter": "price_growth",
+          "value": -0.0075,
+          "horizon": 20,
+          "delta": -781907.99
+        },
+        {
+          "option_id": "bvl",
+          "parameter": "price_growth",
+          "value": 0.0125,
+          "horizon": 10,
+          "delta": -186411.82
+        },
+        {
+          "option_id": "bvl",
+          "parameter": "price_growth",
+          "value": 0.0125,
+          "horizon": 20,
+          "delta": -578840.66
+        },
+        {
+          "option_id": "bvl",
+          "parameter": "price_growth",
+          "value": 0.0325,
+          "horizon": 10,
+          "delta": -68647.03
+        },
+        {
+          "option_id": "bvl",
+          "parameter": "price_growth",
+          "value": 0.0325,
+          "horizon": 20,
+          "delta": -283349.36
+        },
+        {
+          "option_id": "bvl",
+          "parameter": "rent_growth",
+          "value": -0.0161,
+          "horizon": 10,
+          "delta": -215941.77
+        },
+        {
+          "option_id": "bvl",
+          "parameter": "rent_growth",
+          "value": -0.0161,
+          "horizon": 20,
+          "delta": -741411.72
+        },
+        {
+          "option_id": "bvl",
+          "parameter": "rent_growth",
+          "value": 0.0039,
+          "horizon": 10,
+          "delta": -186411.82
+        },
+        {
+          "option_id": "bvl",
+          "parameter": "rent_growth",
+          "value": 0.0039,
+          "horizon": 20,
+          "delta": -578840.66
+        },
+        {
+          "option_id": "bvl",
+          "parameter": "rent_growth",
+          "value": 0.0239,
+          "horizon": 10,
+          "delta": -153806.28
+        },
+        {
+          "option_id": "bvl",
+          "parameter": "rent_growth",
+          "value": 0.0239,
+          "horizon": 20,
+          "delta": -378831.28
+        },
+        {
+          "option_id": "bvl",
+          "parameter": "negotiation_discount",
+          "value": 0.0,
+          "horizon": 10,
+          "delta": -186411.82
+        },
+        {
+          "option_id": "bvl",
+          "parameter": "negotiation_discount",
+          "value": 0.0,
+          "horizon": 20,
+          "delta": -578840.66
+        },
+        {
+          "option_id": "bvl",
+          "parameter": "negotiation_discount",
+          "value": 0.05,
+          "horizon": 10,
+          "delta": -157242.92
+        },
+        {
+          "option_id": "bvl",
+          "parameter": "negotiation_discount",
+          "value": 0.05,
+          "horizon": 20,
+          "delta": -487432.0
+        },
+        {
+          "option_id": "bvl",
+          "parameter": "negotiation_discount",
+          "value": 0.1,
+          "horizon": 10,
+          "delta": -128074.03
+        },
+        {
+          "option_id": "bvl",
+          "parameter": "negotiation_discount",
+          "value": 0.1,
+          "horizon": 20,
+          "delta": -396023.34
+        }
+      ],
+      "verdict_text": "Pueblo Libre: at the market mortgage rate (7.67%), renting wins for all 30 years against the fixed-term deposit; renting wins for all 30 years against the S&P 500; renting wins for all 30 years against the S&P/BVL Peru General. Share of grid scenarios where buying wins: 0% at 5y, 0% at 10y, 0% at 15y, 0% at 20y, 0% at 30y.",
+      "warnings": [
+        "buy_cost_pct unknown: assumption from defaults.yaml = 0.04",
+        "insurance_pct unknown: assumption from defaults.yaml = 0.003",
+        "property_tax_pct unknown: assumption from defaults.yaml = 0.002",
+        "sell_cost_pct unknown: assumption from defaults.yaml = 0.03"
+      ]
+    },
+    {
+      "district": "Jesús María",
+      "low_confidence": false,
+      "price_used": 488170.0,
+      "rent_used": 2500.0,
+      "parameters": {
+        "inflation": 0.0455,
+        "price_growth": 0.0125,
+        "rent_growth": 0.0039,
+        "buy_cost_pct": 0.04,
+        "sell_cost_pct": 0.03,
+        "property_tax_pct": 0.002,
+        "insurance_pct": 0.003,
+        "maintenance_fee_monthly": 250.0,
+        "mortgage_rate": 0.0767
+      },
+      "parameter_sources": {
+        "inflation": {
+          "origin": "researched",
+          "value": 0.0455,
+          "source_url": "https://estadisticas.bcrp.gob.pe/estadisticas/series/api/PN01273PM/json/2026-9/2026-9",
+          "as_of": "2026-09",
+          "note": "BCRP PN01273PM, CPI Lima Metropolitana 12-month change, Sep-2026 = 4.5487% (latest published)."
+        },
+        "price_growth": {
+          "origin": "researched",
+          "value": 0.0125,
+          "source_url": "https://estadisticas.bcrp.gob.pe/estadisticas/series/api/PD38030PQ/json/2021-1/2026-1",
+          "as_of": "2026-07-31",
+          "note": "city-wide value; no district series found"
+        },
+        "rent_growth": {
+          "origin": "researched",
+          "value": 0.0039,
+          "source_url": "https://estadisticas.bcrp.gob.pe/estadisticas/series/api/PN01305PM/json/2025-10/2026-9",
+          "as_of": "2026-10-08",
+          "note": "city-wide value; no district series found"
+        },
+        "buy_cost_pct": {
+          "origin": "fallback",
+          "note": "assumption from defaults.yaml = 0.04"
+        },
+        "sell_cost_pct": {
+          "origin": "fallback",
+          "note": "assumption from defaults.yaml = 0.03"
+        },
+        "property_tax_pct": {
+          "origin": "fallback",
+          "note": "assumption from defaults.yaml = 0.002"
+        },
+        "insurance_pct": {
+          "origin": "fallback",
+          "note": "assumption from defaults.yaml = 0.003"
+        },
+        "maintenance_fee_monthly": {
+          "origin": "researched",
+          "note": "median of listings",
+          "source_url": "listings.csv",
+          "as_of": "2026-11-04"
+        },
+        "mortgage_rate": {
+          "origin": "researched",
+          "value": 0.0767,
+          "source_url": "https://www.sbs.gob.pe/app/pp/EstadisticasSAEEPortal/Paginas/TIActivaTipoCreditoEmpresa.aspx?tip=B",
+          "as_of": "2026-11-03",
+          "note": "SBS 'Tasa de interés promedio del sistema bancario', moneda nacional, Préstamos hipotecarios para vivienda, operations of the last 30 business days to 03/11/2026, column Promedio."
+        }
+      },
+      "verdicts": [
+        {
+          "horizon": 5,
+          "share_buy_wins": 0.0,
+          "label": "rent",
+          "delta_market_rate_by_option": {
+            "deposit": -47252.11,
+            "sp500": -91173.21,
+            "bvl": -65225.26
+          }
+        },
+        {
+          "horizon": 10,
+          "share_buy_wins": 0.0667,
+          "label": "rent",
+          "delta_market_rate_by_option": {
+            "deposit": -66367.12,
+            "sp500": -212412.48,
+            "bvl": -122721.9
+          }
+        },
+        {
+          "horizon": 15,
+          "share_buy_wins": 0.0667,
+          "label": "rent",
+          "delta_market_rate_by_option": {
+            "deposit": -91978.26,
+            "sp500": -445490.64,
+            "bvl": -220394.77
+          }
+        },
+        {
+          "horizon": 20,
+          "share_buy_wins": 0.0667,
+          "label": "rent",
+          "delta_market_rate_by_option": {
+            "deposit": -123680.02,
+            "sp500": -870753.97,
+            "bvl": -378523.99
+          }
+        },
+        {
+          "horizon": 30,
+          "share_buy_wins": 0.0667,
+          "label": "rent",
+          "delta_market_rate_by_option": {
+            "deposit": -246252.12,
+            "sp500": -2844609.1,
+            "bvl": -1007665.33
+          }
+        }
+      ],
+      "break_even": [
+        {
+          "option_id": "deposit",
+          "mortgage_rate": 0.0767,
+          "break_even_year": null,
+          "reverts": false
+        },
+        {
+          "option_id": "sp500",
+          "mortgage_rate": 0.0767,
+          "break_even_year": null,
+          "reverts": false
+        },
+        {
+          "option_id": "bvl",
+          "mortgage_rate": 0.0767,
+          "break_even_year": null,
+          "reverts": false
+        }
+      ],
+      "sensitivity": [
+        {
+          "option_id": "deposit",
+          "parameter": "price_growth",
+          "value": -0.0075,
+          "horizon": 10,
+          "delta": -163340.07
+        },
+        {
+          "option_id": "deposit",
+          "parameter": "price_growth",
+          "value": -0.0075,
+          "horizon": 20,
+          "delta": -323420.25
+        },
+        {
+          "option_id": "deposit",
+          "parameter": "price_growth",
+          "value": 0.0125,
+          "horizon": 10,
+          "delta": -66367.12
+        },
+        {
+          "option_id": "deposit",
+          "parameter": "price_growth",
+          "value": 0.0125,
+          "horizon": 20,
+          "delta": -123680.02
+        },
+        {
+          "option_id": "deposit",
+          "parameter": "price_growth",
+          "value": 0.0325,
+          "horizon": 10,
+          "delta": 49468.18
+        },
+        {
+          "option_id": "deposit",
+          "parameter": "price_growth",
+          "value": 0.0325,
+          "horizon": 20,
+          "delta": 166969.89
+        },
+        {
+          "option_id": "deposit",
+          "parameter": "rent_growth",
+          "value": -0.0161,
+          "horizon": 10,
+          "delta": -97808.15
+        },
+        {
+          "option_id": "deposit",
+          "parameter": "rent_growth",
+          "value": -0.0161,
+          "horizon": 20,
+          "delta": -282608.78
+        },
+        {
+          "option_id": "deposit",
+          "parameter": "rent_growth",
+          "value": 0.0039,
+          "horizon": 10,
+          "delta": -66367.12
+        },
+        {
+          "option_id": "deposit",
+          "parameter": "rent_growth",
+          "value": 0.0039,
+          "horizon": 20,
+          "delta": -123680.02
+        },
+        {
+          "option_id": "deposit",
+          "parameter": "rent_growth",
+          "value": 0.0239,
+          "horizon": 10,
+          "delta": -31583.94
+        },
+        {
+          "option_id": "deposit",
+          "parameter": "rent_growth",
+          "value": 0.0239,
+          "horizon": 20,
+          "delta": 73571.77
+        },
+        {
+          "option_id": "deposit",
+          "parameter": "negotiation_discount",
+          "value": 0.0,
+          "horizon": 10,
+          "delta": -66367.12
+        },
+        {
+          "option_id": "deposit",
+          "parameter": "negotiation_discount",
+          "value": 0.0,
+          "horizon": 20,
+          "delta": -123680.02
+        },
+        {
+          "option_id": "deposit",
+          "parameter": "negotiation_discount",
+          "value": 0.05,
+          "horizon": 10,
+          "delta": -42679.26
+        },
+        {
+          "option_id": "deposit",
+          "parameter": "negotiation_discount",
+          "value": 0.05,
+          "horizon": 20,
+          "delta": -60690.58
+        },
+        {
+          "option_id": "deposit",
+          "parameter": "negotiation_discount",
+          "value": 0.1,
+          "horizon": 10,
+          "delta": -18991.39
+        },
+        {
+          "option_id": "deposit",
+          "parameter": "negotiation_discount",
+          "value": 0.1,
+          "horizon": 20,
+          "delta": 2298.85
+        },
+        {
+          "option_id": "sp500",
+          "parameter": "price_growth",
+          "value": -0.0075,
+          "horizon": 10,
+          "delta": -309385.43
+        },
+        {
+          "option_id": "sp500",
+          "parameter": "price_growth",
+          "value": -0.0075,
+          "horizon": 20,
+          "delta": -1070494.21
+        },
+        {
+          "option_id": "sp500",
+          "parameter": "price_growth",
+          "value": 0.0125,
+          "horizon": 10,
+          "delta": -212412.48
+        },
+        {
+          "option_id": "sp500",
+          "parameter": "price_growth",
+          "value": 0.0125,
+          "horizon": 20,
+          "delta": -870753.97
+        },
+        {
+          "option_id": "sp500",
+          "parameter": "price_growth",
+          "value": 0.0325,
+          "horizon": 10,
+          "delta": -96577.18
+        },
+        {
+          "option_id": "sp500",
+          "parameter": "price_growth",
+          "value": 0.0325,
+          "horizon": 20,
+          "delta": -580104.06
+        },
+        {
+          "option_id": "sp500",
+          "parameter": "rent_growth",
+          "value": -0.0161,
+          "horizon": 10,
+          "delta": -249045.35
+        },
+        {
+          "option_id": "sp500",
+          "parameter": "rent_growth",
+          "value": -0.0161,
+          "horizon": 20,
+          "delta": -1098385.45
+        },
+        {
+          "option_id": "sp500",
+          "parameter": "rent_growth",
+          "value": 0.0039,
+          "horizon": 10,
+          "delta": -212412.48
+        },
+        {
+          "option_id": "sp500",
+          "parameter": "rent_growth",
+          "value": 0.0039,
+          "horizon": 20,
+          "delta": -870753.97
+        },
+        {
+          "option_id": "sp500",
+          "parameter": "rent_growth",
+          "value": 0.0239,
+          "horizon": 10,
+          "delta": -172068.57
+        },
+        {
+          "option_id": "sp500",
+          "parameter": "rent_growth",
+          "value": 0.0239,
+          "horizon": 20,
+          "delta": -593952.79
+        },
+        {
+          "option_id": "sp500",
+          "parameter": "negotiation_discount",
+          "value": 0.0,
+          "horizon": 10,
+          "delta": -212412.48
+        },
+        {
+          "option_id": "sp500",
+          "parameter": "negotiation_discount",
+          "value": 0.0,
+          "horizon": 20,
+          "delta": -870753.97
+        },
+        {
+          "option_id": "sp500",
+          "parameter": "negotiation_discount",
+          "value": 0.05,
+          "horizon": 10,
+          "delta": -175923.66
+        },
+        {
+          "option_id": "sp500",
+          "parameter": "negotiation_discount",
+          "value": 0.05,
+          "horizon": 20,
+          "delta": -730808.71
+        },
+        {
+          "option_id": "sp500",
+          "parameter": "negotiation_discount",
+          "value": 0.1,
+          "horizon": 10,
+          "delta": -139434.83
+        },
+        {
+          "option_id": "sp500",
+          "parameter": "negotiation_discount",
+          "value": 0.1,
+          "horizon": 20,
+          "delta": -590863.45
+        },
+        {
+          "option_id": "bvl",
+          "parameter": "price_growth",
+          "value": -0.0075,
+          "horizon": 10,
+          "delta": -219694.85
+        },
+        {
+          "option_id": "bvl",
+          "parameter": "price_growth",
+          "value": -0.0075,
+          "horizon": 20,
+          "delta": -578264.23
+        },
+        {
+          "option_id": "bvl",
+          "parameter": "price_growth",
+          "value": 0.0125,
+          "horizon": 10,
+          "delta": -122721.9
+        },
+        {
+          "option_id": "bvl",
+          "parameter": "price_growth",
+          "value": 0.0125,
+          "horizon": 20,
+          "delta": -378523.99
+        },
+        {
+          "option_id": "bvl",
+          "parameter": "price_growth",
+          "value": 0.0325,
+          "horizon": 10,
+          "delta": -6886.59
+        },
+        {
+          "option_id": "bvl",
+          "parameter": "price_growth",
+          "value": 0.0325,
+          "horizon": 20,
+          "delta": -87874.08
+        },
+        {
+          "option_id": "bvl",
+          "parameter": "rent_growth",
+          "value": -0.0161,
+          "horizon": 10,
+          "delta": -156278.67
+        },
+        {
+          "option_id": "bvl",
+          "parameter": "rent_growth",
+          "value": -0.0161,
+          "horizon": 20,
+          "delta": -563263.84
+        },
+        {
+          "option_id": "bvl",
+          "parameter": "rent_growth",
+          "value": 0.0039,
+          "horizon": 10,
+          "delta": -122721.9
+        },
+        {
+          "option_id": "bvl",
+          "parameter": "rent_growth",
+          "value": 0.0039,
+          "horizon": 20,
+          "delta": -378523.99
+        },
+        {
+          "option_id": "bvl",
+          "parameter": "rent_growth",
+          "value": 0.0239,
+          "horizon": 10,
+          "delta": -85670.15
+        },
+        {
+          "option_id": "bvl",
+          "parameter": "rent_growth",
+          "value": 0.0239,
+          "horizon": 20,
+          "delta": -151240.6
+        },
+        {
+          "option_id": "bvl",
+          "parameter": "negotiation_discount",
+          "value": 0.0,
+          "horizon": 10,
+          "delta": -122721.9
+        },
+        {
+          "option_id": "bvl",
+          "parameter": "negotiation_discount",
+          "value": 0.0,
+          "horizon": 20,
+          "delta": -378523.99
+        },
+        {
+          "option_id": "bvl",
+          "parameter": "negotiation_discount",
+          "value": 0.05,
+          "horizon": 10,
+          "delta": -94030.91
+        },
+        {
+          "option_id": "bvl",
+          "parameter": "negotiation_discount",
+          "value": 0.05,
+          "horizon": 20,
+          "delta": -288612.99
+        },
+        {
+          "option_id": "bvl",
+          "parameter": "negotiation_discount",
+          "value": 0.1,
+          "horizon": 10,
+          "delta": -65339.93
+        },
+        {
+          "option_id": "bvl",
+          "parameter": "negotiation_discount",
+          "value": 0.1,
+          "horizon": 20,
+          "delta": -198701.99
+        }
+      ],
+      "verdict_text": "Jesús María: at the market mortgage rate (7.67%), renting wins for all 30 years against the fixed-term deposit; renting wins for all 30 years against the S&P 500; renting wins for all 30 years against the S&P/BVL Peru General. Share of grid scenarios where buying wins: 0% at 5y, 7% at 10y, 7% at 15y, 7% at 20y, 7% at 30y.",
+      "warnings": [
+        "buy_cost_pct unknown: assumption from defaults.yaml = 0.04",
+        "insurance_pct unknown: assumption from defaults.yaml = 0.003",
+        "property_tax_pct unknown: assumption from defaults.yaml = 0.002",
+        "sell_cost_pct unknown: assumption from defaults.yaml = 0.03"
+      ]
+    },
+    {
+      "district": "Magdalena del Mar",
+      "low_confidence": false,
+      "price_used": 528352.0,
+      "rent_used": 2500.0,
+      "parameters": {
+        "inflation": 0.0455,
+        "price_growth": 0.0125,
+        "rent_growth": 0.0039,
+        "buy_cost_pct": 0.04,
+        "sell_cost_pct": 0.03,
+        "property_tax_pct": 0.002,
+        "insurance_pct": 0.003,
+        "maintenance_fee_monthly": 235.0,
+        "mortgage_rate": 0.0767
+      },
+      "parameter_sources": {
+        "inflation": {
+          "origin": "researched",
+          "value": 0.0455,
+          "source_url": "https://estadisticas.bcrp.gob.pe/estadisticas/series/api/PN01273PM/json/2026-9/2026-9",
+          "as_of": "2026-09",
+          "note": "BCRP PN01273PM, CPI Lima Metropolitana 12-month change, Sep-2026 = 4.5487% (latest published)."
+        },
+        "price_growth": {
+          "origin": "researched",
+          "value": 0.0125,
+          "source_url": "https://estadisticas.bcrp.gob.pe/estadisticas/series/api/PD38030PQ/json/2021-1/2026-1",
+          "as_of": "2026-07-31",
+          "note": "city-wide value; no district series found"
+        },
+        "rent_growth": {
+          "origin": "researched",
+          "value": 0.0039,
+          "source_url": "https://estadisticas.bcrp.gob.pe/estadisticas/series/api/PN01305PM/json/2025-10/2026-9",
+          "as_of": "2026-10-08",
+          "note": "city-wide value; no district series found"
+        },
+        "buy_cost_pct": {
+          "origin": "fallback",
+          "note": "assumption from defaults.yaml = 0.04"
+        },
+        "sell_cost_pct": {
+          "origin": "fallback",
+          "note": "assumption from defaults.yaml = 0.03"
+        },
+        "property_tax_pct": {
+          "origin": "fallback",
+          "note": "assumption from defaults.yaml = 0.002"
+        },
+        "insurance_pct": {
+          "origin": "fallback",
+          "note": "assumption from defaults.yaml = 0.003"
+        },
+        "maintenance_fee_monthly": {
+          "origin": "researched",
+          "note": "median of listings",
+          "source_url": "listings.csv",
+          "as_of": "2026-11-04"
+        },
+        "mortgage_rate": {
+          "origin": "researched",
+          "value": 0.0767,
+          "source_url": "https://www.sbs.gob.pe/app/pp/EstadisticasSAEEPortal/Paginas/TIActivaTipoCreditoEmpresa.aspx?tip=B",
+          "as_of": "2026-11-03",
+          "note": "SBS 'Tasa de interés promedio del sistema bancario', moneda nacional, Préstamos hipotecarios para vivienda, operations of the last 30 business days to 03/11/2026, column Promedio."
+        }
+      },
+      "verdicts": [
+        {
+          "horizon": 5,
+          "share_buy_wins": 0.0,
+          "label": "rent",
+          "delta_market_rate_by_option": {
+            "deposit": -65458.52,
+            "sp500": -114693.75,
+            "bvl": -85618.26
+          }
+        },
+        {
+          "horizon": 10,
+          "share_buy_wins": 0.0,
+          "label": "rent",
+          "delta_market_rate_by_option": {
+            "deposit": -105362.8,
+            "sp500": -272481.48,
+            "bvl": -169953.86
+          }
+        },
+        {
+          "horizon": 15,
+          "share_buy_wins": 0.0,
+          "label": "rent",
+          "delta_market_rate_by_option": {
+            "deposit": -158782.29,
+            "sp500": -568619.29,
+            "bvl": -308059.74
+          }
+        },
+        {
+          "horizon": 20,
+          "share_buy_wins": 0.0,
+          "label": "rent",
+          "delta_market_rate_by_option": {
+            "deposit": -227375.1,
+            "sp500": -1101136.03,
+            "bvl": -526538.16
+          }
+        },
+        {
+          "horizon": 30,
+          "share_buy_wins": 0.0,
+          "label": "rent",
+          "delta_market_rate_by_option": {
+            "deposit": -466331.81,
+            "sp500": -3551265.97,
+            "bvl": -1377022.3
+          }
+        }
+      ],
+      "break_even": [
+        {
+          "option_id": "deposit",
+          "mortgage_rate": 0.0767,
+          "break_even_year": null,
+          "reverts": false
+        },
+        {
+          "option_id": "sp500",
+          "mortgage_rate": 0.0767,
+          "break_even_year": null,
+          "reverts": false
+        },
+        {
+          "option_id": "bvl",
+          "mortgage_rate": 0.0767,
+          "break_even_year": null,
+          "reverts": false
+        }
+      ],
+      "sensitivity": [
+        {
+          "option_id": "deposit",
+          "parameter": "price_growth",
+          "value": -0.0075,
+          "horizon": 10,
+          "delta": -210317.74
+        },
+        {
+          "option_id": "deposit",
+          "parameter": "price_growth",
+          "value": -0.0075,
+          "horizon": 20,
+          "delta": -443556.25
+        },
+        {
+          "option_id": "deposit",
+          "parameter": "price_growth",
+          "value": 0.0125,
+          "horizon": 10,
+          "delta": -105362.8
+        },
+        {
+          "option_id": "deposit",
+          "parameter": "price_growth",
+          "value": 0.0125,
+          "horizon": 20,
+          "delta": -227375.1
+        },
+        {
+          "option_id": "deposit",
+          "parameter": "price_growth",
+          "value": 0.0325,
+          "horizon": 10,
+          "delta": 20007.08
+        },
+        {
+          "option_id": "deposit",
+          "parameter": "price_growth",
+          "value": 0.0325,
+          "horizon": 20,
+          "delta": 87198.64
+        },
+        {
+          "option_id": "deposit",
+          "parameter": "rent_growth",
+          "value": -0.0161,
+          "horizon": 10,
+          "delta": -136803.82
+        },
+        {
+          "option_id": "deposit",
+          "parameter": "rent_growth",
+          "value": -0.0161,
+          "horizon": 20,
+          "delta": -386303.87
+        },
+        {
+          "option_id": "deposit",
+          "parameter": "rent_growth",
+          "value": 0.0039,
+          "horizon": 10,
+          "delta": -105362.8
+        },
+        {
+          "option_id": "deposit",
+          "parameter": "rent_growth",
+          "value": 0.0039,
+          "horizon": 20,
+          "delta": -227375.1
+        },
+        {
+          "option_id": "deposit",
+          "parameter": "rent_growth",
+          "value": 0.0239,
+          "horizon": 10,
+          "delta": -70579.62
+        },
+        {
+          "option_id": "deposit",
+          "parameter": "rent_growth",
+          "value": 0.0239,
+          "horizon": 20,
+          "delta": -30123.31
+        },
+        {
+          "option_id": "deposit",
+          "parameter": "negotiation_discount",
+          "value": 0.0,
+          "horizon": 10,
+          "delta": -105362.8
+        },
+        {
+          "option_id": "deposit",
+          "parameter": "negotiation_discount",
+          "value": 0.0,
+          "horizon": 20,
+          "delta": -227375.1
+        },
+        {
+          "option_id": "deposit",
+          "parameter": "negotiation_discount",
+          "value": 0.05,
+          "horizon": 10,
+          "delta": -79725.15
+        },
+        {
+          "option_id": "deposit",
+          "parameter": "negotiation_discount",
+          "value": 0.05,
+          "horizon": 20,
+          "delta": -159200.91
+        },
+        {
+          "option_id": "deposit",
+          "parameter": "negotiation_discount",
+          "value": 0.1,
+          "horizon": 10,
+          "delta": -54087.5
+        },
+        {
+          "option_id": "deposit",
+          "parameter": "negotiation_discount",
+          "value": 0.1,
+          "horizon": 20,
+          "delta": -91026.72
+        },
+        {
+          "option_id": "sp500",
+          "parameter": "price_growth",
+          "value": -0.0075,
+          "horizon": 10,
+          "delta": -377436.42
+        },
+        {
+          "option_id": "sp500",
+          "parameter": "price_growth",
+          "value": -0.0075,
+          "horizon": 20,
+          "delta": -1317317.18
+        },
+        {
+          "option_id": "sp500",
+          "parameter": "price_growth",
+          "value": 0.0125,
+          "horizon": 10,
+          "delta": -272481.48
+        },
+        {
+          "option_id": "sp500",
+          "parameter": "price_growth",
+          "value": 0.0125,
+          "horizon": 20,
+          "delta": -1101136.03
+        },
+        {
+          "option_id": "sp500",
+          "parameter": "price_growth",
+          "value": 0.0325,
+          "horizon": 10,
+          "delta": -147111.6
+        },
+        {
+          "option_id": "sp500",
+          "parameter": "price_growth",
+          "value": 0.0325,
+          "horizon": 20,
+          "delta": -786562.29
+        },
+        {
+          "option_id": "sp500",
+          "parameter": "rent_growth",
+          "value": -0.0161,
+          "horizon": 10,
+          "delta": -309114.35
+        },
+        {
+          "option_id": "sp500",
+          "parameter": "rent_growth",
+          "value": -0.0161,
+          "horizon": 20,
+          "delta": -1328767.51
+        },
+        {
+          "option_id": "sp500",
+          "parameter": "rent_growth",
+          "value": 0.0039,
+          "horizon": 10,
+          "delta": -272481.48
+        },
+        {
+          "option_id": "sp500",
+          "parameter": "rent_growth",
+          "value": 0.0039,
+          "horizon": 20,
+          "delta": -1101136.03
+        },
+        {
+          "option_id": "sp500",
+          "parameter": "rent_growth",
+          "value": 0.0239,
+          "horizon": 10,
+          "delta": -232137.56
+        },
+        {
+          "option_id": "sp500",
+          "parameter": "rent_growth",
+          "value": 0.0239,
+          "horizon": 20,
+          "delta": -824334.85
+        },
+        {
+          "option_id": "sp500",
+          "parameter": "negotiation_discount",
+          "value": 0.0,
+          "horizon": 10,
+          "delta": -272481.48
+        },
+        {
+          "option_id": "sp500",
+          "parameter": "negotiation_discount",
+          "value": 0.0,
+          "horizon": 20,
+          "delta": -1101136.03
+        },
+        {
+          "option_id": "sp500",
+          "parameter": "negotiation_discount",
+          "value": 0.05,
+          "horizon": 10,
+          "delta": -232989.2
+        },
+        {
+          "option_id": "sp500",
+          "parameter": "negotiation_discount",
+          "value": 0.05,
+          "horizon": 20,
+          "delta": -949671.67
+        },
+        {
+          "option_id": "sp500",
+          "parameter": "negotiation_discount",
+          "value": 0.1,
+          "horizon": 10,
+          "delta": -193496.93
+        },
+        {
+          "option_id": "sp500",
+          "parameter": "negotiation_discount",
+          "value": 0.1,
+          "horizon": 20,
+          "delta": -798207.3
+        },
+        {
+          "option_id": "bvl",
+          "parameter": "price_growth",
+          "value": -0.0075,
+          "horizon": 10,
+          "delta": -274908.8
+        },
+        {
+          "option_id": "bvl",
+          "parameter": "price_growth",
+          "value": -0.0075,
+          "horizon": 20,
+          "delta": -742719.31
+        },
+        {
+          "option_id": "bvl",
+          "parameter": "price_growth",
+          "value": 0.0125,
+          "horizon": 10,
+          "delta": -169953.86
+        },
+        {
+          "option_id": "bvl",
+          "parameter": "price_growth",
+          "value": 0.0125,
+          "horizon": 20,
+          "delta": -526538.16
+        },
+        {
+          "option_id": "bvl",
+          "parameter": "price_growth",
+          "value": 0.0325,
+          "horizon": 10,
+          "delta": -44583.98
+        },
+        {
+          "option_id": "bvl",
+          "parameter": "price_growth",
+          "value": 0.0325,
+          "horizon": 20,
+          "delta": -211964.42
+        },
+        {
+          "option_id": "bvl",
+          "parameter": "rent_growth",
+          "value": -0.0161,
+          "horizon": 10,
+          "delta": -203510.63
+        },
+        {
+          "option_id": "bvl",
+          "parameter": "rent_growth",
+          "value": -0.0161,
+          "horizon": 20,
+          "delta": -711278.01
+        },
+        {
+          "option_id": "bvl",
+          "parameter": "rent_growth",
+          "value": 0.0039,
+          "horizon": 10,
+          "delta": -169953.86
+        },
+        {
+          "option_id": "bvl",
+          "parameter": "rent_growth",
+          "value": 0.0039,
+          "horizon": 20,
+          "delta": -526538.16
+        },
+        {
+          "option_id": "bvl",
+          "parameter": "rent_growth",
+          "value": 0.0239,
+          "horizon": 10,
+          "delta": -132902.11
+        },
+        {
+          "option_id": "bvl",
+          "parameter": "rent_growth",
+          "value": 0.0239,
+          "horizon": 20,
+          "delta": -299254.77
+        },
+        {
+          "option_id": "bvl",
+          "parameter": "negotiation_discount",
+          "value": 0.0,
+          "horizon": 10,
+          "delta": -169953.86
+        },
+        {
+          "option_id": "bvl",
+          "parameter": "negotiation_discount",
+          "value": 0.0,
+          "horizon": 20,
+          "delta": -526538.16
+        },
+        {
+          "option_id": "bvl",
+          "parameter": "negotiation_discount",
+          "value": 0.05,
+          "horizon": 10,
+          "delta": -138901.27
+        },
+        {
+          "option_id": "bvl",
+          "parameter": "negotiation_discount",
+          "value": 0.05,
+          "horizon": 20,
+          "delta": -429226.45
+        },
+        {
+          "option_id": "bvl",
+          "parameter": "negotiation_discount",
+          "value": 0.1,
+          "horizon": 10,
+          "delta": -107848.69
+        },
+        {
+          "option_id": "bvl",
+          "parameter": "negotiation_discount",
+          "value": 0.1,
+          "horizon": 20,
+          "delta": -331914.74
+        }
+      ],
+      "verdict_text": "Magdalena del Mar: at the market mortgage rate (7.67%), renting wins for all 30 years against the fixed-term deposit; renting wins for all 30 years against the S&P 500; renting wins for all 30 years against the S&P/BVL Peru General. Share of grid scenarios where buying wins: 0% at 5y, 0% at 10y, 0% at 15y, 0% at 20y, 0% at 30y.",
+      "warnings": [
+        "buy_cost_pct unknown: assumption from defaults.yaml = 0.04",
+        "insurance_pct unknown: assumption from defaults.yaml = 0.003",
+        "property_tax_pct unknown: assumption from defaults.yaml = 0.002",
+        "sell_cost_pct unknown: assumption from defaults.yaml = 0.03"
+      ]
+    }
+  ],
+  "warnings": [
+    "unknown: buy_cost_pct",
+    "unknown: sell_cost_pct",
+    "unknown: property_tax_pct",
+    "unknown: insurance_pct",
+    "unknown: price_growth_by_district",
+    "unknown: rent_growth_by_district",
+    "unknown: buy_cost.notary",
+    "unknown: buy_cost.sunarp_registration",
+    "unknown: buy_cost.appraisal",
+    "unknown: tax_and_fees: deposit (income tax rate on interest from 2027-01-01 if the exemption is not extended)",
+    "unknown: tax_and_fees: sp500 (US dividend withholding and foreign tax credit, fund expense ratio, broker and FX fees; SUNAT treatment of a US ETF not confirmed)",
+    "unknown: tax_and_fees: bvl (broker, Cavali and fund fees; whether any 2026 capital-gains exemption applies)",
+    "unknown: deposit rates for 1440 and 1800 day terms (none published found)"
+  ],
+  "disclaimer": "Educational use only. This tool compares scenarios built from public, dated information and stated assumptions. It is not personalized financial, tax or investment advice."
+}

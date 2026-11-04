@@ -1,0 +1,31 @@
+Validation of 20261103-2350-pueblo-libre-jesus-maria-magdalena · stage all · 2026-11-04 00:05
+
+RESULT: OK
+
+Search: S/ 450,000–550,000, >= 60 m², >= 2 bedrooms, down payment 20%, districts: Pueblo Libre, Jesús María, Magdalena del Mar
+
+Listings (mode live, collected 2026-11-04); dropped without URL: 0
+  Pueblo Libre: sale n=30 (of 30), rent n=25 (of 44), realistic price S/ 496,302, realistic rent S/ 2,200
+  Jesús María: sale n=30 (of 30), rent n=36 (of 68), realistic price S/ 488,170, realistic rent S/ 2,500
+  Magdalena del Mar: sale n=16 (of 19), rent n=21 (of 75), realistic price S/ 528,352, realistic rent S/ 2,500
+  Rows: 266; with URL: 266; duplicates flagged: 0; outliers flagged: 8
+
+Values without a source (an assumption is used and shown as a warning):
+  - buy_cost_pct
+  - sell_cost_pct
+  - property_tax_pct
+  - insurance_pct
+  - price_growth_by_district
+  - rent_growth_by_district
+  - buy_cost.notary
+  - buy_cost.sunarp_registration
+  - buy_cost.appraisal
+  - tax_and_fees: deposit (income tax rate on interest from 2027-01-01 if the exemption is not extended)
+  - tax_and_fees: sp500 (US dividend withholding and foreign tax credit, fund expense ratio, broker and FX fees; SUNAT treatment of a US ETF not confirmed)
+  - tax_and_fees: bvl (broker, Cavali and fund fees; whether any 2026 capital-gains exemption applies)
+  - deposit rates for 1440 and 1800 day terms (none published found)
+
+Verdict (% of scenarios where buying wins):
+  Pueblo Libre: 5y rent (0%), 10y rent (0%), 15y rent (0%), 20y rent (0%), 30y rent (0%)
+  Jesús María: 5y rent (0%), 10y rent (7%), 15y rent (7%), 20y rent (7%), 30y rent (7%)
+  Magdalena del Mar: 5y rent (0%), 10y rent (0%), 15y rent (0%), 20y rent (0%), 30y rent (0%)

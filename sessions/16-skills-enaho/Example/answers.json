@@ -1,0 +1,11 @@
+{
+  "price_min": 450000,
+  "price_max": 550000,
+  "currency": "PEN",
+  "min_area_m2": 60,
+  "min_bedrooms": 2,
+  "districts": ["Pueblo Libre", "Jesus Maria", "Magdalena"],
+  "down_payment_pct": 20,
+  "extras_text": "less than 10 years old",
+  "slug": "pueblo-libre-jesus-maria-magdalena"
+}

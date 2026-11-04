@@ -70,6 +70,10 @@ def resolve_params(run: RunData, district: str, defaults: dict) -> ResolvedParam
     take("inflation", p.get("inflation"), fb["inflation"])
     take("price_growth", (p.get("price_growth_by_district") or {}).get(district) or p.get("price_growth"), fb["price_growth"])
     take("rent_growth", (p.get("rent_growth_by_district") or {}).get(district) or p.get("rent_growth"), fb["rent_growth"])
+    for name in ("price_growth", "rent_growth"):
+        by_district = (p.get(f"{name}_by_district") or {}).get(district) or {}
+        if by_district.get("value") is None and sources[name]["origin"] == "researched":
+            sources[name] = {**sources[name], "note": "city-wide value; no district series found"}
     for name in ("buy_cost_pct", "sell_cost_pct", "property_tax_pct", "insurance_pct"):
         take(name, p.get(name), fb[name])
 
@@ -285,8 +289,26 @@ def write_report(path: Path, run: RunData, summary: dict) -> None:
         flag = " (low confidence)" if d["low_confidence"] else ""
         lines.append(f"| {d['district']}{flag} | S/ {d['price_used']:,.0f} | S/ {d['rent_used']:,.0f} | {cells} |")
     lines += ["", "## Verdicts", ""] + [f"- {d['verdict_text']}" for d in summary["districts"]]
+
+    analysed = [d for d in summary["districts"] if d.get("parameters")]
+    if analysed:
+        lines += ["", "## Parameters used", "",
+                  "| Parameter | " + " | ".join(d["district"] for d in analysed) + " | Origin |",
+                  "| --- | " + " | ".join("---:" for _ in analysed) + " | --- |"]
+        for name in analysed[0]["parameters"]:
+            src = analysed[0]["parameter_sources"].get(name, {})
+            origin = src.get("origin", "")
+            origin += f" ({src['note']})" if src.get("note") else ""
+            origin += f", {src['source_url']}" if src.get("source_url") and src.get("origin") != "fallback" else ""
+            vals = " | ".join(f"{d['parameters'][name]:,.4g}" for d in analysed)
+            lines.append(f"| {name} | {vals} | {origin} |")
+
     lines += ["", "## Warnings and caveats", ""]
-    all_warn = summary["warnings"] + [f"{d['district']}: {w}" for d in summary["districts"] for w in d.get("warnings", [])]
+    # A warning shared by every district is listed once instead of once per district.
+    per_district = [set(d.get("warnings", [])) for d in summary["districts"]]
+    shared = set.intersection(*per_district) if per_district else set()
+    all_warn = list(summary["warnings"]) + [f"All districts: {w}" for w in sorted(shared)]
+    all_warn += [f"{d['district']}: {w}" for d in summary["districts"] for w in d.get("warnings", []) if w not in shared]
     lines += [f"- {w}" for w in all_warn] or ["- None"]
     lines += ["- Asking prices are not transaction prices; see the negotiation discount.",
               "- Deposit rates observed today are not guaranteed for 30 years.",

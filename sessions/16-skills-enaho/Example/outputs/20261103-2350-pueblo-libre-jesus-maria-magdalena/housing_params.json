@@ -1,0 +1,185 @@
+{
+  "as_of": "2026-11-03",
+  "mortgage": {
+    "average_tea": {
+      "value": 0.0767,
+      "source_url": "https://www.sbs.gob.pe/app/pp/EstadisticasSAEEPortal/Paginas/TIActivaTipoCreditoEmpresa.aspx?tip=B",
+      "as_of": "2026-11-03",
+      "note": "SBS 'Tasa de interés promedio del sistema bancario', moneda nacional, Préstamos hipotecarios para vivienda, operations of the last 30 business days to 03/11/2026, column Promedio."
+    },
+    "by_bank": [
+      {
+        "bank": "BBVA",
+        "tea": 0.0755,
+        "source_url": "https://www.sbs.gob.pe/app/pp/EstadisticasSAEEPortal/Paginas/TIActivaTipoCreditoEmpresa.aspx?tip=B",
+        "as_of": "2026-11-03"
+      },
+      {
+        "bank": "Bancom",
+        "tea": 0.0925,
+        "source_url": "https://www.sbs.gob.pe/app/pp/EstadisticasSAEEPortal/Paginas/TIActivaTipoCreditoEmpresa.aspx?tip=B",
+        "as_of": "2026-11-03"
+      },
+      {
+        "bank": "Crédito (BCP)",
+        "tea": 0.079,
+        "source_url": "https://www.sbs.gob.pe/app/pp/EstadisticasSAEEPortal/Paginas/TIActivaTipoCreditoEmpresa.aspx?tip=B",
+        "as_of": "2026-11-03"
+      },
+      {
+        "bank": "Pichincha",
+        "tea": 0.0795,
+        "source_url": "https://www.sbs.gob.pe/app/pp/EstadisticasSAEEPortal/Paginas/TIActivaTipoCreditoEmpresa.aspx?tip=B",
+        "as_of": "2026-11-03"
+      },
+      {
+        "bank": "BIF",
+        "tea": 0.0785,
+        "source_url": "https://www.sbs.gob.pe/app/pp/EstadisticasSAEEPortal/Paginas/TIActivaTipoCreditoEmpresa.aspx?tip=B",
+        "as_of": "2026-11-03"
+      },
+      {
+        "bank": "Scotiabank",
+        "tea": 0.0716,
+        "source_url": "https://www.sbs.gob.pe/app/pp/EstadisticasSAEEPortal/Paginas/TIActivaTipoCreditoEmpresa.aspx?tip=B",
+        "as_of": "2026-11-03"
+      },
+      {
+        "bank": "Interbank",
+        "tea": 0.0751,
+        "source_url": "https://www.sbs.gob.pe/app/pp/EstadisticasSAEEPortal/Paginas/TIActivaTipoCreditoEmpresa.aspx?tip=B",
+        "as_of": "2026-11-03"
+      },
+      {
+        "bank": "Mibanco",
+        "tea": 0.1412,
+        "source_url": "https://www.sbs.gob.pe/app/pp/EstadisticasSAEEPortal/Paginas/TIActivaTipoCreditoEmpresa.aspx?tip=B",
+        "as_of": "2026-11-03"
+      },
+      {
+        "bank": "GNB",
+        "tea": 0.0744,
+        "source_url": "https://www.sbs.gob.pe/app/pp/EstadisticasSAEEPortal/Paginas/TIActivaTipoCreditoEmpresa.aspx?tip=B",
+        "as_of": "2026-11-03"
+      },
+      {
+        "bank": "Santander Consumer Bank",
+        "tea": 0.1056,
+        "source_url": "https://www.sbs.gob.pe/app/pp/EstadisticasSAEEPortal/Paginas/TIActivaTipoCreditoEmpresa.aspx?tip=B",
+        "as_of": "2026-11-03"
+      }
+    ]
+  },
+  "price_growth": {
+    "value": 0.0125,
+    "source_url": "https://estadisticas.bcrp.gob.pe/estadisticas/series/api/PD38030PQ/json/2021-1/2026-1",
+    "as_of": "2026-07-31",
+    "note": "BCRP PD38030PQ, departamentos Sector Medio (Jesús María, Lince, Magdalena, Pueblo Libre, San Miguel, Surquillo), S/ corrientes per m2: 6009.21 (T1-2021) -> 6394.88 (T1-2026), 5-year compound annual change = 1.25%. 1-year change T1-2025 -> T1-2026 = 3.51%. Nominal, soles."
+  },
+  "rent_growth": {
+    "value": 0.0039,
+    "source_url": "https://estadisticas.bcrp.gob.pe/estadisticas/series/api/PN01305PM/json/2025-10/2026-9",
+    "as_of": "2026-10-08",
+    "note": "BCRP PN01305PM, CPI Lima Metropolitana, core services - rents (alquileres), monthly % changes Oct-2025..Sep-2026 compounded = 0.39% over 12 months. City-wide CPI component, not district-specific."
+  },
+  "price_index_ppm2_by_district": {
+    "Jesús María": {
+      "value": 7288.84,
+      "source_url": "https://estadisticas.bcrp.gob.pe/estadisticas/series/api/PD17464PQ/json/2026-1/2026-1",
+      "as_of": "2026-07-31",
+      "note": "BCRP PD17464PQ T1-2026 = US$ 2102.95/m2 (asking prices, departamentos), converted at SBS USD/PEN venta 3.466 of 2026-11-02."
+    },
+    "Magdalena del Mar": {
+      "value": 6884.52,
+      "source_url": "https://estadisticas.bcrp.gob.pe/estadisticas/series/api/PD17466PQ/json/2026-1/2026-1",
+      "as_of": "2026-07-31",
+      "note": "BCRP PD17466PQ T1-2026 = US$ 1986.30/m2 (asking prices, departamentos), converted at SBS USD/PEN venta 3.466 of 2026-11-02."
+    },
+    "Pueblo Libre": {
+      "value": 6498.75,
+      "source_url": "https://estadisticas.bcrp.gob.pe/estadisticas/series/api/PD17467PQ/json/2026-1/2026-1",
+      "as_of": "2026-07-31",
+      "note": "BCRP PD17467PQ T1-2026 = US$ 1875.00/m2 (asking prices, departamentos), converted at SBS USD/PEN venta 3.466 of 2026-11-02."
+    }
+  },
+  "inflation": {
+    "value": 0.0455,
+    "source_url": "https://estadisticas.bcrp.gob.pe/estadisticas/series/api/PN01273PM/json/2026-9/2026-9",
+    "as_of": "2026-09",
+    "note": "BCRP PN01273PM, CPI Lima Metropolitana 12-month change, Sep-2026 = 4.5487% (latest published)."
+  },
+  "buy_cost_pct": {
+    "value": null,
+    "source_url": null,
+    "as_of": null,
+    "note": "Only alcabala could be sourced (see cost_breakdown); notary, SUNARP and appraisal are unknown, so a total share is not given."
+  },
+  "sell_cost_pct": {
+    "value": null,
+    "source_url": null,
+    "as_of": null,
+    "note": "Broker commission is negotiated; no official or published reference found."
+  },
+  "property_tax_pct": {
+    "value": null,
+    "source_url": null,
+    "as_of": null,
+    "note": "Impuesto predial is progressive on the municipal autovalúo, not on market price; no sourced share of market price."
+  },
+  "insurance_pct": {
+    "value": null,
+    "source_url": null,
+    "as_of": null,
+    "note": "Desgravamen and property insurance rates are bank-specific; not sourced in this run."
+  },
+  "fx_usd_pen": {
+    "value": 3.466,
+    "source_url": "https://estadisticas.bcrp.gob.pe/estadisticas/series/api/PD04639PD-PD04640PD/json/2026-10-20/2026-11-03",
+    "as_of": "2026-11-02",
+    "note": "SBS banking-system USD/PEN, venta, 02-Nov-2026 (03-Nov-2026 not yet published: n.d.)."
+  },
+  "cost_breakdown": [
+    {
+      "item": "alcabala",
+      "rate": 0.03,
+      "exempt_amount_pen": 55000.0,
+      "formula": "0.03 x (price - 10 UIT); UIT 2026 = S/ 5,500 (DS 301-2025-EF)",
+      "share_of_realistic_price_by_district": {
+        "Pueblo Libre": 0.0267,
+        "Jesús María": 0.0266,
+        "Magdalena del Mar": 0.0269
+      },
+      "note": "Alcabala does not apply to the first sale of a new building by the developer (only on the land value part); many listings here are new ('no se paga alcabala'), so this share is an upper bound for those.",
+      "source_url": "https://elperuano.pe/noticia/285208-mef-establece-en-s-5-500-la-unidad-impositiva-tributaria-para-2026",
+      "rate_source_url": "https://www.gob.pe/22055-pagar-impuesto-de-alcabala",
+      "legal_basis": "TUO Ley de Tributación Municipal (D.Leg. 776) arts. 21-25; art. 22 first sale by builder inafecta except land",
+      "as_of": "2026-11-03"
+    },
+    {
+      "item": "notary (escritura pública)",
+      "value": null,
+      "note": "not regulated; no single published rate found"
+    },
+    {
+      "item": "SUNARP registration",
+      "value": null,
+      "note": "2026 tariff annex (Res. 228-2025-SUNARP/GG) not readable; secondary guides disagree"
+    },
+    {
+      "item": "appraisal (tasación)",
+      "value": null,
+      "note": "bank-specific fee; not sourced"
+    }
+  ],
+  "unknowns": [
+    "buy_cost_pct",
+    "sell_cost_pct",
+    "property_tax_pct",
+    "insurance_pct",
+    "price_growth_by_district",
+    "rent_growth_by_district",
+    "buy_cost.notary",
+    "buy_cost.sunarp_registration",
+    "buy_cost.appraisal"
+  ]
+}
