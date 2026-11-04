@@ -1,0 +1,24 @@
+Validación de 20261103-2336-fixture-dry-run · etapa all · 2026-11-03 23:36
+
+RESULTADO: OK
+
+Búsqueda: S/ 250,000–400,000, >= 60 m², >= 2 dorm., cuota inicial 20%, distritos: Jesús María, Pueblo Libre, San Miguel
+DATOS SINTÉTICOS de prueba
+
+Avisos (modo csv, recolectados 2026-11-03); descartados sin URL: 3
+  Jesús María: venta n=18 (de 24), alquiler n=20 (de 21), precio realista S/ 362,000, alquiler realista S/ 2,095
+  Pueblo Libre: venta n=21 (de 24), alquiler n=20 (de 21), precio realista S/ 349,875, alquiler realista S/ 1,945
+  San Miguel: venta n=22 (de 24), alquiler n=19 (de 21), precio realista S/ 338,000, alquiler realista S/ 1,840
+  Filas: 135; con URL: 135; duplicados marcados: 3; atípicos marcados: 3
+
+Datos sin fuente (se usan supuestos y se muestran como advertencia):
+  - rent_growth
+  - insurance_pct
+  - tax_and_fees: deposit
+  - tax_and_fees: sp500
+  - tax_and_fees: bvl
+
+Veredicto (% de escenarios en que comprar gana):
+  Jesús María: 5a depends (60%), 10a buy (80%), 15a buy (80%), 20a buy (87%), 30a buy (80%)
+  Pueblo Libre: 5a depends (53%), 10a depends (67%), 15a depends (73%), 20a depends (73%), 30a depends (73%)
+  San Miguel: 5a depends (47%), 10a depends (67%), 15a depends (73%), 20a depends (73%), 30a depends (67%)

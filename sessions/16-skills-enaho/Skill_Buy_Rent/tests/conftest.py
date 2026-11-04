@@ -3,7 +3,7 @@ from pathlib import Path
 
 import pytest
 
-FIXTURE = Path(__file__).parent / "fixtures" / "sample_run"
+from housing_lima.paths import FIXTURE_RUN as FIXTURE
 
 
 @pytest.fixture

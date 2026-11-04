@@ -8,8 +8,7 @@ from pathlib import Path
 import pytest
 from streamlit.testing.v1 import AppTest
 
-APP = Path(__file__).resolve().parents[1] / "app" / "app.py"
-FIXTURE = Path(__file__).resolve().parent / "fixtures" / "sample_run"
+from housing_lima.paths import APP_FILE as APP, FIXTURE_RUN as FIXTURE
 # Set HOUSING_LIMA_RUN to test a real run folder instead of the synthetic fixture.
 RUN = Path(os.environ.get("HOUSING_LIMA_RUN") or FIXTURE)
 INPUTS = json.loads((RUN / "inputs.json").read_text(encoding="utf-8"))

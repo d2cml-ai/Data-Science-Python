@@ -43,7 +43,12 @@ def test_end_to_end_fixture_dry_run(tmp_path, capsys):
     summary = out_json(capsys)
     assert summary["synthetic"] is True and summary["source_mode"] == "csv"
     assert all(set(d["verdicts"]) == {"5", "10", "15", "20", "30"} for d in summary["districts"])
-    assert "streamlit run" in summary["dashboard"]
+    assert "dashboard" in summary["dashboard"]
+    assert (run_dir / "validacion.txt").exists() and (tmp_path / "validacion.txt").exists()
+    assert "RESULTADO: OK" in (tmp_path / "validacion.txt").read_text(encoding="utf-8")
+    assert main(["figures", "--run", str(run_dir), "--out", str(tmp_path / "figuras")]) == 0
+    figs = out_json(capsys)["figures"]
+    assert len(figs) == 1 + 2 * len(summary["districts"]) and all(Path(f).exists() for f in figs)
 
 
 def frontmatter(path: Path) -> dict:
@@ -52,10 +57,6 @@ def frontmatter(path: Path) -> dict:
     return yaml.safe_load(m.group(1))
 
 
-def test_plugin_manifest():
-    manifest = json.loads((ROOT / ".claude-plugin" / "plugin.json").read_text(encoding="utf-8"))
-    assert re.fullmatch(r"[a-z0-9]+(-[a-z0-9]+)*", manifest["name"])
-    assert manifest["description"] and manifest["version"]
 
 
 SKILLS = ["buy-vs-rent", "peru-listings-search", "peru-safe-investments", "rent-vs-buy-model", "streamlit-dashboard"]
@@ -63,13 +64,15 @@ SKILLS = ["buy-vs-rent", "peru-listings-search", "peru-safe-investments", "rent-
 
 @pytest.mark.parametrize("skill", SKILLS)
 def test_skill_files(skill):
-    path = ROOT / "skills" / skill / "SKILL.md"
+    path = ROOT / ".claude" / "skills" / skill / "SKILL.md"
     fm = frontmatter(path)
     assert fm["name"] == skill
     assert len(fm["description"]) > 60
     assert len(path.read_text(encoding="utf-8").splitlines()) < 500
-    for ref in re.findall(r"\]\((references/[^)]+)\)", path.read_text(encoding="utf-8")):
+    assert re.fullmatch(r"[a-z0-9]+(-[a-z0-9]+)*", fm["name"]) and len(fm["name"]) <= 64
+    for ref in re.findall(r"\]\(([\w./-]+\.(?:md|csv))\)", path.read_text(encoding="utf-8")):
         assert (path.parent / ref).exists(), ref
+    assert "CLAUDE_PLUGIN_ROOT" not in path.read_text(encoding="utf-8")
 
 
 @pytest.mark.parametrize("agent,skill", [("market-data", "peru-listings-search"),
@@ -77,13 +80,13 @@ def test_skill_files(skill):
                                          ("financial-analysis", "rent-vs-buy-model"),
                                          ("streamlit-builder", "streamlit-dashboard")])
 def test_agent_files(agent, skill):
-    fm = frontmatter(ROOT / "agents" / f"{agent}.md")
+    fm = frontmatter(ROOT / ".claude" / "agents" / f"{agent}.md")
     assert fm["name"] == agent and fm["description"] and fm["tools"]
     assert fm["skills"] == skill
-    assert (ROOT / "skills" / skill / "SKILL.md").exists()
+    assert (ROOT / ".claude" / "skills" / skill / "SKILL.md").exists()
 
 
 def test_research_agents_have_web_tools_and_analysis_does_not():
-    assert "WebSearch" in frontmatter(ROOT / "agents" / "market-data.md")["tools"]
-    assert "WebSearch" in frontmatter(ROOT / "agents" / "opportunity-cost.md")["tools"]
-    assert "Web" not in frontmatter(ROOT / "agents" / "financial-analysis.md")["tools"]
+    assert "WebSearch" in frontmatter(ROOT / ".claude" / "agents" / "market-data.md")["tools"]
+    assert "WebSearch" in frontmatter(ROOT / ".claude" / "agents" / "opportunity-cost.md")["tools"]
+    assert "Web" not in frontmatter(ROOT / ".claude" / "agents" / "financial-analysis.md")["tools"]

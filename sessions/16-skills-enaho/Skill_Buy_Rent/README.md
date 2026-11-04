@@ -1,147 +1,195 @@
-# Skill_Buy_Rent: buy vs rent in Lima
+# Skill_Buy_Rent · ¿Comprar o alquilar en Lima? Skills de Claude Code
 
-A Claude Code plugin (`housing-lima`) that answers **"Is buying better than renting?"** for one user's search in
-Lima: one orchestrator skill, four agents and a local Streamlit dashboard, on top of one tested Python package
-(`housing_lima`).
+Cinco skills y cuatro subagentes de Claude Code que responden **«¿me conviene comprar o alquilar?»** para una búsqueda
+concreta en Lima. Una skill orquestadora hace las preguntas, dos agentes investigan en paralelo (avisos reales de venta
+y alquiler; qué rendiría la cuota inicial si se invierte), un tercero corre el modelo financiero y un cuarto revisa el
+dashboard y exporta las figuras.
 
-The user gives a price range, minimum m² and bedrooms, districts, a down-payment percentage and any extra wishes.
-The tool compares buying with a mortgage against renting the same kind of home and investing the cash the buyer
-would have tied up (the opportunity cost), per district, for 5, 10, 15, 20 and 30 years and several mortgage rates.
+El usuario da un rango de precio, área mínima y dormitorios, distritos, el porcentaje de cuota inicial y lo que quiera
+agregar. La herramienta compara comprar con hipoteca contra alquilar una vivienda parecida e invertir el dinero que no
+se usa en la compra (el costo de oportunidad), por distrito, a 5, 10, 15, 20 y 30 años y con varias tasas hipotecarias.
 
-> Educational use only. Not personalized financial, tax or investment advice.
+> Uso educativo. No es asesoría financiera, tributaria ni de inversión personalizada.
 
-## How it works
+## Cómo llamar al orquestador
 
-```
-/housing-lima:buy-vs-rent  (orchestrator skill: intake, validation, order, report)
-        │  writes runs/<run-id>/inputs.json
-        ├──► market-data        ──► listings.csv, market_summary.json, housing_params.json, market_log.md
-        ├──► opportunity-cost   ──► opportunity_costs.json, opportunity_log.md          (in parallel)
-        ▼
-     financial-analysis         ──► analysis_results.csv, analysis_summary.json, analysis_report.md
-        ▼
-     streamlit-builder          ──► tested dashboard + launch command
-```
+La skill orquestadora es **`buy-vs-rent`**. Se llama de tres formas, en cualquier Claude Code: la terminal, la app de
+escritorio (pestaña Code) o la extensión de VS Code.
 
-Agents exchange files in the run folder, never chat messages. Every handoff is validated against a JSON schema in
-`schemas/` before the next step starts.
+| Forma | Qué escribir | Qué pasa |
+|---|---|---|
+| Comando | `/buy-vs-rent` | Hace las cinco preguntas y corre todo |
+| Pedido normal | «¿Me conviene comprar o alquilar un depa en Surco?» | La skill se activa sola por su `description` |
+| Prueba sin internet | `/buy-vs-rent fixture` | Corre todo con datos **sintéticos** de prueba |
 
-| Skill | Used by | Role |
-| --- | --- | --- |
-| `buy-vs-rent` | You | Orchestrator: intake, validation, run order, final report |
-| `peru-listings-search` | market-data | Listings search, schema, de-duplication, CSV fallback, housing parameters |
-| `peru-safe-investments` | opportunity-cost | Deposit, S&P 500 and BVL returns with sources |
-| `rent-vs-buy-model` | financial-analysis | Formulas, parameters, verdict rules, tests |
-| `streamlit-dashboard` | streamlit-builder | Layout, controls, Spanish labels, testing |
+Las preguntas son: rango de precio en soles, área mínima y dormitorios, distritos (de uno a seis), porcentaje de cuota
+inicial y extras (estacionamiento, estreno, mascotas, cuota máxima, antigüedad). Al final responde con el veredicto por
+distrito y horizonte, y deja todo en `salidas/` y `figuras/` de la carpeta donde se trabaja.
 
-## Folder layout
+## Instalar
 
-```text
-Skill_Buy_Rent/                 # plugin root (the plan's "housing-lima/" folder)
-├── .claude-plugin/plugin.json
-├── pyproject.toml              # pip install -e . provides housing_lima
-├── scripts/hl.py               # CLI launcher, works without installing
-├── skills/                     # 5 skills (SKILL.md + references/ + scripts/)
-├── agents/                     # 4 agents
-├── src/housing_lima/           # model, analysis, listings, intake, returns, validate, loaders, subsidy (stub), cli
-├── app/                        # Streamlit app: app.py, state.py, labels.py, components/
-├── schemas/                    # JSON schemas for every handoff file
-├── config/defaults.yaml        # modelling assumptions, each commented
-├── data/fallback/              # listings_template.csv (your listings.csv is git-ignored)
-├── tests/                      # unit, schema, CLI, plugin and AppTest tests; fixtures/sample_run (SYNTHETIC)
-└── runs/                       # run folders (git-ignored)
-```
+Las skills viven en dos lugares, con el mismo contenido:
 
-## Install
-
-Python 3.11+ (tested on 3.14). Dependencies: pandas, numpy, streamlit, plotly, jsonschema, pyyaml, pytest.
+| Dónde | Para qué |
+|---|---|
+| `.claude/skills/` y `.claude/agents/` de este repositorio | Versionadas con git; se activan al abrir Claude Code en esta carpeta |
+| `~/.claude/skills/` y `~/.claude/agents/` de tu laptop | Disponibles en **cualquier** carpeta y proyecto, también desde la app de escritorio |
 
 ```bash
 cd sessions/16-skills-enaho/Skill_Buy_Rent
-pip install -e ".[test]"        # optional: scripts/hl.py and the app also work without installing
+python instalar.py               # copia las 5 skills y los 4 agentes a ~/.claude
 ```
 
-## Use
+Reinicien Claude Code y escriban `/skills`: deben aparecer las cinco. Si cambian algo en el repositorio, vuelvan a
+correr `python instalar.py`. Para quitarlas: `python instalar.py --desinstalar`.
 
-**As a plugin in Claude Code** (from the repo, no marketplace needed):
+Requisitos: Python 3.11 o más (probado con 3.14) con pandas, numpy, streamlit, plotly, matplotlib, jsonschema y pyyaml.
+`pyproject.toml` los declara; con `uv` o `pip`:
 
 ```bash
-claude --plugin-dir sessions/16-skills-enaho/Skill_Buy_Rent
+uv sync              # o: pip install -e ".[test]"
 ```
 
-Then type `/housing-lima:buy-vs-rent`, or just ask "¿me conviene comprar o alquilar en Lima?". The orchestrator
-asks the five questions, runs the agents and gives you the dashboard command.
+No hace falta instalar el paquete: el motor (`housing_lima`) va dentro de la skill orquestadora y su lanzador lo
+encuentra solo.
 
-**Dry run with synthetic data** (no web access needed):
+## Lo esencial
+
+- **Una skill es una carpeta** con `SKILL.md` (bloque YAML con `name` y `description`, y las instrucciones),
+  `reference.md` con el detalle que se carga solo si hace falta, y `scripts/` con lo que no se discute.
+- **El orquestador no hace el trabajo pesado.** Pregunta, valida, lanza los agentes y resume. Los agentes se pasan
+  archivos en una carpeta de corrida, no mensajes, así el contexto de cada uno queda limpio.
+- **Un solo modelo.** Las fórmulas están una sola vez, en `housing_lima`. El análisis, las figuras y el dashboard
+  usan el mismo código.
+- **Nada inventado.** Cada aviso y cada número investigado lleva su URL y su fecha. Lo que no tiene fuente queda como
+  `null`, se reemplaza por un supuesto con nombre y se muestra como advertencia («necesita tu dato»).
+- **Todo se valida.** Cada archivo que pasa de un agente a otro se valida contra un esquema JSON antes del paso
+  siguiente. Si falla, se detiene.
+
+### Las skills y los agentes
+
+| Skill | La usa | Entra | Sale |
+|---|---|---|---|
+| `buy-vs-rent` | Tú (orquestador) | Las cinco respuestas | `salidas/<corrida>/inputs.json` y el resumen final |
+| `peru-listings-search` | agente `market-data` | `inputs.json` | `listings.csv`, `market_summary.json`, `housing_params.json` |
+| `peru-safe-investments` | agente `opportunity-cost` | `inputs.json` | `opportunity_costs.json` (depósito a plazo, S&P 500, BVL) |
+| `rent-vs-buy-model` | agente `financial-analysis` | Los cuatro archivos anteriores | `analysis_results.csv`, `analysis_summary.json`, `analysis_report.md` |
+| `streamlit-dashboard` | agente `streamlit-builder` | La corrida completa | `figuras/*.png` y el dashboard probado |
+
+```text
+/buy-vs-rent ── preguntas ── salidas/<corrida>/inputs.json
+      ├──► market-data        (avisos reales)        ┐ en paralelo
+      ├──► opportunity-cost   (costo de oportunidad) ┘
+      ▼
+   financial-analysis  ──►  streamlit-builder  ──►  salidas/validacion.txt, figuras/, dashboard
+```
+
+## Las salidas
+
+| Carpeta | Qué hay | ¿En git? |
+|---|---|---|
+| `salidas/<corrida>/` | Todos los archivos de una corrida: avisos, parámetros, resultados, `analysis_report.md`, `validacion.txt` | No (se regeneran) |
+| `salidas/validacion.txt` | Resumen de la última validación: avisos por distrito, datos sin fuente, veredictos | Sí |
+| `figuras/` | `veredictos.png`, `<distrito>_patrimonio.png`, `<distrito>_mapa_calor_20a.png` (200 dpi) | Sí |
+| `datos/listings.csv` | Avisos que tú pegas a mano si los portales bloquean la búsqueda (plantilla en la skill `peru-listings-search`) | No |
+
+Las figuras y la validación que vienen en el repositorio salen de la corrida de prueba con **datos sintéticos**.
+
+## El dashboard
 
 ```bash
-python scripts/hl.py fixture-run            # builds runs/<timestamp>-fixture-dry-run/
-python scripts/hl.py summary --run runs/<run-id>
+python .claude/skills/buy-vs-rent/scripts/hl.py dashboard --run salidas/<corrida>
 ```
 
-or `/housing-lima:buy-vs-rent fixture` inside Claude Code.
+(Si instalaron las skills, el lanzador también está en `~/.claude/skills/buy-vs-rent/scripts/hl.py`.) Funciona sin
+internet. En la barra lateral se mueven la tasa hipotecaria, la cuota inicial, el costo de oportunidad (las tres
+opciones o una tasa propia, en escenario bajo, base o alto), el precio (dentro de tu rango; por defecto la mediana de
+los avisos encontrados), el descuento por negociación, el plazo, el crecimiento de precios y alquileres, y términos
+reales o nominales. Muestra el veredicto por distrito, un mapa de calor, el patrimonio en el tiempo, los avisos con sus
+enlaces, los supuestos con sus fuentes y botones de descarga.
 
-**Dashboard** (local, offline, Spanish labels):
+## Comandos del motor
+
+Todos con `python .claude/skills/buy-vs-rent/scripts/hl.py <comando>` desde la carpeta de trabajo:
+
+| Comando | Qué hace |
+|---|---|
+| `check-env` | Revisa Python y paquetes |
+| `new-run --answers a.json` | Valida las respuestas y crea `salidas/<corrida>/inputs.json` |
+| `listings --run D --raw f.csv --source-mode live\|csv\|mixed` | Normaliza, deduplica, marca atípicos y calcula precio y alquiler realistas |
+| `validate --run D --stage research\|analysis\|all` | Valida contra los esquemas y escribe `validacion.txt` |
+| `analyze --run D` | Corre el modelo |
+| `summary --run D` | Resumen corto para el orquestador |
+| `figures --run D` | Exporta las figuras a `figuras/` |
+| `check-app --run D` | Prueba el dashboard con AppTest |
+| `dashboard --run D` | Abre el dashboard |
+| `fixture-run` | Corrida completa con datos sintéticos |
+
+## Validación
+
+Corrida de prueba (`/buy-vs-rent fixture`), con datos **sintéticos**: S/ 250–400 mil, 60 m², 2 dormitorios, 20 % de
+cuota inicial, Jesús María, Pueblo Libre y San Miguel.
+
+| Chequeo | Resultado |
+|---|---|
+| Cuota de S/ 100,000 al 8 % TEA en 20 años | S/ 819 y saldo cero tras 240 cuotas |
+| Avisos sin URL descartados | 3 de 138 |
+| Duplicados entre portales / atípicos | 3 / 3, marcados y conservados |
+| Avisos en dólares convertidos a soles | 3, con el tipo de cambio registrado |
+| Precio realista Jesús María / Pueblo Libre / San Miguel | S/ 362,000 / 349,875 / 338,000 |
+| Datos sin fuente mostrados como advertencia | 5 (crecimiento del alquiler, seguros, impuestos de las 3 opciones) |
+| Pruebas automáticas | 94 de 94 pasan (`python -m pytest -q`) |
+
+El detalle está en [`salidas/validacion.txt`](salidas/validacion.txt).
+
+## Evaluar
+
+En [`evaluacion.md`](evaluacion.md) están los pedidos para correr con y sin skills y lo que debería salir.
 
 ```bash
-streamlit run app/app.py -- --run runs/<run-id>
+claude -p "/buy-vs-rent fixture"                                                 # con skills
+claude -p --disallowedTools Skill "¿Me conviene comprar o alquilar en Lima?"     # sin skills
 ```
 
-Without `--run` it opens the newest run in `runs/`, or the synthetic fixture when there is none. The sidebar has
-the mortgage rate, down payment, opportunity cost (three options or a custom rate, low/base/high, USD/PEN change
-for the S&P 500), purchase price (bounded by your range, default = median of the listings found), negotiation
-discount, loan term, price and rent growth, and real vs nominal.
+## Entrega
 
-**CLI commands** (`python scripts/hl.py <command>`): `check-env`, `new-run --answers a.json`,
-`listings --run D --raw f.csv --source-mode live|csv|mixed`, `validate --run D --stage research|analysis|all`,
-`analyze --run D`, `summary --run D`, `returns --prices levels.csv`, `fixture-run`.
-
-## Refresh the listings fallback
-
-If live search is blocked, copy `data/fallback/listings_template.csv` to `data/fallback/listings.csv`, paste one
-row per listing you see on the portals (with its URL and date), and run a new search. Details:
-`skills/peru-listings-search/references/fallback-csv.md`. The run is then labelled `source_mode: csv`.
-
-## Tests
-
-```bash
-python -m pytest -q                                       # 95 tests, no network
-HOUSING_LIMA_RUN=runs/<run-id> python -m pytest -q tests/test_app.py   # dashboard tests on a real run
-python tests/fixtures/make_fixture.py                     # regenerate the synthetic fixture
+```text
+.claude/skills/
+  buy-vs-rent/            SKILL.md, reference.md, scripts/hl.py, scripts/housing_lima/ (motor, esquemas, app)
+  peru-listings-search/   SKILL.md, reference.md, listings_template.csv, scripts/
+  peru-safe-investments/  SKILL.md, reference.md, scripts/
+  rent-vs-buy-model/      SKILL.md, reference.md
+  streamlit-dashboard/    SKILL.md, reference.md
+.claude/agents/           market-data.md, opportunity-cost.md, financial-analysis.md, streamlit-builder.md
+salidas/validacion.txt
+figuras/
+tests/
+evaluacion.md  README.md  pyproject.toml  instalar.py
 ```
 
-Covered: amortization (S/100,000 at 8% over 20 years → S/819, balance 0 after 240 payments), the identity at
-H = 0, monotonicity in mortgage rate and opportunity return, loan-term edge cases, schemas (valid and invalid
-fixtures), listings logic (de-duplication, IQR outliers, USD conversion, no record without URL), intake
-validation, the end-to-end dry run, plugin structure, and Streamlit `AppTest` (every control changes the result,
-network blocked).
+No hay `mapas/`: el proyecto no dibuja mapas porque no tiene límites distritales de Lima. Es el siguiente paso natural
+(un mapa del veredicto por distrito).
 
-## Model in one paragraph
+## Supuestos y decisiones
 
-The buyer pays the realistic price (median of in-range listings, minus an optional negotiation discount) with
-the down payment and a constant-payment mortgage, plus ownership costs that grow with inflation. The renter pays
-the realistic rent of a comparable home and invests the down payment, the buying costs and every monthly
-difference at the opportunity-cost return. Buying wins at horizon H when the house value after selling costs
-minus the remaining balance exceeds the renter's portfolio. Formulas:
-`skills/rent-vs-buy-model/references/formulas.md`.
+- Horizontes de 5, 10, 15, 20 y 30 años; el plazo del préstamo es otro parámetro, 20 años por defecto (editable).
+- Tasas hipotecarias: promedio de mercado de −2 a +2 puntos.
+- Veredicto: «comprar» si comprar gana en el 80 % o más de los escenarios, «alquilar» si gana en el 20 % o menos,
+  «depende» en otro caso.
+- «Fondo a plazo» se lee como depósito a plazo en soles; «Bolsa de Perú» como el S&P/BVL Peru General.
+- El S&P 500 se pasa a soles con una variación USD/PEN supuesta, 0 % al año por defecto (editable).
+- Se supone que el inquilino paga el mantenimiento, como es común en Lima, así que se cancela.
+- Los supuestos están comentados en `.claude/skills/buy-vs-rent/scripts/housing_lima/config/defaults.yaml`.
+- No se modelan subsidios (Bono del Buen Pagador); `housing_lima/subsidy.py` deja el punto de extensión.
 
-## Decisions and assumptions
+## Si se atascan
 
-- Horizons 5, 10, 15, 20, 30 years; loan term a separate parameter, default 20 years (assumption, editable).
-- Mortgage grid: market average −2 to +2 percentage points.
-- Verdict: "buy" when buying wins in ≥ 80% of grid scenarios, "rent" at ≤ 20%, otherwise "depends"
-  (`config/defaults.yaml`).
-- "Fondo a plazo" read as a fixed-term deposit in soles; "Bolsa de Perú" as the S&P/BVL Peru General.
-- S&P 500 converted to soles with an editable USD/PEN change, default 0% per year.
-- The renter is assumed to pay the building fee (common in Lima), so it cancels out; editable in `defaults.yaml`.
-- Unknown researched values are `null`, listed in `unknowns`, replaced by a named fallback from `defaults.yaml`
-  and shown as a warning ("necesita tu dato"); never silently zero.
-- Subsidies (e.g. Bono del Buen Pagador) are not modelled in v1; `housing_lima.subsidy.SubsidyProvider` is the
-  extension point.
-
-## Open items
-
-- Confirm "fondo a plazo" = fixed-term deposit (only option 1 of Agent 2 changes otherwise).
-- Confirm the 20-year default term and the 80% / 20% thresholds.
-- Live listing search depends on portal access at run time; the CSV fallback covers blocked sites.
-- A subsidy module for a later version.
+| Síntoma | Qué hacer |
+|---|---|
+| `/buy-vs-rent` no aparece | Corran `python instalar.py`, reinicien Claude Code y escriban `/skills`. En el repositorio, abran Claude Code dentro de `Skill_Buy_Rent/` |
+| La skill no se activa sola | Llámenla con `/buy-vs-rent` o usen palabras de la `description`: comprar, alquilar, Lima |
+| Los agentes no se lanzan | Revisen que estén en `~/.claude/agents/` o `.claude/agents/` y escriban `/agents`. Si no hay agentes, el orquestador hace los pasos él mismo |
+| Los portales bloquean la búsqueda | Copien `listings_template.csv` a `datos/listings.csv`, peguen los avisos con su URL y fecha y repitan; la corrida sale como `csv` |
+| `check-env` dice que falta un paquete | `uv sync` o `pip install -e .` en esta carpeta |
+| Un distrito sale con «baja confianza» | Hubo menos de 8 avisos de venta o de alquiler; amplíen el rango o quiten el distrito |
+| En claude.ai (chat web) no funciona | Las skills de claude.ai corren en un contenedor sin internet ni sus paquetes; úsenla en Claude Code |

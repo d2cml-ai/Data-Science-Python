@@ -1,7 +1,8 @@
-runs/
+# Run folders are regenerated; only the latest validation summary is versioned.
+salidas/*/
+datos/
 .venv/
 __pycache__/
 .env
 *.egg-info/
 .pytest_cache/
-data/fallback/listings.csv
