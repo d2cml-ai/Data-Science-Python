@@ -109,27 +109,37 @@ Example/
 
 ## Open the dashboard
 
-Install the skills once (from `../Skill_Buy_Rent`: `python install.py`), then from this folder:
+From this folder, in any terminal (PowerShell, cmd, Git Bash, macOS/Linux):
 
 ```bash
-cd sessions/16-skills-enaho/Example
-python ~/.claude/skills/buy-vs-rent/scripts/hl.py dashboard --run outputs/20261103-2350-pueblo-libre-jesus-maria-magdalena
+cd "C:\Users\<you>\Documents\GitHub\Data-Science-Python\sessions\16-skills-enaho\Example"
+python run_dashboard.py
 ```
 
-Without installing, use the launcher inside the repository:
+Your browser opens http://localhost:8501. Stop the server with **Ctrl+C** in the terminal. The dashboard works
+offline from the files in `outputs/`; no install step is needed (it uses the engine in `../Skill_Buy_Rent`).
 
-```bash
-python ../Skill_Buy_Rent/.claude/skills/buy-vs-rent/scripts/hl.py dashboard --run outputs/20261103-2350-pueblo-libre-jesus-maria-magdalena
-```
+In the sidebar, pick a district and move the mortgage rate, down payment, investment option and return, purchase
+price, negotiation discount, loan term, and price and rent growth; the verdict cards, heat map and wealth chart
+update at once.
 
-It opens at http://localhost:8501 (stop it with Ctrl+C). It works offline from the files in `outputs/`. In the
-sidebar, pick a district and move the mortgage rate, down payment, investment option and return, purchase price,
-negotiation discount, loan term, and price and rent growth; the verdict cards, heat map and wealth chart update at
-once.
+### Calling the launcher directly
 
-To regenerate the figures or re-check the run:
+`run_dashboard.py` is a shortcut for this command (from this folder):
 
-```bash
-python ~/.claude/skills/buy-vs-rent/scripts/hl.py figures   --run outputs/20261103-2350-pueblo-libre-jesus-maria-magdalena
-python ~/.claude/skills/buy-vs-rent/scripts/hl.py check-app --run outputs/20261103-2350-pueblo-libre-jesus-maria-magdalena
-```
+| Shell | Command |
+|---|---|
+| PowerShell | `python ..\Skill_Buy_Rent\.claude\skills\buy-vs-rent\scripts\hl.py dashboard --run outputs\20261103-2350-pueblo-libre-jesus-maria-magdalena` |
+| Git Bash / macOS / Linux | `python ../Skill_Buy_Rent/.claude/skills/buy-vs-rent/scripts/hl.py dashboard --run outputs/20261103-2350-pueblo-libre-jesus-maria-magdalena` |
+
+If you installed the skills (`python ..\Skill_Buy_Rent\install.py`), the same launcher is also at
+`$HOME\.claude\skills\buy-vs-rent\scripts\hl.py` in PowerShell or `~/.claude/skills/buy-vs-rent/scripts/hl.py` in
+bash. Note that PowerShell does not expand `~` for Python, so use `$HOME` there.
+
+Other launcher commands for this run, same pattern:
+
+| Command | What it does |
+|---|---|
+| `... hl.py figures --run outputs\<run-id>` | Regenerate the PNGs in `figures/` |
+| `... hl.py check-app --run outputs\<run-id>` | Check that the dashboard starts and its sliders work |
+| `... hl.py summary --run outputs\<run-id>` | Print the short summary |

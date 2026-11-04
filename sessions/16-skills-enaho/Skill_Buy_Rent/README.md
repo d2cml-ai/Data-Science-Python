@@ -129,8 +129,15 @@ you want the results:
 The five questions: price range in soles; minimum m² and bedrooms; districts (one to six); down-payment percentage;
 extras (parking, new or used, pets, maximum monthly payment, maximum building age).
 
-The engine can also be called directly. `HL` = `python ~/.claude/skills/buy-vs-rent/scripts/hl.py` (or
-`.claude/skills/buy-vs-rent/scripts/hl.py` inside this repository):
+The engine can also be called directly through its launcher, `HL` below:
+
+| Shell | `HL` = |
+|---|---|
+| PowerShell | `python "$HOME\.claude\skills\buy-vs-rent\scripts\hl.py"` |
+| Git Bash / macOS / Linux | `python ~/.claude/skills/buy-vs-rent/scripts/hl.py` |
+| Without installing (from this folder) | `python .claude/skills/buy-vs-rent/scripts/hl.py` |
+
+PowerShell does not expand `~` for Python, so use `$HOME` there.
 
 | Command | What it does |
 |---|---|
@@ -170,15 +177,27 @@ Tests: `python -m pytest -q` from this folder (94 tests, no network).
 
 ## Dashboard (Streamlit)
 
-The dashboard runs locally, with no network calls, on any run folder:
+The dashboard runs locally, with no network calls, on any run folder. Open a terminal in the folder that holds
+`outputs/` (for the example: `sessions/16-skills-enaho/Example`) and run:
+
+```powershell
+# PowerShell
+python "$HOME\.claude\skills\buy-vs-rent\scripts\hl.py" dashboard --run outputs\<run-id>
+```
 
 ```bash
+# Git Bash / macOS / Linux
 python ~/.claude/skills/buy-vs-rent/scripts/hl.py dashboard --run outputs/<run-id>
 ```
 
-This is the same as `streamlit run <engine>/app/app.py -- --run outputs/<run-id>`. It opens at
-http://localhost:8501. Without `--run` it opens the newest run in `outputs/`, or the synthetic fixture if there is
-none.
+Replace `<run-id>` with the folder name inside `outputs/`, for example
+`20261103-2350-pueblo-libre-jesus-maria-magdalena`. If the skills are not installed, point to the launcher in this
+repository instead: `python <path to>\Skill_Buy_Rent\.claude\skills\buy-vs-rent\scripts\hl.py dashboard --run ...`.
+For the example there is a shortcut: `python run_dashboard.py` inside `Example/`.
+
+The browser opens http://localhost:8501; stop the server with Ctrl+C. Without `--run` it opens the newest run in
+`outputs/`, or the synthetic fixture if there is none. (The command is the same as
+`streamlit run <engine>/app/app.py -- --run outputs/<run-id>`.)
 
 In the sidebar you can change the mortgage rate, the down payment, the opportunity cost (three options or a custom
 rate, low / base / high), the purchase price (bounded by your range; by default the median of the listings found),
