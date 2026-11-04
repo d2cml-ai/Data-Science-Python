@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "common.schema.json",
+  "title": "Shared definitions",
+  "$defs": {
+    "sourced_value": {
+      "description": "A researched number. When value is not null it must carry source_url and as_of. Unknown values are null and listed in unknowns.",
+      "type": "object",
+      "required": ["value"],
+      "properties": {
+        "value": {"type": ["number", "null"]},
+        "source_url": {"type": ["string", "null"]},
+        "as_of": {"type": ["string", "null"]},
+        "note": {"type": "string"}
+      },
+      "if": {"properties": {"value": {"type": "number"}}},
+      "then": {
+        "properties": {
+          "source_url": {"type": "string", "minLength": 8},
+          "as_of": {"type": "string", "minLength": 4}
+        },
+        "required": ["source_url", "as_of"]
+      }
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "analysis_summary.schema.json",
+  "title": "Analysis summary (analysis_summary.json)",
+  "type": "object",
+  "required": ["run_id", "generated_at", "horizons", "mortgage_rate_grid", "options", "districts", "warnings", "disclaimer"],
+  "properties": {
+    "run_id": {"type": "string"},
+    "generated_at": {"type": "string"},
+    "synthetic": {"type": "boolean"},
+    "source_mode": {"enum": ["live", "csv", "mixed"]},
+    "horizons": {"type": "array", "items": {"type": "integer"}},
+    "mortgage_rate_grid": {"type": "array", "items": {"type": "number"}},
+    "market_mortgage_rate": {"type": "number"},
+    "options": {"type": "array", "items": {"type": "object"}},
+    "parameters": {"type": "object"},
+    "districts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["district", "verdicts", "break_even", "verdict_text", "low_confidence"],
+        "properties": {
+          "district": {"type": "string"},
+          "low_confidence": {"type": "boolean"},
+          "price_used": {"type": "number"},
+          "rent_used": {"type": "number"},
+          "verdicts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["horizon", "share_buy_wins", "label"],
+              "properties": {
+                "horizon": {"type": "integer"},
+                "share_buy_wins": {"type": "number", "minimum": 0, "maximum": 1},
+                "label": {"enum": ["buy", "rent", "depends"]},
+                "delta_market_rate_by_option": {"type": "object"}
+              }
+            }
+          },
+          "break_even": {"type": "array", "items": {"type": "object"}},
+          "sensitivity": {"type": "array", "items": {"type": "object"}},
+          "verdict_text": {"type": "string"},
+          "warnings": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    },
+    "warnings": {"type": "array", "items": {"type": "string"}},
+    "disclaimer": {"type": "string"}
+  }
+}

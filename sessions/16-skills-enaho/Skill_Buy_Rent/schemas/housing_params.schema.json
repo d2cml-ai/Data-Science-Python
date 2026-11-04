@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "housing_params.schema.json",
+  "title": "Housing parameters (housing_params.json)",
+  "type": "object",
+  "required": ["as_of", "mortgage", "price_growth", "rent_growth", "inflation", "buy_cost_pct", "sell_cost_pct", "property_tax_pct", "insurance_pct", "unknowns"],
+  "properties": {
+    "as_of": {"type": "string"},
+    "synthetic": {"type": "boolean"},
+    "mortgage": {
+      "type": "object",
+      "required": ["average_tea", "by_bank"],
+      "properties": {
+        "average_tea": {"$ref": "common.schema.json#/$defs/sourced_value"},
+        "by_bank": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["bank", "tea", "source_url", "as_of"],
+            "properties": {
+              "bank": {"type": "string"},
+              "tea": {"type": "number", "exclusiveMinimum": 0, "maximum": 1},
+              "source_url": {"type": "string", "minLength": 8},
+              "as_of": {"type": "string"}
+            }
+          }
+        }
+      }
+    },
+    "price_growth": {"$ref": "common.schema.json#/$defs/sourced_value"},
+    "rent_growth": {"$ref": "common.schema.json#/$defs/sourced_value"},
+    "price_growth_by_district": {
+      "type": "object",
+      "additionalProperties": {"$ref": "common.schema.json#/$defs/sourced_value"}
+    },
+    "rent_growth_by_district": {
+      "type": "object",
+      "additionalProperties": {"$ref": "common.schema.json#/$defs/sourced_value"}
+    },
+    "price_index_ppm2_by_district": {
+      "description": "Published median price per m2 (e.g. a monthly portal index) used for the sanity check.",
+      "type": "object",
+      "additionalProperties": {"$ref": "common.schema.json#/$defs/sourced_value"}
+    },
+    "inflation": {"$ref": "common.schema.json#/$defs/sourced_value"},
+    "buy_cost_pct": {"$ref": "common.schema.json#/$defs/sourced_value"},
+    "sell_cost_pct": {"$ref": "common.schema.json#/$defs/sourced_value"},
+    "property_tax_pct": {"$ref": "common.schema.json#/$defs/sourced_value"},
+    "insurance_pct": {"$ref": "common.schema.json#/$defs/sourced_value"},
+    "fx_usd_pen": {"$ref": "common.schema.json#/$defs/sourced_value"},
+    "cost_breakdown": {"type": "array", "items": {"type": "object"}},
+    "unknowns": {"type": "array", "items": {"type": "string"}}
+  }
+}

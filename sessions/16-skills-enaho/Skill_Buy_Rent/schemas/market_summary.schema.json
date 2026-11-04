@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "market_summary.schema.json",
+  "title": "Market summary (market_summary.json)",
+  "type": "object",
+  "required": ["run_id", "source_mode", "collected_at", "districts"],
+  "properties": {
+    "run_id": {"type": "string"},
+    "synthetic": {"type": "boolean"},
+    "source_mode": {"enum": ["live", "csv", "mixed"]},
+    "collected_at": {"type": "string"},
+    "fx_used": {"type": ["object", "null"]},
+    "negotiation_discount": {"type": "number", "minimum": 0, "maximum": 0.5},
+    "dropped_without_url": {"type": "integer", "minimum": 0},
+    "districts": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["district", "source_mode", "sale", "rent", "low_confidence", "warnings"],
+        "properties": {
+          "district": {"type": "string"},
+          "source_mode": {"enum": ["live", "csv", "mixed"]},
+          "low_confidence": {"type": "boolean"},
+          "sale": {
+            "type": "object",
+            "required": ["n", "price_p25", "price_median", "price_p75", "price_per_m2_median", "realistic_price"],
+            "properties": {
+              "n": {"type": "integer", "minimum": 0},
+              "n_found": {"type": "integer", "minimum": 0},
+              "price_p25": {"type": ["number", "null"]},
+              "price_median": {"type": ["number", "null"]},
+              "price_p75": {"type": ["number", "null"]},
+              "price_per_m2_median": {"type": ["number", "null"]},
+              "area_median": {"type": ["number", "null"]},
+              "realistic_price": {"type": ["number", "null"]},
+              "maintenance_fee_median": {"type": ["number", "null"]}
+            }
+          },
+          "rent": {
+            "type": "object",
+            "required": ["n", "rent_p25", "rent_median", "rent_p75", "realistic_rent", "maintenance_fee_median"],
+            "properties": {
+              "n": {"type": "integer", "minimum": 0},
+              "n_found": {"type": "integer", "minimum": 0},
+              "rent_p25": {"type": ["number", "null"]},
+              "rent_median": {"type": ["number", "null"]},
+              "rent_p75": {"type": ["number", "null"]},
+              "rent_per_m2_median": {"type": ["number", "null"]},
+              "realistic_rent": {"type": ["number", "null"]},
+              "maintenance_fee_median": {"type": ["number", "null"]}
+            }
+          },
+          "index_check": {"type": ["object", "null"]},
+          "warnings": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    }
+  }
+}

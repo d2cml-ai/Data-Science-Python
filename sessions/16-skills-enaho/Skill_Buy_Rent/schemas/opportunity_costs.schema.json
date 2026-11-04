@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "opportunity_costs.schema.json",
+  "title": "Opportunity-cost options (opportunity_costs.json)",
+  "type": "object",
+  "required": ["as_of", "disclaimer", "fx_change_assumption", "options", "unknowns"],
+  "properties": {
+    "as_of": {"type": "string"},
+    "synthetic": {"type": "boolean"},
+    "disclaimer": {"type": "string", "minLength": 10},
+    "fx_change_assumption": {"type": "number"},
+    "inflation_used": {"type": ["number", "null"]},
+    "usd_pen_context": {"type": "object"},
+    "options": {
+      "type": "array", "minItems": 1, "maxItems": 3,
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "currency", "return_low", "return_base", "return_high", "volatility", "worst_1y", "risk_rank", "basis", "source_urls", "as_of", "tax_and_fees", "caveats"],
+        "properties": {
+          "id": {"enum": ["deposit", "sp500", "bvl"]},
+          "name": {"type": "string"},
+          "currency": {"const": "PEN"},
+          "original_currency": {"enum": ["PEN", "USD"]},
+          "return_low": {"type": "number", "exclusiveMinimum": -1, "maximum": 1},
+          "return_base": {"type": "number", "exclusiveMinimum": -1, "maximum": 1},
+          "return_high": {"type": "number", "exclusiveMinimum": -1, "maximum": 1},
+          "return_real_base": {"type": ["number", "null"]},
+          "volatility": {"type": ["number", "null"]},
+          "worst_1y": {"type": ["number", "null"]},
+          "risk_rank": {"type": "integer", "minimum": 1, "maximum": 3},
+          "basis": {"type": "string", "minLength": 5},
+          "explanation": {"type": "string"},
+          "source_urls": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 8}},
+          "as_of": {"type": "string"},
+          "tax_and_fees": {"type": ["string", "object", "null"]},
+          "caveats": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    },
+    "unknowns": {"type": "array", "items": {"type": "string"}}
+  }
+}

@@ -1,0 +1,49 @@
+# Every value in this file is a MODELLING ASSUMPTION, not a market fact.
+# Researched market numbers never live here: they come from the run folder
+# (housing_params.json, opportunity_costs.json, market_summary.json).
+
+# --- Model structure (choices, editable in the dashboard) -------------------
+loan_term_years: 20            # assumption: typical term, not a market fact
+horizons: [5, 10, 15, 20, 30]  # holding horizons requested by the user
+scan_years: 30                 # break-even scan from year 1 to 30
+mortgage_rate_offsets: [-0.02, -0.01, 0.0, 0.01, 0.02]  # grid around the market average
+min_mortgage_rate: 0.001       # floor so the grid never goes to 0% or below
+negotiation_discount: 0.0      # asking price vs transaction price; 0% by default
+renter_pays_maintenance: true  # assumption: in Lima the tenant usually pays mantenimiento
+fx_change_sp500: 0.0           # assumption: USD/PEN change per year for the S&P 500 option
+
+# Verdict rule: share of grid scenarios where buying wins.
+verdict_thresholds:
+  buy: 0.80    # >= 80% of scenarios -> "buy"
+  rent: 0.20   # <= 20% of scenarios -> "rent"; otherwise "depends"
+
+down_payment_bounds: [0.05, 0.50]
+
+sensitivity:
+  price_growth_delta: [-0.02, 0.0, 0.02]
+  rent_growth_delta: [-0.02, 0.0, 0.02]
+  negotiation_discount: [0.0, 0.05, 0.10]
+  horizons: [10, 20]
+
+# --- Listings rules ---------------------------------------------------------
+min_listings_per_side: 8       # below this a district is flagged low confidence
+target_listings_per_side: 15
+max_listings_per_side: 30
+rent_area_tolerance: 0.15      # rent comparables: area within +/-15% of sale median
+index_check_tolerance: 0.25    # flag if median price/m2 differs >25% from a published index
+dedupe_price_tolerance: 0.02
+dedupe_area_tolerance: 0.03
+
+# --- Fallbacks, used ONLY when the researched value is null -----------------
+# Each use is reported as a visible warning in the results and dashboard.
+# They are rough placeholders so the model can run; replace them with
+# sourced values whenever possible.
+fallbacks:
+  inflation: 0.02            # assumption: BCRP target midpoint (a policy target, not a measurement)
+  price_growth: inflation    # assumption: house prices keep pace with inflation (0% real)
+  rent_growth: inflation     # assumption: rents keep pace with inflation (0% real)
+  buy_cost_pct: 0.04         # assumption: alcabala + notary + registry + appraisal, share of price
+  sell_cost_pct: 0.03        # assumption: broker commission and fees at sale, share of price
+  property_tax_pct: 0.002    # assumption: impuesto predial as a share of market price per year
+  insurance_pct: 0.003       # assumption: property + desgravamen insurance, share of price per year
+  maintenance_fee_monthly: 0.0  # assumption: unknown fee; cancels out if the renter also pays it

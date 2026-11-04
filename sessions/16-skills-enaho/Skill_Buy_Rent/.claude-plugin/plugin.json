@@ -1,0 +1,9 @@
+{
+  "name": "housing-lima",
+  "description": "Buy vs rent in Lima: an orchestrator skill, four agents (market data, opportunity cost, financial analysis, Streamlit dashboard) and a tested Python model.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Jean Nieto"
+  },
+  "keywords": ["lima", "peru", "housing", "rent-vs-buy", "streamlit"]
+}

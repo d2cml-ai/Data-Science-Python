@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "inputs.schema.json",
+  "title": "User search (inputs.json)",
+  "type": "object",
+  "required": ["run_id", "price_min_pen", "price_max_pen", "min_area_m2", "min_bedrooms", "districts", "down_payment_pct", "extras"],
+  "properties": {
+    "run_id": {"type": "string", "pattern": "^[0-9]{8}-[0-9]{4}-[a-z0-9-]+$"},
+    "created_at": {"type": "string"},
+    "synthetic": {"type": "boolean"},
+    "price_min_pen": {"type": "number", "exclusiveMinimum": 0},
+    "price_max_pen": {"type": "number", "exclusiveMinimum": 0},
+    "min_area_m2": {"type": "number", "exclusiveMinimum": 0},
+    "min_bedrooms": {"type": "integer", "minimum": 0},
+    "districts": {
+      "type": "array", "minItems": 1, "maxItems": 6, "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "down_payment_pct": {"type": "number", "minimum": 5, "maximum": 50},
+    "currency_answered": {"enum": ["PEN", "USD"]},
+    "fx_conversion": {
+      "type": ["object", "null"],
+      "properties": {
+        "usd_pen": {"type": "number", "exclusiveMinimum": 0},
+        "as_of": {"type": "string"},
+        "source_url": {"type": ["string", "null"]}
+      },
+      "required": ["usd_pen", "as_of"]
+    },
+    "extras": {
+      "type": "object",
+      "required": ["notes"],
+      "properties": {
+        "parking_min": {"type": ["integer", "null"], "minimum": 0},
+        "max_age_years": {"type": ["number", "null"], "minimum": 0},
+        "max_monthly_payment": {"type": ["number", "null"], "exclusiveMinimum": 0},
+        "is_new": {"type": ["boolean", "null"]},
+        "pets_allowed": {"type": ["boolean", "null"]},
+        "min_floor": {"type": ["integer", "null"]},
+        "notes": {"type": "string"}
+      }
+    }
+  }
+}

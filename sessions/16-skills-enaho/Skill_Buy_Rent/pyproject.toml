@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "housing_lima"
+version = "0.1.0"
+description = "Buy vs rent model for Lima, Peru, with a Streamlit dashboard"
+requires-python = ">=3.11"
+dependencies = [
+    "pandas>=2.2,<4",
+    "numpy>=1.26,<3",
+    "streamlit>=1.38,<2",
+    "plotly>=5.20,<7",
+    "jsonschema>=4.21,<5",
+    "pyyaml>=6.0,<7",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8,<10"]
+
+[project.scripts]
+housing-lima = "housing_lima.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+housing_lima = ["py.typed"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
