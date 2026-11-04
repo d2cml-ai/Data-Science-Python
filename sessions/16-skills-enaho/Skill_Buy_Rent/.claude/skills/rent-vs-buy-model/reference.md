@@ -83,4 +83,4 @@ fee) adds the fee to the renter's side too, so with `true` the fee cancels out.
 | Verdict thresholds | `defaults.verdict_thresholds` | Assumption (80% / 20%) | — |
 
 Every fallback appears in `analysis_summary.json → districts[].parameter_sources[name].origin = "fallback"`
-and as a line in `warnings`. The dashboard shows them as "necesita tu dato".
+and as a line in `warnings`. The dashboard shows them as "needs your input".

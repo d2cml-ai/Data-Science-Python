@@ -1,6 +1,7 @@
-# Run folders are regenerated; only the latest validation summary is versioned.
-salidas/*/
-datos/
+# Runs started from inside the project are not versioned; see ../Example for a committed run.
+outputs/
+figures/
+data/
 .venv/
 __pycache__/
 .env

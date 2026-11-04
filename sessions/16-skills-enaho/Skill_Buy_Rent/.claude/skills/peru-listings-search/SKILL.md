@@ -25,14 +25,14 @@ sources and request limits, raw and final columns, CSV fallback. Empty raw templ
    each listing you actually saw as one row of `<run_dir>/raw_listings_live.csv` (raw schema).
    **A row without `source_url` is useless: skip it.**
 6. If live search is blocked or gives fewer than 8 per side in a district, use the CSV fallback
-   `datos/listings.csv` (same raw schema) and mark the run `csv` (only CSV) or `mixed`.
+   `data/listings.csv` (same raw schema) and mark the run `csv` (only CSV) or `mixed`.
 7. Collect the housing parameters into `<run_dir>/housing_params.json` (schema in
    `buy-vs-rent/scripts/housing_lima/schemas/housing_params.schema.json`). Every value has `source_url` and
    `as_of`; a value you cannot source is `{"value": null, ...}` and its name goes into `unknowns`. **Never guess.**
 8. Run the pipeline (it reads `housing_params.json` for the published price index check):
 
    ```bash
-   HL listings --run <run_dir> --raw <run_dir>/raw_listings_live.csv [datos/listings.csv] \
+   HL listings --run <run_dir> --raw <run_dir>/raw_listings_live.csv [data/listings.csv] \
       --source-mode live|csv|mixed --fx <usd_pen> --fx-date <YYYY-MM-DD> --fx-source <url>
    HL validate --run <run_dir> --stage market
    ```

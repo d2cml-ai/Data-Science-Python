@@ -1,6 +1,6 @@
 ---
 name: buy-vs-rent
-description: Answers "is buying a home better than renting in Lima?" for the user's own search (¿me conviene comprar o alquilar un departamento en Lima?, comprar vs alquilar, hipoteca vs alquiler). Asks the intake questions, validates them, runs the market-data and opportunity-cost agents in parallel, then financial-analysis and streamlit-builder, and reports the verdict per district and horizon with figures and the dashboard. Use for any buy-vs-rent question about Lima or Callao.
+description: Answers "is buying a home better than renting in Lima?" for the user's own search (buy vs rent, mortgage vs rent, apartment in Lima or Callao). Asks the intake questions, validates them, runs the market-data and opportunity-cost agents in parallel, then financial-analysis and streamlit-builder, and reports the verdict per district and horizon with figures and the dashboard. Use for any buy-vs-rent question about Lima or Callao.
 argument-hint: "[fixture]"
 ---
 
@@ -11,23 +11,23 @@ the heavy work yourself**: no web research, no model maths, no dashboard code. A
 folder; you pass only the run folder path and read only small summary output.
 
 `HL` means `python "${CLAUDE_SKILL_DIR}/scripts/hl.py"`. Run it from the user's working folder: run folders go to
-`salidas/<run-id>/`, figures to `figuras/`, user files (listings CSV) live in `datos/`.
+`outputs/<run-id>/`, figures to `figures/`, user files (the listings CSV fallback) live in `data/`.
 
 If the argument is `fixture`, skip to **Dry run**.
 
-## 1. Intake (Spanish, before anything else)
+## 1. Intake (before anything else)
 
-Ask the five questions in [reference.md](reference.md) (section "Intake questions"). Use the AskUserQuestion
-tool for the multiple-choice parts (it allows free text through "Other"); group them in at most two rounds.
-Do not start any agent until every answer is in.
+Ask the five questions in [reference.md](reference.md) (section "Intake questions"), in the user's language. Use
+the AskUserQuestion tool for the multiple-choice parts (it allows free text through "Other"); group them in at
+most two rounds. Skip any question the user already answered. Do not start any agent until every answer is in.
 
 ## 2. Validate and create the run
 
 1. `HL check-env`. If `ok` is false, list what is missing and ask before installing anything.
 2. Write the answers to a temporary JSON file (fields in reference.md) and run `HL new-run --answers <file>`.
-3. If it returns `ok: false`, use `code` to ask again **only** the question concerned, in Spanish
-   (`price_range`, `size`, `district` with `suggestions`, `down_payment_out_of_range`, `fx_needed`, `currency`).
-   A down payment outside 5–50% is a warning and a new question, never a refusal.
+3. If it returns `ok: false`, use `code` to ask again **only** the question concerned (`price_range`, `size`,
+   `district` with `suggestions`, `down_payment_out_of_range`, `fx_needed`, `currency`). A down payment outside
+   5–50% is a warning and a new question, never a refusal.
 4. On success keep `run_dir` (it holds a valid `inputs.json`) and show the normalized search in two lines.
 
 ## 3. Research agents, in parallel
@@ -40,20 +40,20 @@ short summary.` Then `HL validate --run <run_dir> --stage research`.
 
 1. Launch `financial-analysis` with the run folder path.
 2. Then launch `streamlit-builder` with the run folder path (it checks the app and writes the figures).
-3. `HL validate --run <run_dir> --stage all` (this also writes `salidas/validacion.txt`).
+3. `HL validate --run <run_dir> --stage all` (this also writes `outputs/validation.txt`).
 
 If the Agent tool or these agents are not available, do the four steps yourself in the same order, loading
 each skill: peru-listings-search, peru-safe-investments, rent-vs-buy-model, streamlit-dashboard.
 
-## 5. Report (a few lines, Spanish)
+## 5. Report (a few lines)
 
 Run `HL summary --run <run_dir>` and tell the user:
 
 - What was found per district (sale and rent counts, realistic price and rent). Say clearly if `source_mode` is
   `csv` or `mixed` (data came from a user file, not a live search).
-- The headline verdict per horizon (5, 10, 15, 20, 30 years) per district: comprar / alquilar / depende.
+- The headline verdict per horizon (5, 10, 15, 20, 30 years) per district: buy / rent / depends.
 - The most important warnings (unknown parameters, low-confidence districts).
-- Where `analysis_report.md`, `salidas/validacion.txt` and `figuras/` are, and the dashboard command from the
+- Where `analysis_report.md`, `outputs/validation.txt` and `figures/` are, and the dashboard command from the
   summary (`HL dashboard --run <run_dir>`).
 - The educational-use disclaimer, in one sentence.
 

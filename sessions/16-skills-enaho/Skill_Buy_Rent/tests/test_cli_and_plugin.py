@@ -19,7 +19,7 @@ def test_new_run_ok_and_error_codes(tmp_path, capsys):
     answers = tmp_path / "answers.json"
     answers.write_text(json.dumps({"price_min": 250000, "price_max": 400000, "currency": "PEN", "min_area_m2": 60,
                                    "min_bedrooms": 2, "districts": ["Surco", "Barranco"], "down_payment_pct": 20,
-                                   "extras_text": "con cochera"}), encoding="utf-8")
+                                   "extras_text": "with parking"}), encoding="utf-8")
     assert main(["new-run", "--answers", str(answers), "--runs-root", str(tmp_path / "runs")]) == 0
     res = out_json(capsys)
     assert res["inputs"]["districts"] == ["Santiago de Surco", "Barranco"]
@@ -44,8 +44,8 @@ def test_end_to_end_fixture_dry_run(tmp_path, capsys):
     assert summary["synthetic"] is True and summary["source_mode"] == "csv"
     assert all(set(d["verdicts"]) == {"5", "10", "15", "20", "30"} for d in summary["districts"])
     assert "dashboard" in summary["dashboard"]
-    assert (run_dir / "validacion.txt").exists() and (tmp_path / "validacion.txt").exists()
-    assert "RESULTADO: OK" in (tmp_path / "validacion.txt").read_text(encoding="utf-8")
+    assert (run_dir / "validation.txt").exists() and (tmp_path / "validation.txt").exists()
+    assert "RESULT: OK" in (tmp_path / "validation.txt").read_text(encoding="utf-8")
     assert main(["figures", "--run", str(run_dir), "--out", str(tmp_path / "figuras")]) == 0
     figs = out_json(capsys)["figures"]
     assert len(figs) == 1 + 2 * len(summary["districts"]) and all(Path(f).exists() for f in figs)

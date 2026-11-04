@@ -1,6 +1,6 @@
 """Locations. Package files (schemas, config, app, fixture) live next to this file, so the skill folder
 works the same from the repo (.claude/skills/) and from the personal folder (~/.claude/skills/).
-Run outputs go to the working directory: salidas/, figuras/ and datos/."""
+Run outputs go to the working directory: outputs/, figures/ and data/."""
 
 from __future__ import annotations
 
@@ -21,14 +21,14 @@ LISTINGS_TEMPLATE = SKILLS_DIR / "peru-listings-search" / "listings_template.csv
 
 
 def runs_root() -> Path:
-    """Folder that holds run folders: ./salidas, or HOUSING_LIMA_RUNS."""
-    return Path(os.environ.get("HOUSING_LIMA_RUNS") or Path.cwd() / "salidas")
+    """Folder that holds run folders: ./outputs, or HOUSING_LIMA_RUNS."""
+    return Path(os.environ.get("HOUSING_LIMA_RUNS") or Path.cwd() / "outputs")
 
 
 def figures_dir() -> Path:
-    return Path(os.environ.get("HOUSING_LIMA_FIGURES") or Path.cwd() / "figuras")
+    return Path(os.environ.get("HOUSING_LIMA_FIGURES") or Path.cwd() / "figures")
 
 
 def data_dir() -> Path:
-    """User-supplied files, e.g. datos/listings.csv for the CSV fallback (keep it out of git)."""
-    return Path(os.environ.get("HOUSING_LIMA_DATA") or Path.cwd() / "datos")
+    """User-supplied files, e.g. data/listings.csv for the CSV fallback (keep it out of git)."""
+    return Path(os.environ.get("HOUSING_LIMA_DATA") or Path.cwd() / "data")

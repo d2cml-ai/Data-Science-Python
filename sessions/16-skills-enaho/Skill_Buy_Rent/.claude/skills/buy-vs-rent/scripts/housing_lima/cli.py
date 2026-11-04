@@ -26,7 +26,7 @@ def cmd_check_env(_args) -> int:
     status = {m: importlib.util.find_spec(m) is not None for m in mods}
     ok = sys.version_info >= (3, 11) and all(v for k, v in status.items() if k != "pytest")
     _print({"python": sys.version.split()[0], "python_ok": sys.version_info >= (3, 11), "packages": status,
-            "engine": str(PACKAGE_DIR), "hl": str(HL), "salidas": str(runs_root()), "ok": ok})
+            "engine": str(PACKAGE_DIR), "hl": str(HL), "outputs": str(runs_root()), "ok": ok})
     return 0 if ok else 1
 
 
@@ -145,50 +145,51 @@ def cmd_fixture_run(args) -> int:
 
 
 def write_validation_report(run_dir: Path, stage: str, errors: list[str]) -> Path:
-    """Human-readable check list, saved as <run_dir>/validacion.txt and copied to salidas/validacion.txt."""
-    lines = [f"Validación de {run_dir.name} · etapa {stage} · {datetime.now():%Y-%m-%d %H:%M}", ""]
-    lines.append("RESULTADO: OK" if not errors else f"RESULTADO: {len(errors)} ERROR(ES)")
+    """Human-readable check list, saved as <run_dir>/validation.txt and copied to outputs/validation.txt."""
+    lines = [f"Validation of {run_dir.name} · stage {stage} · {datetime.now():%Y-%m-%d %H:%M}", ""]
+    lines.append("RESULT: OK" if not errors else f"RESULT: {len(errors)} ERROR(S)")
     lines += [f"  - {e}" for e in errors]
     try:
         inputs = read_json(run_dir / "inputs.json")
-        lines += ["", f"Búsqueda: S/ {inputs['price_min_pen']:,.0f}–{inputs['price_max_pen']:,.0f}, "
-                      f">= {inputs['min_area_m2']:g} m², >= {inputs['min_bedrooms']} dorm., "
-                      f"cuota inicial {inputs['down_payment_pct']:g}%, distritos: {', '.join(inputs['districts'])}"]
+        lines += ["", f"Search: S/ {inputs['price_min_pen']:,.0f}–{inputs['price_max_pen']:,.0f}, "
+                      f">= {inputs['min_area_m2']:g} m², >= {inputs['min_bedrooms']} bedrooms, "
+                      f"down payment {inputs['down_payment_pct']:g}%, districts: {', '.join(inputs['districts'])}"]
         if inputs.get("synthetic"):
-            lines.append("DATOS SINTÉTICOS de prueba")
+            lines.append("SYNTHETIC test data")
     except (FileNotFoundError, KeyError):
         pass
     if (run_dir / "market_summary.json").exists():
         m = read_json(run_dir / "market_summary.json")
-        lines += ["", f"Avisos (modo {m['source_mode']}, recolectados {m['collected_at']}); "
-                      f"descartados sin URL: {m.get('dropped_without_url', 0)}"]
+        lines += ["", f"Listings (mode {m['source_mode']}, collected {m['collected_at']}); "
+                      f"dropped without URL: {m.get('dropped_without_url', 0)}"]
         for d in m["districts"]:
-            flag = "  BAJA CONFIANZA" if d["low_confidence"] else ""
+            flag = "  LOW CONFIDENCE" if d["low_confidence"] else ""
             price = d["sale"]["realistic_price"]
             rent = d["rent"]["realistic_rent"]
-            lines.append(f"  {d['district']}: venta n={d['sale']['n']} (de {d['sale'].get('n_found', '?')}), "
-                         f"alquiler n={d['rent']['n']} (de {d['rent'].get('n_found', '?')}), "
-                         f"precio realista {'S/ {:,.0f}'.format(price) if price else 's/d'}, "
-                         f"alquiler realista {'S/ {:,.0f}'.format(rent) if rent else 's/d'}{flag}")
+            lines.append(f"  {d['district']}: sale n={d['sale']['n']} (of {d['sale'].get('n_found', '?')}), "
+                         f"rent n={d['rent']['n']} (of {d['rent'].get('n_found', '?')}), "
+                         f"realistic price {'S/ {:,.0f}'.format(price) if price else 'n/a'}, "
+                         f"realistic rent {'S/ {:,.0f}'.format(rent) if rent else 'n/a'}{flag}")
     if (run_dir / "listings.csv").exists():
         df = pd.read_csv(run_dir / "listings.csv")
-        lines.append(f"  Filas: {len(df)}; con URL: {int(df['source_url'].notna().sum())}; duplicados marcados: "
-                     f"{int(df['duplicate_of'].notna().sum())}; atípicos marcados: {int(df['outlier_flag'].sum())}")
+        lines.append(f"  Rows: {len(df)}; with URL: {int(df['source_url'].notna().sum())}; duplicates flagged: "
+                     f"{int(df['duplicate_of'].notna().sum())}; outliers flagged: {int(df['outlier_flag'].sum())}")
     unknowns = []
     for name in ("housing_params.json", "opportunity_costs.json"):
         if (run_dir / name).exists():
             unknowns += read_json(run_dir / name).get("unknowns", [])
     if unknowns:
-        lines += ["", "Datos sin fuente (se usan supuestos y se muestran como advertencia):"] + [f"  - {u}" for u in unknowns]
+        lines += ["", "Values without a source (an assumption is used and shown as a warning):"]
+        lines += [f"  - {u}" for u in unknowns]
     if (run_dir / "analysis_summary.json").exists():
         s = read_json(run_dir / "analysis_summary.json")
-        lines += ["", "Veredicto (% de escenarios en que comprar gana):"]
+        lines += ["", "Verdict (% of scenarios where buying wins):"]
         for d in s["districts"]:
-            v = ", ".join(f"{x['horizon']}a {x['label']} ({x['share_buy_wins']:.0%})" for x in d["verdicts"]) or "no analizado"
+            v = ", ".join(f"{x['horizon']}y {x['label']} ({x['share_buy_wins']:.0%})" for x in d["verdicts"]) or "not analysed"
             lines.append(f"  {d['district']}: {v}")
     text = "\n".join(lines) + "\n"
-    (run_dir / "validacion.txt").write_text(text, encoding="utf-8")
-    latest = run_dir.parent / "validacion.txt"
+    (run_dir / "validation.txt").write_text(text, encoding="utf-8")
+    latest = run_dir.parent / "validation.txt"
     latest.write_text(text, encoding="utf-8")
     return latest
 
@@ -196,8 +197,14 @@ def write_validation_report(run_dir: Path, stage: str, errors: list[str]) -> Pat
 def cmd_figures(args) -> int:
     from .figures import make_figures
     from .loaders import load_run
-    out = Path(args.out) if args.out else figures_dir()
-    paths = make_figures(load_run(Path(args.run)), out)
+    run_dir = Path(args.run).resolve()
+    if args.out:
+        out = Path(args.out)
+    elif run_dir.parent.name == "outputs":  # <working folder>/outputs/<run-id> -> <working folder>/figures
+        out = run_dir.parent.parent / "figures"
+    else:
+        out = figures_dir()
+    paths = make_figures(load_run(run_dir), out)
     _print({"ok": True, "figures": [str(p) for p in paths]})
     return 0
 
@@ -267,7 +274,7 @@ def main(argv=None) -> int:
     s.add_argument("--run", required=True)
     s.set_defaults(fn=cmd_summary)
 
-    s = sub.add_parser("figures", help="PNG figures of a run in figuras/")
+    s = sub.add_parser("figures", help="PNG figures of a run in figures/")
     s.add_argument("--run", required=True)
     s.add_argument("--out")
     s.set_defaults(fn=cmd_figures)

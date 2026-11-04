@@ -18,8 +18,8 @@ def verdict_row(district: str, deltas: dict[int, float], low_confidence: bool, g
         col.metric(
             label=f"{h} {L.YEARS}",
             value=f"{icon} {winner}",
-            delta=f"S/ {d:,.0f}" + (" reales" if real else ""),
+            delta=f"S/ {d:,.0f}" + (" real" if real else ""),
             delta_color="normal",
-            help=("Diferencia de patrimonio comprador − inquilino con los controles actuales. "
-                  + (f"En la grilla original: {L.GRID_VERDICT[grid_labels[h]]}." if h in grid_labels else "")),
+            help=("Buyer's wealth minus renter's wealth with the current controls. "
+                  + (f"Original grid verdict: {L.GRID_VERDICT[grid_labels[h]]}." if h in grid_labels else "")),
         )

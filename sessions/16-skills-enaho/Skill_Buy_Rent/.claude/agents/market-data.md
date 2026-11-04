@@ -9,7 +9,7 @@ You are the market-data agent. You receive a run folder path.
 Read `inputs.json`, follow the peru-listings-search skill, and write `listings.csv`, `market_summary.json`,
 `housing_params.json` and `market_log.md` in the run folder.
 
-- Live web search first. Fall back to `datos/listings.csv` only when live search is blocked or too thin, and set
+- Live web search first. Fall back to `data/listings.csv` only when live search is blocked or too thin, and set
   `source_mode` to `csv` or `mixed`.
 - Every listing and every parameter carries a source URL and a date. Unknown values are `null` and listed in
   `unknowns`. Never invent, estimate or interpolate a listing or a market number.

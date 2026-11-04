@@ -1,6 +1,6 @@
 """Buy vs rent dashboard for Lima.
 
-Launch: python .claude/skills/buy-vs-rent/scripts/hl.py dashboard --run salidas/<run-id>
+Launch: python .claude/skills/buy-vs-rent/scripts/hl.py dashboard --run outputs/<run-id>
 Reads one run folder and makes no network calls. All formulas come from housing_lima.model.
 """
 
@@ -21,12 +21,12 @@ import streamlit as st  # noqa: E402
 import labels as L  # noqa: E402
 import state  # noqa: E402
 from components import cards, charts  # noqa: E402
-from housing_lima import DISCLAIMER_ES  # noqa: E402
-from housing_lima.analysis import build_scenario, resolve_params  # noqa: E402
+from housing_lima import DISCLAIMER  # noqa: E402
+from housing_lima.analysis import build_scenario  # noqa: E402
 from housing_lima.model import Scenario, simulate  # noqa: E402
 from housing_lima.returns import usd_to_pen  # noqa: E402
 
-st.set_page_config(page_title="Comprar vs alquilar en Lima", page_icon="🏠", layout="wide")
+st.set_page_config(page_title="Buy vs rent in Lima", page_icon="🏠", layout="wide")
 
 
 @st.cache_data(show_spinner=False)
@@ -54,7 +54,7 @@ runs = state.available_runs()
 run_labels = [p.name for p in runs]
 defaults = state.cached_defaults()
 
-st.sidebar.header("Controles")
+st.sidebar.header("Controls")
 run_idx = st.sidebar.selectbox(L.RUN, range(len(runs)), format_func=lambda i: run_labels[i], key="run")
 run = state.cached_run(str(runs[run_idx]))
 summary = run.summary or {}
@@ -69,7 +69,7 @@ if run.market["source_mode"] != "live":
 analysable = [d["district"] for d in run.market["districts"]
               if d["sale"]["realistic_price"] is not None and d["rent"]["realistic_rent"] is not None]
 if not analysable:
-    st.error("Ningún distrito tiene suficientes avisos para analizar.")
+    st.error("No district has enough listings to analyse.")
     st.stop()
 
 # ---------------------------------------------------------------- sidebar controls
@@ -82,7 +82,7 @@ rate_lo = max(0.5, pct(min(grid)) - 1.0)
 rate_hi = pct(max(grid)) + 1.0
 mortgage_rate = st.sidebar.slider(L.MORTGAGE_RATE, rate_lo, rate_hi, pct(market_rate), 0.05, format="%.2f%%",
                                   key="mortgage_rate",
-                                  help=f"Por defecto, el promedio de mercado ({pct(market_rate):.2f}%).") / 100
+                                  help=f"Defaults to the market average ({pct(market_rate):.2f}%).") / 100
 
 down_payment = st.sidebar.slider(L.DOWN_PAYMENT, 5, 50, int(round(run.inputs["down_payment_pct"])), 1,
                                  format="%d%%", key="down_payment") / 100
@@ -110,9 +110,9 @@ else:
 pmin, pmax = float(run.inputs["price_min_pen"]), float(run.inputs["price_max_pen"])
 price = st.sidebar.slider(L.PRICE, pmin, pmax, float(np.clip(dd["price"], pmin, pmax)), 1000.0, format="%.0f",
                           key=f"price_{district}",
-                          help=f"Por defecto, la mediana de los avisos encontrados. P25–P75: "
+                          help=f"Defaults to the median of the listings found. P25–P75: "
                                f"S/ {dd['price_p25']:,.0f} – S/ {dd['price_p75']:,.0f}.")
-st.sidebar.caption(f"Avisos reales P25–P75: S/ {dd['price_p25']:,.0f} – S/ {dd['price_p75']:,.0f}")
+st.sidebar.caption(f"Listings P25–P75: S/ {dd['price_p25']:,.0f} – S/ {dd['price_p75']:,.0f}")
 
 discount = st.sidebar.slider(L.DISCOUNT, 0.0, 20.0, pct(run.market.get("negotiation_discount", 0.0)), 0.5,
                              format="%.1f%%", key="discount") / 100
@@ -126,7 +126,7 @@ def growth_slider(name: str, label: str) -> float:
     v = st.sidebar.slider(label + tag, -5.0, 10.0, pct(dd["values"][name]), 0.1, format="%.1f%%",
                           key=f"{name}_{district}")
     if tag:
-        st.sidebar.caption(f"⚠️ {L.PARAM_NAMES[name]}: sin fuente; se usa un supuesto. Ajústalo con tu dato.")
+        st.sidebar.caption(f"⚠️ {L.PARAM_NAMES[name]}: no source found, an assumption is used. Adjust it.")
     return v / 100
 
 
@@ -142,8 +142,8 @@ dcol = "delta_real" if real else "delta"
 
 # ---------------------------------------------------------------- 1. verdict cards
 st.subheader(L.SEC_VERDICTS)
-st.caption("Con los controles actuales. El precio y los crecimientos elegidos aplican al distrito del detalle; "
-           "los demás distritos usan su precio realista y sus parámetros.")
+st.caption("With the current controls. The chosen price and growth rates apply to the detail district; "
+           "the other districts use their own realistic price and parameters.")
 horizons = summary.get("horizons") or defaults["horizons"]
 all_rows = []
 for name in analysable:
@@ -157,10 +157,10 @@ for name in analysable:
     cards.verdict_row(name, deltas, run.district(name)["low_confidence"], grid_labels, real)
     for h in horizons:
         r = yearly.loc[yearly.year == h].iloc[0]
-        all_rows.append({"distrito": name, "horizonte": h, "precio": s.price, "alquiler": s.monthly_rent,
-                         "patrimonio_comprador": r["w_buy_real" if real else "w_buy"],
-                         "patrimonio_inquilino": r["w_rent_real" if real else "w_rent"],
-                         "comprar_menos_alquilar": r[dcol], "punto_equilibrio": be})
+        all_rows.append({"district": name, "horizon": h, "price": s.price, "rent": s.monthly_rent,
+                         "buyer_wealth": r["w_buy_real" if real else "w_buy"],
+                         "renter_wealth": r["w_rent_real" if real else "w_rent"],
+                         "buy_minus_rent": r[dcol], "break_even_year": be})
 
 # ---------------------------------------------------------------- 2. heat map
 st.subheader(L.SEC_HEATMAP)
@@ -171,8 +171,8 @@ hm = heat_grid(detail, horizon, rates, returns)
 if real:
     hm = hm.assign(delta=hm["delta"] / (1 + detail.inflation) ** horizon)
 st.plotly_chart(charts.heatmap(hm, horizon, mortgage_rate, opp_return), width="stretch", key="heatmap")
-st.caption(f"{district}. Cada celda: patrimonio del comprador menos el del inquilino (S/) a {horizon} años. "
-           "El círculo marca el escenario actual.")
+st.caption(f"{district}. Each cell: buyer's wealth minus renter's wealth (S/) after {horizon} years. "
+           "The circle marks the current scenario.")
 
 # ---------------------------------------------------------------- 3. wealth over time
 st.subheader(L.SEC_WEALTH)
@@ -181,12 +181,12 @@ st.plotly_chart(charts.wealth(yearly, real, be), width="stretch", key="wealth")
 msg = L.NO_BREAK_EVEN if be is None else L.BREAK_EVEN_AT.format(year=be) + (L.REVERTS if reverts else "")
 st.markdown(f"**{district}:** {msg}")
 sim = simulate(detail, years=1)
-st.caption(f"Precio pagado {charts.soles(sim.price_paid)} · cuota inicial {charts.soles(sim.down_payment)} · "
-           f"préstamo {charts.soles(sim.loan)} · cuota mensual {charts.soles(sim.monthly_payment)} · "
-           f"alquiler inicial {charts.soles(detail.monthly_rent)}")
+st.caption(f"Price paid {charts.soles(sim.price_paid)} · down payment {charts.soles(sim.down_payment)} · "
+           f"loan {charts.soles(sim.loan)} · monthly payment {charts.soles(sim.monthly_payment)} · "
+           f"starting rent {charts.soles(detail.monthly_rent)}")
 if exhausted:
-    st.warning("En este escenario la cartera del inquilino se vuelve negativa: el alquiler supera lo que puede "
-               "financiar (renter_budget_exhausted).", icon="⚠️")
+    st.warning("In this scenario the renter's portfolio goes negative: rent exceeds what it can fund "
+               "(renter_budget_exhausted).", icon="⚠️")
 
 # ---------------------------------------------------------------- 4. price check
 st.subheader(L.SEC_PRICES)
@@ -195,24 +195,24 @@ sale = lst[(lst.district == district) & (lst.operation == "sale")]
 clean = sale[sale.in_range.astype(bool) & ~sale.outlier_flag.astype(bool) & sale.duplicate_of.isna()]
 st.plotly_chart(charts.price_histogram(clean.price_pen, price, dd["price_p25"], dd["price_p75"]),
                 width="stretch", key="prices")
-st.caption(f"{len(clean)} avisos de venta en tu rango, sin duplicados ni atípicos "
-           f"({len(sale)} encontrados en total). Son precios pedidos, no precios de cierre.")
+st.caption(f"{len(clean)} sale listings in your range, without duplicates or outliers "
+           f"({len(sale)} found in total). These are asking prices, not closing prices.")
 show = lst[lst.district == district][["operation", "price_pen", "area_m2", "bedrooms", "maintenance_fee_pen",
                                       "in_range", "outlier_flag", "duplicate_of", "source_portal", "listing_date",
                                       "collected_at", "source_url"]]
 st.dataframe(show, hide_index=True, width="stretch", column_config={
-    "operation": st.column_config.TextColumn("Operación"),
-    "price_pen": st.column_config.NumberColumn("Precio (S/)", format="%.0f"),
+    "operation": st.column_config.TextColumn("Operation"),
+    "price_pen": st.column_config.NumberColumn("Price (S/)", format="%.0f"),
     "area_m2": st.column_config.NumberColumn("m²"),
-    "bedrooms": st.column_config.NumberColumn("Dorm."),
-    "maintenance_fee_pen": st.column_config.NumberColumn("Mantenimiento (S/)"),
-    "in_range": st.column_config.CheckboxColumn("En tu rango"),
-    "outlier_flag": st.column_config.CheckboxColumn("Atípico"),
-    "duplicate_of": st.column_config.TextColumn("Duplicado de"),
+    "bedrooms": st.column_config.NumberColumn("Bedrooms"),
+    "maintenance_fee_pen": st.column_config.NumberColumn("Building fee (S/)"),
+    "in_range": st.column_config.CheckboxColumn("In your range"),
+    "outlier_flag": st.column_config.CheckboxColumn("Outlier"),
+    "duplicate_of": st.column_config.TextColumn("Duplicate of"),
     "source_portal": st.column_config.TextColumn("Portal"),
-    "listing_date": st.column_config.TextColumn("Fecha del aviso"),
-    "collected_at": st.column_config.TextColumn("Recolectado"),
-    "source_url": st.column_config.LinkColumn("Fuente"),
+    "listing_date": st.column_config.TextColumn("Listing date"),
+    "collected_at": st.column_config.TextColumn("Collected"),
+    "source_url": st.column_config.LinkColumn("Source"),
 })
 
 # ---------------------------------------------------------------- 5. assumptions and sources
@@ -220,36 +220,36 @@ st.subheader(L.SEC_SOURCES)
 rows = []
 for key, label in L.PARAM_NAMES.items():
     src = dd["sources"].get(key, {})
-    rows.append({"Parámetro": label, "Valor": dd["values"].get(key),
-                 "Origen": L.ORIGIN.get(src.get("origin"), src.get("origin")),
-                 "Fuente": src.get("source_url"), "Fecha": src.get("as_of"), "Nota": src.get("note", "")})
+    rows.append({"Parameter": label, "Value": dd["values"].get(key),
+                 "Origin": L.ORIGIN.get(src.get("origin"), src.get("origin")),
+                 "Source": src.get("source_url"), "Date": src.get("as_of"), "Note": src.get("note", "")})
 for o in options:
-    rows.append({"Parámetro": f"{o['name']} (base)", "Valor": o["return_base"], "Origen": o["basis"],
-                 "Fuente": ", ".join(o["source_urls"]), "Fecha": o["as_of"],
-                 "Nota": "; ".join(o.get("caveats", []))})
-rows.append({"Parámetro": "Avisos (modo de fuente)", "Valor": None, "Origen": run.market["source_mode"],
-             "Fuente": "listings.csv", "Fecha": run.market["collected_at"], "Nota": ""})
+    rows.append({"Parameter": f"{o['name']} (base)", "Value": o["return_base"], "Origin": o["basis"],
+                 "Source": ", ".join(o["source_urls"]), "Date": o["as_of"],
+                 "Note": "; ".join(o.get("caveats", []))})
+rows.append({"Parameter": "Listings (source mode)", "Value": None, "Origin": run.market["source_mode"],
+             "Source": "listings.csv", "Date": run.market["collected_at"], "Note": ""})
 st.dataframe(pd.DataFrame(rows), hide_index=True, width="stretch",
-             column_config={"Valor": st.column_config.NumberColumn(format="%.4f")})
-with st.expander("Bancos y riesgos de cada opción"):
+             column_config={"Value": st.column_config.NumberColumn(format="%.4f")})
+with st.expander("Banks and the risk of each option"):
     banks = run.params["mortgage"].get("by_bank") or []
     if banks:
         st.dataframe(pd.DataFrame(banks), hide_index=True, width="stretch",
-                     column_config={"source_url": st.column_config.LinkColumn("Fuente")})
+                     column_config={"source_url": st.column_config.LinkColumn("Source")})
     for o in options:
         st.markdown(f"**{o['risk_rank']}. {o['name']}** — {o.get('explanation', '')} "
-                    f"Volatilidad: {o['volatility'] if o['volatility'] is not None else 's/d'}; "
-                    f"peor año: {o['worst_1y'] if o['worst_1y'] is not None else 's/d'}; "
-                    f"impuestos y comisiones: {o['tax_and_fees'] or L.NEEDS_INPUT}.")
+                    f"Volatility: {o['volatility'] if o['volatility'] is not None else 'n/a'}; "
+                    f"worst year: {o['worst_1y'] if o['worst_1y'] is not None else 'n/a'}; "
+                    f"taxes and fees: {o['tax_and_fees'] or L.NEEDS_INPUT}.")
 warnings = list(summary.get("warnings", [])) + dd["warnings"] + run.district(district).get("warnings", [])
 for w in dict.fromkeys(warnings):
     st.warning(w, icon="⚠️")
-st.info(DISCLAIMER_ES, icon="📘")
+st.info(DISCLAIMER, icon="📘")
 
 # ---------------------------------------------------------------- 6. downloads
 st.subheader(L.SEC_DOWNLOAD)
 c1, c2 = st.columns(2)
-c1.download_button("Escenario actual por distrito y horizonte (CSV)", pd.DataFrame(all_rows).to_csv(index=False),
-                   file_name=f"{run.run_id}_escenario.csv", mime="text/csv", key="dl_all")
-c2.download_button(f"Trayectoria anual de {district} (CSV)", yearly.to_csv(index=False),
-                   file_name=f"{run.run_id}_{district}_anual.csv", mime="text/csv", key="dl_detail")
+c1.download_button("Current scenario by district and horizon (CSV)", pd.DataFrame(all_rows).to_csv(index=False),
+                   file_name=f"{run.run_id}_scenario.csv", mime="text/csv", key="dl_all")
+c2.download_button(f"Yearly path for {district} (CSV)", yearly.to_csv(index=False),
+                   file_name=f"{run.run_id}_{district}_yearly.csv", mime="text/csv", key="dl_detail")

@@ -1,6 +1,6 @@
 ---
 name: streamlit-builder
-description: Checks the local Streamlit buy-vs-rent dashboard on a run folder and exports the PNG figures to figuras/, so the user can play with mortgage rate, opportunity cost and down payment. Use after financial-analysis has written its outputs.
+description: Checks the local Streamlit buy-vs-rent dashboard on a run folder and exports the PNG figures to figures/, so the user can play with mortgage rate, opportunity cost and down payment. Use after financial-analysis has written its outputs.
 tools: Read, Write, Edit, Bash
 skills: streamlit-dashboard
 ---
@@ -14,6 +14,6 @@ Use the `HL` launcher given in the skill. If its path is not expanded, it is
 3. If the check fails because this run has something the app does not handle (a district with no listings, a
    missing option, a null value), fix the app following the streamlit-dashboard skill. Never edit the run's data
    files to make a check pass.
-4. `HL figures --run <run_dir>` to write the PNGs in `figuras/`.
+4. `HL figures --run <run_dir>` to write the PNGs in `figures/` next to the `outputs/` folder that holds the run.
 5. Return only: the check result, the figure paths, the command `HL dashboard --run <run_dir>` with the real
    launcher path, and any warning the user should see.

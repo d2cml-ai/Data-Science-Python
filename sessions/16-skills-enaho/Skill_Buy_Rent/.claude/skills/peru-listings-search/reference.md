@@ -84,18 +84,18 @@ Duplicate rule: same operation, district and bedrooms, different portal, price w
 Used when live search is blocked or returns too few listings.
 
 - Template: `listings_template.csv` (in this skill folder) (raw schema header, no data).
-- The user's file: `datos/listings.csv` (in the working folder) (ignored by git, because it holds collected listings).
+- The user's file: `data/listings.csv` (in the working folder) (ignored by git, because it holds collected listings).
 
 ### How the user refreshes it
 
-1. Copy the template to `datos/listings.csv` (in the working folder).
+1. Copy the template to `data/listings.csv` (in the working folder).
 2. Open the portals in a browser, search the districts and filters of the run, and paste one row per listing,
    including the listing URL and the date. Prices exactly as shown, with their currency.
 3. Save as UTF-8 CSV.
 4. Ask for a new run, or run the pipeline directly:
 
    ```bash
-   python "${CLAUDE_SKILL_DIR}/../buy-vs-rent/scripts/hl.py" listings --run salidas/<run-id> --raw datos/listings.csv \
+   python "${CLAUDE_SKILL_DIR}/../buy-vs-rent/scripts/hl.py" listings --run outputs/<run-id> --raw data/listings.csv \
      --source-mode csv --fx <usd_pen> --fx-date <date> --fx-source <url>
    ```
 

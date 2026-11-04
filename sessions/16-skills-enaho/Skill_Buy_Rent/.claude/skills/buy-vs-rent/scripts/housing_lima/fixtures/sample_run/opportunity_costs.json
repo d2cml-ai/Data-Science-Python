@@ -7,7 +7,7 @@
   "options": [
     {
       "id": "deposit",
-      "name": "Depósito a plazo (sintético)",
+      "name": "Fixed-term deposit (synthetic)",
       "currency": "PEN",
       "original_currency": "PEN",
       "return_low": 0.045,
@@ -30,7 +30,7 @@
     },
     {
       "id": "sp500",
-      "name": "S&P 500 (sintético)",
+      "name": "S&P 500 (synthetic)",
       "currency": "PEN",
       "original_currency": "USD",
       "return_low": 0.07,
@@ -56,7 +56,7 @@
     },
     {
       "id": "bvl",
-      "name": "S&P/BVL Peru General (sintético)",
+      "name": "S&P/BVL Peru General (synthetic)",
       "currency": "PEN",
       "original_currency": "PEN",
       "return_low": 0.04,

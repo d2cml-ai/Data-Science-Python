@@ -42,22 +42,25 @@ def parse_extras(text: str, fx_usd_pen: Optional[float] = None) -> dict:
     if not t:
         return extras
 
-    m = re.search(r"(\d+)\s*(estacionamientos?|cocheras?|parkings?|parqueos?|garajes?)", t)
+    # Answers may come in English or Spanish, so both vocabularies are matched.
+    m = re.search(r"(\d+)\s*(estacionamientos?|cocheras?|parkings?|parking spaces?|parqueos?|garajes?|garages?)", t)
     if m:
         extras["parking_min"] = int(m.group(1))
-    elif re.search(r"estacionamiento|cochera|parking|parqueo|garaje|garage", t) and not re.search(r"sin (estacionamiento|cochera)", t):
+    elif (re.search(r"estacionamiento|cochera|parking|parqueo|garaje|garage", t)
+          and not re.search(r"(sin|no) (estacionamiento|cochera|parking|garage)", t)):
         extras["parking_min"] = 1
 
-    m = re.search(r"(?:antiguedad|maximo|max\.?|menos de|hasta|no mas de)\D{0,25}?(\d{1,3})\s*anos", t)
+    m = re.search(r"(?:antiguedad|maximo|max\.?|menos de|hasta|no mas de|less than|under|at most|maximum|"
+                  r"no older than|up to)\D{0,25}?(\d{1,3})\s*(?:anos|years?)", t)
     if m:
         extras["max_age_years"] = float(m.group(1))
 
-    if re.search(r"\b(estreno|a estrenar|nuevo|nueva|en planos|new)\b", t):
+    if re.search(r"\b(estreno|a estrenar|nuevo|nueva|en planos|new|brand new|new build|off plan)\b", t):
         extras["is_new"] = True
-    elif re.search(r"\b(usado|usada|segunda mano|de segunda)\b", t):
+    elif re.search(r"\b(usado|usada|segunda mano|de segunda|used|resale)\b", t):
         extras["is_new"] = False
 
-    if re.search(r"mascota|pet|perro|gato", t):
+    if re.search(r"mascota|pet|perro|gato|dog|cat\b", t):
         extras["pets_allowed"] = True
 
     m = re.search(r"(?:cuota|pago mensual|mensualidad|monthly payment)\D{0,25}?(s/\.?|us\$|\$|usd)?\s*(\d[\d.,]*)", t)
@@ -69,7 +72,7 @@ def parse_extras(text: str, fx_usd_pen: Optional[float] = None) -> dict:
             amount *= fx_usd_pen
         extras["max_monthly_payment"] = round(amount, 2)
 
-    m = re.search(r"piso\s*(\d{1,2})|(\d{1,2})\s*(?:er|ro|do|to|vo|no|mo|o)?\s*piso", t)
+    m = re.search(r"(?:piso|floor)\s*(\d{1,2})|(\d{1,2})\s*(?:er|ro|do|to|vo|no|mo|o|st|nd|rd|th)?\s*(?:piso|floor)", t)
     if m:
         extras["min_floor"] = int(m.group(1) or m.group(2))
     return extras

@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "housing_lima"
-version = "0.2.0"
-description = "Comprar vs alquilar en Lima: modelo, skills de Claude Code y dashboard de Streamlit"
+version = "0.3.0"
+description = "Buy vs rent in Lima: model, Claude Code skills and a Streamlit dashboard"
 requires-python = ">=3.11"
 dependencies = [
     "pandas>=2.2,<4",

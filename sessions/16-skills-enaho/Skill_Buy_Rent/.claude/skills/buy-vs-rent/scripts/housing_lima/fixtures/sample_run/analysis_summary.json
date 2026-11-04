@@ -1,6 +1,6 @@
 {
   "run_id": "20261103-0900-synthetic-fixture",
-  "generated_at": "2026-11-03T23:33:22",
+  "generated_at": "2026-11-03T23:48:19",
   "synthetic": true,
   "source_mode": "csv",
   "horizons": [
@@ -21,19 +21,19 @@
   "options": [
     {
       "id": "deposit",
-      "name": "Depósito a plazo (sintético)",
+      "name": "Fixed-term deposit (synthetic)",
       "return_base": 0.05,
       "risk_rank": 1
     },
     {
       "id": "sp500",
-      "name": "S&P 500 (sintético)",
+      "name": "S&P 500 (synthetic)",
       "return_base": 0.1,
       "risk_rank": 2
     },
     {
       "id": "bvl",
-      "name": "S&P/BVL Peru General (sintético)",
+      "name": "S&P/BVL Peru General (synthetic)",
       "return_base": 0.08,
       "risk_rank": 3
     }

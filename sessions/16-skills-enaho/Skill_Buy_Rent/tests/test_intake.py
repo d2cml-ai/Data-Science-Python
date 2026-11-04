@@ -12,7 +12,7 @@ NOW = datetime(2026, 11, 4, 15, 30)
 def answers(**kw):
     a = dict(price_min=250000, price_max=400000, currency="PEN", min_area_m2=60, min_bedrooms=2,
              districts=["Jesús María", "pueblo libre", "SMP"], down_payment_pct=20,
-             extras_text="Quiero 1 estacionamiento, máximo 10 años de antigüedad y acepten mascotas")
+             extras_text="I want 1 parking space, less than 10 years old, and pets allowed")
     a.update(kw)
     return a
 
@@ -24,7 +24,7 @@ def test_build_inputs_normalizes_and_validates():
     assert inp["extras"]["parking_min"] == 1
     assert inp["extras"]["max_age_years"] == 10
     assert inp["extras"]["pets_allowed"] is True
-    assert "mascotas" in inp["extras"]["notes"]
+    assert "pets" in inp["extras"]["notes"]
 
 
 def test_usd_answers_converted_and_rate_recorded():
@@ -76,7 +76,7 @@ def test_unknown_district_raises():
 
 
 def test_parse_extras_payment_and_new():
-    ex = parse_extras("departamento a estrenar, cuota máxima S/ 2,500, piso 3", None)
+    ex = parse_extras("brand new apartment, max monthly payment S/ 2,500, 3rd floor", None)
     assert ex["is_new"] is True
     assert ex["max_monthly_payment"] == 2500
     assert ex["min_floor"] == 3

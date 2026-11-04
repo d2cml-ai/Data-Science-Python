@@ -7,7 +7,7 @@
 For each district, the buyer pays the realistic price (median of in-range listings) with the user's down payment and a fixed-payment mortgage. The renter rents a comparable home and invests the down payment, the buying costs and every monthly difference between the buyer's outflow and the rent at the opportunity-cost return. Buying wins at horizon H when the buyer's net wealth (sale value after selling costs minus the remaining balance) exceeds the renter's portfolio.
 
 - Mortgage rate grid (TEA): 6.50%, 7.50%, 8.50%, 9.50%, 10.50% (market average 8.50%)
-- Opportunity-cost options (base return): Depósito a plazo (sintético) 5.00%, S&P 500 (sintético) 10.00%, S&P/BVL Peru General (sintético) 8.00%
+- Opportunity-cost options (base return): Fixed-term deposit (synthetic) 5.00%, S&P 500 (synthetic) 10.00%, S&P/BVL Peru General (synthetic) 8.00%
 - Loan term: 20 years (assumption); down payment: 20%
 - Verdict: 'buy' when buying wins in >= 80% of the grid, 'rent' when <= 20%, otherwise 'depends'.
 

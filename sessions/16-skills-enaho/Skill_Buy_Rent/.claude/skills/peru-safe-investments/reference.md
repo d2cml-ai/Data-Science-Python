@@ -29,7 +29,7 @@
 
 ### Output fields per option
 
-`id`, `name` (Spanish, shown in the dashboard), `currency: "PEN"`, `original_currency`, `return_low`,
+`id`, `name` (shown in the dashboard), `currency: "PEN"`, `original_currency`, `return_low`,
 `return_base`, `return_high`, `return_real_base`, `volatility`, `worst_1y`, `risk_rank`, `basis`,
 `explanation`, `source_urls`, `as_of`, `tax_and_fees`, `caveats`; for `sp500` also `return_usd_low/base/high`.
 

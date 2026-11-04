@@ -45,8 +45,8 @@ def test_app_starts_with_listing_based_defaults(app):
     assert price.value == pytest.approx(expected)
     assert len(app.metric) == len(DISTRICTS) * 5  # districts x five horizons
     if INPUTS.get("synthetic"):
-        assert any("SINTÉTICOS" in w.value for w in app.warning)
-    assert any("Uso educativo" in i.value for i in app.info)
+        assert any("SYNTHETIC" in w.value for w in app.warning)
+    assert any("Educational use only" in i.value for i in app.info)
 
 
 @pytest.mark.parametrize("key,step", [

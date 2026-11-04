@@ -1,10 +1,10 @@
-"""Copia las skills y los agentes de este repositorio a tu carpeta personal de Claude Code.
+"""Copy this repository's skills and agents to your personal Claude Code folder.
 
-    python instalar.py                 # copia a ~/.claude/skills y ~/.claude/agents
-    python instalar.py --desinstalar   # borra solo lo que este proyecto instaló
+    python install.py               # copies to ~/.claude/skills and ~/.claude/agents
+    python install.py --uninstall   # removes only what this project installed
 
-Después de instalar, reinicia Claude Code (terminal, app de escritorio o VS Code) y escribe /skills.
-Solo toca las carpetas y archivos con los nombres de este proyecto; no borra otras skills.
+After installing, restart Claude Code (terminal, desktop app or VS Code) and type /skills.
+Only folders and files with this project's names are touched; other skills are left alone.
 """
 
 import argparse
@@ -18,10 +18,10 @@ AGENTS = ["market-data", "opportunity-cost", "financial-analysis", "streamlit-bu
 
 def main() -> None:
     p = argparse.ArgumentParser()
-    p.add_argument("--destino", default=str(Path.home() / ".claude"), help="carpeta de Claude Code (por defecto ~/.claude)")
-    p.add_argument("--desinstalar", action="store_true")
+    p.add_argument("--target", default=str(Path.home() / ".claude"), help="Claude Code folder (default ~/.claude)")
+    p.add_argument("--uninstall", action="store_true")
     a = p.parse_args()
-    dest = Path(a.destino)
+    dest = Path(a.target)
     (dest / "skills").mkdir(parents=True, exist_ok=True)
     (dest / "agents").mkdir(parents=True, exist_ok=True)
 
@@ -29,19 +29,19 @@ def main() -> None:
         target = dest / "skills" / name
         if target.exists():
             shutil.rmtree(target)
-        if not a.desinstalar:
+        if not a.uninstall:
             shutil.copytree(HERE / ".claude" / "skills" / name, target,
                             ignore=shutil.ignore_patterns("__pycache__", "*.pyc"))
-        print(("borrada " if a.desinstalar else "skill   ") + str(target))
+        print(("removed " if a.uninstall else "skill   ") + str(target))
     for name in AGENTS:
         target = dest / "agents" / f"{name}.md"
-        if a.desinstalar:
+        if a.uninstall:
             target.unlink(missing_ok=True)
         else:
             shutil.copy2(HERE / ".claude" / "agents" / f"{name}.md", target)
-        print(("borrado " if a.desinstalar else "agente  ") + str(target))
-    if not a.desinstalar:
-        print("\nListo. Reinicia Claude Code y llama al orquestador con /buy-vs-rent")
+        print(("removed " if a.uninstall else "agent   ") + str(target))
+    if not a.uninstall:
+        print("\nDone. Restart Claude Code and call the orchestrator with /buy-vs-rent")
 
 
 if __name__ == "__main__":
